@@ -1,0 +1,12 @@
+c:\users\mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\bin\Debug\LossPreventionv4.exe.config
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\bin\Debug\LossPreventionv4.exe
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\bin\Debug\LossPreventionv4.pdb
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\obj\Debug\LossPreventionv4.csprojResolveAssemblyReference.cache
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\obj\Debug\LossPreventionv4.Form1.resources
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\obj\Debug\LossPreventionv4.Properties.Resources.resources
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\obj\Debug\LossPreventionv4.csproj.GenerateResource.Cache
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\obj\Debug\LossPreventionv4.exe
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\obj\Debug\LossPreventionv4.pdb
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Mitchell\documents\visual studio 2015\Projects\LossPreventionv4\LossPreventionv4\bin\Debug\HtmlAgilityPack.xml
