@@ -1,0 +1,1815 @@
+Testing Summoner: herry17901   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+Foopadoodle - Tryndamere(7)  vs  Riven  Matchup: 51.63  Score: 2
+herry17901 - Rengar(3)  vs  Jax  Matchup: 45.42  Score: -2
+sky138 - Lux(7)  vs  Veigar  Matchup: 50.23  Score: 2
+Jericho Jhay - Lucian(6)  vs  Vayne  Matchup: 46.9  Score: 0
+K1ng G - Thresh(7)  vs  Janna  Matchup: 45.12  Score: 0
+Total Score: 2
+
+2 --- 0:1 --- 1
+
+Testing Summoner: herry17901   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+Bubble Echo - Galio(4)  vs  Sion  Matchup: 55.96  Score: 1.5
+herry17901 - Shaco(1)  vs  Kayn  Matchup: 53.37  Score: 0
+milciades guaque - Corki(2)  vs  Katarina  Matchup: 50.88  Score: -0.5
+LargeYellowMan - Vayne(6)  vs  Draven  Matchup: 48.22  Score: 0.5
+uprising2711 - Taric(4)  vs  Braum  Matchup: 52.92  Score: 1
+Total Score: 2.5
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+
+Testing Summoner: herry17901   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+herry17901 - Nasus(2)  vs  Swain  Matchup: 50.27  Score: -0.5
+Dremoric Dran - Vi(4)  vs  Fiddlesticks  Matchup: 55.19  Score: 1.5
+calc33 - Fizz(7)  vs  Viktor  Matchup: 53.54  Score: 3
+Addìct - Xayah(2)  vs  Caitlyn  Matchup: 48.8  Score: -1.5
+Hyluse - Brand(2)  vs  Lux  Matchup: 48.81  Score: -1.5
+Total Score: 1
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:0 --- 1
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Xevio - Garen(7)  vs  Wukong  Matchup: 55.35  Score: 3
+Drubstuck - Jax(2)  vs  Jarvan IV  Matchup: 52.33  Score: 0
+Gentle Pengu - Katarina(7)  vs  Twisted Fate  Matchup: 46.91  Score: 0
+Shery Bear - Xayah(3)  vs  Ezreal  Matchup: 51.28  Score: 0
+FlyinSolo - Rakan(3)  vs  Nami  Matchup: 45.9  Score: -2
+Total Score: 1
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:1 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+DEire - Wukong(4)  vs  Nasus  Matchup: 47.12  Score: -1
+Shery Bear - Rengar(1)  vs  Shyvana  Matchup: 45.87  Score: -3
+FlyinSolo - Galio(4)  vs  Fizz  Matchup: 48.8  Score: -0.5
+1st time Fly - Tristana(6)  vs  Sivir  Matchup: 47.76  Score: 0
+ToldMeSheWsLvl18 - Lux(7)  vs  Alistar  Matchup: 49.27  Score: 0.5
+Total Score: -4
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:1 --- 2
+-4 --- 0:1 --- 1
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+FlyinSolo - Gnar(7)  vs  Yorick  Matchup: 39.72  Score: 0
+Walter T Badger - Rek'Sai(7)  vs  Master Yi  Matchup: 46.69  Score: 0
+Eiji Weshin - Syndra(5)  vs  Annie  Matchup: 56.48  Score: 1.5
+Shery Bear - Twitch(1)  vs  Sivir  Matchup: 47.15  Score: -3
+JigglypuffREKT - Janna(5)  vs  Sona  Matchup: 51.58  Score: 1.5
+Total Score: 0
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:1 --- 2
+0 --- 1:0 --- 1
+-4 --- 0:1 --- 1
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+SaintBback - Irelia(2)  vs  Ornn  Matchup: 54.04  Score: 0
+Shery Bear - Evelynn(2)  vs  Elise  Matchup: 48.24  Score: -1.5
+SuperParliament - Lucian(5)  vs  Malphite  Matchup: 41.62  Score: -0.5
+Skripyy - Caitlyn(3)  vs  Varus  Matchup: 50.77  Score: 0
+FlyinSolo - Janna(6)  vs  Thresh  Matchup: 54.88  Score: 3
+Total Score: 1
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:2 --- 3
+0 --- 1:0 --- 1
+-4 --- 0:1 --- 1
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Velnero - Nasus(5)  vs  Darius  Matchup: 48.64  Score: 0
+PetrSykora - Vi(5)  vs  Amumu  Matchup: 47.67  Score: -0.5
+FlyinSolo - Sion(4)  vs  Katarina  Matchup: 0  Score: -0.5
+Shery Bear - Sivir(2)  vs  Tristana  Matchup: 52.24  Score: 0
+WolfbladeXan - Janna(6)  vs  Lulu  Matchup: 51.67  Score: 2
+Total Score: 1
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:3 --- 4
+0 --- 1:0 --- 1
+-4 --- 0:1 --- 1
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+c4lm - Urgot(6)  vs  Renekton  Matchup: 50.34  Score: 2
+Modlock - Zac(2)  vs  Ivern  Matchup: 50.52  Score: -0.5
+FlyinSolo - Sion(4)  vs  Taliyah  Matchup: 0  Score: -0.5
+Shery Bear - Xayah(3)  vs  Caitlyn  Matchup: 48.8  Score: -1.5
+Shitlord - Janna(3)  vs  Nami  Matchup: 49.88  Score: -1.5
+Total Score: -2
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:3 --- 4
+0 --- 1:0 --- 1
+-2 --- 1:0 --- 1
+-4 --- 0:1 --- 1
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+BuddhasRightNut - Singed(3)  vs  Maokai  Matchup: 51.31  Score: 0
+Wildblood - Jarvan IV(2)  vs  Kayn  Matchup: 49.45  Score: -1.5
+FlyinSolo - Galio(4)  vs  Ahri  Matchup: 43.03  Score: -1.5
+Shery Bear - Varus(2)  vs  Vayne  Matchup: 52.26  Score: 0
+Infamous Biscuit - Braum(7)  vs  Thresh  Matchup: 51.67  Score: 2
+Total Score: -1
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:3 --- 4
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-2 --- 1:0 --- 1
+-4 --- 0:1 --- 1
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+AvocadoNation - Renekton(5)  vs  Darius  Matchup: 50.73  Score: 1.5
+Pøser - Lee Sin(1)  vs  Olaf  Matchup: 47.92  Score: -3
+FlyinSolo - Galio(4)  vs  Veigar  Matchup: 45.08  Score: -1
+Shery Bear - Xayah(3)  vs  Ashe  Matchup: 52.24  Score: 0.5
+Tavac - Rakan(3)  vs  Brand  Matchup: 47.55  Score: -2
+Total Score: -4
+
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:3 --- 4
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-2 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Nikoli360 - Shen(7)  vs  Olaf  Matchup: 49.29  Score: 0.5
+Immortal Baiter - Kayn(5)  vs  Kha'Zix  Matchup: 50.44  Score: 1.5
+supermarioliu - Orianna(3)  vs  Corki  Matchup: 48.62  Score: -1.5
+Shery Bear - Vayne(4)  vs  Brand  Matchup: 52.65  Score: 1
+FlyinSolo - Braum(7)  vs  Leona  Matchup: 53.44  Score: 3
+Total Score: 4.5
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:3 --- 4
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-2 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Dibbs192 - Gangplank(4)  vs  Riven  Matchup: 49  Score: -0.5
+RoyLord - Shaco(7)  vs  Rengar  Matchup: 51.15  Score: 2
+FlyinSolo - Galio(4)  vs  Orianna  Matchup: 46.7  Score: -1
+Shery Bear - Ezreal(3)  vs  Vayne  Matchup: 47.77  Score: -2
+Tyrant Arthas - Vel'Koz(7)  vs  Blitzcrank  Matchup: 46.41  Score: 0
+Total Score: -1.5
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:3 --- 4
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-1.5 --- 1:0 --- 1
+-2 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Boy Meets God - Jarvan IV(4)  vs  Yasuo  Matchup: 0  Score: -0.5
+I am Krampus - Kha'Zix(4)  vs  Sejuani  Matchup: 47.38  Score: -1
+FlyinSolo - Galio(4)  vs  Kassadin  Matchup: 53.45  Score: 1
+Shery Bear - Vayne(4)  vs  Xayah  Matchup: 49.63  Score: -0.5
+Eepicurean - Brand(4)  vs  Sona  Matchup: 48.88  Score: -0.5
+Total Score: -1.5
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 1:3 --- 4
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+runinmidlane - Yasuo(7)  vs  Wukong  Matchup: 48.85  Score: 0.5
+o h - Rengar(5)  vs  Udyr  Matchup: 41.5  Score: -0.5
+FlyinSolo - Galio(4)  vs  Orianna  Matchup: 46.7  Score: -1
+Shery Bear - Vayne(4)  vs  Twitch  Matchup: 47.66  Score: -1
+banno - Bard(7)  vs  Miss Fortune  Matchup: 53.95  Score: 3
+Total Score: 1
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+BlueFifteenDO - Nasus(5)  vs  Jayce  Matchup: 55.7  Score: 1.5
+TecnoJellyfish - Rengar(2)  vs  Shaco  Matchup: 48.85  Score: -1.5
+FlyinSolo - Galio(4)  vs  Zoe  Matchup: 53.14  Score: 1
+Shery Bear - Xayah(3)  vs  Draven  Matchup: 50.48  Score: 0
+Acroblade - Braum(4)  vs  Alistar  Matchup: 48.77  Score: -0.5
+Total Score: 0.5
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Whiz kalistaaaa - Jarvan IV(1)  vs  Master Yi  Matchup: 47.37  Score: -3
+ForeverPainpath - Jax(7)  vs  Warwick  Matchup: 50.63  Score: 2
+greenteatrai - Zyra(3)  vs  Viktor  Matchup: 0  Score: -1
+Shery Bear - Varus(2)  vs  Jhin  Matchup: 50.37  Score: -0.5
+FlyinSolo - Thresh(7)  vs  Blitzcrank  Matchup: 47.95  Score: 0
+Total Score: -2.5
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 1:0 --- 1
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Lord Regulus - Gangplank(3)  vs  Ornn  Matchup: 54.1  Score: 0.5
+SlickDill - Volibear(5)  vs  Nidalee  Matchup: 59.4  Score: 1.5
+FlyinSolo - Taliyah(4)  vs  Orianna  Matchup: 48.33  Score: -0.5
+Shery Bear - Varus(2)  vs  Ezreal  Matchup: 52.14  Score: 0
+Pe0plez - Morgana(4)  vs  Janna  Matchup: 44.93  Score: -1.5
+Total Score: 0
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+NYX606 - Pantheon(3)  vs  Sion  Matchup: 40.22  Score: -2
+Whooxie - Lee Sin(4)  vs  Nunu  Matchup: 46.34  Score: -1
+Huxley2540 - Swain(5)  vs  Vladimir  Matchup: 58.11  Score: 1.5
+Shery Bear - Varus(2)  vs  Xayah  Matchup: 49.44  Score: -1.5
+FlyinSolo - Braum(7)  vs  Nami  Matchup: 45.76  Score: 0
+Total Score: -3
+
+4.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Shery Bear   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Tales9Master - Shen(6)  vs  Jayce  Matchup: 53.63  Score: 3
+Shery Bear - Evelynn(2)  vs  Volibear  Matchup: 46.67  Score: -3
+DeFluffy - Veigar(7)  vs  Lux  Matchup: 49.77  Score: 0.5
+TedCruzTheZodiac - Jinx(5)  vs  Vayne  Matchup: 50.87  Score: 1.5
+FlyinSolo - Thresh(7)  vs  Tahm Kench  Matchup: 51.06  Score: 2
+Total Score: 4
+
+4.5 --- 0:1 --- 1
+4 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Amumu Main   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+Amumu Main - Shen(5)  vs  Cho'Gath  Matchup: 46.71  Score: -0.5
+HLG - Warwick(4)  vs  Olaf  Matchup: 55.57  Score: 1.5
+ASAP BARI - Viktor(5)  vs  Veigar  Matchup: 43.27  Score: -0.5
+2 Pumpkins - Jinx(7)  vs  Lucian  Matchup: 52.77  Score: 3
+xiaomaolv1 - Soraka(7)  vs  Lulu  Matchup: 48.99  Score: 0.5
+Total Score: 4
+
+4.5 --- 0:1 --- 1
+4 --- 1:1 --- 2
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+SaltMasterSunman - Nasus(6)  vs  Fiora  Matchup: 51.3  Score: 2
+RoboCyber - Warwick(6)  vs  Sejuani  Matchup: 53.97  Score: 3
+pressR winGames - Annie(4)  vs  Katarina  Matchup: 50.96  Score: 0.5
+Pichow - Kai'Sa(7)  vs  Tristana  Matchup: 46.7  Score: 0
+Madanka Magica - Janna(7)  vs  Nami  Matchup: 49.88  Score: 0.5
+Total Score: 6
+
+6 --- 0:1 --- 1
+4.5 --- 0:1 --- 1
+4 --- 1:1 --- 2
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+CLM 2gunz2many - Zoe(5)  vs  Garen  Matchup: 0  Score: 0.5
+Deggastar - Quinn(7)  vs  Shyvana  Matchup: 0  Score: 1
+Calyte - Riven(7)  vs  Karthus  Matchup: 56.25  Score: 3
+Pichow - Ezreal(5)  vs  Vayne  Matchup: 47.77  Score: -0.5
+Deepz - Tahm Kench(7)  vs  Janna  Matchup: 41.55  Score: 0
+Total Score: 4
+
+6 --- 0:1 --- 1
+4.5 --- 0:1 --- 1
+4 --- 1:2 --- 3
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+ZyrusXPower - Irelia(6)  vs  Kled  Matchup: 38.62  Score: 0
+Dempiez - Sejuani(3)  vs  Trundle  Matchup: 45.96  Score: -2
+TrashUcalaly - Karthus(4)  vs  Ziggs  Matchup: 44  Score: -1.5
+Pichow - Kai'Sa(7)  vs  Xayah  Matchup: 45.76  Score: 0
+zombietaint - Blitzcrank(3)  vs  Rakan  Matchup: 48.29  Score: -1.5
+Total Score: -5
+
+6 --- 0:1 --- 1
+4.5 --- 0:1 --- 1
+4 --- 1:2 --- 3
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 2:3 --- 5
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Dinomun - Jax(6)  vs  Fiora  Matchup: 50.17  Score: 2
+FMABPokePirates - Warwick(7)  vs  Rammus  Matchup: 55.71  Score: 3
+anime is mistake - Heimerdinger(2)  vs  Malzahar  Matchup: 0  Score: -2
+Pichow - Kai'Sa(7)  vs  Vayne  Matchup: 46.5  Score: 0
+Tel10 - Leona(3)  vs  Lulu  Matchup: 47.79  Score: -2
+Total Score: 1
+
+6 --- 0:1 --- 1
+4.5 --- 0:1 --- 1
+4 --- 1:2 --- 3
+2.5 --- 1:0 --- 1
+2 --- 0:1 --- 1
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+MangoHitman - Irelia(7)  vs  Fiora  Matchup: 49.5  Score: 0.5
+fondlesRus - Tryndamere(4)  vs  Amumu  Matchup: 0  Score: -0.5
+MangoGodfather - Syndra(7)  vs  Zed  Matchup: 49.56  Score: 0.5
+Pichow - Ezreal(5)  vs  Varus  Matchup: 47.86  Score: -0.5
+AllTheOriginals - Zyra(7)  vs  Brand  Matchup: 50.32  Score: 2
+Total Score: 2
+
+6 --- 0:1 --- 1
+4.5 --- 0:1 --- 1
+4 --- 1:2 --- 3
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Pichow - Kayle(4)  vs  Sion  Matchup: 50.45  Score: 0.5
+Bputts - Xin Zhao(6)  vs  Warwick  Matchup: 45.73  Score: 0
+PrideKing04 - Katarina(5)  vs  Lux  Matchup: 47.54  Score: -0.5
+ChillDyl - Miss Fortune(5)  vs  Zilean  Matchup: 51.88  Score: 1.5
+SoccergoalE - Nami(7)  vs  Janna  Matchup: 50.12  Score: 2
+Total Score: 3.5
+
+6 --- 0:1 --- 1
+4.5 --- 0:1 --- 1
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+YORKE and FLEA - Rakan(4)  vs  Sion  Matchup: 52.52  Score: 1
+Pichow - Kayle(4)  vs  Jax  Matchup: 51.38  Score: 0.5
+rghoul - Vel'Koz(7)  vs  Veigar  Matchup: 50.22  Score: 2
+CrazyMoney - Xayah(4)  vs  Draven  Matchup: 50.48  Score: 0.5
+RebornHitman - Zac(6)  vs  Braum  Matchup: 0  Score: 1
+Total Score: 5
+
+6 --- 0:1 --- 1
+5 --- 1:0 --- 1
+4.5 --- 0:1 --- 1
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Bryden38 - Karma(4)  vs  Brand  Matchup: 49.61  Score: -0.5
+CaesarCho - Braum(5)  vs  Rakan  Matchup: 50.02  Score: 1.5
+Pichow - Vayne(7)  vs  Kai'Sa  Matchup: 54.13  Score: 3
+Juular - Olaf(4)  vs  Singed  Matchup: 0  Score: -0.5
+GaoYuliang - Irelia(7)  vs  Kha'Zix  Matchup: 0  Score: 1
+Total Score: 4.5
+
+6 --- 0:1 --- 1
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 1:0 --- 1
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+qrtldums - Sion(3)  vs  Trundle  Matchup: 51.62  Score: 0
+April The Fool - Warwick(3)  vs  Volibear  Matchup: 52.82  Score: 0.5
+Papa Nasti - Gragas(4)  vs  Veigar  Matchup: 0  Score: -0.5
+Pichow - Kai'Sa(7)  vs  Draven  Matchup: 46.91  Score: 0
+intellorb - Annie(1)  vs  Brand  Matchup: 46.34  Score: -3
+Total Score: -3
+
+6 --- 0:1 --- 1
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 2:0 --- 2
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+ShurimaFriedAzir - Camille(6)  vs  Garen  Matchup: 48.93  Score: 0.5
+Animal Dander - Udyr(7)  vs  Warwick  Matchup: 53.73  Score: 3
+xDiezx - Lux(2)  vs  Xerath  Matchup: 51.92  Score: -0.5
+Pichow - Jhin(5)  vs  Caitlyn  Matchup: 49.22  Score: 0
+Noobsveld - Braum(7)  vs  Shen  Matchup: 57.41  Score: 3
+Total Score: 6
+
+6 --- 0:2 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 2:0 --- 2
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Slsteve - Illaoi(7)  vs  Renekton  Matchup: 52.81  Score: 3
+PPWs - Camille(1)  vs  Shyvana  Matchup: 42.86  Score: -3
+5 5 K - Taliyah(2)  vs  Zoe  Matchup: 53.28  Score: 0
+Pichow - Kai'Sa(7)  vs  Jhin  Matchup: 47.3  Score: 0
+Thickolbolt - Alistar(5)  vs  Thresh  Matchup: 53.11  Score: 1.5
+Total Score: 1.5
+
+6 --- 0:2 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 0:1 --- 1
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 2:0 --- 2
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: Pichow   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Miss Lethal - Fiora(6)  vs  Jax  Matchup: 49.83  Score: 0.5
+C9 JJett - Shyvana(7)  vs  Sejuani  Matchup: 51.62  Score: 2
+Autolock Syndra - Aurelion Sol(7)  vs  Swain  Matchup: 42.11  Score: 0
+Pichow - Kai'Sa(7)  vs  Vayne  Matchup: 46.5  Score: 0
+Bañg - Blitzcrank(6)  vs  Thresh  Matchup: 52.05  Score: 3
+Total Score: 5.5
+
+6 --- 0:2 --- 2
+5.5 --- 1:0 --- 1
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 0:1 --- 1
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 2:0 --- 2
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: LeastGayMan   Rank: Gold 1   Result: Victory
+------------------------------------------------------------------------------
+FakeStar - Jarvan IV(2)  vs  Jax  Matchup: 47.19  Score: -3
+LeastGayMan - Riven(7)  vs  Volibear  Matchup: 43.42  Score: 0
+Yáng wá wá - Annie(7)  vs  Fizz  Matchup: 50.7  Score: 2
+Boofybois - Karma(3)  vs  Nami  Matchup: 43.84  Score: -2
+b0Omd34d - Vayne(5)  vs  Caitlyn  Matchup: 49.48  Score: 0
+Total Score: -3
+
+6 --- 0:2 --- 2
+5.5 --- 1:0 --- 1
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 0:1 --- 1
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: LeastGayMan   Rank: Gold 1   Result: Defeat
+------------------------------------------------------------------------------
+Fakdonaldtrump - Irelia(7)  vs  Poppy  Matchup: 51.13  Score: 2
+tomsorcer1 - Xin Zhao(4)  vs  Amumu  Matchup: 55.02  Score: 1.5
+LeastGayMan - Riven(7)  vs  Zed  Matchup: 0  Score: 1
+Queeń - Tristana(5)  vs  Ezreal  Matchup: 51.54  Score: 1.5
+Death By Glamour - Brand(4)  vs  Zyra  Matchup: 49.68  Score: -0.5
+Total Score: 5.5
+
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 0:1 --- 1
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: LeastGayMan   Rank: Gold 1   Result: Victory
+------------------------------------------------------------------------------
+AsianScript - Ekko(5)  vs  Rumble  Matchup: 0  Score: 0.5
+Pèrsephone - Nocturne(7)  vs  Udyr  Matchup: 47.63  Score: 0
+LeastGayMan - Riven(7)  vs  Gragas  Matchup: 0  Score: 1
+Danial - Xayah(5)  vs  Jinx  Matchup: 48.35  Score: 0
+Arrowkill - Rakan(5)  vs  Alistar  Matchup: 49.24  Score: 0
+Total Score: 1.5
+
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: SteveTheBearJew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+SteveTheBearJew - Garen(7)  vs  Nasus  Matchup: 50.58  Score: 2
+Shadow Marshall - Nocturne(3)  vs  Kayn  Matchup: 54.27  Score: 0.5
+MagicGlock - Morgana(2)  vs  Karma  Matchup: 0  Score: -2
+U Z - Tristana(6)  vs  Varus  Matchup: 49.47  Score: 0.5
+xorangexmonkeyx - Alistar(6)  vs  Leona  Matchup: 51.73  Score: 2
+Total Score: 3
+
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:3 --- 6
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: SteveTheBearJew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+SteveTheBearJew - Malphite(7)  vs  Riven  Matchup: 53.19  Score: 3
+Bbiggi - Jax(2)  vs  Master Yi  Matchup: 54.98  Score: 0
+Shadow Marshall - Malzahar(4)  vs  Ziggs  Matchup: 45.71  Score: -1
+Epsylon - Ezreal(4)  vs  Caitlyn  Matchup: 48.78  Score: -0.5
+karlolivier972 - Blitzcrank(2)  vs  Nami  Matchup: 50.32  Score: -0.5
+Total Score: 1
+
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:4 --- 7
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Dilrabazz - Fiora(7)  vs  Camille  Matchup: 53.18  Score: 3
+WZS HYXXXX - Jarvan IV(7)  vs  Zac  Matchup: 50.92  Score: 2
+monkeyboi218 - Ekko(7)  vs  Katarina  Matchup: 52.82  Score: 3
+CuroNeko - Jinx(6)  vs  Xayah  Matchup: 51.65  Score: 2
+Teraphorm - Alistar(4)  vs  Janna  Matchup: 46.01  Score: -1
+Total Score: 9
+
+9 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:4 --- 7
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+IgloosBeIceCold - Renekton(5)  vs  Teemo  Matchup: 46.85  Score: -0.5
+Johnny Palehorse - Skarner(5)  vs  Lee Sin  Matchup: 54.84  Score: 1.5
+TheQuietWarrior - Ziggs(6)  vs  Twisted Fate  Matchup: 53.36  Score: 3
+CuroNeko - Jinx(6)  vs  Vayne  Matchup: 50.87  Score: 2
+Xcruiser1 - Nami(7)  vs  Bard  Matchup: 52.16  Score: 3
+Total Score: 9
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 1:2 --- 3
+3.5 --- 0:1 --- 1
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:4 --- 7
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Flip n Go - Singed(7)  vs  Pantheon  Matchup: 53.85  Score: 3
+eddy311 - Warwick(7)  vs  Jax  Matchup: 49.37  Score: 0.5
+ULTRA D0NG - Brand(6)  vs  Ekko  Matchup: 52.89  Score: 3
+CuroNeko - Kai'Sa(2)  vs  Miss Fortune  Matchup: 46.44  Score: -3
+BEINGCHEESY - Lux(7)  vs  Braum  Matchup: 49.16  Score: 0.5
+Total Score: 4
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 0:1 --- 1
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:4 --- 7
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Remake
+------------------------------------------------------------------------------
+Nehcjk - Soraka(2)  vs  Kassadin  Matchup: 0  Score: -2
+SBXSB - Fizz(5)  vs  Gnar  Matchup: 0  Score: 0.5
+CuroNeko - Tristana(7)  vs  Twitch  Matchup: 46.87  Score: 0
+PhilipL - Kha'Zix(7)  vs  Udyr  Matchup: 47.25  Score: 0
+ƒirexfreak - Garen(7)  vs  Nautilus  Matchup: 52.87  Score: 3
+Total Score: 1.5
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 0:1 --- 1
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:4 --- 7
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Devillion - Garen(5)  vs  Nasus  Matchup: 50.58  Score: 1.5
+Pub Smash - Jarvan IV(2)  vs  Shyvana  Matchup: 44.64  Score: -3
+bbberry - Fizz(7)  vs  Veigar  Matchup: 45.8  Score: 0
+CuroNeko - Jinx(6)  vs  Lucian  Matchup: 52.77  Score: 3
+SweetyXO - Lulu(7)  vs  Braum  Matchup: 51.56  Score: 2
+Total Score: 3.5
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 3:4 --- 7
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+suye - Garen(4)  vs  Kled  Matchup: 49.39  Score: -0.5
+Support UxD - Riven(5)  vs  Kha'Zix  Matchup: 42.31  Score: -0.5
+Alexthegreat57 - Xerath(2)  vs  Swain  Matchup: 51.9  Score: -0.5
+CuroNeko - Jinx(6)  vs  Lucian  Matchup: 52.77  Score: 3
+SniperZLG - Thresh(5)  vs  Taric  Matchup: 43.55  Score: -0.5
+Total Score: 1
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 1:1 --- 2
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+OPtiC DumBz - Yorick(2)  vs  Wukong  Matchup: 0  Score: -2
+7Sloth - Jax(6)  vs  Jarvan IV  Matchup: 52.33  Score: 3
+RAID 0 - Zed(5)  vs  Orianna  Matchup: 50.82  Score: 1.5
+CuroNeko - Jinx(6)  vs  Lucian  Matchup: 52.77  Score: 3
+SONGMANUEL - Xerath(3)  vs  Alistar  Matchup: 51.45  Score: 0
+Total Score: 5.5
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 1:0 --- 1
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Locoporbeer - Yasuo(7)  vs  Sion  Matchup: 49.65  Score: 0.5
+yc05 - Master Yi(7)  vs  Shaco  Matchup: 48.96  Score: 0.5
+TheOneMica - Orianna(7)  vs  Syndra  Matchup: 49.82  Score: 0.5
+CuroNeko - Jinx(6)  vs  Ezreal  Matchup: 50.81  Score: 2
+TPieceOfCake - Alistar(2)  vs  Lux  Matchup: 50.73  Score: -0.5
+Total Score: 3
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 1:1 --- 2
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Victory
+------------------------------------------------------------------------------
+Sh0de - Kayn(3)  vs  Xayah  Matchup: 0  Score: -1
+lightinmind - Lux(7)  vs  Cassiopeia  Matchup: 49.74  Score: 0.5
+CuroNeko - Renekton(2)  vs  Nasus  Matchup: 50.47  Score: -0.5
+imthebest9125 - Azir(4)  vs  Twitch  Matchup: 0  Score: -0.5
+LliwTelracs - Caitlyn(6)  vs  Nami  Matchup: 53.1  Score: 3
+Total Score: 1.5
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:1 --- 1
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+YRN Kevin - Ezreal(5)  vs  Ziggs  Matchup: 0  Score: 0.5
+jake523gg - Swain(2)  vs  Varus  Matchup: 0  Score: -2
+CuroNeko - Sejuani(2)  vs  Nocturne  Matchup: 48.56  Score: -1.5
+BerfBat - Sona(3)  vs  Braum  Matchup: 50.23  Score: 0
+Pianoman7117 - Urgot(3)  vs  Garen  Matchup: 53.94  Score: 0.5
+Total Score: -2.5
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:0 --- 1
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Jackalobe - Akali(5)  vs  Renekton  Matchup: 48.91  Score: 0
+SuperBouncyNinja - Olaf(3)  vs  Jax  Matchup: 45.96  Score: -2
+tteokguk - Ahri(7)  vs  Veigar  Matchup: 48.16  Score: 0.5
+CuroNeko - Miss Fortune(7)  vs  Xayah  Matchup: 50.55  Score: 2
+lostemple - Galio(4)  vs  Rakan  Matchup: 42.5  Score: -1.5
+Total Score: -1
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:1 --- 2
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Tangrowth Hat - Fiora(7)  vs  Swain  Matchup: 48.78  Score: 0.5
+bballkim - Rengar(3)  vs  Wukong  Matchup: 49.86  Score: -1.5
+CuroNeko - Ahri(4)  vs  Fizz  Matchup: 53.31  Score: 1
+RoYaLrKW6zzzzz 9 - Ashe(7)  vs  Vayne  Matchup: 49.03  Score: 0.5
+Master2290 - Blitzcrank(2)  vs  Lulu  Matchup: 49.26  Score: -1.5
+Total Score: -1
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:0 --- 2
+-1 --- 1:2 --- 3
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+xxjakblak55xx - Kayle(2)  vs  Teemo  Matchup: 49.73  Score: -1.5
+IIAZULII - Master Yi(6)  vs  Warwick  Matchup: 48.06  Score: 0.5
+CuroNeko - Lux(4)  vs  Yasuo  Matchup: 50.23  Score: 0.5
+SKT T1 Wyrine - Tristana(3)  vs  Lucian  Matchup: 52.5  Score: 0.5
+SteelShoes - Brand(2)  vs  Leona  Matchup: 54.03  Score: 0
+Total Score: 0
+
+9 --- 1:1 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:1 --- 3
+-1 --- 1:2 --- 3
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: CuroNeko   Rank: Gold 4   Result: Defeat
+------------------------------------------------------------------------------
+Mage of Justice - Darius(7)  vs  Renekton  Matchup: 49.27  Score: 0.5
+Violet Gravity - Warwick(7)  vs  Xin Zhao  Matchup: 54.27  Score: 3
+CuroNeko - Lux(4)  vs  Brand  Matchup: 49.33  Score: -0.5
+Moonlit Sonata - Varus(7)  vs  Tristana  Matchup: 50.53  Score: 2
+TheBurr17 - Sona(5)  vs  Braum  Matchup: 51.48  Score: 1.5
+Total Score: 6.5
+
+9 --- 1:1 --- 2
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 0:2 --- 2
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:1 --- 3
+-1 --- 1:2 --- 3
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Nasus(5)  vs  Poppy  Matchup: 52.96  Score: 1.5
+Chamisul Thresh - Vi(4)  vs  Nidalee  Matchup: 56.5  Score: 1.5
+theycallmemvp - Ahri(5)  vs  Diana  Matchup: 50.98  Score: 1.5
+xKeiStar - Jinx(5)  vs  Jhin  Matchup: 52.31  Score: 1.5
+thénamelessking - Brand(3)  vs  Zyra  Matchup: 49.68  Score: -1.5
+Total Score: 4.5
+
+9 --- 1:1 --- 2
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:1 --- 3
+-1 --- 1:2 --- 3
+-1.5 --- 2:0 --- 2
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Nasus(5)  vs  Pantheon  Matchup: 55.61  Score: 1.5
+Cheeser - Malphite(5)  vs  Shyvana  Matchup: 0  Score: 0.5
+Extørtion - Zed(7)  vs  Diana  Matchup: 46.89  Score: 0
+zz917 - Vayne(2)  vs  Twitch  Matchup: 47.66  Score: -3
+KKv587 - Lulu(5)  vs  Nami  Matchup: 46.36  Score: -0.5
+Total Score: -1.5
+
+9 --- 1:1 --- 2
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 4:4 --- 8
+0.5 --- 1:0 --- 1
+0 --- 2:1 --- 3
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+Peeing In Butts - Garen(6)  vs  Yorick  Matchup: 50.28  Score: 2
+Xenomancers - Fiddlesticks(5)  vs  Shyvana  Matchup: 46.91  Score: -0.5
+peppy la pew pew - Lux(2)  vs  Zed  Matchup: 54.3  Score: 0
+ClassicFumbles - Ezreal(3)  vs  Varus  Matchup: 47.86  Score: -2
+sgtjetson - Blitzcrank(5)  vs  Zyra  Matchup: 51.96  Score: 1.5
+Total Score: 1
+
+9 --- 1:1 --- 2
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:1 --- 3
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:0 --- 3
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+peppy la pew pew - Singed(4)  vs  Garen  Matchup: 50  Score: 0.5
+Jennifer Aniston - Wukong(3)  vs  Warwick  Matchup: 44.36  Score: -2
+Jessrabbit - Fizz(3)  vs  Annie  Matchup: 49.3  Score: -1.5
+Aubrey Plaza - Ezreal(5)  vs  Tristana  Matchup: 48.46  Score: 0
+KristineIsTHICC - Alistar(7)  vs  Zilean  Matchup: 45.99  Score: 0
+Total Score: -3
+
+9 --- 1:1 --- 2
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:0 --- 1
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:1 --- 3
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+peppy la pew pew - Singed(4)  vs  Mordekaiser  Matchup: 53.16  Score: 1
+Dôwns Bear - Warwick(7)  vs  Wukong  Matchup: 55.64  Score: 3
+Zbinu - Ezreal(3)  vs  Vel'Koz  Matchup: 47.06  Score: -2
+Aurtistic Bear - Jinx(6)  vs  Twitch  Matchup: 46.76  Score: 0
+titty bender - Bard(7)  vs  Shen  Matchup: 52.7  Score: 3
+Total Score: 5
+
+9 --- 1:1 --- 2
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:1 --- 3
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+peppy la pew pew - Kayle(7)  vs  Teemo  Matchup: 49.73  Score: 0.5
+Bestari - Nunu(2)  vs  Rengar  Matchup: 57.29  Score: 0
+O4 O5 1996 - Twisted Fate(7)  vs  Fizz  Matchup: 46.47  Score: 0
+AdamentOrb - Vayne(5)  vs  Xayah  Matchup: 49.63  Score: 0
+UESTC OSU NICK - Thresh(5)  vs  Alistar  Matchup: 46.89  Score: -0.5
+Total Score: 0
+
+9 --- 1:1 --- 2
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Singed(4)  vs  Vladimir  Matchup: 53  Score: 1
+xXD4rPZXx - Jax(4)  vs  Zac  Matchup: 56.49  Score: 1.5
+PoroPopRocks - Ziggs(7)  vs  Zed  Matchup: 50.34  Score: 2
+Vastaya Feather - Jhin(7)  vs  Ezreal  Matchup: 52.13  Score: 3
+I yam - Braum(5)  vs  Janna  Matchup: 46.07  Score: -0.5
+Total Score: 7
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 1:1 --- 2
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Singed(4)  vs  Trundle  Matchup: 52.32  Score: 1
+Wavy Gravy - Udyr(7)  vs  Jax  Matchup: 49.76  Score: 0.5
+PuniBear - Yasuo(7)  vs  Cassiopeia  Matchup: 48.9  Score: 0.5
+WhosThere - Miss Fortune(6)  vs  Ezreal  Matchup: 50.97  Score: 2
+Sylvestri - Morgana(5)  vs  Janna  Matchup: 44.93  Score: -0.5
+Total Score: 3.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 2:1 --- 3
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Singed(4)  vs  Urgot  Matchup: 48.15  Score: -0.5
+Looking For Page - Rengar(6)  vs  Kayn  Matchup: 48.54  Score: 0.5
+SuisseHero - Zed(5)  vs  Diana  Matchup: 46.89  Score: -0.5
+Vancoover - Caitlyn(7)  vs  Varus  Matchup: 50.77  Score: 2
+Kharmah11 - Brand(5)  vs  Zyra  Matchup: 49.68  Score: 0
+Total Score: 1.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:0 --- 1
+2 --- 1:1 --- 2
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+peppy la pew pew - Kayle(7)  vs  Jax  Matchup: 48.48  Score: 0.5
+MilkT3a - Graves(3)  vs  Skarner  Matchup: 55.83  Score: 0.5
+mfb Mina - Xerath(4)  vs  Heimerdinger  Matchup: 52.17  Score: 1
+bridrizzle - Ezreal(6)  vs  Caitlyn  Matchup: 48.78  Score: 0.5
+Trogdude - Karma(7)  vs  Lulu  Matchup: 46.95  Score: 0
+Total Score: 2.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 1:1 --- 2
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Kayle(7)  vs  Rengar  Matchup: 0  Score: 1
+Uncool - Nunu(1)  vs  Rammus  Matchup: 50  Score: -0.5
+xXxtotixXx - Yasuo(6)  vs  Vladimir  Matchup: 45.38  Score: 0
+N1ghtmareTear3 - Tristana(1)  vs  Xayah  Matchup: 47.98  Score: -3
+Trogdude - Karma(7)  vs  Thresh  Matchup: 51.4  Score: 2
+Total Score: -0.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 1:1 --- 2
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-0.5 --- 1:0 --- 1
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+peppy la pew pew - Trundle(1)  vs  Darius  Matchup: 45.02  Score: -3
+Plnk Floyd - Rengar(2)  vs  Volibear  Matchup: 43.76  Score: -3
+MastaHooHaa - Akali(1)  vs  Kassadin  Matchup: 51.11  Score: -0.5
+Nicesuuu - Varus(5)  vs  Jinx  Matchup: 48.08  Score: 0
+FACTSFACTSFACTS - Rakan(5)  vs  Sona  Matchup: 48.11  Score: 0
+Total Score: -6.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 1:1 --- 2
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-0.5 --- 1:0 --- 1
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+-6.5 --- 0:1 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+EatpastaRunfasta - Poppy(7)  vs  Yasuo  Matchup: 50.96  Score: 2
+Defaced81 - Nidalee(5)  vs  Rek'Sai  Matchup: 45.98  Score: -0.5
+Fujiiwara Takumi - Zed(5)  vs  Malzahar  Matchup: 45.63  Score: -0.5
+peppy la pew pew - Tristana(1)  vs  Varus  Matchup: 49.47  Score: -1.5
+Lil Dazeez - Sona(5)  vs  Nami  Matchup: 49.43  Score: 0
+Total Score: -0.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 2:2 --- 4
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 1:1 --- 2
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-0.5 --- 1:1 --- 2
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+-6.5 --- 0:1 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Tryndamere(3)  vs  Sion  Matchup: 46.12  Score: -2
+oHaiSimon - Nidalee(5)  vs  Twitch  Matchup: 53.85  Score: 1.5
+MrNoobsock - Fizz(7)  vs  Orianna  Matchup: 54.03  Score: 3
+Herò - Vayne(5)  vs  Ezreal  Matchup: 52.23  Score: 1.5
+Google Spy - Alistar(6)  vs  Brand  Matchup: 47.21  Score: 0
+Total Score: 4
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:1 --- 3
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 3:2 --- 5
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 1:1 --- 2
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-0.5 --- 1:1 --- 2
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+-6.5 --- 0:1 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+peppy la pew pew - Singed(4)  vs  Sion  Matchup: 54.84  Score: 1
+Escø - Sejuani(6)  vs  Riven  Matchup: 49.38  Score: 0.5
+songoku19 - Brand(7)  vs  Kennen  Matchup: 0  Score: 1
+KatVy - Lucian(7)  vs  Ezreal  Matchup: 47.4  Score: 0
+Vuvuzealous - Nami(6)  vs  Alistar  Matchup: 54.28  Score: 3
+Total Score: 5.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:2 --- 4
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 3:2 --- 5
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 1:1 --- 2
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-0.5 --- 1:1 --- 2
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+-6.5 --- 0:1 --- 1
+
+Testing Summoner: peppy la pew pew   Rank: Gold 5   Result: Victory
+------------------------------------------------------------------------------
+peppy la pew pew - Kayle(7)  vs  Graves  Matchup: 0  Score: 1
+ShazOblivioN - Udyr(4)  vs  Kayn  Matchup: 55.07  Score: 1.5
+CaptainBabyTeemo - Ahri(1)  vs  Zoe  Matchup: 56.26  Score: 0
+Heckin Loose - Vayne(5)  vs  Caitlyn  Matchup: 49  Score: 0
+King Prium - Thresh(5)  vs  Janna  Matchup: 45.12  Score: -0.5
+Total Score: 2
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:1 --- 1
+6 --- 0:2 --- 2
+5.5 --- 2:2 --- 4
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 3:2 --- 5
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 2:1 --- 3
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
+0.5 --- 1:0 --- 1
+0 --- 2:2 --- 4
+-0.5 --- 1:1 --- 2
+-1 --- 1:2 --- 3
+-1.5 --- 3:0 --- 3
+-2 --- 1:0 --- 1
+-2.5 --- 0:2 --- 2
+-3 --- 3:1 --- 4
+-4 --- 0:2 --- 2
+-5 --- 1:0 --- 1
+-6.5 --- 0:1 --- 1
+
+Testing Summoner: StaeBLESSED   Rank: Gold 5   Result: Defeat
+------------------------------------------------------------------------------
+xXPHprideXx - Yasuo(7)  vs  Illaoi  Matchup: 50.65  Score: 2
+The Brugada Kid - Lee Sin(6)  vs  Ekko  Matchup: 0  Score: 1
+Bags of Geld - Brand(7)  vs  Lux  Matchup: 50.67  Score: 2
+StaeBLESSED - Draven(7)  vs  Tristana  Matchup: 51.25  Score: 2
+Emperor Lelouch - Soraka(5)  vs  Janna  Matchup: 46.6  Score: -0.5
+Total Score: 6.5
+
+9 --- 1:1 --- 2
+7 --- 1:0 --- 1
+6.5 --- 0:2 --- 2
+6 --- 0:2 --- 2
+5.5 --- 2:2 --- 4
+5 --- 1:1 --- 2
+4.5 --- 1:2 --- 3
+4 --- 3:2 --- 5
+3.5 --- 2:1 --- 3
+3 --- 2:0 --- 2
+2.5 --- 1:1 --- 2
+2 --- 2:1 --- 3
+1.5 --- 3:1 --- 4
+1 --- 5:4 --- 9
