@@ -2,12 +2,11 @@
 <head>
     <script src="resources/javascript/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/resources/javascript/home.js"></script>
-    <link rel="stylesheet" href="layout.css">
+    <script type="text/javascript" src="/resources/javascript/scripts.js"></script>
+    <link rel="stylesheet" href="/resources/css/layout.css">
 </head>
 
-<body>
-<p>Hello World!</p>
-<p>test variable</p>
+<body><p>League Of Analytics</p>
 
 
 <div class="gridLayout">
@@ -23,11 +22,11 @@
     <div class="bot">Bot</div>
     <div class="support">Support</div>
 
-    <div class="summonerTop"><input type="text" id="summoner1" placeholder="summoner1" onclick="markForSwap('summoner1')"></div>
-    <div class="summonerJungle"><input type="text" id="summoner2" placeholder="summoner2" onclick="markForSwap('summoner2')"></div>
-    <div class="summonerMid"><input type="text" id="summoner3" placeholder="summoner3" onclick="markForSwap('summoner3')"></div>
-    <div class="summonerBot"><input type="text" id="summoner4" placeholder="summoner4" onclick="markForSwap('summoner4')"></div>
-    <div class="summonerSupport"><input type="text" id="summoner5" placeholder="summoner5" onclick="markForSwap('summoner5')"></div>
+    <div class="summonerTop"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="markForSwap('summoner1')"></div>
+    <div class="summonerJungle"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="markForSwap('summoner2')"></div>
+    <div class="summonerMid"><input type="text" name="summoners" id="summoner3" placeholder="summoner3" onclick="markForSwap('summoner3')"></div>
+    <div class="summonerBot"><input type="text" name="summoners" id="summoner4" placeholder="summoner4" onclick="markForSwap('summoner4')"></div>
+    <div class="summonerSupport"><input type="text" name="summoners" id="summoner5" placeholder="summoner5" onclick="markForSwap('summoner5')"></div>
 
     <div class="teamChamp teamChampTop"><input type="text" id="champion1" placeholder="Top Champion"></div>
     <div class="teamChamp teamChampJungle"><input type="text" id="champion2" placeholder="Jungle Champion"></div>
@@ -60,8 +59,7 @@ summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby"></textarea><br>
 <button type="button" id="populate" name="populateButton" onclick="populateSummonerNames()">Populate</button>
-<button type="button" name="swapButton" onclick="">Swap Position</button>
-<button type="button" id="test">Test</button>
+<button type="button" name="swapButton" onclick="swapRoles()">Swap Position</button>
 
 
 
@@ -69,24 +67,6 @@ summoner5 joined the lobby"></textarea><br>
 
 <script>
     home.init();
-
-    function populateSummonerNames() {
-        var lines = document.getElementById("textBox").value.split('\n');
-        for(var i = 0;i < lines.length;i++){
-            lines[i] = lines[i].replace(" joined the lobby", "");
-        }
-        document.getElementById("summoner1").value = lines[0];
-        document.getElementById("summoner2").value = lines[1];
-        document.getElementById("summoner3").value = lines[2];
-        document.getElementById("summoner4").value = lines[3];
-        document.getElementById("summoner5").value = lines[4];
-    }
-
-    function markForSwap(id)
-    {
-        var box  = document.getElementById(id);
-        box.style.backgroundColor = "yellow";
-    }
 </script>
 
 
