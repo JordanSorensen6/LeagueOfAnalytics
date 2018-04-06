@@ -11,7 +11,7 @@ public class LoadConfig {
     }
 
     private void setupVars() {
-        String resourceName = "config.properties"; // could also be a constant
+        String resourceName = "config.properties";
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         Properties configProps = new Properties();
         try(InputStream resourceStream = loader.getResourceAsStream(resourceName)) {

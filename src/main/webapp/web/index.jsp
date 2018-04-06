@@ -1,9 +1,12 @@
-<html><head>
-    <script type="text/javascript" src="./resources/javascript/test.js"></script>
+<html>
+<head>
+    <script src="resources/javascript/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/resources/javascript/home.js"></script>
     <link rel="stylesheet" href="layout.css">
 </head>
 
-<body><p>Hello World!</p>
+<body>
+<p>Hello World!</p>
 <p>test variable</p>
 
 
@@ -26,11 +29,11 @@
     <div class="summonerBot"><input type="text" id="summoner4" placeholder="summoner4" onclick="markForSwap('summoner4')"></div>
     <div class="summonerSupport"><input type="text" id="summoner5" placeholder="summoner5" onclick="markForSwap('summoner5')"></div>
 
-    <div class="teamChampTop"><input type="text" id="champion1" placeholder="Top Champion"></div>
-    <div class="teamChampJungle"><input type="text" id="champion2" placeholder="Jungle Champion"></div>
-    <div class="teamChampMid"><input type="text" id="champion3" placeholder="Mid Champion"></div>
-    <div class="teamChampBot"><input type="text" id="champion4" placeholder="Bot Champion"></div>
-    <div class="teamChampSupport"><input type="text" id="champion5" placeholder="Support Champion"></div>
+    <div class="teamChamp teamChampTop"><input type="text" id="champion1" placeholder="Top Champion"></div>
+    <div class="teamChamp teamChampJungle"><input type="text" id="champion2" placeholder="Jungle Champion"></div>
+    <div class="teamChamp teamChampMid"><input type="text" id="champion3" placeholder="Mid Champion"></div>
+    <div class="teamChamp teamChampBot"><input type="text" id="champion4" placeholder="Bot Champion"></div>
+    <div class="teamChamp teamChampSupport"><input type="text" id="champion5" placeholder="Support Champion"></div>
 
     <div class="masteryTop"><input type="number" id="mastery1" placeholder="0" readonly=""></div>
     <div class="masteryJungle"><input type="number" id="mastery2" placeholder="0" readonly=""></div>
@@ -56,14 +59,17 @@ summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby"></textarea><br>
-<button type="button" name="populateButton" onclick="populateSummonerNames()">Populate</button>
+<button type="button" id="populate" name="populateButton" onclick="populateSummonerNames()">Populate</button>
 <button type="button" name="swapButton" onclick="">Swap Position</button>
+<button type="button" id="test">Test</button>
 
 
 
 
 
 <script>
+    home.init();
+
     function populateSummonerNames() {
         var lines = document.getElementById("textBox").value.split('\n');
         for(var i = 0;i < lines.length;i++){
@@ -87,4 +93,5 @@ summoner5 joined the lobby"></textarea><br>
 
 
 
-</body></html>
+</body>
+</html>
