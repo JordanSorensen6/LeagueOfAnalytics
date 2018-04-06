@@ -1,9 +1,12 @@
 <html>
 <head>
+    <script src="https://d3js.org/d3.v4.js"></script>
     <script src="resources/javascript/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/resources/javascript/home.js"></script>
     <script type="text/javascript" src="/resources/javascript/scripts.js"></script>
     <link rel="stylesheet" href="/resources/css/layout.css">
+    <link rel="stylesheet" href="/resources/css/styles.css"/>
+    <script src="/resources/javascript/Chart.js"></script>
 </head>
 
 <body><p>League Of Analytics</p>
@@ -62,11 +65,29 @@ summoner5 joined the lobby"></textarea><br>
 <button type="button" name="swapButton" onclick="swapRoles()">Swap Position</button>
 
 
+<div>
+    <svg width="500" height="400" id="plotChart">
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
+        <g id="plot"></g>
+    </svg>
+</div>
+
+
 
 
 
 <script>
     home.init();
+
+    d3.json("resources/data/fake_data.json", function (error, data) {
+        data.forEach(function (d) {
+            d.g = +d.game;
+            d.s = +d.score;
+        });
+        let chart = new Chart(data);
+        chart.updateChart();
+    });
 </script>
 
 
