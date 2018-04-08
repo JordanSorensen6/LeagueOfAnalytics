@@ -1,3 +1,6 @@
+package servlets;
+
+import classes.LoadConfig;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.http.HttpResponse;
@@ -17,8 +20,9 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class RiotAPI extends HttpServlet {
+    private static LoadConfig config = LoadConfig.getInstance();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LoadConfig config = new LoadConfig();
         String apiKey = config.getRiotApiKey();
 
         String uri = request.getRequestURI();

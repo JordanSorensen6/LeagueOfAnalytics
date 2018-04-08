@@ -3,6 +3,7 @@ var home = (function($) {
     var summonerIds = {};
 
     function init() {
+        $('#nav-home').addClass('active');
         summonerIdsLookup();
         championsLookup();
         championSelected();

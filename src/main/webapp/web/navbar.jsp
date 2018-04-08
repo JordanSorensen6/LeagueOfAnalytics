@@ -4,15 +4,15 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <li id="nav-home" class="nav-item">
+                <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/search">Player Stats</a>
+            <li id="nav-search" class="nav-item">
+                <a class="nav-link" href="/search/">Player Stats</a>
             </li>
-            <li class="nav-item">
+            <li id="nav-app" class="nav-item">
                 <a class="nav-link" href="/app_stats">Application Stats</a>
             </li>
         </ul>
