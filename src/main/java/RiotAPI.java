@@ -65,7 +65,7 @@ public class RiotAPI extends HttpServlet {
             JsonObject allSummonersIds = new JsonObject();
             for(String summoner : summoners) {
                 String id = getSummonerId(apiKey, summoner.replaceAll("\\s+",""));
-                allSummonersIds.addProperty("s" + (summoners.indexOf(summoner)+1), id);
+                allSummonersIds.addProperty(summoner, id);
             }
 
             response.setCharacterEncoding("UTF-8");
