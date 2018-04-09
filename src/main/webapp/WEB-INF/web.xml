@@ -7,8 +7,24 @@
         <servlet-name>TestServlet</servlet-name>
         <servlet-class>TestServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RiotAPI</servlet-name>
+        <servlet-class>RiotAPI</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern></url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RiotAPI</servlet-name>
+        <url-pattern>/riot/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>extractMatchup</servlet-name>
+        <servlet-class>ExtractMatchup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>extractMatchup</servlet-name>
+        <url-pattern>/matchup/*</url-pattern>
     </servlet-mapping>
 </web-app>
