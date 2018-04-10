@@ -1,0 +1,26 @@
+.scoreChart{
+    stroke: #FFF;
+}
+
+.loss{
+    fill: #de2d26;
+    color: #de2d26;
+    text-anchor:end;
+}
+
+.win{
+    fill: #3182bd;
+    text-anchor:start;
+    color: #3182bd;
+}
+
+.dodge{
+    fill: #D3D3D3;
+    color: #D3D3D3;
+    text-anchor:start;
+}
+
+.highlighted{
+    stroke: #404040;;
+    stroke-width:4;
+}
