@@ -1,15 +1,21 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="resources/javascript/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/resources/javascript/home.js"></script>
-    <script type="text/javascript" src="/resources/javascript/scripts.js"></script>
-    <link rel="stylesheet" href="/resources/css/layout.css">
+    <title>League Of Analytics</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
+    <link rel="stylesheet" href="/resources/css/layout.css"/>
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
+    <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="resources/javascript/home.js"></script>
     <script src="/resources/javascript/Chart.js"></script>
 </head>
+<body>
 
-<body><p>League Of Analytics</p>
+<jsp:include page="navbar.jsp"/>
 
 
 <div class="gridLayout">
@@ -25,11 +31,11 @@
     <div class="bot">Bot</div>
     <div class="support">Support</div>
 
-    <div class="summonerTop"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="markForSwap('summoner1')"></div>
-    <div class="summonerJungle"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="markForSwap('summoner2')"></div>
-    <div class="summonerMid"><input type="text" name="summoners" id="summoner3" placeholder="summoner3" onclick="markForSwap('summoner3')"></div>
-    <div class="summonerBot"><input type="text" name="summoners" id="summoner4" placeholder="summoner4" onclick="markForSwap('summoner4')"></div>
-    <div class="summonerSupport"><input type="text" name="summoners" id="summoner5" placeholder="summoner5" onclick="markForSwap('summoner5')"></div>
+    <div class="summonerTop"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div>
+    <div class="summonerJungle"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div>
+    <div class="summonerMid"><input type="text" name="summoners" id="summoner3" placeholder="summoner3" onclick="home.markForSwap('summoner3')"></div>
+    <div class="summonerBot"><input type="text" name="summoners" id="summoner4" placeholder="summoner4" onclick="home.markForSwap('summoner4')"></div>
+    <div class="summonerSupport"><input type="text" name="summoners" id="summoner5" placeholder="summoner5" onclick="home.markForSwap('summoner5')"></div>
 
     <div class="teamChamp teamChampTop"><input type="text" id="champion1" placeholder="Top Champion"></div>
     <div class="teamChamp teamChampJungle"><input type="text" id="champion2" placeholder="Jungle Champion"></div>
@@ -61,8 +67,8 @@ summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby"></textarea><br>
-<button type="button" id="populate" name="populateButton" onclick="populateSummonerNames()">Populate</button>
-<button type="button" name="swapButton" onclick="swapRoles()">Swap Position</button>
+<button type="button" id="populate" name="populateButton" onclick="home.populateSummonerNames()">Populate</button>
+<button type="button" name="swapButton" onclick="home.swapRoles()">Swap Position</button>
 
 
 <div>
