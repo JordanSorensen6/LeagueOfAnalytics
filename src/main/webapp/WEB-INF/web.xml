@@ -13,7 +13,7 @@
     </servlet>
     <servlet>
         <servlet-name>extractMatchup</servlet-name>
-        <servlet-class>ExtractMatchup</servlet-class>
+        <servlet-class>servlets.ExtractMatchup</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RiotAPI</servlet-name>
