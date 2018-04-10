@@ -49,11 +49,11 @@
     <div class="masteryBot"><input type="number" id="mastery4" placeholder="0" readonly=""></div>
     <div class="masterySupport"><input type="number" id="mastery5" placeholder="0" readonly=""></div>
 
-    <div class="oppChampTop"><input type="text" id="opponent1" placeholder="Opponent Top"></div>
-    <div class="oppChampJungle"><input type="text" id="opponent2" placeholder="Opponent Jungle"></div>
-    <div class="oppChampMid"><input type="text" id="opponent3" placeholder="Opponent Mid"></div>
-    <div class="oppChampBot"><input type="text" id="opponent4" placeholder="Opponent Bot"></div>
-    <div class="oppChampSupport"><input type="text" id="opponent5" placeholder="Opponent Support"></div>
+    <div class="oppChamp oppChampTop"><input type="text" id="opponent1" placeholder="Opponent Top"></div>
+    <div class="oppChamp oppChampJungle"><input type="text" id="opponent2" placeholder="Opponent Jungle"></div>
+    <div class="oppChamp oppChampMid"><input type="text" id="opponent3" placeholder="Opponent Mid"></div>
+    <div class="oppChamp oppChampBot"><input type="text" id="opponent4" placeholder="Opponent Bot"></div>
+    <div class="oppChamp oppChampSupport"><input type="text" id="opponent5" placeholder="Opponent Support"></div>
 
     <div class="winPerTop"><input type="text" id="percentage1" placeholder="00.00%" readonly=""></div>
     <div class="winPerJungle"><input type="text" id="percentage2" placeholder="00.00%" readonly=""></div>

@@ -1,3 +1,4 @@
+
 class Chart{
 
     constructor(data){

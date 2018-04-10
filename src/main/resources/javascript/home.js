@@ -7,6 +7,7 @@ var home = (function($) {
         summonerIdsLookup();
         championsLookup();
         championSelected();
+	anyChampSelection();
     }
 
     function swapMap(json) {
@@ -80,6 +81,93 @@ var home = (function($) {
                 });
             }
         })
+    }
+
+    function anyChampSelection(){
+        $('.teamChamp').on('keyup', function(){
+            var id = $(this).find('>:first-child').attr('id');
+            checkForMatchup('team', id);
+        });
+        $('.oppChamp').on('keyup', function(){
+            var id = $(this).find('>:first-child').attr('id');
+            checkForMatchup('opponent', id);
+        });
+    }
+
+    function checkForMatchup(team, id){
+        var opponent = getOpponent(id);
+        var role = getRole(id);
+
+        if(document.getElementById(opponent).value != '')//Nonempty opponent. We can look for matchup.
+        {
+            var c1;
+            var c2;
+            if(id.includes('champion'))
+            {
+                c1 = document.getElementById(id).value;
+                c2 = document.getElementById(opponent).value;
+            }
+            else
+            {
+                c1 = document.getElementById(opponent).value;
+                c2 = document.getElementById(id).value;
+            }
+
+            c1 = c1.replace(/ /g,'');
+            c2 = c2.replace(/ /g,'');
+
+            if(champions.hasOwnProperty(c1.toLowerCase())){
+                if(champions.hasOwnProperty(c2.toLowerCase())){
+                    console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
+                    $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role, function(data) {
+                        //console.log("data returned: " + data);
+                        if(role == 'Top')
+                            document.getElementById("percentage1").value = data;
+                        else if(role == 'Jungle')
+                            document.getElementById("percentage2").value = data;
+                        else if(role == 'Middle')
+                            document.getElementById("percentage3").value = data;
+                        else if(role == 'ADC')
+                            document.getElementById("percentage4").value = data;
+                        else if(role == 'Support')
+                            document.getElementById("percentage5").value = data;
+                    });
+                }
+            }
+
+        }
+        else {//Don't check for matchup info. The opponent is empty.
+            console.log('No opponent.');
+        }
+    }
+
+    function getRole(teamAndRole)
+    {
+        var role;
+        if(teamAndRole.includes('1'))
+            role = 'Top';
+        else if(teamAndRole.includes('2'))
+            role = 'Jungle';
+        else if(teamAndRole.includes('3'))
+            role = 'Middle';
+        else if(teamAndRole.includes('4'))
+            role = 'ADC';
+        else if(teamAndRole.includes('5'))
+            role = 'Support';
+
+        return role;
+    }
+
+    function getOpponent(teamAndRole)
+    {
+        if(teamAndRole.toString().includes('champion')) {
+            teamAndRole = teamAndRole.replace('champion', 'opponent');
+            return teamAndRole;
+        }
+        else{
+            teamAndRole = teamAndRole.replace('opponent', 'champion');
+            return teamAndRole;
+        }
     }
 
     var prevSelected;
