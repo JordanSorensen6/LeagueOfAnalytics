@@ -24,6 +24,7 @@
     <div class="championMastery">Mastery Level</div>
     <div class="opponentChampions">Opponent Champions</div>
     <div class="matchRating">Win Percentage</div>
+    <%--<div class="score">Score</div>--%>
 
     <div class="top">Top</div>
     <div class="jungle">Jungle</div>
@@ -60,7 +61,16 @@
     <div class="winPerMid"><input type="text" id="percentage3" placeholder="00.00%" readonly=""></div>
     <div class="winPerBot"><input type="text" id="percentage4" placeholder="00.00%" readonly=""></div>
     <div class="winPerSupport"><input type="text" id="percentage5" placeholder="00.00%" readonly=""></div>
+
+    <div class="scoreTop" id="score1">0</div>
+    <div class="scoreJungle" id="score2">0</div>
+    <div class="scoreMid" id="score3">0</div>
+    <div class="scoreBot" id="score4">0</div>
+    <div class="scoreSupport" id="score5">0</div>
 </div><br><br>
+
+    <h1 class="totalScore" id="totalScore">Your Score: 0</h1><hr>
+    <p class="userMessage" id="userMessage">Based on (number) games, players with this score win (some percentage) of their games.</p>
 
 <textarea id="textBox" cols="50" rows="5" placeholder="summoner1 joined the lobby
 summoner2 joined the lobby

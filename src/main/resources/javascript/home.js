@@ -131,6 +131,8 @@ var home = (function($) {
                             document.getElementById("percentage4").value = data;
                         else if(role == 'Support')
                             document.getElementById("percentage5").value = data;
+
+                        getScore(role);
                     });
                 }
             }
@@ -139,6 +141,62 @@ var home = (function($) {
         else {//Don't check for matchup info. The opponent is empty.
             console.log('No opponent.');
         }
+    }
+
+    function getScore(role)
+    {
+        if(role == 'Top')
+            role = '1';
+        else if(role == 'Jungle')
+            role = '2';
+        else if(role == 'Middle')
+            role = '3';
+        else if(role == 'ADC')
+            role = '4';
+        else if(role == 'Support')
+            role = '5';
+
+        var mastery = document.getElementById('mastery'+role).value;
+        var matchup = document.getElementById('percentage'+role).value;
+        matchup = matchup.replace("%", "");
+        //console.log('mastery: ' + mastery + ' matchup: ' + matchup);
+        var score = document.getElementById('score'+role);
+        $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup, function(data) {
+            score.innerText = data;
+            updateTotalScore();
+            checkScoreDone();
+
+        });
+    }
+
+    function checkScoreDone()
+    {
+        var p1 = document.getElementById('percentage1').value;
+        var p2 = document.getElementById('percentage2').value;
+        var p3 = document.getElementById('percentage3').value;
+        var p4 = document.getElementById('percentage4').value;
+        var p5 = document.getElementById('percentage5').value;
+
+        console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
+
+        if(p1 != '' && p2 != '' && p3 != '' && p4 != '' && p5 != '')
+            document.getElementById('userMessage').style.opacity = '1';
+
+    }
+
+    function updateTotalScore()
+    {
+        var score1 = document.getElementById('score1').innerText;
+        var score2 = document.getElementById('score2').innerText;
+        var score3 = document.getElementById('score3').innerText;
+        var score4 = document.getElementById('score4').innerText;
+        var score5 = document.getElementById('score5').innerText;
+
+        var total = 0;
+        total = parseFloat(score1) + parseFloat(score2) + parseFloat(score3) + parseFloat(score4) + parseFloat(score5);
+        var totalScore = document.getElementById('totalScore');
+        totalScore.innerText = "Total Score: "+total;
+
     }
 
     function getRole(teamAndRole)
@@ -197,6 +255,7 @@ var home = (function($) {
 
         if(box.value != "")
             box.style.backgroundColor = "yellow";
+
     }
 
     function swapRoles() {
