@@ -1,6 +1,7 @@
 package servlets;
 
 import classes.LoadConfig;
+import classes.StaticChampions;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.http.HttpResponse;
@@ -24,39 +25,16 @@ public class RiotAPI extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String apiKey = config.getRiotApiKey();
+        String dbUser = config.getDatabaseUser();
+        String dbPass = config.getDatabasePass();
 
         String uri = request.getRequestURI();
         if(uri.equals("/riot/champions")) {
-            //construct request
-            String url = "https://na1.api.riotgames.com/lol/static-data/v3/champions?locale=en_US&champListData=keys";
-            HttpClient client = HttpClientBuilder.create().build();
-            HttpGet req = new HttpGet(url);
-            req.addHeader("X-Riot-Token", apiKey);
-
-            HttpResponse resp = client.execute(req);
-
-            int status = resp.getStatusLine().getStatusCode();
-            if(status == 200) {
-                //retrieve champion id: name map
-                BufferedReader rd = new BufferedReader(new InputStreamReader(resp.getEntity().getContent()));
-                StringBuffer result = new StringBuffer();
-                String line = "";
-                while((line = rd.readLine()) != null) {
-                    result.append(line);
-                }
-                JsonParser parser = new JsonParser();
-                JsonObject o = parser.parse(result.toString()).getAsJsonObject();
-                JsonObject keys = o.getAsJsonObject("keys");
-
-                response.setCharacterEncoding("UTF-8");
-                response.setContentType("application/json");
-                PrintWriter writer = response.getWriter();
-                writer.write("{\"keys\": " + keys.toString() + "}");
-                writer.close();
-            } else {
-                //error response from riot's api
-                System.out.println("Riot Status " + status + ", something broke :(");
-            }
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            writer.write(new StaticChampions().getChampions());
+            writer.close();
         } else if(Pattern.compile("^*/riot/summonerIds*$").matcher(uri).matches()) {
             //extract query params
             ArrayList<String> summoners = new ArrayList<>();
