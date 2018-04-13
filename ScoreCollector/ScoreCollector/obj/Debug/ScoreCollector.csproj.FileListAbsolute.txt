@@ -1,9 +1,19 @@
-c:\users\mitchell\documents\visual studio 2015\Projects\ScoreCollector\ScoreCollector\bin\Debug\ScoreCollector.exe.config
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\bin\Debug\ScoreCollector.exe
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\bin\Debug\ScoreCollector.pdb
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\bin\Debug\HtmlAgilityPack.dll
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\bin\Debug\HtmlAgilityPack.pdb
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\bin\Debug\HtmlAgilityPack.xml
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\obj\Debug\ScoreCollector.csprojResolveAssemblyReference.cache
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\obj\Debug\ScoreCollector.exe
-C:\Users\Mitchell\Documents\Visual Studio 2015\Projects\ScoreCollector\ScoreCollector\obj\Debug\ScoreCollector.pdb
+c:/users/mitchell/documents/visual studio 2015/Projects/ScoreCollector/ScoreCollector/bin/Debug/ScoreCollector.exe.config
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/bin/Debug/ScoreCollector.exe
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/bin/Debug/ScoreCollector.pdb
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/bin/Debug/HtmlAgilityPack.dll
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/bin/Debug/HtmlAgilityPack.pdb
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/bin/Debug/HtmlAgilityPack.xml
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.csprojResolveAssemblyReference.cache
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.exe
+C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.pdb
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/bin/Debug/ScoreCollector.exe.config
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/bin/Debug/ScoreCollector.exe
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/bin/Debug/ScoreCollector.pdb
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/bin/Debug/HtmlAgilityPack.dll
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/bin/Debug/HtmlAgilityPack.pdb
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/bin/Debug/HtmlAgilityPack.xml
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.csprojResolveAssemblyReference.cache
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.csproj.CoreCompileInputs.cache
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.exe
+/Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.pdb
