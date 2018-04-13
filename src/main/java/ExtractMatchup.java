@@ -31,8 +31,9 @@ public class ExtractMatchup extends HttpServlet {
             String c1 = request.getParameter("c1");
             String c2 = request.getParameter("c2");
             String role = request.getParameter("role");
+            String league = request.getParameter("league");
 
-            String matchupInfo = getMatchupInfo(c1,c2,role)+"%";
+            String matchupInfo = getMatchupInfo(c1,c2,role,league)+"%";
 //            System.out.println(matchupInfo);
 
             response.setCharacterEncoding("UTF-8");
@@ -56,7 +57,12 @@ public class ExtractMatchup extends HttpServlet {
 
     private Double calculateScore(String matchup, String mastery)
     {
-        Double mat = Double.parseDouble(matchup);
+        Double mat;
+        if(matchup.equals("?"))
+            mat = -1.0;
+        else {
+            mat = Double.parseDouble(matchup);
+        }
         int mas = Integer.parseInt(mastery);
 
         Double score = 0.0;
@@ -72,7 +78,7 @@ public class ExtractMatchup extends HttpServlet {
         else if (mas >= 6)
             score += 1;
 
-        if (mat != 0)
+        if (mat != -1.0)
         {
             if (mat < 48)
                 score -= 1;
@@ -100,13 +106,13 @@ public class ExtractMatchup extends HttpServlet {
         return score;
     }
 
-    private Double getMatchupInfo(String c1, String c2, String role)//c1 is team champ c2 is opponent champ.
+    private Double getMatchupInfo(String c1, String c2, String role, String league)//c1 is team champ c2 is opponent champ.
     {
         teamChampion = c1;
         opponentChampion = c2;
 
         Double stat = null;
-        String siteContent = getHTML("http://champion.gg/champion/"+c1+"/"+role);
+        String siteContent = getHTML("http://champion.gg/champion/"+c1+"/"+role+"?league="+league);
 
         List<String> allMatches = new ArrayList<String>();
         Matcher m = Pattern.compile(",\"winRate\":(.*?),\"statScore\":")

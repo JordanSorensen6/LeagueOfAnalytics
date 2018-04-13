@@ -97,6 +97,7 @@ var home = (function($) {
     function checkForMatchup(team, id){
         var opponent = getOpponent(id);
         var role = getRole(id);
+        var league = "gold";//Find a way to get this later.
 
         if(document.getElementById(opponent).value != '')//Nonempty opponent. We can look for matchup.
         {
@@ -119,8 +120,10 @@ var home = (function($) {
             if(champions.hasOwnProperty(c1.toLowerCase())){
                 if(champions.hasOwnProperty(c2.toLowerCase())){
                     console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
-                    $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role, function(data) {
-                        //console.log("data returned: " + data);
+                    $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role + '&league=' + league, function(data) {
+                        console.log("data returned: " + data);
+                        if(data == 'null%')//No data on the matchup.
+                            data = "?";
                         if(role == 'Top')
                             document.getElementById("percentage1").value = data;
                         else if(role == 'Jungle')
@@ -159,7 +162,7 @@ var home = (function($) {
         var mastery = document.getElementById('mastery'+role).value;
         var matchup = document.getElementById('percentage'+role).value;
         matchup = matchup.replace("%", "");
-        //console.log('mastery: ' + mastery + ' matchup: ' + matchup);
+        console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup);
         var score = document.getElementById('score'+role);
         $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup, function(data) {
             score.innerText = data;
