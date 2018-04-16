@@ -74,10 +74,14 @@ var home = (function($) {
             var num = inputId.substring(inputId.length - 1);
             var summonerId = summonerIds[$('#summoner' + num).val()];
             var key = $('#' + inputId).val().replace(/ /g,'');
+            //var d = new Date();
             if(champions.hasOwnProperty(key.toLowerCase())) {
                 var championId = champions[key.toLowerCase()];
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
-                    $('#mastery' + num).val(data);
+                    //$('#mastery' + num).val(data);
+                    var image = document.getElementById('mastery' + num);
+                    console.log("updating mastery with: " + data);
+                    image.src = "/resources/images/L"+data+".png";
                 });
             }
         })
@@ -159,7 +163,8 @@ var home = (function($) {
         else if(role == 'Support')
             role = '5';
 
-        var mastery = document.getElementById('mastery'+role).value;
+        var mastery = document.getElementById('mastery'+role).src;
+        mastery = mastery.replace(location.port, '').replace(/\D/g,'');//get mastery number w/o port number.
         var matchup = document.getElementById('percentage'+role).value;
         matchup = matchup.replace("%", "");
         console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup);

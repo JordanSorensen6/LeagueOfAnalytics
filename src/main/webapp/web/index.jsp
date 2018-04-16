@@ -44,11 +44,17 @@
     <div class="teamChamp teamChampBot"><input type="text" id="champion4" placeholder="Bot Champion"></div>
     <div class="teamChamp teamChampSupport"><input type="text" id="champion5" placeholder="Support Champion"></div>
 
-    <div class="masteryTop"><input type="number" id="mastery1" placeholder="0" readonly=""></div>
-    <div class="masteryJungle"><input type="number" id="mastery2" placeholder="0" readonly=""></div>
-    <div class="masteryMid"><input type="number" id="mastery3" placeholder="0" readonly=""></div>
-    <div class="masteryBot"><input type="number" id="mastery4" placeholder="0" readonly=""></div>
-    <div class="masterySupport"><input type="number" id="mastery5" placeholder="0" readonly=""></div>
+    <%--<div class="masteryTop"><input type="number" id="mastery1" placeholder="0" readonly=""></div>--%>
+    <%--<div class="masteryJungle"><input type="number" id="mastery2" placeholder="0" readonly=""></div>--%>
+    <%--<div class="masteryMid"><input type="number" id="mastery3" placeholder="0" readonly=""></div>--%>
+    <%--<div class="masteryBot"><input type="number" id="mastery4" placeholder="0" readonly=""></div>--%>
+    <%--<div class="masterySupport"><input type="number" id="mastery5" placeholder="0" readonly=""></div>--%>
+
+    <div class="masteryTop"><img id="mastery1" src="/resources/images/unknown.png"></div>
+    <div class="masteryJungle"><img id="mastery2" src="/resources/images/unknown.png"></div>
+    <div class="masteryMid"><img id="mastery3" src="/resources/images/unknown.png"></div>
+    <div class="masteryBot"><img id="mastery4" src="/resources/images/unknown.png"></div>
+    <div class="masterySupport"><img id="mastery5" src="/resources/images/unknown.png"></div>
 
     <div class="oppChamp oppChampTop"><input type="text" id="opponent1" placeholder="Opponent Top"></div>
     <div class="oppChamp oppChampJungle"><input type="text" id="opponent2" placeholder="Opponent Jungle"></div>
