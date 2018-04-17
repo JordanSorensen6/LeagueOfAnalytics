@@ -98,10 +98,29 @@ var home = (function($) {
         });
     }
 
+    function setChampionImage(id)
+    {
+        var newID;
+
+        var champion = document.getElementById(id).value;
+
+        if(id.includes('champion'))
+            newID = id.replace('champion', 'teamImg');
+        else
+            newID = id.replace('opponent', 'oppImg');
+
+        if(champions.hasOwnProperty(champion.toLowerCase())){
+            var image = document.getElementById(newID);
+            console.log("updating champion image");
+            image.src = "/resources/images/champion/"+champion+".png";
+        }
+    }
+
     function checkForMatchup(team, id){
         var opponent = getOpponent(id);
         var role = getRole(id);
         var league = "gold";//Find a way to get this later.
+        setChampionImage(id);
 
         if(document.getElementById(opponent).value != '')//Nonempty opponent. We can look for matchup.
         {
