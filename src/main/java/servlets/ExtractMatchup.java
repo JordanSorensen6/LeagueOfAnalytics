@@ -29,8 +29,9 @@ public class ExtractMatchup extends HttpServlet {
             String c1 = request.getParameter("c1");
             String c2 = request.getParameter("c2");
             String role = request.getParameter("role");
+            String league = request.getParameter("league");
 
-            String matchupInfo = getMatchupInfo(c1,c2,role)+"%";
+            String matchupInfo = getMatchupInfo(c1,c2,role,league)+"%";
 //            System.out.println(matchupInfo);
 
             response.setCharacterEncoding("UTF-8");
@@ -38,16 +39,78 @@ public class ExtractMatchup extends HttpServlet {
             writer.write(matchupInfo);
             writer.close();
         }
+        else if(uri.equals("/matchup/score"))//Calculate user score.
+        {
+            String mastery = request.getParameter("mastery");
+            String matchup = request.getParameter("matchup");
+            String score = calculateScore(matchup, mastery)+"";
+
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.write(score);
+            writer.close();
+        }
 
     }
 
-    private Double getMatchupInfo(String c1, String c2, String role)//c1 is team champ c2 is opponent champ.
+    private Double calculateScore(String matchup, String mastery)
+    {
+        Double mat;
+        if(matchup.equals("?"))
+            mat = -1.0;
+        else {
+            mat = Double.parseDouble(matchup);
+        }
+        int mas = Integer.parseInt(mastery);
+
+        Double score = 0.0;
+
+        if (mas <= 2)
+            score -= 1;
+        else if (mas == 3)
+            score -= .5;
+        else if (mas == 4)
+            score += 0;
+        else if (mas == 5)
+            score += .5;
+        else if (mas >= 6)
+            score += 1;
+
+        if (mat != -1.0)
+        {
+            if (mat < 48)
+                score -= 1;
+            else if (mat < 50)
+                score -= .5;
+            else if (mat < 52)
+                score += .5;
+            else
+                score += 1;
+
+            if (mas < 3 && mat < 48)//Lane is looking really bad.
+                score -= 1;
+            else if (mas == 3 && mat < 50)//Lane is looking bad.
+                score -= .5;
+            else if (mas == 4 && mat < 45)//Bad
+                score -= .5;
+            else if (mas == 4 && mat > 55)//Good
+                score += .5;
+            else if (mas >= 5 && mat >= 50 && mat <= 52)//Lane is looking good.
+                score += .5;
+            else if (mas > 5 && mat > 52)//Lane is looking really good.
+                score += 1;
+        }
+
+        return score;
+    }
+
+    private Double getMatchupInfo(String c1, String c2, String role, String league)//c1 is team champ c2 is opponent champ.
     {
         teamChampion = c1;
         opponentChampion = c2;
 
         Double stat = null;
-        String siteContent = getHTML("http://champion.gg/champion/"+c1+"/"+role);
+        String siteContent = getHTML("http://champion.gg/champion/"+c1+"/"+role+"?league="+league);
 
         List<String> allMatches = new ArrayList<String>();
         Matcher m = Pattern.compile(",\"winRate\":(.*?),\"statScore\":")
