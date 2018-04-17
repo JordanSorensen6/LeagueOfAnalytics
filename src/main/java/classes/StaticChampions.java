@@ -1,5 +1,7 @@
 package classes;
 
+import com.google.gson.JsonObject;
+
 public class StaticChampions {
     public  static String champions = "{\"89\": \"Leona\"," +
             "\"110\": \"Varus\"," +
