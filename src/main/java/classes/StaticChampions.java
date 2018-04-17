@@ -1,6 +1,7 @@
 package classes;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class StaticChampions {
     public  static String champions = "{\"89\": \"Leona\"," +
@@ -143,4 +144,10 @@ public class StaticChampions {
             "\"84\": \"Akali\"," +
             "\"85\": \"Kennen\"," +
             "\"86\": \"Garen\"}";
+
+    public String getById(String id) {
+        JsonParser parser = new JsonParser();
+        JsonObject champions = parser.parse(champions);
+        return champions.get("id").getAsString();
+    }
 }
