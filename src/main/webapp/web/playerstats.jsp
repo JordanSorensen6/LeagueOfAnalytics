@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/resources/css/layout.css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
 
