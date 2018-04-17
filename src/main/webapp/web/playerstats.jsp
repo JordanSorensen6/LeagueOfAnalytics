@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+g<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Stats - ${username}</title>
