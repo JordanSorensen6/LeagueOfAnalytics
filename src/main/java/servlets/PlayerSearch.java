@@ -2,6 +2,7 @@ package servlets;
 
 import classes.Match;
 import classes.RiotCalls;
+import classes.Scoring;
 import classes.StaticChampions;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class PlayerSearch extends HttpServlet {
@@ -80,16 +82,35 @@ public class PlayerSearch extends HttpServlet {
         }
         // get matchups the resulting pair is of the form (teammate champion, enemy champion)
         HashMap<Integer, Pair<String, String>> matchups = new HashMap<>();
-        findMatchup("MIDDLE", "SOLO", userTeamId, matchups, match);
-        findMatchup("TOP", "SOLO", userTeamId, matchups, match);
-        findMatchup("JUNGLE", "NONE", userTeamId, matchups, match);
-        findMatchup("BOTTOM", "DUO_CARRY", userTeamId, matchups, match);
-        findMatchup("BOTTOM", "DUO_SUPPORT", userTeamId, matchups, match);
+        Integer mid = findMatchup("MIDDLE", "SOLO", userTeamId, matchups, match);
+        Integer top = findMatchup("TOP", "SOLO", userTeamId, matchups, match);
+        Integer jung = findMatchup("JUNGLE", "NONE", userTeamId, matchups, match);
+        Integer adc = findMatchup("BOTTOM", "DUO_CARRY", userTeamId, matchups, match);
+        Integer supp = findMatchup("BOTTOM", "DUO_SUPPORT", userTeamId, matchups, match);
 
         if(matchups.size() == 5) {
             // only analyze & store if all matchups were able to be found
-            int score = 0;
-            Match analyzed = new Match(score, Integer.getInteger(gameId), user);
+            Scoring scoring = new Scoring();
+            Double score = 0.0;
+            Double matchupCalc = 0.0;
+            for(Integer key: matchups.keySet()) {
+                String teammateMastery = teammateMasteries.get(key);
+                Pair<String, String> matchup = matchups.get(key);
+                //calculate matchup
+                if(key.equals(mid))
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Middle", "gold");
+                else if(key.equals(top))
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Top", "gold");
+                else if(key.equals(jung))
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Jungle", "gold");
+                else if(key.equals(adc))
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "ADC", "gold");
+                else if(key.equals(supp))
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Support", "gold");
+                //calculate score
+                score += scoring.calculateScore(Double.toString(matchupCalc), teammateMastery);
+            }
+            Match analyzed = new Match(score, Long.getLong(gameId), user);
             return analyzed;
         }
         else {
@@ -97,7 +118,7 @@ public class PlayerSearch extends HttpServlet {
         }
     }
 
-    private void findMatchup(String lane, String role, int teamId, HashMap<Integer, Pair<String, String>> matchups, JsonObject match) {
+    private Integer findMatchup(String lane, String role, int teamId, HashMap<Integer, Pair<String, String>> matchups, JsonObject match) {
         JsonArray participants = match.getAsJsonArray("participants");
         int participantId = 0;
         int champId1 = -1;
@@ -117,11 +138,12 @@ public class PlayerSearch extends HttpServlet {
         }
         if(participantId == 0 || champId1 == -1 || champId2 == -1) {
             //something broke, don't analyze this game
-            return;
+            return 0;
         }
         String champ1 = new StaticChampions().getById(Integer.toString(champId1));
         String champ2 = new StaticChampions().getById(Integer.toString(champId2));
         // add matchup to map
         matchups.put(participantId, new Pair<String, String>(champ1, champ2));
+        return participantId;
     }
 }

@@ -1,29 +1,29 @@
 package classes;
 
 public class Match {
-    private int score;
-    private int gameId;
+    private Double score;
+    private Long gameId;
     private String user;
 
-    public Match(int score, int gameId, String user) {
+    public Match(Double score, Long gameId, String user) {
         this.score = score;
         this.gameId = gameId;
         this.user = user;
     }
 
-    public int getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 
-    public int getGameId() {
+    public Long getGameId() {
         return gameId;
     }
 
-    public void setGameId(int gameId) {
+    public void setGameId(Long gameId) {
         this.gameId = gameId;
     }
 
