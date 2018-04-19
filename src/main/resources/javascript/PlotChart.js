@@ -23,7 +23,7 @@ class PlotChart{
      * @return text HTML content for tool tip
      */
     tooltip_render(tooltip_data) {
-        let text = "<h3 class =" + this.chooseClass(tooltip_data["result"]) + " >" + tooltip_data["game id"] + "</h3>";
+        let text = "<h4 class =" + tooltip_data["result"] + " >" + tooltip_data["game id"] + "</h4>";
         //text += "Electoral Votes: " + tooltip_data.electoralVotes;
 
         return text;
@@ -60,6 +60,7 @@ class PlotChart{
              * pass this as an argument to the tooltip_render function then,
              * return the HTML content returned from that method.
              * */
+            console.log(d["result"]);
             let tooltip_data = {
                 "game id": d["game"],
                 "score":d["score"],
