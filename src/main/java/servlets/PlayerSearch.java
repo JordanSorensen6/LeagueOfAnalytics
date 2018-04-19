@@ -1,12 +1,13 @@
 package servlets;
 
-import classes.Match;
-import classes.RiotCalls;
-import classes.Scoring;
-import classes.StaticChampions;
+import classes.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import javafx.util.Pair;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 public class PlayerSearch extends HttpServlet {
@@ -36,17 +36,42 @@ public class PlayerSearch extends HttpServlet {
             for(int i = 0; i < matchlist.size(); i++) {
                 String gameId = Long.toString(matchlist.get(i).getAsJsonObject().get("gameId").getAsLong());
                 JsonObject match = call.getMatch(gameId);
-                Match analyzed = analyzeMatch(request.getParameter("name"), gameId, match);
+                GamesEntity analyzed = analyzeMatch(request.getParameter("name"), gameId, match);
                 if(analyzed != null) {
                     //only store if there are no errors in analyzing
+                    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+                    Session session = sessionFactory.openSession();
+                    session.persist(analyzed);
                 }
             }
+            //TODO remove, this is a test save to database to ensure correct connection
+/*            GamesEntity game = new GamesEntity();
+            game.setMatchId(1234);
+            game.setScore(5.5);
+            game.setOutcome("Win");
+            game.setSummoner("cloudrhymes");
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            Session session = sessionFactory.openSession();
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                session.persist(game);
+                tx.commit();
+            }
+            catch(Exception e) {
+                if(tx != null)
+                    tx.rollback();
+                throw e;
+            }
+            finally {
+                session.close();
+            }*/
 
             request.getRequestDispatcher("/playerstats.jsp").forward(request, response);
         }
     }
 
-    private Match analyzeMatch(String user, String gameId, JsonObject match) throws IOException {
+    private GamesEntity analyzeMatch(String user, String gameId, JsonObject match) throws IOException {
         RiotCalls call = new RiotCalls();
         // get users team id
         JsonArray participantIdentities = match.getAsJsonArray("participantIdentities");
@@ -62,6 +87,14 @@ public class PlayerSearch extends HttpServlet {
         for(int j = 0; j < participants.size(); j++) {
             if(participants.get(j).getAsJsonObject().get("participantId").getAsInt() == userParticipantId) {
                 userTeamId = participants.get(j).getAsJsonObject().get("teamId").getAsInt();
+            }
+        }
+        // get outcome
+        String win = "";
+        JsonArray teamStats = match.getAsJsonArray("teams");
+        for(int j = 0; j < teamStats.size(); j++) {
+            if(teamStats.get(j).getAsJsonObject().get("teamId").getAsInt() == userTeamId) {
+                win = teamStats.get(j).getAsJsonObject().get("win").getAsString();
             }
         }
         // get teammates mastery levels
@@ -110,8 +143,13 @@ public class PlayerSearch extends HttpServlet {
                 //calculate score
                 score += scoring.calculateScore(Double.toString(matchupCalc), teammateMastery);
             }
-            Match analyzed = new Match(score, Long.getLong(gameId), user);
-            return analyzed;
+            GamesEntity game = new GamesEntity();
+            game.setMatchId(Integer.getInteger(gameId));
+            game.setScore(score);
+            game.setOutcome(win);
+            game.setSummoner(user);
+
+            return game;
         }
         else {
             return null;
