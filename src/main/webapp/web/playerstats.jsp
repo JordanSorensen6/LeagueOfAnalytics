@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="/resources/css/layout.css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="/resources/javascript/d3-tip.js"></script>
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
 
-    <script src="/resources/javascript/Chart.js"></script>
+    <script src="/resources/javascript/PlotChart.js"></script>
 </head>
 <body>
 
@@ -41,7 +41,7 @@ ${username} is very good at the game!
             d.g = +d.game;
             d.s = +d.score;
         });
-        let chart = new Chart(data);
+        let chart = new PlotChart(data);
         chart.updateChart();
     });
 </script>

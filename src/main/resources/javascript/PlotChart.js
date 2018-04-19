@@ -1,5 +1,4 @@
-
-class Chart{
+class PlotChart{
 
     constructor(data){
         this.data = data;
@@ -114,10 +113,7 @@ class Chart{
             })
             .attr("class", function(d){
                 return d["result"];
-            })
-            .on("mouseover", tip.show)
-            .on("mouseout", tip.hide);
-        d3.select("#plotChart").call(tip);
+            });
 
         d3.select("#plot").selectAll("circle")
             .on("click", function (d){
@@ -128,7 +124,10 @@ class Chart{
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
-            });
+            })
+            .on("mouseover", tip.show)
+            .on("mouseout", tip.hide);
+        d3.select("#plotChart").call(tip);
 
     }
 
