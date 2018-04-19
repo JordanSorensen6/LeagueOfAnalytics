@@ -7,6 +7,19 @@ body {
     row-span: 6;
     column-span: 9;
 }
+.positionAndName{
+    display: grid;
+    row-span: 2;
+    column-span: 1;
+}
+.position{
+    grid-column: 1;
+    grid-row: 1;
+}
+.name{
+    grid-column: 1;
+    grid-row: 2;
+}
 .role {
     grid-column: 1;
     grid-row: 1;
