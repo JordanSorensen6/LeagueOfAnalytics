@@ -79,14 +79,16 @@ public class PlayerSearch extends HttpServlet {
         int userParticipantId = 0;
         for(int j = 0; j < participantIdentities.size(); j++) {
             if(participantIdentities.get(j).getAsJsonObject().getAsJsonObject("player").get("summonerName")
-                    .getAsString().equals(user)) {
+                    .getAsString().toUpperCase().replaceAll("\\s+","").equals(user.toUpperCase())) {
                 userParticipantId = participantIdentities.get(j).getAsJsonObject().get("participantId").getAsInt();
+                break;
             }
         }
         JsonArray participants = match.getAsJsonArray("participants");
         for(int j = 0; j < participants.size(); j++) {
             if(participants.get(j).getAsJsonObject().get("participantId").getAsInt() == userParticipantId) {
                 userTeamId = participants.get(j).getAsJsonObject().get("teamId").getAsInt();
+                break;
             }
         }
         // get outcome
@@ -95,6 +97,7 @@ public class PlayerSearch extends HttpServlet {
         for(int j = 0; j < teamStats.size(); j++) {
             if(teamStats.get(j).getAsJsonObject().get("teamId").getAsInt() == userTeamId) {
                 win = teamStats.get(j).getAsJsonObject().get("win").getAsString();
+                break;
             }
         }
         // get teammates mastery levels
