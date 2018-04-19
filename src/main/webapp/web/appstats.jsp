@@ -25,6 +25,6 @@
 <script>
     $('#nav-app').addClass('active');
 
-    
+
 </script>
 </html>
