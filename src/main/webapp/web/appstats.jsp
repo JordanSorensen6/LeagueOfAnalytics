@@ -12,9 +12,19 @@
 
 <jsp:include page="navbar.jsp"/>
 
+<div>
+    <svg width="500" height="400" id="plotChart">
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
+        <g id="plot"></g>
+    </svg>
+</div>
+
 </body>
 
 <script>
     $('#nav-app').addClass('active');
+
+    
 </script>
 </html>
