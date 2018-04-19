@@ -15,9 +15,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExtractMatchup extends HttpServlet {
+    
 
-    public String teamChampion;
-    public String opponentChampion;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoadConfig config = new LoadConfig();
@@ -108,8 +107,6 @@ public class ExtractMatchup extends HttpServlet {
 
     private Double getMatchupInfo(String c1, String c2, String role, String league)//c1 is team champ c2 is opponent champ.
     {
-        teamChampion = c1;
-        opponentChampion = c2;
 
         Double stat = null;
         String siteContent = getHTML("http://champion.gg/champion/"+c1+"/"+role+"?league="+league);
