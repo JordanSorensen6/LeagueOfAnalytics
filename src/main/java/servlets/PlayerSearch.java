@@ -10,7 +10,7 @@ public class PlayerSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
 
-        if(uri.equals("/search/"))
+        if(uri.equals("/search"))
             request.getRequestDispatcher("/playersearch.jsp").forward(request, response);
         else {
             request.setAttribute("username", request.getParameter("name"));

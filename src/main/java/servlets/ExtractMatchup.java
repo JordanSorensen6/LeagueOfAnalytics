@@ -1,3 +1,5 @@
+package servlets;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +21,6 @@ public class ExtractMatchup extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LoadConfig config = new LoadConfig();
-        String apiKey = config.getRiotApiKey();
-
-        System.out.println(apiKey);
         String uri = request.getRequestURI();
         System.out.println("ARRIVING AT SERVLET WITH URI: " + uri);
         if(uri.equals("/matchup/champions"))

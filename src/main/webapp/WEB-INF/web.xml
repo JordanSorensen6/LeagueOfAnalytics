@@ -12,8 +12,12 @@
         <servlet-class>servlets.PlayerSearch</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>extractMatchup</servlet-name>
-        <servlet-class>ExtractMatchup</servlet-class>
+        <servlet-name>ExtractMatchup</servlet-name>
+        <servlet-class>servlets.ExtractMatchup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApplicationStats</servlet-name>
+        <servlet-class>servlets.ApplicationStats</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RiotAPI</servlet-name>
@@ -24,7 +28,11 @@
         <url-pattern>/search/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>extractMatchup</servlet-name>
+        <servlet-name>ExtractMatchup</servlet-name>
         <url-pattern>/matchup/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApplicationStats</servlet-name>
+        <url-pattern>/app_stats/*</url-pattern>
     </servlet-mapping>
 </web-app>
