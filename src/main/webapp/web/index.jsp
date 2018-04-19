@@ -106,10 +106,9 @@
 summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
-summoner5 joined the lobby"></textarea><br>
-<button type="button" id="populate" name="populateButton" onclick="home.populateSummonerNames()">Populate</button>
-<button type="button" name="swapButton" onclick="home.swapRoles()">Swap Position</button>
-
+summoner5 joined the lobby" id="textBox" oninput="home.populateSummonerNames()"></textarea><br>
+<%--<button type="button" id="populate" name="populateButton" onclick="home.populateSummonerNames()">Populate</button>--%>
+<%--<button type="button" name="swapButton" onclick="home.swapRoles()">Swap Position</button>--%>
 
 <div>
     <svg width="500" height="400" id="plotChart">

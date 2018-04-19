@@ -51,7 +51,7 @@ var home = (function($) {
     }
 
     function summonerIdsLookup() {
-        $('#populate').on('click', function() {
+        $('#textBox').on('input', function() {
             var s1 = $('#summoner1').val();
             var s2 = $('#summoner2').val();
             var s3 = $('#summoner3').val();
@@ -62,6 +62,7 @@ var home = (function($) {
                 summonerIds = data;
             });
         });
+
     }
 
     function getSummonerIds() {
@@ -77,6 +78,7 @@ var home = (function($) {
             //var d = new Date();
             if(champions.hasOwnProperty(key.toLowerCase())) {
                 var championId = champions[key.toLowerCase()];
+                console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
                     var image = document.getElementById('mastery' + num);
@@ -255,7 +257,7 @@ var home = (function($) {
         }
     }
 
-    var prevSelected;
+    var prevSelected = null;
 
     function populateSummonerNames() {
         var lines = document.getElementById("textBox").value.split('\n');
@@ -270,6 +272,7 @@ var home = (function($) {
     }
 
     function markForSwap(id) {
+
         var summoners = document.getElementsByName("summoners");
         for(var i = 0; i < 5; i++)
         {
@@ -278,10 +281,22 @@ var home = (function($) {
 
         }
         var box  = document.getElementById(id);
-        prevSelected = box;
 
-        if(box.value != "")
-            box.style.backgroundColor = "yellow";
+        if(prevSelected != null && box.id == prevSelected.id) {
+            if(box.style.backgroundColor == "steelblue")
+                box.style.backgroundColor = "white";
+            else
+                box.style.backgroundColor = "steelblue";
+        }
+        else
+        {
+            if(box.value != "")
+                box.style.backgroundColor = "steelblue";
+        }
+
+        if(prevSelected != null && box.id != prevSelected.id && prevSelected.style.backgroundColor == "steelblue")
+            swapRoles();
+        prevSelected = box;
 
     }
 
@@ -295,7 +310,7 @@ var home = (function($) {
         var champion2 = null;
         for(var i = 0; i < 5; i++)
         {
-            if(summoners[i].style.backgroundColor == "yellow") {
+            if(summoners[i].style.backgroundColor == "steelblue") {
                 summoners[i].style.backgroundColor = "white";
                 if (summoner1 == null) {
                     summoner1 = summoners[i];

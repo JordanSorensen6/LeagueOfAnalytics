@@ -1,3 +1,7 @@
+body {
+    background-color: Gainsboro;
+}
+
 .gridLayout {
     display: grid;
     row-span: 6;
