@@ -43,7 +43,7 @@ public class RiotAPI extends HttpServlet {
             Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
             for(String summoner : summoners) {
                 if(validName.matcher(summoner).matches()) {
-                    String id = call.getSummonerId(apiKey, summoner.replaceAll("\\s+", ""));
+                    String id = call.getSummonerId(summoner.replaceAll("\\s+", ""));
                     allSummonersIds.addProperty(summoner, id);
                 }
             }

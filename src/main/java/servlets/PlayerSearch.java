@@ -60,7 +60,7 @@ public class PlayerSearch extends HttpServlet {
         }
         else {
             RiotCalls call = new RiotCalls();
-            request.setAttribute("username", call.getSummonerName(request.getAttribute("name").toString()));
+            request.setAttribute("username", call.getSummonerName(request.getParameter("name")));
             request.getRequestDispatcher("/playerstats.jsp").forward(request, response);
         }
     }
