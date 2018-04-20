@@ -122,30 +122,30 @@ summoner5 joined the lobby" id="textBox" oninput="home.populateSummonerNames()">
 <%--<button type="button" id="populate" name="populateButton" onclick="home.populateSummonerNames()">Populate</button>--%>
 <%--<button type="button" name="swapButton" onclick="home.swapRoles()">Swap Position</button>--%>
 
-<%--<div>--%>
-    <%--<svg width="500" height="400" id="plotChart">--%>
-        <%--<g id="xAxis"></g>--%>
-        <%--<g id="yAxis"></g>--%>
-        <%--<g id="plot"></g>--%>
-    <%--</svg>--%>
-<%--</div>--%>
+<div>
+    <svg width="500" height="400" id="plotChart">
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
+        <g id="plot"></g>
+    </svg>
+</div>
 
 
 
 
 
-<%--<script>--%>
-    <%--home.init();--%>
+<script>
+    home.init();
 
-    <%--d3.json("resources/data/fake_data.json", function (error, data) {--%>
-        <%--data.forEach(function (d) {--%>
-            <%--d.g = +d.game;--%>
-            <%--d.s = +d.score;--%>
-        <%--});--%>
-        <%--let chart = new Chart(data);--%>
-        <%--chart.updateChart();--%>
-    <%--});--%>
-<%--</script>--%>
+    d3.json("resources/data/fake_data.json", function (error, data) {
+        data.forEach(function (d) {
+            d.g = +d.game;
+            d.s = +d.score;
+        });
+        let chart = new Chart(data);
+        chart.updateChart();
+    });
+</script>
 
 
 
