@@ -21,7 +21,7 @@
 ${username} is very good at the game!
 
 
-<div>
+<div class="chart">
     <svg width="500" height="400" id="plotChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>

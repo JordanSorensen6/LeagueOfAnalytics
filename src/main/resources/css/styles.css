@@ -3,6 +3,10 @@
     stroke: #FFF;
 }
 
+.chart {
+    background-color: white;
+}
+
 .loss{
     fill: #de2d26;
     color: #de2d26;
