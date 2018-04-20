@@ -29,7 +29,7 @@ ${username} is very good at the game!
 </div>
 
 <div class="PlayerStatPic">
-    <img id="PlayerStatImg" src="/resources/images/SampleGame.png">
+    <img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">
 </div>
 </body>
 </html>
