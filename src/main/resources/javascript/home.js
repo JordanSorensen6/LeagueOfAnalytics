@@ -216,8 +216,11 @@ var home = (function($) {
 
         console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
 
-        if(p1 != '00.00%' && p2 != '00.00%' && p3 != '00.00%' && p4 != '00.00%' && p5 != '00.00%')
+        if(p1 != '00.00%' && p2 != '00.00%' && p3 != '00.00%' && p4 != '00.00%' && p5 != '00.00%') {
+            //var data = JSON.parse(scores);
+            document.getElementById('userMessage').innerHTML = "Based on (number) games, players with this score win (some percentage) of their games.".bold();
             document.getElementById('userMessage').style.opacity = '1';
+        }
 
     }
 

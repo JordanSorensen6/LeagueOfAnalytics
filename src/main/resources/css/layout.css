@@ -1,11 +1,13 @@
 body {
-    background-color: Gainsboro;
+    color: yellow;
+    background-color: black;
 }
 
 .gridLayout {
     display: grid;
     row-span: 6;
     column-span: 9;
+    align-items: center;
 }
 .positionAndName{
     display: grid;
@@ -38,11 +40,11 @@ body {
     grid-row: 1;
 }
 .opponentChampions {
-    grid-column: 7;
+    grid-column: 8;
     grid-row: 1;
 }
 .matchRating {
-    grid-column: 8;
+    grid-column: 6;
     grid-row: 1;
 }
 .score {
@@ -176,76 +178,76 @@ body {
 }
 
 .oppChampTopPic {
-    grid-column: 6;
+    grid-column: 7;
     grid-row: 2;
 }
 
 .oppChampJunglePic {
-    grid-column: 6;
+    grid-column: 7;
     grid-row: 3;
 }
 
 .oppChampMidPic {
-    grid-column: 6;
+    grid-column: 7;
     grid-row: 4;
 }
 
 .oppChampBotPic {
-    grid-column: 6;
+    grid-column: 7;
     grid-row: 5;
 }
 
 .oppChampSupportPic {
-    grid-column: 6;
+    grid-column: 7;
     grid-row: 6;
 }
 .oppChampTop {
-    grid-column: 7;
+    grid-column: 8;
     grid-row: 2;
 }
 
 .oppChampJungle {
-    grid-column: 7;
+    grid-column: 8;
     grid-row: 3;
 }
 
 .oppChampMid {
-    grid-column: 7;
+    grid-column: 8;
     grid-row: 4;
 }
 
 .oppChampBot {
-    grid-column: 7;
+    grid-column: 8;
     grid-row: 5;
 }
 
 .oppChampSupport {
-    grid-column: 7;
+    grid-column: 8;
     grid-row: 6;
 }
 
 .winPerTop {
-    grid-column: 8;
+    grid-column: 6;
     grid-row: 2;
 }
 
 .winPerJungle {
-    grid-column: 8;
+    grid-column: 6;
     grid-row: 3;
 }
 
 .winPerMid {
-    grid-column: 8;
+    grid-column: 6;
     grid-row: 4;
 }
 
 .winPerBot {
-    grid-column: 8;
+    grid-column: 6;
     grid-row: 5;
 }
 
 .winPerSupport {
-    grid-column: 8;
+    grid-column: 6;
     grid-row: 6;
 }
 
@@ -291,4 +293,14 @@ textarea {
 img {
     height: 50px;
     width: 50px;
+}
+
+b {
+    color: white;
+}
+
+input{
+    background: #004085;
+    border-color: #005cbf;
+    color: white;
 }
