@@ -29,17 +29,23 @@ var home = (function($) {
     }
 
     function summonerIdsLookup() {
-        $('#populate').on('click', function() {
-            var s1 = $('#summoner1').val();
-            var s2 = $('#summoner2').val();
-            var s3 = $('#summoner3').val();
-            var s4 = $('#summoner4').val();
-            var s5 = $('#summoner5').val();
+        $('#textBox').on('input', function() {
+            // var s1 = $('#summoner1').val();
+            // var s2 = $('#summoner2').val();
+            // var s3 = $('#summoner3').val();
+            // var s4 = $('#summoner4').val();
+            // var s5 = $('#summoner5').val();
+            var s1 = document.getElementById('summoner1').value;
+            var s2 = document.getElementById('summoner2').value;
+            var s3 = document.getElementById('summoner3').value;
+            var s4 = document.getElementById('summoner4').value;
+            var s5 = document.getElementById('summoner5').value;
             $.get('riot/summonerIds?s1=' + s1 + '&s2=' + s2 + '&s3=' + s3
                 + '&s4=' + s4 + '&s5=' + s5, function(data) {
                 summonerIds = data;
             });
         });
+
     }
 
     function getSummonerIds() {
@@ -50,11 +56,12 @@ var home = (function($) {
         $('.teamChamp').on('keyup', function() {
             var inputId = $(this).find('>:first-child').attr('id');
             var num = inputId.substring(inputId.length - 1);
-            var summonerId = summonerIds[$('#summoner' + num).val()];
+            //var summonerId = summonerIds[$('#summoner' + num).val()];
+            var summonerId = summonerIds[document.getElementById('summoner'+num).value];
             var key = $('#' + inputId).val().replace(/ /g,'');
-            //var d = new Date();
             if(champions.hasOwnProperty(key.toLowerCase())) {
                 var championId = champions[key.toLowerCase()];
+                console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
                     var image = document.getElementById('mastery' + num);
@@ -67,11 +74,13 @@ var home = (function($) {
 
     function anyChampSelection(){
         $('.teamChamp').on('keyup', function(){
-            var id = $(this).find('>:first-child').attr('id');
+            //var id = $(this).find('>:first-child').attr('id');
+            var id = $(this).find("input").attr('id');
             checkForMatchup('team', id);
         });
         $('.oppChamp').on('keyup', function(){
-            var id = $(this).find('>:first-child').attr('id');
+            //var id = $(this).find('>:first-child').attr('id');
+            var id = $(this).find("input").attr('id');
             checkForMatchup('opponent', id);
         });
     }
@@ -95,6 +104,7 @@ var home = (function($) {
     }
 
     function checkForMatchup(team, id){
+        console.log("id is: " + id);
         var opponent = getOpponent(id);
         var role = getRole(id);
         var league = "gold";//Find a way to get this later.
@@ -126,15 +136,15 @@ var home = (function($) {
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
                         if(role == 'Top')
-                            document.getElementById("percentage1").value = data;
+                            document.getElementById("percentage1").innerHTML = data.bold();
                         else if(role == 'Jungle')
-                            document.getElementById("percentage2").value = data;
+                            document.getElementById("percentage2").innerHTML = data.bold();
                         else if(role == 'Middle')
-                            document.getElementById("percentage3").value = data;
+                            document.getElementById("percentage3").innerHTML = data.bold();
                         else if(role == 'ADC')
-                            document.getElementById("percentage4").value = data;
+                            document.getElementById("percentage4").innerHTML = data.bold();
                         else if(role == 'Support')
-                            document.getElementById("percentage5").value = data;
+                            document.getElementById("percentage5").innerHTML = data.bold();
 
                         getScore(role);
                     });
@@ -162,7 +172,7 @@ var home = (function($) {
 
         var mastery = document.getElementById('mastery'+role).src;
         mastery = mastery.replace(location.port, '').replace(/\D/g,'');//get mastery number w/o port number.
-        var matchup = document.getElementById('percentage'+role).value;
+        var matchup = document.getElementById('percentage'+role).innerText;
         matchup = matchup.replace("%", "");
         console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup);
         var score = document.getElementById('score'+role);
@@ -176,15 +186,15 @@ var home = (function($) {
 
     function checkScoreDone()
     {
-        var p1 = document.getElementById('percentage1').value;
-        var p2 = document.getElementById('percentage2').value;
-        var p3 = document.getElementById('percentage3').value;
-        var p4 = document.getElementById('percentage4').value;
-        var p5 = document.getElementById('percentage5').value;
+        var p1 = document.getElementById('percentage1').innerText;
+        var p2 = document.getElementById('percentage2').innerText;
+        var p3 = document.getElementById('percentage3').innerText;
+        var p4 = document.getElementById('percentage4').innerText;
+        var p5 = document.getElementById('percentage5').innerText;
 
         console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
 
-        if(p1 != '' && p2 != '' && p3 != '' && p4 != '' && p5 != '')
+        if(p1 != '00.00%' && p2 != '00.00%' && p3 != '00.00%' && p4 != '00.00%' && p5 != '00.00%')
             document.getElementById('userMessage').style.opacity = '1';
 
     }
@@ -223,7 +233,7 @@ var home = (function($) {
 
     function getOpponent(teamAndRole)
     {
-        if(teamAndRole.toString().includes('champion')) {
+        if(teamAndRole.includes('champion')) {
             teamAndRole = teamAndRole.replace('champion', 'opponent');
             return teamAndRole;
         }
@@ -233,7 +243,7 @@ var home = (function($) {
         }
     }
 
-    var prevSelected;
+    var prevSelected = null;
 
     function populateSummonerNames() {
         var lines = document.getElementById("textBox").value.split('\n');
@@ -248,18 +258,31 @@ var home = (function($) {
     }
 
     function markForSwap(id) {
+
         var summoners = document.getElementsByName("summoners");
         for(var i = 0; i < 5; i++)
         {
             if(summoners[i] != prevSelected)
-                summoners[i].style.backgroundColor = "white";
+                summoners[i].style.backgroundColor = "#004085";
 
         }
         var box  = document.getElementById(id);
-        prevSelected = box;
 
-        if(box.value != "")
-            box.style.backgroundColor = "yellow";
+        if(prevSelected != null && box.id == prevSelected.id) {
+            if(box.style.backgroundColor == "steelblue")
+                box.style.backgroundColor = "#004085";
+            else
+                box.style.backgroundColor = "steelblue";
+        }
+        else
+        {
+            if(box.value != "")
+                box.style.backgroundColor = "steelblue";
+        }
+
+        if(prevSelected != null && box.id != prevSelected.id && prevSelected.style.backgroundColor == "steelblue")
+            swapRoles();
+        prevSelected = box;
 
     }
 
@@ -273,8 +296,8 @@ var home = (function($) {
         var champion2 = null;
         for(var i = 0; i < 5; i++)
         {
-            if(summoners[i].style.backgroundColor == "yellow") {
-                summoners[i].style.backgroundColor = "white";
+            if(summoners[i].style.backgroundColor == "steelblue") {
+                summoners[i].style.backgroundColor = "#004085";
                 if (summoner1 == null) {
                     summoner1 = summoners[i];
                     mastery1 = $('#mastery' + (i + 1));
