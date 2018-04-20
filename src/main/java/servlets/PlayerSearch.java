@@ -38,6 +38,10 @@ public class PlayerSearch extends HttpServlet {
                 Query query = session.createQuery(q);
                 query.setParameter("user_summoner", summoner);
                 List<GamesEntity> games = query.getResultList();
+                if(games.size() < 5) {
+                    getAndSaveRecentGames(request.getParameter("name"));
+                    games = query.getResultList();
+                }
                 Gson gson = new Gson();
 
                 response.setCharacterEncoding("UTF-8");
@@ -56,37 +60,7 @@ public class PlayerSearch extends HttpServlet {
         }
         else {
             RiotCalls call = new RiotCalls();
-            request.setAttribute("username", request.getParameter("name"));
-            String summonerId = call.getAccountId(request.getParameter("name"));
-
-            JsonArray matchlist = call.getRecentMatches(summonerId);
-            // analyze each match
-            ArrayList<GamesEntity> analyzedList = new ArrayList<>();
-            for(int i = 0; i < matchlist.size() && i < 11; i++) {
-                String gameId = Long.toString(matchlist.get(i).getAsJsonObject().get("gameId").getAsLong());
-                JsonObject match = call.getMatch(gameId);
-                GamesEntity analyzed = null;
-                if(match != null)
-                    analyzed = analyzeMatch(request.getParameter("name"), gameId, match);
-                if(analyzed != null) {
-                    analyzedList.add(analyzed);
-                }
-            }
-            // store games
-            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-            Session session = sessionFactory.openSession();
-            Transaction tx = session.beginTransaction();
-            for(GamesEntity analyzed : analyzedList) {
-                try {
-                    session.saveOrUpdate(analyzed);
-                }
-                catch(Exception e) {
-                    // do nothing
-                }
-            }
-            tx.commit();
-            session.close();
-            sessionFactory.close();
+            request.setAttribute("username", call.getSummonerName(request.getAttribute("name").toString()));
             request.getRequestDispatcher("/playerstats.jsp").forward(request, response);
         }
     }
@@ -181,6 +155,40 @@ public class PlayerSearch extends HttpServlet {
         else {
             return null;
         }
+    }
+
+    private void getAndSaveRecentGames(String name) throws IOException {
+        RiotCalls call = new RiotCalls();
+        String summonerId = call.getAccountId(name);
+
+        JsonArray matchlist = call.getRecentMatches(summonerId);
+        // analyze each match
+        ArrayList<GamesEntity> analyzedList = new ArrayList<>();
+        for(int i = 0; i < matchlist.size() && i < 11; i++) {
+            String gameId = Long.toString(matchlist.get(i).getAsJsonObject().get("gameId").getAsLong());
+            JsonObject match = call.getMatch(gameId);
+            GamesEntity analyzed = null;
+            if(match != null)
+                analyzed = analyzeMatch(name, gameId, match);
+            if(analyzed != null) {
+                analyzedList.add(analyzed);
+            }
+        }
+        // store games
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        for(GamesEntity analyzed : analyzedList) {
+            try {
+                session.saveOrUpdate(analyzed);
+            }
+            catch(Exception e) {
+                // do nothing
+            }
+        }
+        tx.commit();
+        session.close();
+        sessionFactory.close();
     }
 
     private Integer findMatchup(String lane, String role, int teamId, HashMap<Integer, Pair<String, String>> matchups, JsonObject match) {
