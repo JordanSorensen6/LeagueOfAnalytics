@@ -77,3 +77,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 src/main/resources/config.properties
+
+.DS_Store
