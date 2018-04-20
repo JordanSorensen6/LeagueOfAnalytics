@@ -5,7 +5,6 @@
 
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
-    <link rel="stylesheet" href="/resources/css/layout.css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="/resources/javascript/d3-tip.js"></script>
@@ -27,6 +26,10 @@ ${username} is very good at the game!
         <g id="yAxis"></g>
         <g id="plot"></g>
     </svg>
+</div>
+
+<div class="PlayerStatPic">
+    <img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">
 </div>
 </body>
 </html>

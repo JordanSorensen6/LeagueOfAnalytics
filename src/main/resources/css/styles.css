@@ -94,3 +94,13 @@
     top: 50%;
     left: 100%;
 }
+
+img {
+    height: 700px;
+    width: 700px;
+}
+
+.PlayerStatPic {
+    position: absolute;
+    left: 100px;
+}
