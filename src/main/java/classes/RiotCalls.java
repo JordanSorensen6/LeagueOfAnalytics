@@ -36,7 +36,7 @@ public class RiotCalls {
             JsonObject summonerDTO = parser.parse(result.toString()).getAsJsonObject();
             return summonerDTO.get("id").toString();
         } else {
-            System.out.println("Riot Status " + status + ", something broke :(");
+            System.out.println("Riot Status " + status + ", Summoner by name error");
         }
         return null;
     }
@@ -62,7 +62,7 @@ public class RiotCalls {
             JsonObject summonerDTO = parser.parse(result.toString()).getAsJsonObject();
             return summonerDTO.get("accountId").toString();
         } else {
-            System.out.println("Riot Status " + status + ", something broke :(");
+            System.out.println("Riot Status " + status + ", Summoner by name error");
         }
         return null;
     }
@@ -93,7 +93,7 @@ public class RiotCalls {
             return "0";
         }
         else {
-            System.out.println("Riot Status " + status + ", something broke :(");
+            System.out.println("Riot Status " + status + ", Champion mastery error");
             return "0";
         }
     }
@@ -123,7 +123,7 @@ public class RiotCalls {
             return null;
         }
         else {
-            System.out.println("Riot Status " + status + ", something broke :(");
+            System.out.println("Riot Status " + status + ", recent matchlist by account error");
             return null;
         }
     }
@@ -152,7 +152,7 @@ public class RiotCalls {
             return null;
         }
         else {
-            System.out.println("Riot Status " + status + ", something broke :(");
+            System.out.println("Riot Status " + status + ", matches by matchId error");
             return null;
         }
     }

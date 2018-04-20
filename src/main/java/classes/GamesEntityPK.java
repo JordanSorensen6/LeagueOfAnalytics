@@ -5,16 +5,16 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 public class GamesEntityPK implements Serializable {
-    private int matchId;
+    private long matchId;
     private String summoner;
 
     @Column(name = "match_id")
     @Id
-    public int getMatchId() {
+    public long getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(int matchId) {
+    public void setMatchId(long matchId) {
         this.matchId = matchId;
     }
 
@@ -43,7 +43,7 @@ public class GamesEntityPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = matchId;
+        int result = (int) (matchId ^ (matchId >>> 32));
         result = 31 * result + (summoner != null ? summoner.hashCode() : 0);
         return result;
     }

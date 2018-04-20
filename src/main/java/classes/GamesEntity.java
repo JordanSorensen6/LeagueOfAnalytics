@@ -1,24 +1,23 @@
 package classes;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "games", schema = "public", catalog = "LeagueOfAnalytics")
 @IdClass(GamesEntityPK.class)
 public class GamesEntity {
-    private int matchId;
+    private long matchId;
     private String summoner;
     private String outcome;
     private double score;
 
     @Id
     @Column(name = "match_id")
-    public int getMatchId() {
+    public long getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(int matchId) {
+    public void setMatchId(long matchId) {
         this.matchId = matchId;
     }
 
@@ -71,7 +70,7 @@ public class GamesEntity {
     public int hashCode() {
         int result;
         long temp;
-        result = matchId;
+        result = (int) (matchId ^ (matchId >>> 32));
         result = 31 * result + (summoner != null ? summoner.hashCode() : 0);
         result = 31 * result + (outcome != null ? outcome.hashCode() : 0);
         temp = Double.doubleToLongBits(score);

@@ -80,7 +80,7 @@ public class Scoring {
                 stat = Double.parseDouble(line.replaceAll("[^\\d.]", ""));
                 stat *= 100;
                 stat = Math.round(stat * 100.0) / 100.0;
-                System.out.println(stat);
+                //System.out.println(stat);
                 break;
             }
         }

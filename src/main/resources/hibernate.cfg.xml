@@ -7,9 +7,9 @@
         <property name="connection.url">jdbc:postgresql://localhost:5432/LeagueOfAnalytics</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
 
-        <!-- DB schema will be updated if needed -->
         <property name="connection.username">postgres</property>
         <property name="connection.password">password</property>
+        <!-- DB schema will be updated if needed -->
         <mapping class="classes.GamesEntity"/>
     </session-factory>
 </hibernate-configuration>
