@@ -1,6 +1,7 @@
 package servlets;
 
 import classes.*;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import javafx.util.Pair;
@@ -8,15 +9,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class PlayerSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,9 +27,32 @@ public class PlayerSearch extends HttpServlet {
         if(uri.equals("/search")) {
             request.getRequestDispatcher("/playersearch.jsp").forward(request, response);
         }
-        else if(Pattern.compile("^/history/search?user=*$").matcher(uri).matches()) {
-            // pull history from database
-            
+        else if(uri.equals("/history/search")) {
+            RiotCalls call = new RiotCalls();
+            String summoner = call.getSummonerName(request.getParameter("user"));
+            if(summoner != null && summoner != "") {
+                // pull history from database
+                SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+                Session session = sessionFactory.openSession();
+                String q = "FROM GamesEntity AS G WHERE G.summoner = :user_summoner";
+                Query query = session.createQuery(q);
+                query.setParameter("user_summoner", summoner);
+                List<GamesEntity> games = query.getResultList();
+                Gson gson = new Gson();
+
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("application/json");
+                PrintWriter writer = response.getWriter();
+                writer.write(gson.toJson(games));
+                writer.close();
+            }
+            else {
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("application/json");
+                PrintWriter writer = response.getWriter();
+                writer.write("");
+                writer.close();
+            }
         }
         else {
             RiotCalls call = new RiotCalls();

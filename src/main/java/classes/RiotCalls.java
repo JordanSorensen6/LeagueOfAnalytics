@@ -67,6 +67,32 @@ public class RiotCalls {
         return null;
     }
 
+    public String getSummonerName(String summoner) throws IOException {
+        String apiKey = config.getRiotApiKey();
+        String url = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summoner;
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpGet req = new HttpGet(url);
+        req.addHeader("X-Riot-Token", apiKey);
+
+        HttpResponse resp = client.execute(req);
+
+        int status = resp.getStatusLine().getStatusCode();
+        if (status == 200) {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(resp.getEntity().getContent()));
+            StringBuffer result = new StringBuffer();
+            String line = "";
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+            JsonParser parser = new JsonParser();
+            JsonObject summonerDTO = parser.parse(result.toString()).getAsJsonObject();
+            return summonerDTO.get("name").getAsString();
+        } else {
+            System.out.println("Riot Status " + status + ", Summoner by name error");
+        }
+        return null;
+    }
+
     public String getChampionMastery(String summonerId, String championId) throws IOException {
         String apiKey = config.getRiotApiKey();
         String url = "https://na1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/"
