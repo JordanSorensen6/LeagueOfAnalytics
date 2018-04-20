@@ -7,6 +7,9 @@
 
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="/resources/javascript/BarChart.js"></script>
 </head>
 <body>
 
@@ -25,6 +28,16 @@
 <script>
     $('#nav-app').addClass('active');
 
+    d3.json("/resources/data/gold_data.json", function (error, data) {
 
+        data.forEach(function (d) {
+            d["total games"] = d.wins + d.losses;
+            d["percentage"] = d.wins/d["total games"]*100;
+        });
+
+        let chart = new BarChart(data);
+        chart.updateChart();
+
+    });
 </script>
 </html>

@@ -60,7 +60,6 @@ class PlotChart{
              * pass this as an argument to the tooltip_render function then,
              * return the HTML content returned from that method.
              * */
-            console.log(d["result"]);
             let tooltip_data = {
                 "game id": d["game"],
                 "score":d["score"],
