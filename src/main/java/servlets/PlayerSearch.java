@@ -27,7 +27,7 @@ public class PlayerSearch extends HttpServlet {
         if(uri.equals("/search")) {
             request.getRequestDispatcher("/playersearch.jsp").forward(request, response);
         }
-        else if(uri.equals("/history/search")) {
+        else if(uri.equals("/history")) {
             RiotCalls call = new RiotCalls();
             String summoner = call.getSummonerName(request.getParameter("user"));
             if(summoner != null && summoner != "") {
