@@ -1,0 +1,37 @@
+[
+  {
+    "score":15,
+    "wins":1,
+    "losses":0
+  },
+  {
+    "score":14,
+    "wins":2,
+    "losses":0
+  },
+  {
+    "score":13.5,
+    "wins":0,
+    "losses":1
+  },
+  {
+    "score":13,
+    "wins":3,
+    "losses":1
+  },
+  {
+    "score":12.5,
+    "wins":6,
+    "losses":3
+  },
+  {
+    "score":12,
+    "wins":9,
+    "losses":3
+  },
+  {
+    "score":11.5,
+    "wins":13,
+    "losses":11
+  },
+]
