@@ -15,6 +15,13 @@
 
 <jsp:include page="navbar.jsp"/>
 
+<div>
+    <svg width="500" height="400" id="barChart">
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
+        <g id="bars"></g>
+    </svg>
+</div>
 
 
 </body>

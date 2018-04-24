@@ -23,24 +23,24 @@ class PlotChart{
      * @return text HTML content for tool tip
      */
     tooltip_render(tooltip_data) {
-        let text = "<h4 class =" + tooltip_data["result"] + " >" + tooltip_data["game id"] + "</h4>";
+        var text = "<h4 class =" + tooltip_data["result"] + " >" + tooltip_data["game id"] + "</h4>";
         //text += "Electoral Votes: " + tooltip_data.electoralVotes;
 
         return text;
     }
 
     updateChart(){
-        let padding = 60;
-        let width = 500 - 2 * padding;
-        let height = 400 - 2 * padding;
-        let radius = 8;
-        let clickRadius = 10;
+        var padding = 60;
+        var width = 500 - 2 * padding;
+        var height = 400 - 2 * padding;
+        var radius = 8;
+        var clickRadius = 10;
 
-        let maxGame = d3.max(this.data, function (d){
+        var maxGame = d3.max(this.data, function (d){
             return d["g"];
         });
 
-        let tip = d3.tip().attr('class', 'd3-tip')
+        var tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
             .offset(function () {
                 return [0, 0];
@@ -60,7 +60,7 @@ class PlotChart{
              * pass this as an argument to the tooltip_render function then,
              * return the HTML content returned from that method.
              * */
-            let tooltip_data = {
+            var tooltip_data = {
                 "game id": d["game"],
                 "score":d["score"],
                 "result":d["result"]
@@ -68,32 +68,32 @@ class PlotChart{
         return this.tooltip_render(tooltip_data);
     });
 
-        let xScale = d3.scaleLinear()
+        var xScale = d3.scaleLinear()
             .domain([0, maxGame])
             .range([0, width]);
-        let xAxis = d3.axisBottom();
+        var xAxis = d3.axisBottom();
         xAxis.scale(xScale);
         d3.select('#xAxis')
             .classed("axis", true)
             .attr("transform", "translate(" + padding + "," + (height/2 + padding) + ")")
             .call(xAxis);
 
-        let yScale = d3.scaleLinear()
+        var yScale = d3.scaleLinear()
             .domain([10, -10])
             .range([0, height]);
-        let yAxis = d3.axisLeft();
+        var yAxis = d3.axisLeft();
         yAxis.scale(yScale);
-        let y = d3.select('#yAxis')
+        var y = d3.select('#yAxis')
             .transition()
             .duration(3000)
             .attr("transform", "translate(" + padding + "," + padding + ")")
             .call(yAxis);
 
-        let newYScale = d3.scaleLinear()
+        var newYScale = d3.scaleLinear()
             .domain([-10, 10])
             .range([0, height]);
 
-        let chart = d3.select('#plot').selectAll("circle")
+        var chart = d3.select('#plot').selectAll("circle")
             .data(this.data);
         chart = chart
             .enter()

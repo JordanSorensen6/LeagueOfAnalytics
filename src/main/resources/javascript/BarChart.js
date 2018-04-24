@@ -3,37 +3,80 @@ class BarChart{
 
     constructor(data){
         this.data = data;
+        console.log(this.data);
     }
 
     updateChart(){
-        let padding = 60;
-        let width = 500 - 2 * padding;
-        let height = 400 - 2 * padding;
+        var padding = 60;
+        var width = 500 - 2 * padding;
+        var height = 400 - 2 * padding;
 
-        let maxScore = d3.max(this.data, function (d){
+        var maxScore = d3.max(this.data, function (d){
             return d["score"];
         });
-        let minScore = d3.min(this.data, function (d){
+        var minScore = d3.min(this.data, function (d){
             return d["score"];
         });
 
-        let maxPercentage = d3.max(this.data, function (d){
+        var maxPercentage = d3.max(this.data, function (d){
             return d["percentage"];
         });
-        let minPercentage = d3.min(this.data, function (d){
+        var minPercentage = d3.min(this.data, function (d){
             return d["percentage"];
         });
 
-        let xScale = d3.scaleLinear()
+        var colorScale = d3.scaleLinear()
+            .domain([0, maxPercentage])
+            .range(["lightblue", "steelblue"]);
+
+        var xScale = d3.scaleLinear()
             .domain([minScore, maxScore])
             .range([0, width]);
-        let xAxis = d3.axisBottom();
+        var xAxis = d3.axisBottom();
         xAxis.scale(xScale);
         d3.select('#xAxis')
             .classed("axis", true)
             .attr("transform", "translate(" + padding + "," + (height + padding) + ")")
             .call(xAxis);
 
-        //let yScale =
+        var yScale = d3.scaleLinear()
+            .domain([100, 0])
+            .range([0, height]);
+        var yAxis = d3.axisLeft();
+        yAxis.scale(yScale);
+        var y = d3.select('#yAxis')
+            .transition()
+            .duration(3000)
+            .attr("transform", "translate(" + padding + "," + padding + ")")
+            .call(yAxis);
+
+        var newYScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range([0, height]);
+
+        var barChart = d3.select('#bars').selectAll("rect")
+            .data(this.data);
+        barChart = barChart
+            .enter()
+            .append("rect")
+            .merge(barChart);
+
+        barChart
+            .transition()
+            .duration(3000)
+            .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
+            .attr("height", function(d, i){
+                return newYScale(d["percentage"]);
+            })
+            .attr("width", 10)
+            .attr("y", 0)
+            .attr("x", function (d, i) {
+                return xScale(d["score"]);
+            })
+            .attr("fill", function (d) {
+                return colorScale(d["percentage"]);
+            })
+            .attr("stroke", "darkgray")
+            .attr("stroke-width", "1px");
     }
 }
