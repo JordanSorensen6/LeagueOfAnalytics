@@ -3,6 +3,10 @@
     stroke: #FFF;
 }
 
+.chart {
+    background-color: white;
+}
+
 .loss{
     fill: #de2d26;
     color: #de2d26;
@@ -89,4 +93,14 @@
     /*margin: -4px 0 0 -1px;*/
     top: 50%;
     left: 100%;
+}
+
+img {
+    height: 700px;
+    width: 700px;
+}
+
+.PlayerStatPic {
+    position: absolute;
+    left: 100px;
 }

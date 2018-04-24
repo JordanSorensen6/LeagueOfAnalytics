@@ -5,7 +5,6 @@
 
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
-    <link rel="stylesheet" href="/resources/css/layout.css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="/resources/javascript/d3-tip.js"></script>
@@ -21,12 +20,16 @@
 ${username} is very good at the game!
 
 
-<div>
+<div class="chart">
     <svg width="500" height="400" id="plotChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>
         <g id="plot"></g>
     </svg>
+</div>
+
+<div class="PlayerStatPic">
+    <img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">
 </div>
 </body>
 </html>
@@ -34,14 +37,14 @@ ${username} is very good at the game!
     $('#nav-search').addClass('active');
 
 
-
-    d3.json("/resources/data/fake_data.json", function (error, data) {
-
+    $.get('/history?user=' + "${username}", function(data){
+        console.log(data);
         data.forEach(function (d) {
             d.g = +d.game;
             d.s = +d.score;
         });
-        let chart = new PlotChart(data);
+        var chart = new PlotChart(data);
         chart.updateChart();
     });
+
 </script>
