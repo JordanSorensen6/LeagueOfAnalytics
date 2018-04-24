@@ -37,14 +37,14 @@ ${username} is very good at the game!
     $('#nav-search').addClass('active');
 
 
-
-    d3.json("/resources/data/fake_data.json", function (error, data) {
-
+    $.get('/history?user=' + "${username}", function(data){
+        console.log(data);
         data.forEach(function (d) {
             d.g = +d.game;
             d.s = +d.score;
         });
-        let chart = new PlotChart(data);
+        var chart = new PlotChart(data);
         chart.updateChart();
     });
+
 </script>
