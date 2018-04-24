@@ -39,7 +39,7 @@ public class PlayerSearch extends HttpServlet {
                 query.setParameter("user_summoner", summoner);
                 List<GamesEntity> games = query.getResultList();
                 if(games.size() < 5) {
-                    getAndSaveRecentGames(request.getParameter("name"));
+                    getAndSaveRecentGames(request.getParameter("user"));
                     games = query.getResultList();
                 }
                 Gson gson = new Gson();
