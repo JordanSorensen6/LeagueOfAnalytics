@@ -1,0 +1,106 @@
+
+.scoreChart{
+    stroke: #FFF;
+}
+
+.chart {
+    background-color: white;
+}
+
+.loss{
+    fill: #de2d26;
+    color: #de2d26;
+    text-anchor:end;
+}
+
+.win{
+    fill: #3182bd;
+    text-anchor:start;
+    color: #3182bd;
+}
+
+.dodge{
+    fill: #D3D3D3;
+    color: #D3D3D3;
+    text-anchor:start;
+}
+
+.highlighted{
+    stroke: #404040;;
+    stroke-width:4;
+}
+
+
+.d3-tip {
+    /*line-height: 5;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 400px;
+    border-style: groove;
+    /*padding: 12px;*/
+    background: #FFFFFF;
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    pointer-events: none;
+}
+.tooltip-title{
+    font-size:18px;
+    font-family: "Arial Black";
+
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    /*box-sizing: border-box;*/
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    /*line-height: 1;*/
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+    content: "\25BC";
+    /*margin: -1px 0 0 0;*/
+    top: 100%;
+    left: 0;
+    text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+    content: "\26A0";
+    /*margin: -4px 0 0 0;*/
+    top: -800px;
+    left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+    content: "\25B2";
+    /*margin: 4px 0 1px 0;*/
+    top: -8px;
+    left: 1481px;
+    text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+    content: "\25B6";
+    /*margin: -4px 0 0 -1px;*/
+    top: 50%;
+    left: 100%;
+}
+
+img {
+    height: 700px;
+    width: 700px;
+}
+
+.PlayerStatPic {
+    position: absolute;
+    left: 100px;
+}

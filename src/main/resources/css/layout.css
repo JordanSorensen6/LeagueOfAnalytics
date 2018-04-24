@@ -1,0 +1,306 @@
+body {
+    color: yellow;
+    background-color: black;
+}
+
+.gridLayout {
+    display: grid;
+    row-span: 6;
+    column-span: 9;
+    align-items: center;
+}
+.positionAndName{
+    display: grid;
+    row-span: 2;
+    column-span: 1;
+}
+.position{
+    grid-column: 1;
+    grid-row: 1;
+}
+.name{
+    grid-column: 1;
+    grid-row: 2;
+}
+.role {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.teamSummoners {
+    grid-column: 2;
+    grid-row: 1;
+}
+.teamChampions {
+    grid-column: 3;
+    grid-row: 1;
+}
+.championMastery {
+    grid-column: 5;
+    grid-row: 1;
+}
+.opponentChampions {
+    grid-column: 8;
+    grid-row: 1;
+}
+.matchRating {
+    grid-column: 6;
+    grid-row: 1;
+}
+.score {
+    grid-column: 9;
+    grid-row: 1;
+}
+
+.top {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.jungle {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.mid {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.bot {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+.support {
+    grid-column: 1;
+    grid-row: 6;
+}
+
+.summonerTop {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.summonerJungle {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.summonerMid {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.summonerBot {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.summonerSupport {
+    grid-column: 2;
+    grid-row: 6;
+}
+
+.teamChampTop {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.teamChampJungle {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.teamChampMid {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+.teamChampBot {
+    grid-column: 3;
+    grid-row: 5;
+}
+
+.teamChampSupport {
+    grid-column: 3;
+    grid-row: 6;
+}
+
+.teamChampTopPic {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.teamChampJunglePic {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.teamChampMidPic {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+.teamChampBotPic {
+    grid-column: 4;
+    grid-row: 5;
+}
+
+.teamChampSupportPic {
+    grid-column: 4;
+    grid-row: 6;
+}
+
+.masteryTop {
+    grid-column: 5;
+    grid-row: 2;
+}
+
+.masteryJungle {
+    grid-column: 5;
+    grid-row: 3;
+}
+
+.masteryMid {
+    grid-column: 5;
+    grid-row: 4;
+}
+
+.masteryBot {
+    grid-column: 5;
+    grid-row: 5;
+}
+
+.masterySupport {
+    grid-column: 5;
+    grid-row: 6;
+}
+
+.oppChampTopPic {
+    grid-column: 7;
+    grid-row: 2;
+}
+
+.oppChampJunglePic {
+    grid-column: 7;
+    grid-row: 3;
+}
+
+.oppChampMidPic {
+    grid-column: 7;
+    grid-row: 4;
+}
+
+.oppChampBotPic {
+    grid-column: 7;
+    grid-row: 5;
+}
+
+.oppChampSupportPic {
+    grid-column: 7;
+    grid-row: 6;
+}
+.oppChampTop {
+    grid-column: 8;
+    grid-row: 2;
+}
+
+.oppChampJungle {
+    grid-column: 8;
+    grid-row: 3;
+}
+
+.oppChampMid {
+    grid-column: 8;
+    grid-row: 4;
+}
+
+.oppChampBot {
+    grid-column: 8;
+    grid-row: 5;
+}
+
+.oppChampSupport {
+    grid-column: 8;
+    grid-row: 6;
+}
+
+.winPerTop {
+    grid-column: 6;
+    grid-row: 2;
+}
+
+.winPerJungle {
+    grid-column: 6;
+    grid-row: 3;
+}
+
+.winPerMid {
+    grid-column: 6;
+    grid-row: 4;
+}
+
+.winPerBot {
+    grid-column: 6;
+    grid-row: 5;
+}
+
+.winPerSupport {
+    grid-column: 6;
+    grid-row: 6;
+}
+
+.scoreTop{
+    grid-column: 9;
+    grid-row: 2;
+}
+
+.scoreJungle{
+    grid-column: 9;
+    grid-row: 3;
+}
+
+.scoreMid{
+    grid-column: 9;
+    grid-row: 4;
+}
+
+.scoreBot{
+    grid-column: 9;
+    grid-row: 5;
+}
+
+.scoreSupport{
+    grid-column: 9;
+    grid-row: 6;
+}
+
+.totalScore {
+    text-align: center;
+}
+
+#userMessage{
+    text-align: center;
+    opacity: 0;
+    transition: 2s opacity;
+}
+
+textarea {
+    resize: none;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}
+
+b {
+    color: white;
+}
+
+input{
+    background: #004085;
+    border-color: #005cbf;
+    color: white;
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "game":"1",
+    "score":"-9",
+    "result": "loss"
+  },
+  {
+    "game":"2",
+    "score":"-7",
+    "result": "loss"
+  },
+  {
+    "game":"3",
+    "score":"-3",
+    "result":"win"
+  },
+  {
+    "game":"4",
+    "score":"-4",
+    "result":"dodge"
+  },
+  {
+    "game":"5",
+    "score":"2",
+    "result":"win"
+  },
+  {
+    "game":"6",
+    "score":"0",
+    "result": "loss"
+  },
+  {
+    "game":"7",
+    "score":"1",
+    "result":"win"
+  },
+  {
+    "game":"8",
+    "score":"2",
+    "result":"win"
+  },
+  {
+    "game":"9",
+    "score":"4",
+    "result":"win"
+  },
+  {
+    "game":"10",
+    "score":"5",
+    "result":"win"
+  }
+]

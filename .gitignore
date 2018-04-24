@@ -57,6 +57,10 @@ cmake-build-release/
 
 # IntelliJ
 out/
+target/*
+
+#version control settings
+vcs.xml
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -72,3 +76,9 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+
+src/main/resources/config.properties
+src/main/resources/hibernate.cfg.xml
+
+.DS_Store
