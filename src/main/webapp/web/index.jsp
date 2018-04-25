@@ -53,17 +53,6 @@
     <div class="teamChampBotPic"><img id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
     <div class="teamChampSupportPic"><img id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
 
-    <%--<div class="teamChamp teamChampTop"><input type="text" id="champion1" placeholder="Top Champion"><img id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>--%>
-    <%--<div class="teamChamp teamChampJungle"><input type="text" id="champion2" placeholder="Jungle Champion"><img id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>--%>
-    <%--<div class="teamChamp teamChampMid"><input type="text" id="champion3" placeholder="Mid Champion"><img id="teamImg3" src="/resources/images/champion/placeholderTeam.png"></div>--%>
-    <%--<div class="teamChamp teamChampBot"><input type="text" id="champion4" placeholder="Bot Champion"><img id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>--%>
-    <%--<div class="teamChamp teamChampSupport"><input type="text" id="champion5" placeholder="Support Champion"><img id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>--%>
-
-    <%--<div class="masteryTop"><input type="number" id="mastery1" placeholder="0" readonly=""></div>--%>
-    <%--<div class="masteryJungle"><input type="number" id="mastery2" placeholder="0" readonly=""></div>--%>
-    <%--<div class="masteryMid"><input type="number" id="mastery3" placeholder="0" readonly=""></div>--%>
-    <%--<div class="masteryBot"><input type="number" id="mastery4" placeholder="0" readonly=""></div>--%>
-    <%--<div class="masterySupport"><input type="number" id="mastery5" placeholder="0" readonly=""></div>--%>
 
     <div class="masteryTop"><img id="mastery1" src="/resources/images/L0.png"></div>
     <div class="masteryJungle"><img id="mastery2" src="/resources/images/L0.png"></div>
@@ -71,11 +60,6 @@
     <div class="masteryBot"><img id="mastery4" src="/resources/images/L0.png"></div>
     <div class="masterySupport"><img id="mastery5" src="/resources/images/L0.png"></div>
 
-    <%--<div class="oppChamp oppChampTop"><img id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"><input type="text" id="opponent1" placeholder="Opponent Top"></div>--%>
-    <%--<div class="oppChamp oppChampJungle"><img id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"><input type="text" id="opponent2" placeholder="Opponent Jungle"></div>--%>
-    <%--<div class="oppChamp oppChampMid"><img id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"><input type="text" id="opponent3" placeholder="Opponent Mid"></div>--%>
-    <%--<div class="oppChamp oppChampBot"><img id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"><input type="text" id="opponent4" placeholder="Opponent Bot"></div>--%>
-    <%--<div class="oppChamp oppChampSupport"><img id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"><input type="text" id="opponent5" placeholder="Opponent Support"></div>--%>
 
     <div class="oppChampTopPic"><img id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
     <div class="oppChampJunglePic"><img id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
@@ -88,12 +72,6 @@
     <div class="oppChamp oppChampMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" id="opponent3" placeholder="Opponent Mid"></div></div></div>
     <div class="oppChamp oppChampBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" id="opponent4" placeholder="Opponent Bot"></div></div></div>
     <div class="oppChamp oppChampSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" id="opponent5" placeholder="Opponent Support"></div></div></div>
-
-    <%--<div class="winPerTop"><input type="text" id="percentage1" placeholder="00.00%" readonly=""></div>--%>
-    <%--<div class="winPerJungle"><input type="text" id="percentage2" placeholder="00.00%" readonly=""></div>--%>
-    <%--<div class="winPerMid"><input type="text" id="percentage3" placeholder="00.00%" readonly=""></div>--%>
-    <%--<div class="winPerBot"><input type="text" id="percentage4" placeholder="00.00%" readonly=""></div>--%>
-    <%--<div class="winPerSupport"><input type="text" id="percentage5" placeholder="00.00%" readonly=""></div>--%>
 
     <div class="winPerTop" id="percentage1"><b>00.00%</b></div>
     <div class="winPerJungle" id="percentage2"><b>00.00%</b></div>
@@ -116,8 +94,6 @@ summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby" id="textBox" oninput="home.populateSummonerNames()"></textarea><br>
-<%--<button type="button" id="populate" name="populateButton" onclick="home.populateSummonerNames()">Populate</button>--%>
-<%--<button type="button" name="swapButton" onclick="home.swapRoles()">Swap Position</button>--%>
 
 <script>
     home.init();
