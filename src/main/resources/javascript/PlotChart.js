@@ -3,7 +3,7 @@ class PlotChart{
     constructor(data){
         this.data = data;
 
-        document.getElementById("PlayerStatImg").style.visibility = 'hidden';
+        //document.getElementById("PlayerStatImg").style.visibility = 'hidden';
     }
 
     chooseClass(score){
@@ -140,7 +140,15 @@ class PlotChart{
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
-                document.getElementById("PlayerStatImg").style.visibility = "visible";
+                if(d.outcome === "Win") {
+                    $('#PlayerLossPic').hide();
+                    $('#PlayerWinPic').show();
+                }
+                else {
+                    $('#PlayerLossPic').show();
+                    $('#PlayerWinPic').hide();
+                }
+                //document.getElementById("PlayerStatImg").style.visibility = "visible";
 
             })
             .on("mouseover", tip.show)
