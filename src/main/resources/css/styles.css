@@ -4,19 +4,20 @@
 }
 
 .chart {
-    background-color: white;
+    background-color: black;
 }
 
-.loss{
-    fill: #de2d26;
-    color: #de2d26;
+
+.fail{
+    fill: red;
+    color: red;
     text-anchor:end;
 }
 
 .win{
-    fill: #3182bd;
+    fill: #005cbf;
     text-anchor:start;
-    color: #3182bd;
+    color: #005cbf;
 }
 
 .dodge{
@@ -26,7 +27,7 @@
 }
 
 .highlighted{
-    stroke: #404040;;
+    stroke: white;
     stroke-width:4;
 }
 
@@ -103,4 +104,16 @@ img {
 .PlayerStatPic {
     position: absolute;
     left: 100px;
+}
+
+.axis line{
+    stroke: yellow;
+}
+
+.axis path{
+    stroke: yellow;
+}
+
+.axis text{
+    fill: yellow;
 }

@@ -25,7 +25,7 @@ class PlotChart{
      * @return text HTML content for tool tip
      */
     tooltip_render(tooltip_data) {
-        var text = "<h4 class =" + tooltip_data["result"] + " >" + tooltip_data["game id"] + "</h4>";
+        var text = "<h4 class =" + tooltip_data["outcome"] + " >" + "Score:" + tooltip_data["score"] + "</h4>";
         //text += "Electoral Votes: " + tooltip_data.electoralVotes;
 
         return text;
@@ -37,6 +37,13 @@ class PlotChart{
         var height = 400 - 2 * padding;
         var radius = 8;
         var clickRadius = 10;
+
+        var i = 1;
+        this.data.forEach(function (d) {
+            d["g"] = i;
+            i++;
+        });
+
 
         var maxGame = d3.max(this.data, function (d){
             return d["g"];
@@ -53,7 +60,7 @@ class PlotChart{
              * "state": State,
              * "winner":d.State_Winner
              * "electoralVotes" : Total_EV
-             * "result":[
+             * "outcome":[
              * {"nominee": D_Nominee_prop,"votecount": D_Votes,"percentage": D_Percentage,"party":"D"} ,
              * {"nominee": R_Nominee_prop,"votecount": R_Votes,"percentage": R_Percentage,"party":"R"} ,
              * {"nominee": I_Nominee_prop,"votecount": I_Votes,"percentage": I_Percentage,"party":"I"}
@@ -65,13 +72,15 @@ class PlotChart{
             var tooltip_data = {
                 "game id": d["game"],
                 "score":d["score"],
-                "result":d["result"]
+                "outcome":d["outcome"]
             };
         return this.tooltip_render(tooltip_data);
     });
 
+        console.log(this.data);
+
         var xScale = d3.scaleLinear()
-            .domain([0, maxGame])
+            .domain([0, this.data.length])
             .range([0, width]);
         var xAxis = d3.axisBottom();
         xAxis.scale(xScale);
@@ -80,19 +89,26 @@ class PlotChart{
             .attr("transform", "translate(" + padding + "," + (height/2 + padding) + ")")
             .call(xAxis);
 
+        var newxScale = d3.scaleLinear()
+            .domain([0, this.data.length])
+            .range([0, width]);
+
+        var scores = [];
+        for(var j = 15; j <= 15; j = j+.5){
+
+        }
         var yScale = d3.scaleLinear()
-            .domain([10, -10])
+            .domain([15, -15])
             .range([0, height]);
         var yAxis = d3.axisLeft();
         yAxis.scale(yScale);
         var y = d3.select('#yAxis')
-            .transition()
-            .duration(3000)
+            .classed("axis", true)
             .attr("transform", "translate(" + padding + "," + padding + ")")
             .call(yAxis);
 
         var newYScale = d3.scaleLinear()
-            .domain([-10, 10])
+            .domain([-15, 15])
             .range([0, height]);
 
         var chart = d3.select('#plot').selectAll("circle")
@@ -111,10 +127,10 @@ class PlotChart{
                 return newYScale(d.s);
             })
             .attr("cx", function (d) {
-                return xScale(d.g);
+                return newxScale(d.g);
             })
             .attr("class", function(d){
-                return d["result"];
+                return d["outcome"];
             });
 
         d3.select("#plot").selectAll("circle")

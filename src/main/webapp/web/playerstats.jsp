@@ -17,7 +17,7 @@
 
 <jsp:include page="navbar.jsp"/>
 
-${username} is very good at the game!
+${username} stats
 
 
 <div class="chart">
@@ -31,6 +31,12 @@ ${username} is very good at the game!
 <div class="PlayerStatPic">
     <img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">
 </div>
+
+<div class="chart">
+    <svg width="100" height="600">
+
+    </svg>
+</div>
 </body>
 </html>
 <script>
@@ -39,7 +45,6 @@ ${username} is very good at the game!
     $.get('/history?user=' + "${username}", function(data){
 
         data.forEach(function (d) {
-            d.g = +d.game;
             d.s = +d.score;
         });
         var chart = new PlotChart(data);
