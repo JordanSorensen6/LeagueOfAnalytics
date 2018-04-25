@@ -11,12 +11,18 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Pattern;
 
 public class RiotCalls {
     private static LoadConfig config = LoadConfig.getInstance();
 
     public String getSummonerId(String summoner) throws IOException {
         String apiKey = config.getRiotApiKey();
+        Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
+        // if name is invalid
+        if(!validName.matcher(summoner).matches()){
+            return null;
+        }
         String url = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summoner;
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet req = new HttpGet(url);
@@ -43,6 +49,11 @@ public class RiotCalls {
 
     public String getAccountId(String summoner) throws IOException {
         String apiKey = config.getRiotApiKey();
+        Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
+        // if name is invalid
+        if(!validName.matcher(summoner).matches()){
+            return null;
+        }
         String url = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summoner;
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet req = new HttpGet(url);
@@ -69,6 +80,11 @@ public class RiotCalls {
 
     public String getSummonerName(String summoner) throws IOException {
         String apiKey = config.getRiotApiKey();
+        Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
+        // if name is invalid
+        if(!validName.matcher(summoner).matches()){
+            return null;
+        }
         String url = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summoner;
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet req = new HttpGet(url);

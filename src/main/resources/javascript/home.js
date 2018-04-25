@@ -194,9 +194,33 @@ var home = (function($) {
 
         console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
 
+
         if(p1 != '00.00%' && p2 != '00.00%' && p3 != '00.00%' && p4 != '00.00%' && p5 != '00.00%') {
-            //var data = JSON.parse(scores);
-            document.getElementById('userMessage').innerHTML = "Based on (number) games, players with this score win (some percentage) of their games.".bold();
+
+            var totalScore = document.getElementById('totalScore');
+            var score = totalScore.innerText.replace('Total Score: ', '');
+            var total = 0;
+            var percentage = 0.0;
+            var message = "";
+
+            $.getJSON("/resources/data/gold_data.json", function(json) {
+                console.log("getting scores");
+                for(var i = 0; i < json.length; i++) {
+                    var obj = json[i];
+
+                    if(obj.score == score){
+                        total = obj.wins + obj.losses;
+                        percentage = (obj.wins / (obj.wins + obj.losses)) * 100;
+                        console.log('TOTAL: ' + total);
+                        console.log('PERCENTAGE: ' + percentage.toFixed(2));
+                        message = "Based on "+total+" games, players with this score win "+percentage.toFixed(2)+"% of their games.";
+                        document.getElementById('userMessage').innerHTML = message.bold();
+
+                    }
+
+                }
+            });
+            //document.getElementById('userMessage').innerHTML = "Based on (number) games, players with this score win (some percentage) of their games.".bold();
             document.getElementById('userMessage').style.opacity = '1';
         }
 
