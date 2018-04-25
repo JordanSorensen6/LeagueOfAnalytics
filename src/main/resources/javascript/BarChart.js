@@ -7,7 +7,12 @@
         var padding = 60;
         var width = 700 - 2 * padding;
         var height = 400 - 2 * padding;
-        var numbScores = data.length;
+        var numbGames = d3.sum(data, function (d) {
+            return d["total games"];
+        });
+        data.forEach(function (d) {
+            d["chance"] = d["total games"]/numbGames;
+        });
 
         var maxScore = d3.max(data, function (d){
             return d["score"];
@@ -32,7 +37,7 @@
             .range([0, width]);
         var xAxis = d3.axisBottom();
         xAxis.scale(xScale);
-        d3.select('#xAxis')
+        d3.selectAll('#xAxis')
             .classed("axis", true)
             .attr("transform", "translate(" + padding + "," + (height + padding) + ")")
             .call(xAxis);
@@ -42,7 +47,7 @@
             .range([0, height]);
         var yAxis = d3.axisLeft();
         yAxis.scale(yScale);
-        var y = d3.select('#yAxis')
+        var y = d3.selectAll('#yAxis')
             .attr("transform", "translate(" + padding + "," + padding + ")")
             .call(yAxis);
 
@@ -66,7 +71,7 @@
             .attr("height", function(d, i){
                 return newYScale(d["percentage"]);
             })
-            .attr("width", width/numbScores - 2)
+            .attr("width", width/62 - 1)
             .attr("y", 0)
             .attr("x", function (d, i) {
                 return xScale(d["score"]);

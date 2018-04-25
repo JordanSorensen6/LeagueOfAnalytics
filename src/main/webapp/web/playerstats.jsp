@@ -36,9 +36,8 @@ ${username} is very good at the game!
 <script>
     $('#nav-search').addClass('active');
 
-
     $.get('/history?user=' + "${username}", function(data){
-        console.log(data);
+
         data.forEach(function (d) {
             d.g = +d.game;
             d.s = +d.score;

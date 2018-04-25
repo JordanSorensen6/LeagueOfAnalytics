@@ -17,9 +17,6 @@
 
 
 <div>
-    <header>
-        <h2>Probability of winning based on assigned score</h2>
-    </header>
 
     <span>
     <label>ELO:</label>
@@ -32,11 +29,18 @@
     </select>
     </span>
 
+    <div>
+    <header>
+        <h2>Probability of winning based on assigned score</h2>
+    </header>
+
     <svg width="700" height="400" id="barChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>
         <g id="bars"></g>
     </svg>
+    </div>
+
 </div>
 
 
