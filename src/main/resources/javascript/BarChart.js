@@ -3,13 +3,13 @@ class BarChart{
 
     constructor(data){
         this.data = data;
-        console.log(this.data);
     }
 
     updateChart(){
         var padding = 60;
-        var width = 500 - 2 * padding;
+        var width = 700 - 2 * padding;
         var height = 400 - 2 * padding;
+        var numbScores = this.data.length;
 
         var maxScore = d3.max(this.data, function (d){
             return d["score"];
@@ -30,7 +30,7 @@ class BarChart{
             .range(["lightblue", "steelblue"]);
 
         var xScale = d3.scaleLinear()
-            .domain([minScore, maxScore])
+            .domain([-15, 15])
             .range([0, width]);
         var xAxis = d3.axisBottom();
         xAxis.scale(xScale);
@@ -45,8 +45,6 @@ class BarChart{
         var yAxis = d3.axisLeft();
         yAxis.scale(yScale);
         var y = d3.select('#yAxis')
-            .transition()
-            .duration(3000)
             .attr("transform", "translate(" + padding + "," + padding + ")")
             .call(yAxis);
 
@@ -62,13 +60,11 @@ class BarChart{
             .merge(barChart);
 
         barChart
-            .transition()
-            .duration(3000)
             .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
             .attr("height", function(d, i){
                 return newYScale(d["percentage"]);
             })
-            .attr("width", 10)
+            .attr("width", width/numbScores - 2)
             .attr("y", 0)
             .attr("x", function (d, i) {
                 return xScale(d["score"]);
@@ -78,5 +74,9 @@ class BarChart{
             })
             .attr("stroke", "darkgray")
             .attr("stroke-width", "1px");
+    }
+
+    changeData(){
+        console.log("hi");
     }
 }

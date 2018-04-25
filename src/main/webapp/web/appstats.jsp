@@ -15,8 +15,24 @@
 
 <jsp:include page="navbar.jsp"/>
 
+
 <div>
-    <svg width="500" height="400" id="barChart">
+    <header>
+        <h2>Probability of winning based on assigned score</h2>
+    </header>
+
+    <span>
+    <label>ELO:</label>
+    <select id="dataset" onchange="changeData()">
+        <option value="bronze">Bronze</option>
+        <option value="silver">Silver</option>
+        <option selected value="gold">Gold</option>
+        <option value="platinum">Platinum</option>
+        <option value="diamond">Diamond</option>
+    </select>
+    </span>
+
+    <svg width="700" height="400" id="barChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>
         <g id="bars"></g>
@@ -33,13 +49,17 @@
 
         data.forEach(function (d) {
             d["total games"] = d.wins + d.losses;
-            d["percentage"] = d.wins/d["total games"]*100;
+            d["percentage"] = d.wins / d["total games"] * 100;
         });
 
         var chart = new BarChart(data);
         chart.updateChart();
 
     });
+
+    function changeData() {
+        chart.changeData();
+    }
 
 
 </script>
