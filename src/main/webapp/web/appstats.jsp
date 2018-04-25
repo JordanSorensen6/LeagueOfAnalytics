@@ -4,6 +4,7 @@
     <title>App Stats</title>
 
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/css/styles.css"/>
 
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
@@ -29,7 +30,7 @@
     </select>
     </span>
 
-    <div>
+    <div class="chart">
     <header>
         <h2>Probability of winning based on assigned score</h2>
     </header>
@@ -39,6 +40,18 @@
         <g id="yAxis"></g>
         <g id="bars"></g>
     </svg>
+    </div>
+
+    <div class="chart">
+        <header>
+            <h2>Probability of getting assigned certain scores</h2>
+        </header>
+
+        <svg width="700" height="400" id="barChart">
+            <g id="xAxis"></g>
+            <g id="yAxis1"></g>
+            <g id="bars1"></g>
+        </svg>
     </div>
 
 </div>

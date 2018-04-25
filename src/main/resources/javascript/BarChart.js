@@ -10,8 +10,9 @@
         var numbGames = d3.sum(data, function (d) {
             return d["total games"];
         });
+
         data.forEach(function (d) {
-            d["chance"] = d["total games"]/numbGames;
+            d["chance"] = d["total games"]/numbGames*100;
         });
 
         var maxScore = d3.max(data, function (d){
@@ -47,7 +48,8 @@
             .range([0, height]);
         var yAxis = d3.axisLeft();
         yAxis.scale(yScale);
-        var y = d3.selectAll('#yAxis')
+        var y = d3.select('#yAxis')
+            .classed("axis", true)
             .attr("transform", "translate(" + padding + "," + padding + ")")
             .call(yAxis);
 
@@ -81,6 +83,63 @@
             })
             .attr("stroke", "darkgray")
             .attr("stroke-width", "1px");
+
+
+
+
+
+
+
+
+        var maxChance = d3.max(data, function (d){
+           return d["chance"]
+        });
+        var colorScale1 = d3.scaleLinear()
+            .domain([0, maxChance])
+            .range(["lightblue", "steelblue"]);
+        var yScale1 = d3.scaleLinear()
+            .domain([maxChance, 0])
+            .range([0, height]);
+        var yAxis1 = d3.axisLeft();
+        yAxis1.scale(yScale1);
+        var y1 = d3.select('#yAxis1')
+            .classed("axis", true)
+            .attr("transform", "translate(" + padding + "," + padding + ")")
+            .call(yAxis1);
+
+        var newYScale1 = d3.scaleLinear()
+            .domain([0, maxChance])
+            .range([0, height]);
+
+
+        var barChart1 = d3.select('#bars1').selectAll("rect")
+            .data(data);
+
+        barChart1.exit()
+            .remove();
+
+        barChart1 = barChart1
+            .enter()
+            .append("rect")
+            .merge(barChart1);
+
+        barChart1
+            .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
+            .attr("height", function(d, i){
+                return newYScale1(d["chance"]);
+            })
+            .attr("width", width/62 - 1)
+            .attr("y", 0)
+            .attr("x", function (d, i) {
+                return xScale(d["score"]);
+            })
+            .attr("fill", function (d) {
+                return colorScale1(d["chance"]);
+            })
+            .attr("stroke", "darkgray")
+            .attr("stroke-width", "1px");
+
+
     }
 
     function changeData(){
