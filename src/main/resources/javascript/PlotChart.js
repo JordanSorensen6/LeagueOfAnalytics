@@ -25,7 +25,7 @@ class PlotChart{
      * @return text HTML content for tool tip
      */
     tooltip_render(tooltip_data) {
-        var text = "<h4 class =" + tooltip_data["outcome"] + " >" + "Score:" + tooltip_data["score"] + "</h4>";
+        var text = "<h4 class =" + tooltip_data["outcome"] + " >" + "Score: " + tooltip_data["score"] + "</h4>";
         //text += "Electoral Votes: " + tooltip_data.electoralVotes;
 
         return text;
@@ -76,8 +76,6 @@ class PlotChart{
             };
         return this.tooltip_render(tooltip_data);
     });
-
-        console.log(this.data);
 
         var xScale = d3.scaleLinear()
             .domain([0, this.data.length])
@@ -148,6 +146,39 @@ class PlotChart{
             .on("mouseover", tip.show)
             .on("mouseout", tip.hide);
         d3.select("#plotChart").call(tip);
+
+        var legend = d3.select("#legend").selectAll("circle")
+            .data([{index:0, result:"win"}, {index:1, result:"fail"}, {index:2, result:"dodge"}, {index:3, result:"highlighted"}]);
+        legend
+            .enter()
+            .append("circle")
+            .attr("cx", 100)
+            .attr("cy", function (d){
+                return 40 + 50 * d["index"];
+            })
+            .attr("r", function (d) {
+                if(d["result"] == "highlighted"){
+                    return clickRadius;
+                }
+                return radius;
+            })
+            .attr("class", function (d) {
+                return d["result"];
+            });
+
+        legend
+            .enter()
+            .append("text")
+            .text(function (d){
+                return d["result"];
+            })
+            .attr("x", 120)
+            .attr("y", function (d){
+                return 45 + 50 * d["index"];
+            });
+
+
+
 
     }
 

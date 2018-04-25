@@ -21,11 +21,20 @@ ${username} stats
 
 
 <div class="chart">
+    <div class = "row">
     <svg width="500" height="400" id="plotChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>
         <g id="plot"></g>
     </svg>
+        <div>
+            <h4>Legend</h4>
+            <svg width="200" height="400" id="legend">
+
+            </svg>
+        </div>
+    </div>
+
 </div>
 
 <div class="PlayerStatPic">
