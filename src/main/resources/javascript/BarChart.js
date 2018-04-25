@@ -1,27 +1,25 @@
-class BarChart{
 
 
-    constructor(data){
-        this.data = data;
-    }
 
-    updateChart(){
+
+
+    function updateChart(data){
         var padding = 60;
         var width = 700 - 2 * padding;
         var height = 400 - 2 * padding;
-        var numbScores = this.data.length;
+        var numbScores = data.length;
 
-        var maxScore = d3.max(this.data, function (d){
+        var maxScore = d3.max(data, function (d){
             return d["score"];
         });
-        var minScore = d3.min(this.data, function (d){
+        var minScore = d3.min(data, function (d){
             return d["score"];
         });
 
-        var maxPercentage = d3.max(this.data, function (d){
+        var maxPercentage = d3.max(data, function (d){
             return d["percentage"];
         });
-        var minPercentage = d3.min(this.data, function (d){
+        var minPercentage = d3.min(data, function (d){
             return d["percentage"];
         });
 
@@ -53,7 +51,11 @@ class BarChart{
             .range([0, height]);
 
         var barChart = d3.select('#bars').selectAll("rect")
-            .data(this.data);
+            .data(data);
+
+        barChart.exit()
+            .remove();
+
         barChart = barChart
             .enter()
             .append("rect")
@@ -76,7 +78,18 @@ class BarChart{
             .attr("stroke-width", "1px");
     }
 
-    changeData(){
-        console.log("hi");
+    function changeData(){
+
+        var dataFile = document.getElementById('dataset').value;
+
+        d3.json("/resources/data/"+dataFile+"_data.json", function (error, data) {
+
+            data.forEach(function (d) {
+                d["total games"] = d.wins + d.losses;
+                d["percentage"] = d.wins / d["total games"] * 100;
+            });
+
+            updateChart(data);
+
+        });
     }
-}

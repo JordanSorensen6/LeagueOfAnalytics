@@ -9,7 +9,7 @@
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
 
     <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="/resources/javascript/BarChart.js"></script>
+    <script type="application/javascript" src="/resources/javascript/BarChart.js"></script>
 </head>
 <body>
 
@@ -52,14 +52,10 @@
             d["percentage"] = d.wins / d["total games"] * 100;
         });
 
-        var chart = new BarChart(data);
-        chart.updateChart();
+        updateChart(data);
 
     });
 
-    function changeData() {
-        chart.changeData();
-    }
 
 
 </script>
