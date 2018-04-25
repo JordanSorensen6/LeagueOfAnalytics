@@ -36,7 +36,7 @@
             d["percentage"] = d.wins/d["total games"]*100;
         });
 
-        let chart = new BarChart(data);
+        var chart = new BarChart(data);
         chart.updateChart();
 
     });
