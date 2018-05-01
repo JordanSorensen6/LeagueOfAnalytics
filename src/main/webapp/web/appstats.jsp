@@ -70,7 +70,7 @@
             d["percentage"] = d.wins / d["total games"] * 100;
         });
 
-        updateChart(data);
+        updateChart(16, data);
 
     });
 

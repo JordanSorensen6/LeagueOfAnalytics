@@ -3,7 +3,7 @@
 
 
 
-    function updateChart(data){
+    function updateChart(col, data){
         var padding = 60;
         var width = 700 - 2 * padding;
         var height = 400 - 2 * padding;
@@ -79,7 +79,10 @@
                 return xScale(d["score"]);
             })
             .attr("fill", function (d) {
-                return colorScale(d["percentage"]);
+                if(col == 16) {
+                    return colorScale(d["percentage"]);
+                }
+
             })
             .attr("stroke", "darkgray")
             .attr("stroke-width", "1px");
@@ -134,7 +137,9 @@
                 return xScale(d["score"]);
             })
             .attr("fill", function (d) {
-                return colorScale1(d["chance"]);
+                if(col == 16) {
+                    return colorScale1(d["chance"]);
+                }
             })
             .attr("stroke", "darkgray")
             .attr("stroke-width", "1px");
@@ -153,7 +158,7 @@
                 d["percentage"] = d.wins / d["total games"] * 100;
             });
 
-            updateChart(data);
+            updateChart(16, data);
 
         });
     }

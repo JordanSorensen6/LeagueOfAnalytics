@@ -3,12 +3,14 @@
 <head>
     <title>League Of Analytics</title>
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/css/styles.css"/>
     <link rel="stylesheet" href="/resources/css/layout.css"/>
 
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="resources/javascript/home.js"></script>
+    <script type="application/javascript" src="/resources/javascript/BarChart.js"></script>
 </head>
 <body>
 
@@ -88,6 +90,29 @@
 
     <h1 class="totalScore" id="totalScore">Your Score: 0</h1><hr>
 <p class="userMessage" id="userMessage"><b>Based on (number) games, players with this score win (some percentage) of their games.</b></p>
+<div class="chart">
+    <header>
+        <h2>Probability of winning based on assigned score</h2>
+    </header>
+
+    <svg width="700" height="400" id="barChart">
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
+        <g id="bars"></g>
+    </svg>
+</div>
+
+<div class="chart">
+    <header>
+        <h2>Probability of getting assigned certain scores</h2>
+    </header>
+
+    <svg width="700" height="400" id="barChart">
+        <g id="xAxis"></g>
+        <g id="yAxis1"></g>
+        <g id="bars1"></g>
+    </svg>
+</div>
 
 <textarea id="textBox" cols="50" rows="5" placeholder="summoner1 joined the lobby
 summoner2 joined the lobby

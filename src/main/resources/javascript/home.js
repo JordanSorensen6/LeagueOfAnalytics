@@ -216,6 +216,7 @@ var home = (function($) {
                         message = "Based on "+total+" games, players with this score win "+percentage.toFixed(2)+"% of their games.";
                         document.getElementById('userMessage').innerHTML = message.bold();
 
+                        updateChart(score, json);
                     }
 
                 }
