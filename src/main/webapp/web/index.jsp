@@ -9,6 +9,7 @@
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
 
+    <script src="https://d3js.org/d3.v4.js"></script>
     <script type="text/javascript" src="resources/javascript/home.js"></script>
     <script type="application/javascript" src="/resources/javascript/BarChart.js"></script>
 </head>
