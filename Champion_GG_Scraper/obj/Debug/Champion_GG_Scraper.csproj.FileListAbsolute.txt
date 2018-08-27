@@ -1,0 +1,11 @@
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\Champion_GG_Scraper.exe.config
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\Champion_GG_Scraper.exe
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\Champion_GG_Scraper.pdb
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\HtmlAgilityPack.dll
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\HtmlAgilityPack.pdb
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\HtmlAgilityPack.xml
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\obj\Debug\Champion_GG_Scraper.csprojResolveAssemblyReference.cache
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\obj\Debug\Champion_GG_Scraper.exe
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\obj\Debug\Champion_GG_Scraper.pdb
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\Newtonsoft.Json.dll
+c:\users\mitchell\documents\visual studio 2015\Projects\Champion_GG_Scraper\Champion_GG_Scraper\bin\Debug\Newtonsoft.Json.xml
