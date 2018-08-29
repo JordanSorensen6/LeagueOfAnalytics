@@ -237,7 +237,9 @@ var home = (function($) {
         var total = 0;
         total = parseFloat(score1) + parseFloat(score2) + parseFloat(score3) + parseFloat(score4) + parseFloat(score5);
         var totalScore = document.getElementById('totalScore');
+        sessionStorage.setItem('score', total.toString());
         totalScore.innerText = "Total Score: "+total;
+
 
     }
 
