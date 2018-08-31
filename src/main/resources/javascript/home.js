@@ -135,8 +135,10 @@ var home = (function($) {
                         console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
-                        if(role == 'Top')
+                        if(role == 'Top') {
                             document.getElementById("percentage1").innerHTML = data.bold();
+
+                        }
                         else if(role == 'Jungle')
                             document.getElementById("percentage2").innerHTML = data.bold();
                         else if(role == 'Middle')
