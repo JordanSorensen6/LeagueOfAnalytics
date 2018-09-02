@@ -17,3 +17,12 @@ C:/Users/Mitchell/Documents/Visual Studio 2015/Projects/ScoreCollector/ScoreColl
 /Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.csproj.CoreCompileInputs.cache
 /Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.exe
 /Users/Naoki/Dropbox/Senior Project/LeagueOfAnalytics/ScoreCollector/ScoreCollector/obj/Debug/ScoreCollector.pdb
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\bin\Debug\ScoreCollector.exe.config
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\obj\Debug\ScoreCollector.exe
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\obj\Debug\ScoreCollector.pdb
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\bin\Debug\ScoreCollector.exe
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\bin\Debug\ScoreCollector.pdb
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\ScoreCollector\ScoreCollector\obj\Debug\ScoreCollector.csprojResolveAssemblyReference.cache
