@@ -28,7 +28,7 @@ public class RiotAPI extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json");
             PrintWriter writer = response.getWriter();
-            writer.write(StaticChampions.champions);
+            writer.write(StaticChampions.getAllChampions());
             writer.close();
         } else if(Pattern.compile("^*/riot/summonerIds*$").matcher(uri).matches()) {
             //extract query params

@@ -13,7 +13,7 @@ var home = (function($) {
     function swapMap(json) {
         var ret = {};
         for(var key in json) {
-            ret[json[key].toLowerCase()] = key;
+            ret[json[key][1].replace(/[^a-zA-Z]/ig, '')] = json[key][1];
         }
         return ret;
     }
@@ -59,7 +59,7 @@ var home = (function($) {
             //var summonerId = summonerIds[$('#summoner' + num).val()];
             var summonerId = summonerIds[document.getElementById('summoner'+num).value];
             var key = $('#' + inputId).val().replace(/ /g,'');
-            if(champions.hasOwnProperty(key.toLowerCase())) {
+            if(champions.hasOwnProperty(key.replace(/[^a-zA-Z]/ig, ''))) {
                 var championId = champions[key.toLowerCase()];
                 console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
@@ -96,7 +96,7 @@ var home = (function($) {
         else
             newID = id.replace('opponent', 'oppImg');
 
-        if(champions.hasOwnProperty(champion.toLowerCase())){
+        if(champions.hasOwnProperty(champion.replace(/[^a-zA-Z]/ig, ''))){
             var image = document.getElementById(newID);
             console.log("updating champion image");
             image.src = "/resources/images/champion/"+champion+".png";
