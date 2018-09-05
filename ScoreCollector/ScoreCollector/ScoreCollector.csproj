@@ -50,6 +50,8 @@
     <Compile Include="GetMasteries.cs" />
     <Compile Include="GetMatchData.cs" />
     <Compile Include="GetStats.cs" />
+    <Compile Include="GetSummonerData.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
