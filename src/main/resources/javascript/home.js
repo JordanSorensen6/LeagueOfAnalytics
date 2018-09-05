@@ -135,16 +135,27 @@ var home = (function($) {
                         console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
-                        if(role == 'Top')
-                            document.getElementById("percentage1").innerHTML = data.bold();
-                        else if(role == 'Jungle')
-                            document.getElementById("percentage2").innerHTML = data.bold();
-                        else if(role == 'Middle')
-                            document.getElementById("percentage3").innerHTML = data.bold();
-                        else if(role == 'ADC')
-                            document.getElementById("percentage4").innerHTML = data.bold();
-                        else if(role == 'Support')
-                            document.getElementById("percentage5").innerHTML = data.bold();
+                        if(role == 'Top') {
+                            // TODO: still need to display bars
+                            var element = document.getElementById("percentage1");
+                            element.innerHTML = data.bold();
+                        }
+                        else if(role == 'Jungle') {
+                            var element = document.getElementById("percentage2");
+                            element.innerHTML = data.bold();
+                        }
+                        else if(role == 'Middle') {
+                            var element = document.getElementById("percentage3");
+                            element.innerHTML = data.bold();
+                        }
+                        else if(role == 'ADC') {
+                            var element = document.getElementById("percentage4");
+                            element.innerHTML = data.bold();
+                        }
+                        else if(role == 'Support') {
+                            var element = document.getElementById("percentage5");
+                            element.innerHTML = data.bold();
+                        }
 
                         getScore(role);
                     });
