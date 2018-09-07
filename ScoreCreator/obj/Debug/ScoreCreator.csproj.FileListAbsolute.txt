@@ -1,0 +1,6 @@
+c:\users\mitchell\documents\visual studio 2015\Projects\ScoreCreator\ScoreCreator\bin\Debug\ScoreCreator.exe.config
+c:\users\mitchell\documents\visual studio 2015\Projects\ScoreCreator\ScoreCreator\bin\Debug\ScoreCreator.exe
+c:\users\mitchell\documents\visual studio 2015\Projects\ScoreCreator\ScoreCreator\bin\Debug\ScoreCreator.pdb
+c:\users\mitchell\documents\visual studio 2015\Projects\ScoreCreator\ScoreCreator\obj\Debug\ScoreCreator.csprojResolveAssemblyReference.cache
+c:\users\mitchell\documents\visual studio 2015\Projects\ScoreCreator\ScoreCreator\obj\Debug\ScoreCreator.exe
+c:\users\mitchell\documents\visual studio 2015\Projects\ScoreCreator\ScoreCreator\obj\Debug\ScoreCreator.pdb
