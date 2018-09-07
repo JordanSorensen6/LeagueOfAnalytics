@@ -1,0 +1,6 @@
+c:\users\mitchell\documents\visual studio 2015\Projects\DataAnalyzer\DataAnalyzer\bin\Debug\DataAnalyzer.exe.config
+c:\users\mitchell\documents\visual studio 2015\Projects\DataAnalyzer\DataAnalyzer\bin\Debug\DataAnalyzer.exe
+c:\users\mitchell\documents\visual studio 2015\Projects\DataAnalyzer\DataAnalyzer\bin\Debug\DataAnalyzer.pdb
+c:\users\mitchell\documents\visual studio 2015\Projects\DataAnalyzer\DataAnalyzer\obj\Debug\DataAnalyzer.csprojResolveAssemblyReference.cache
+c:\users\mitchell\documents\visual studio 2015\Projects\DataAnalyzer\DataAnalyzer\obj\Debug\DataAnalyzer.exe
+c:\users\mitchell\documents\visual studio 2015\Projects\DataAnalyzer\DataAnalyzer\obj\Debug\DataAnalyzer.pdb
