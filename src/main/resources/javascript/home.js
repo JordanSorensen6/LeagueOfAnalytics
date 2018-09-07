@@ -135,35 +135,16 @@ var home = (function($) {
                         console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
-                        if(role == 'Top') {
-                            data = 15.00;
-                            // TODO: still need to display bars
-                            var element = document.getElementById("percentage1");
-                            var colorScale = d3.scaleLinear()
-                                .domain([0, 100])
-                                .range(["lightblue", "steelblue"]);
-                            element.innerHTML = (data+"%").bold();
-                            console.log("hellohello");
-                            console.log(data + "% 12%");
-                            element.style.width = data + "%";
-                            element.style.backgroundColor = colorScale(data);
-                        }
-                        else if(role == 'Jungle') {
-                            var element = document.getElementById("percentage2");
-                            element.innerHTML = data.bold();
-                        }
-                        else if(role == 'Middle') {
-                            var element = document.getElementById("percentage3");
-                            element.innerHTML = data.bold();
-                        }
-                        else if(role == 'ADC') {
-                            var element = document.getElementById("percentage4");
-                            element.innerHTML = data.bold();
-                        }
-                        else if(role == 'Support') {
-                            var element = document.getElementById("percentage5");
-                            element.innerHTML = data.bold();
-                        }
+                        if(role == 'Top')
+                            displayBars(data, "percentage1");
+                        else if(role == 'Jungle')
+                            displayBars(data, "percentage2");
+                        else if(role == 'Middle')
+                            displayBars(data, "percentage3");
+                        else if(role == 'ADC')
+                            displayBars(data, "percentage4");
+                        else if(role == 'Support')
+                            displayBars(data, "percentage5");
 
                         getScore(role);
                     });
@@ -174,6 +155,30 @@ var home = (function($) {
         else {//Don't check for matchup info. The opponent is empty.
             console.log('No opponent.');
         }
+    }
+
+    function displayBars(data, percentageID){
+        var element = document.getElementById(percentageID);
+        element.innerHTML = data.bold();
+        element.style.width = data;
+        var colorScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range(["red", "green"]);
+        element.style.backgroundColor = colorScale(data.slice(0, -1));
+    }
+
+    function perc2color(perc) {
+        var r, g, b = 0;
+        if(perc < 50) {
+            r = 255;
+            g = Math.round(5.1 * perc);
+        }
+        else {
+            g = 255;
+            r = Math.round(510 - 5.10 * perc);
+        }
+        var h = r * 0x10000 + g * 0x100 + b * 0x1;
+        return '#' + ('000000' + h.toString(16)).slice(-6);
     }
 
     function getScore(role)
