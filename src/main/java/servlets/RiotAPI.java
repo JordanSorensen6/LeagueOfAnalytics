@@ -2,7 +2,7 @@ package servlets;
 
 import classes.LoadConfig;
 import classes.RiotCalls;
-import classes.StaticChampions;
+import classes.StaticChampionsDB;
 import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
@@ -28,7 +28,7 @@ public class RiotAPI extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json");
             PrintWriter writer = response.getWriter();
-            writer.write(StaticChampions.getAllChampions());
+            writer.write(StaticChampionsDB.getAllChampions());
             writer.close();
         } else if(Pattern.compile("^*/riot/summonerIds*$").matcher(uri).matches()) {
             //extract query params

@@ -1,6 +1,7 @@
 package classes;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "static_champions", schema = "public", catalog = "LeagueOfAnalytics")

@@ -1,7 +1,6 @@
 package classes;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "champion_matchups", schema = "public", catalog = "LeagueOfAnalytics")
@@ -10,7 +9,8 @@ public class ChampionMatchupsEntity {
     private int championId;
     private String elo;
     private String role;
-    private Serializable matchupJson;
+    private String matchupJson;
+    private StaticChampionsEntity staticChampionsByChampionId;
 
     @Id
     @Column(name = "champion_id", nullable = false)
@@ -44,11 +44,11 @@ public class ChampionMatchupsEntity {
 
     @Basic
     @Column(name = "matchup_json", nullable = true)
-    public Serializable getMatchupJson() {
+    public String getMatchupJson() {
         return matchupJson;
     }
 
-    public void setMatchupJson(Serializable matchupJson) {
+    public void setMatchupJson(String matchupJson) {
         this.matchupJson = matchupJson;
     }
 
@@ -74,5 +74,15 @@ public class ChampionMatchupsEntity {
         result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (matchupJson != null ? matchupJson.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "champion_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    public StaticChampionsEntity getStaticChampionsByChampionId() {
+        return staticChampionsByChampionId;
+    }
+
+    public void setStaticChampionsByChampionId(StaticChampionsEntity staticChampionsByChampionId) {
+        this.staticChampionsByChampionId = staticChampionsByChampionId;
     }
 }

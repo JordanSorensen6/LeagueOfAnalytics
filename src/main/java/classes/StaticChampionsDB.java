@@ -6,16 +6,15 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class StaticChampions {
+public class StaticChampionsDB {
     public static String getAllChampions() {
         Session session = HibernateUtil.getSession();
         String q = "SELECT C.id, C.formatted FROM StaticChampionsEntity C";
         Query query = session.createQuery(q);
-        List<GamesEntity> champions = query.getResultList();
+        List<StaticChampionsEntity> champions = query.getResultList();
         session.close();
         Gson gson = new Gson();
-        String str = gson.toJson(champions);
-        return str;
+        return gson.toJson(champions);
     }
 
     public static String getById(String id) {

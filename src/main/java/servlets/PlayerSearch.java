@@ -209,8 +209,8 @@ public class PlayerSearch extends HttpServlet {
             //something broke, don't analyze this game
             return 0;
         }
-        String champ1 = new StaticChampions().getById(Integer.toString(champId1));
-        String champ2 = new StaticChampions().getById(Integer.toString(champId2));
+        String champ1 = new StaticChampionsDB().getById(Integer.toString(champId1));
+        String champ2 = new StaticChampionsDB().getById(Integer.toString(champId2));
         // add matchup to map
         matchups.put(participantId, new Pair<String, String>(champ1, champ2));
         return participantId;
