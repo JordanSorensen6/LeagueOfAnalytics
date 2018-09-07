@@ -135,16 +135,17 @@ var home = (function($) {
                         console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
+                        
                         if(role == 'Top')
-                            document.getElementById("percentage1").innerHTML = data.bold();
+                            displayBars(data, "percentage1");
                         else if(role == 'Jungle')
-                            document.getElementById("percentage2").innerHTML = data.bold();
+                            displayBars(data, "percentage2");
                         else if(role == 'Middle')
-                            document.getElementById("percentage3").innerHTML = data.bold();
+                            displayBars(data, "percentage3");
                         else if(role == 'ADC')
-                            document.getElementById("percentage4").innerHTML = data.bold();
+                            displayBars(data, "percentage4");
                         else if(role == 'Support')
-                            document.getElementById("percentage5").innerHTML = data.bold();
+                            displayBars(data, "percentage5");
 
                         getScore(role);
                     });
@@ -155,6 +156,16 @@ var home = (function($) {
         else {//Don't check for matchup info. The opponent is empty.
             console.log('No opponent.');
         }
+    }
+
+    function displayBars(data, percentageID){
+        var element = document.getElementById(percentageID);
+        element.innerHTML = data.bold();
+        element.style.width = data;
+        var colorScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range(["red", "green"]);
+        element.style.backgroundColor = colorScale(data.slice(0, -1));
     }
 
     function getScore(role)
@@ -237,7 +248,9 @@ var home = (function($) {
         var total = 0;
         total = parseFloat(score1) + parseFloat(score2) + parseFloat(score3) + parseFloat(score4) + parseFloat(score5);
         var totalScore = document.getElementById('totalScore');
+        sessionStorage.setItem('score', total.toString());
         totalScore.innerText = "Total Score: "+total;
+
 
     }
 

@@ -65,7 +65,7 @@ public class Scoring {
     public Double getMatchupInfo(String c1, String c2, String role, String league)//c1 is team champ c2 is opponent champ.
     {
         Double stat = null;
-        String siteContent = getHTML("http://champion.gg/champion/"+c1+"/"+role+"?league="+league);
+        String siteContent = getHTML("https://champion.gg/champion/"+c1+"/"+role+"?league="+league);
 
         List<String> allMatches = new ArrayList<String>();
         Matcher m = Pattern.compile(",\"winRate\":(.*?),\"statScore\":")
@@ -95,6 +95,7 @@ public class Scoring {
         BufferedReader rd; // Used to read results from the web page
         String line; // An individual line of the web page HTML
         String result = ""; // A long string containing all the HTML
+        System.setProperty("http.agent", "Chrome");
         try {
             url = new URL(urlToRead);
             conn = (HttpURLConnection) url.openConnection();

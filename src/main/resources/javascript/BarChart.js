@@ -79,6 +79,9 @@
                 return xScale(d["score"]);
             })
             .attr("fill", function (d) {
+                if(d["score"].toString() == sessionStorage.getItem('score')){
+                    return "orange"
+                }
                 return colorScale(d["percentage"]);
             })
             .attr("stroke", "darkgray")
@@ -134,6 +137,9 @@
                 return xScale(d["score"]);
             })
             .attr("fill", function (d) {
+                if(d["score"].toString() == sessionStorage.getItem('score')){
+                    return "orange"
+                }
                 return colorScale1(d["chance"]);
             })
             .attr("stroke", "darkgray")
