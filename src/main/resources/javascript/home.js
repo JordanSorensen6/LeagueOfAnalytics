@@ -135,6 +135,7 @@ var home = (function($) {
                         console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
+                        
                         if(role == 'Top')
                             displayBars(data, "percentage1");
                         else if(role == 'Jungle')
