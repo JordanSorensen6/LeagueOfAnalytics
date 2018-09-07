@@ -136,9 +136,17 @@ var home = (function($) {
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
                         if(role == 'Top') {
+                            data = 15.00;
                             // TODO: still need to display bars
                             var element = document.getElementById("percentage1");
-                            element.innerHTML = data.bold();
+                            var colorScale = d3.scaleLinear()
+                                .domain([0, 100])
+                                .range(["lightblue", "steelblue"]);
+                            element.innerHTML = (data+"%").bold();
+                            console.log("hellohello");
+                            console.log(data + "% 12%");
+                            element.style.width = data + "%";
+                            element.style.backgroundColor = colorScale(data);
                         }
                         else if(role == 'Jungle') {
                             var element = document.getElementById("percentage2");
