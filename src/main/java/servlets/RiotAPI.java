@@ -20,9 +20,6 @@ public class RiotAPI extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RiotCalls call = new RiotCalls();
-        String apiKey = config.getRiotApiKey();
-        String dbUser = config.getDatabaseUser();
-        String dbPass = config.getDatabasePass();
 
         String uri = request.getRequestURI();
         if(uri.equals("/riot/champions")) {
