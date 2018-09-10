@@ -13,9 +13,13 @@ var home = (function($) {
     function swapMap(json) {
         var ret = {};
         for(var key in json) {
-            ret[json[key][1].replace(/[^a-zA-Z]/ig, '')] = json[key][1];
+            ret[formatChampionName(json[key][1])] = json[key][0];
         }
         return ret;
+    }
+
+    function formatChampionName(name) {
+        return name.toLowerCase().replace(/[^a-z]/g, "");
     }
 
     function championsLookup() {
@@ -58,9 +62,9 @@ var home = (function($) {
             var num = inputId.substring(inputId.length - 1);
             //var summonerId = summonerIds[$('#summoner' + num).val()];
             var summonerId = summonerIds[document.getElementById('summoner'+num).value];
-            var key = $('#' + inputId).val().replace(/ /g,'');
-            if(champions.hasOwnProperty(key.replace(/[^a-zA-Z]/ig, ''))) {
-                var championId = champions[key.toLowerCase()];
+            var key = formatChampionName($('#' + inputId).val());
+            if(champions.hasOwnProperty(key)) {
+                var championId = champions[key];
                 console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
@@ -96,7 +100,7 @@ var home = (function($) {
         else
             newID = id.replace('opponent', 'oppImg');
 
-        if(champions.hasOwnProperty(champion.replace(/[^a-zA-Z]/ig, ''))){
+        if(champions.hasOwnProperty(champion.toLowerCase().replace(/[^a-z]/g, ''))){
             var image = document.getElementById(newID);
             console.log("updating champion image");
             image.src = "/resources/images/champion/"+champion+".png";
@@ -125,11 +129,10 @@ var home = (function($) {
                 c2 = document.getElementById(id).value;
             }
 
-            c1 = c1.replace(/ /g,'');
-            c2 = c2.replace(/ /g,'');
-
-            if(champions.hasOwnProperty(c1.toLowerCase())){
-                if(champions.hasOwnProperty(c2.toLowerCase())){
+            c1 = formatChampionName(c1);
+            c2 = formatChampionName(c2);
+            if(champions.hasOwnProperty(c1)){
+                if(champions.hasOwnProperty(c2)){
                     console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
                     $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role + '&league=' + league, function(data) {
                         console.log("data returned: " + data);

@@ -39,8 +39,8 @@ public class PlayerSearch extends HttpServlet {
                     getAndSaveRecentGames(request.getParameter("user"));
                     games = query.getResultList();
                 }
-                Gson gson = new Gson();
 
+                Gson gson = new Gson();
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/json");
                 PrintWriter writer = response.getWriter();
@@ -209,8 +209,8 @@ public class PlayerSearch extends HttpServlet {
             //something broke, don't analyze this game
             return 0;
         }
-        String champ1 = new StaticChampionsDB().getById(Integer.toString(champId1));
-        String champ2 = new StaticChampionsDB().getById(Integer.toString(champId2));
+        String champ1 = StaticChampionsDB.getNameById(champId1);
+        String champ2 = StaticChampionsDB.getNameById(champId2);
         // add matchup to map
         matchups.put(participantId, new Pair<String, String>(champ1, champ2));
         return participantId;
