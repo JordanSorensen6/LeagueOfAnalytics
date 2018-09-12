@@ -145,7 +145,7 @@ var home = (function($) {
                             displayBars(data, "percentage2");
                         else if(role == 'Middle')
                             displayBars(data, "percentage3");
-                        else if(role == 'ADC')
+                        else if(role == 'Bottom')
                             displayBars(data, "percentage4");
                         else if(role == 'Support')
                             displayBars(data, "percentage5");
@@ -179,7 +179,7 @@ var home = (function($) {
             role = '2';
         else if(role == 'Middle')
             role = '3';
-        else if(role == 'ADC')
+        else if(role == 'Bottom')
             role = '4';
         else if(role == 'Support')
             role = '5';
