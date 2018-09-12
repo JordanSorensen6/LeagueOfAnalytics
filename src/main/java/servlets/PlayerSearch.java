@@ -6,9 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import javafx.util.Pair;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import javax.servlet.ServletException;
@@ -32,8 +30,7 @@ public class PlayerSearch extends HttpServlet {
             String summoner = call.getSummonerName(request.getParameter("user"));
             if(summoner != null && summoner != "") {
                 // pull history from database
-                SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-                Session session = sessionFactory.openSession();
+                Session session = HibernateUtil.getSession();
                 String q = "FROM GamesEntity AS G WHERE G.summoner = :user_summoner";
                 Query query = session.createQuery(q);
                 query.setParameter("user_summoner", summoner);
@@ -42,13 +39,14 @@ public class PlayerSearch extends HttpServlet {
                     getAndSaveRecentGames(request.getParameter("user"));
                     games = query.getResultList();
                 }
-                Gson gson = new Gson();
 
+                Gson gson = new Gson();
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/json");
                 PrintWriter writer = response.getWriter();
                 writer.write(gson.toJson(games));
                 writer.close();
+                session.close();
             }
             else {
                 response.setCharacterEncoding("UTF-8");
@@ -175,8 +173,7 @@ public class PlayerSearch extends HttpServlet {
             }
         }
         // store games
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.getSession();
         Transaction tx = session.beginTransaction();
         for(GamesEntity analyzed : analyzedList) {
             try {
@@ -188,7 +185,6 @@ public class PlayerSearch extends HttpServlet {
         }
         tx.commit();
         session.close();
-        sessionFactory.close();
     }
 
     private Integer findMatchup(String lane, String role, int teamId, HashMap<Integer, Pair<String, String>> matchups, JsonObject match) {
@@ -213,8 +209,8 @@ public class PlayerSearch extends HttpServlet {
             //something broke, don't analyze this game
             return 0;
         }
-        String champ1 = new StaticChampions().getById(Integer.toString(champId1));
-        String champ2 = new StaticChampions().getById(Integer.toString(champId2));
+        String champ1 = StaticChampionsDB.getNameById(champId1);
+        String champ2 = StaticChampionsDB.getNameById(champId2);
         // add matchup to map
         matchups.put(participantId, new Pair<String, String>(champ1, champ2));
         return participantId;

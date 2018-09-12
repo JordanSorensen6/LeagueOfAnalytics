@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,28 +64,31 @@ public class Scoring {
 
     public Double getMatchupInfo(String c1, String c2, String role, String league)//c1 is team champ c2 is opponent champ.
     {
-        Double stat = null;
-        String siteContent = getHTML("https://champion.gg/champion/"+c1+"/"+role+"?league="+league);
+        //format champion names
+        c1 = c1.toLowerCase().replaceAll("[^a-z]", "");
+        c2 = c2.toLowerCase().replaceAll("[^a-z]", "");
 
-        List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile(",\"winRate\":(.*?),\"statScore\":")
-                .matcher(siteContent);
+        Double stat = null;
+
+        Integer c1Id = StaticChampionsDB.getIdByName(c1);
+
+        String matchupJson = ChampionMatchupsDB.getByAll(c1Id, league, role).getMatchupJson();
+
+        HashMap<String, Double> allMatches = new HashMap<>();
+        Matcher m = Pattern.compile("\"opponentChampion\":(.*?), \"winRate\": (.*?)}")
+                .matcher(matchupJson);
         while (m.find()) {
-            allMatches.add(m.group());
+            allMatches.put(m.group(1), Double.parseDouble(m.group(2)));
         }
-        for(String line : allMatches)
-        {
-            if(line.contains(c2))
-            {
-                stat = Double.parseDouble(line.replaceAll("[^\\d.]", ""));
-                stat *= 100;
-                stat = Math.round(stat * 100.0) / 100.0;
-                //System.out.println(stat);
+        for(Map.Entry<String, Double> entry : allMatches.entrySet()) {
+            String name = entry.getKey().toLowerCase().replaceAll("[^a-z]", "");
+            if(name.equals(c2)) {
+                stat = entry.getValue() * 100;
+                stat = Math.round(stat * 100) / 100.0;
                 break;
             }
         }
         return stat;
-
     }
 
 
