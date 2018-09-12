@@ -93,14 +93,14 @@ var home = (function($) {
     {
         var newID;
 
-        var champion = document.getElementById(id).value;
+        var champion = formatChampionName(document.getElementById(id).value);
 
         if(id.includes('champion'))
             newID = id.replace('champion', 'teamImg');
         else
             newID = id.replace('opponent', 'oppImg');
 
-        if(champions.hasOwnProperty(champion.toLowerCase().replace(/[^a-z]/g, ''))){
+        if(champions.hasOwnProperty(champion)){
             var image = document.getElementById(newID);
             console.log("updating champion image");
             image.src = "/resources/images/champion/"+champion+".png";
