@@ -33,8 +33,9 @@ class PlotChart{
 
     updateChart(){
         var padding = 60;
-        var width = 500 - 2 * padding;
-        var height = 400 - 2 * padding;
+        var svg = d3.select("#plotChart");
+        var width = +svg.attr("width") - 2 * padding;
+        var height = +svg.attr("height") - 2 * padding;
         var radius = 8;
         var clickRadius = 10;
 
@@ -80,7 +81,7 @@ class PlotChart{
         var xScale = d3.scaleLinear()
             .domain([0, this.data.length])
             .range([0, width]);
-        var xAxis = d3.axisBottom();
+        var xAxis = d3.axisBottom().ticks(this.data.length - 1);
         xAxis.scale(xScale);
         d3.select('#xAxis')
             .classed("axis", true)
@@ -117,8 +118,6 @@ class PlotChart{
             .merge(chart);
 
         chart
-            .transition()
-            .duration(3000)
             .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
             .attr("r", radius)
             .attr("cy", function (d) {
