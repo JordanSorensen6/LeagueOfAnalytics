@@ -267,7 +267,7 @@ var home = (function($) {
         else if(teamAndRole.includes('3'))
             role = 'Middle';
         else if(teamAndRole.includes('4'))
-            role = 'ADC';
+            role = 'Bottom';
         else if(teamAndRole.includes('5'))
             role = 'Support';
 
