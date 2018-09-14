@@ -23,7 +23,7 @@ ${username} stats
 
 <div class="chart">
     <div class = "row">
-    <svg width="650" height="500" id="plotChart">
+    <svg width="1000" height="800" id="plotChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>
         <g id="plot"></g>

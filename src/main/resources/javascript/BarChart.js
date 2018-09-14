@@ -4,6 +4,7 @@
 
 
     function updateChart(data){
+        console.log(data)
         var padding = 60;
         var width = 700 - 2 * padding;
         var height = 400 - 2 * padding;
@@ -33,10 +34,15 @@
             .domain([0, maxPercentage])
             .range(["lightblue", "steelblue"]);
 
+        var scores = [];
+        for(var j = -15; j <= 15; j = j+1){
+            scores.push(j);
+        }
+        console.log(scores.length)
         var xScale = d3.scaleLinear()
             .domain([-15, 15])
             .range([0, width]);
-        var xAxis = d3.axisBottom();
+        var xAxis = d3.axisBottom().ticks(scores.length);
         xAxis.scale(xScale);
         d3.selectAll('#xAxis')
             .classed("axis", true)
@@ -97,13 +103,14 @@
         var maxChance = d3.max(data, function (d){
            return d["chance"]
         });
+        var maxTick = Math.ceil(maxChance)
         var colorScale1 = d3.scaleLinear()
             .domain([0, maxChance])
             .range(["lightblue", "steelblue"]);
         var yScale1 = d3.scaleLinear()
-            .domain([maxChance, 0])
+            .domain([maxTick, 0])
             .range([0, height]);
-        var yAxis1 = d3.axisLeft();
+        var yAxis1 = d3.axisLeft().ticks(maxTick);
         yAxis1.scale(yScale1);
         var y1 = d3.select('#yAxis1')
             .classed("axis", true)

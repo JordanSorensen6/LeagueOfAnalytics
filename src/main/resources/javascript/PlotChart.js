@@ -93,13 +93,13 @@ class PlotChart{
             .range([0, width]);
 
         var scores = [];
-        for(var j = 15; j <= 15; j = j+.5){
-
+        for(var j = -15; j <= 15; j = j+1){
+            scores.push(j);
         }
         var yScale = d3.scaleLinear()
             .domain([15, -15])
             .range([0, height]);
-        var yAxis = d3.axisLeft();
+        var yAxis = d3.axisLeft().ticks(scores.length);
         yAxis.scale(yScale);
         var y = d3.select('#yAxis')
             .classed("axis", true)
