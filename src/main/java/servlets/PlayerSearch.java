@@ -140,7 +140,7 @@ public class PlayerSearch extends HttpServlet {
                 //calculate score
                 if(matchupCalc == null)
                     matchupCalc = 50.0;
-                score += scoring.calculateScore(Double.toString(matchupCalc), teammateMastery);
+                score += scoring.calculateScore(Double.toString(matchupCalc), teammateMastery, "0.0", "False");//TODO: Get player winrate and hotstreak info from Riot.
             }
             GamesEntity game = new GamesEntity();
             game.setMatchId(Long.parseLong(gameId));

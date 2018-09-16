@@ -10,8 +10,9 @@
     <script src="https://d3js.org/d3.v4.js"></script>
 
     <script type="text/javascript" src="resources/javascript/home.js"></script>
+    <script type="text/javascript" src="resources/javascript/cookie.js"></script>
 </head>
-<body>
+<body onload="checkCookies()" onbeforeunload="setCookies()">
 
 <jsp:include page="navbar.jsp"/>
 
@@ -22,19 +23,8 @@
     <div class="championMastery"><u>Mastery Level</u></div>
     <div class="opponentChampions"><u>Opponent Champions</u></div>
     <div class="matchRating"><u>Win Percentage</u></div>
-    <%--<div class="score">Score</div>--%>
 
-    <%--<div class="top">Top</div>--%>
-    <%--<div class="jungle">Jungle</div>--%>
-    <%--<div class="mid">Mid</div>--%>
-    <%--<div class="bot">Bot</div>--%>
-    <%--<div class="support">Support</div>--%>
-
-    <%--<div class="summonerTop"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div>--%>
-    <%--<div class="summonerJungle"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div>--%>
-    <%--<div class="summonerMid"><input type="text" name="summoners" id="summoner3" placeholder="summoner3" onclick="home.markForSwap('summoner3')"></div>--%>
-    <%--<div class="summonerBot"><input type="text" name="summoners" id="summoner4" placeholder="summoner4" onclick="home.markForSwap('summoner4')"></div>--%>
-    <%--<div class="summonerSupport"><input type="text" name="summoners" id="summoner5" placeholder="summoner5" onclick="home.markForSwap('summoner5')"></div>--%>
+    <hr>
 
     <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div></div></div>
     <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div></div></div>
