@@ -189,4 +189,12 @@ class PlotChart{
 
     }
 
+    newGames(data){
+
+    }
+
+    lessGames(){
+        
+    }
+
 }
