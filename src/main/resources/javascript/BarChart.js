@@ -1,9 +1,19 @@
 
+    function tooltip_render(tooltip_data){
+        var text = "<h4 style = color:black > Score: " + tooltip_data["score"] + "</h4> " +
+            "<h5 style = color:black > Probability of winning: " + (tooltip_data["percentage"]).toFixed(1) + "</h5>" +
+            "<h5 style = color:black > Chance of getting a score: " + (tooltip_data["chance"] * 100).toFixed(1) + "</h5>";
+        //text += "Electoral Votes: " + tooltip_data.electoralVotes;
 
+        return text;
+    }
 
 
 
     function updateChart(data){
+
+
+
         console.log(data)
         var padding = 60;
         var width = 700 - 2 * padding;
@@ -11,6 +21,38 @@
         var numbGames = d3.sum(data, function (d) {
             return d["total games"];
         });
+
+        var svg = d3.selectAll("#barChart");
+
+        svg.append("text")
+            .attr("transform", "rotate(-90) translate(" + padding + "," + padding + ")")
+            .attr("y", padding - 100)
+            .attr("x", -1 *(height / 2) - 100)
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Probability (%)");
+
+        svg.append("text")
+            .attr("transform",
+                "translate(" + (width/2 + 60) + " ," +
+                (height + padding + 30) + ")")
+            .style("text-anchor", "middle")
+            .text("Score");
+
+        var tip = d3.tip().attr('class', 'd3-tip')
+            .direction('se')
+            .offset(function () {
+                return [0, 0];
+            })
+            .html((d) => {
+            console.log(d);
+            var tooltip_data = {
+                "score":d["score"],
+                "percentage":d["percentage"],
+                "chance":d["chance"]
+            };
+        return this.tooltip_render(tooltip_data);
+    });
 
         data.forEach(function (d) {
             d["chance"] = d["total games"]/numbGames*100;
@@ -151,6 +193,12 @@
             })
             .attr("stroke", "darkgray")
             .attr("stroke-width", "1px");
+
+        d3.selectAll("#barChart").selectAll("rect")
+            .on("mouseover", tip.show)
+            .on("mouseout", tip.hide);
+
+        d3.selectAll("#barChart").call(tip);
 
 
     }
