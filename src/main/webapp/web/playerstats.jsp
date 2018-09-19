@@ -24,8 +24,9 @@ ${username} stats
 <div class="chart">
     <button type="button">More Games</button>
     <button type="button">Less Games</button>
+    <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
-    <svg width="500" height="400" id="plotChart">
+    <svg width="800" height="600" id="plotChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>
         <g id="plot"></g>

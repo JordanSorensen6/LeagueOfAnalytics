@@ -11,6 +11,7 @@
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
 
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="/resources/javascript/d3-tip.js"></script>
     <script type="application/javascript" src="/resources/javascript/BarChart.js"></script>
 </head>
 <body>
