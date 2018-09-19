@@ -208,7 +208,9 @@ class PlotChart{
     }
 
     lessGames(){
-        
+        var byeData = this.data.splice(this.data.length - 5);
+        this.unusedData.concat(byeData);
+        this.updateChart();
     }
 
 }
