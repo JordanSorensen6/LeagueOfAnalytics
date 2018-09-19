@@ -43,7 +43,7 @@ public class ExtractMatchup extends HttpServlet {
         {
             String mastery = request.getParameter("mastery");
             String matchup = request.getParameter("matchup");
-            String score = scoring.calculateScore(matchup, mastery)+"";
+            String score = scoring.calculateScore(matchup, mastery, "0.0", "False")+"";//TODO: Get player winrate and hotstreak info from Riot.
 
             response.setCharacterEncoding("UTF-8");
             PrintWriter writer = response.getWriter();

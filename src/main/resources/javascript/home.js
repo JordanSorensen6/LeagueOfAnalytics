@@ -7,8 +7,9 @@ var home = (function($) {
         summonerIdsLookup();
         championsLookup();
         championSelected();
-	anyChampSelection();
+	    anyChampSelection();
     }
+
 
     function swapMap(json) {
         var ret = {};
@@ -34,11 +35,7 @@ var home = (function($) {
 
     function summonerIdsLookup() {
         $('#textBox').on('input', function() {
-            // var s1 = $('#summoner1').val();
-            // var s2 = $('#summoner2').val();
-            // var s3 = $('#summoner3').val();
-            // var s4 = $('#summoner4').val();
-            // var s5 = $('#summoner5').val();
+
             var s1 = document.getElementById('summoner1').value;
             var s2 = document.getElementById('summoner2').value;
             var s3 = document.getElementById('summoner3').value;
@@ -93,14 +90,14 @@ var home = (function($) {
     {
         var newID;
 
-        var champion = document.getElementById(id).value;
+        var champion = formatChampionName(document.getElementById(id).value);
 
         if(id.includes('champion'))
             newID = id.replace('champion', 'teamImg');
         else
             newID = id.replace('opponent', 'oppImg');
 
-        if(champions.hasOwnProperty(champion.toLowerCase().replace(/[^a-z]/g, ''))){
+        if(champions.hasOwnProperty(champion)){
             var image = document.getElementById(newID);
             console.log("updating champion image");
             image.src = "/resources/images/champion/"+champion+".png";
@@ -145,7 +142,7 @@ var home = (function($) {
                             displayBars(data, "percentage2");
                         else if(role == 'Middle')
                             displayBars(data, "percentage3");
-                        else if(role == 'ADC')
+                        else if(role == 'Bottom')
                             displayBars(data, "percentage4");
                         else if(role == 'Support')
                             displayBars(data, "percentage5");
@@ -179,7 +176,7 @@ var home = (function($) {
             role = '2';
         else if(role == 'Middle')
             role = '3';
-        else if(role == 'ADC')
+        else if(role == 'Bottom')
             role = '4';
         else if(role == 'Support')
             role = '5';
@@ -267,7 +264,7 @@ var home = (function($) {
         else if(teamAndRole.includes('3'))
             role = 'Middle';
         else if(teamAndRole.includes('4'))
-            role = 'ADC';
+            role = 'Bottom';
         else if(teamAndRole.includes('5'))
             role = 'Support';
 
@@ -289,10 +286,17 @@ var home = (function($) {
     var prevSelected = null;
 
     function populateSummonerNames() {
+
         var lines = document.getElementById("textBox").value.split('\n');
         for(var i = 0;i < lines.length;i++){
-            lines[i] = lines[i].replace(" joined the lobby", "");
+            if(lines[i].indexOf(" joined the lobby") != -1)
+                lines[i] = lines[i].replace(" joined the lobby", "");
+            else
+                lines[i] = "";
         }
+        for(var i = 0; i < 5; i++)
+            if(typeof lines[i] == "undefined")
+                lines[i] = "";
         document.getElementById("summoner1").value = lines[0];
         document.getElementById("summoner2").value = lines[1];
         document.getElementById("summoner3").value = lines[2];
