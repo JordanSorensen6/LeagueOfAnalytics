@@ -22,6 +22,8 @@ ${username} stats
 
 
 <div class="chart">
+    <button type="button">More Games</button>
+    <button type="button">Less Games</button>
     <div class = "row">
     <svg width="500" height="400" id="plotChart">
         <g id="xAxis"></g>
