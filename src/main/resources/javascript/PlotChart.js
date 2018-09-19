@@ -2,7 +2,7 @@ class PlotChart{
 
     constructor(data){
         this.data = data;
-
+        this.unusedData = [];
         //document.getElementById("PlayerStatImg").style.visibility = 'hidden';
     }
 
@@ -189,6 +189,13 @@ class PlotChart{
 
     }
 
+    alreadyHasGames() {
+        if (this.unusedData.length == 0){
+            return false;
+        }
+        return true;
+    }
+
     newGames(data) {
         var lastGameNumb = this.data[this.data.length - 1];
         data.forEach((d) => {
@@ -201,7 +208,7 @@ class PlotChart{
     }
 
     lessGames(){
-
+        
     }
 
 }
