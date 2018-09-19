@@ -75,9 +75,9 @@ ${username} stats
             possScores.push(i);
         }
         for(var i = 0; i < 5; i++){
-            var outcome = generateRandom(["Win", "Loss", "Dodge"]);
+            var outcome = generateRandom(["Win", "Fail", "Dodge"]);
             var score = generateRandom(possScores);
-            var g = i;
+            var g = i + 1;
             var repGame = {
                 "g": g,
                 "outcome":outcome,

@@ -189,12 +189,19 @@ class PlotChart{
 
     }
 
-    newGames(data){
+    newGames(data) {
+        var lastGameNumb = this.data[this.data.length - 1];
+        data.forEach((d) => {
+            d["g"] = d["g"] + lastGameNumb["g"];
+            this.data.push(d);
+        });
+
+        this.updateChart();
 
     }
 
     lessGames(){
-        
+
     }
 
 }
