@@ -202,6 +202,10 @@ class PlotChart{
         return true;
     }
 
+    addOldGames(){
+        var hiData = this.unusedData.splice()
+    }
+
     newGames(data) {
         var lastGameNumb = this.data[this.data.length - 1];
         data.forEach((d) => {

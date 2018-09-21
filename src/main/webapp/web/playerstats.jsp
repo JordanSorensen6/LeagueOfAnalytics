@@ -22,8 +22,8 @@ ${username} stats
 
 
 <div class="chart">
-    <button type="button" onclick="moreGames()">More Games</button>
-    <button type="button" onclick="lessGames()">Less Games</button>
+    <button type="button" onclick="moreGames()" id = "add">Add 5 More Games</button>
+    <button type="button" onclick="lessGames()" id = "delete">Take Away 5 Games</button>
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
     <svg width="800" height="600" id="plotChart">
@@ -69,24 +69,29 @@ ${username} stats
     });
 
     function moreGames() {
-        var data = [];
-        var possScores = [];
-        for(var i = -15; i <= 15; i+=.5){
-            possScores.push(i);
+        if(!chart.alreadyHasGames()) {
+            var data = [];
+            var possScores = [];
+            for (var i = -15; i <= 15; i += .5) {
+                possScores.push(i);
+            }
+            for (var i = 0; i < 5; i++) {
+                var outcome = generateRandom(["Win", "Fail", "Dodge"]);
+                var score = generateRandom(possScores);
+                var g = i + 1;
+                var repGame = {
+                    "g": g,
+                    "outcome": outcome,
+                    "s": score,
+                    "score": score
+                };
+                data.push(repGame);
+            }
+            chart.newGames(data);
         }
-        for(var i = 0; i < 5; i++){
-            var outcome = generateRandom(["Win", "Fail", "Dodge"]);
-            var score = generateRandom(possScores);
-            var g = i + 1;
-            var repGame = {
-                "g": g,
-                "outcome":outcome,
-                "s":score,
-                "score":score
-            };
-            data.push(repGame);
+        else {
+
         }
-        chart.newGames(data);
     }
 
     function lessGames() {

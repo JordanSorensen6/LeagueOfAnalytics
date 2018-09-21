@@ -33,6 +33,7 @@ public class PlayerSearch extends HttpServlet {
                 Session session = HibernateUtil.getSession();
                 String q = "FROM GamesEntity AS G WHERE G.summoner = :user_summoner";
                 Query query = session.createQuery(q);
+                query.setMaxResults(5);
                 query.setParameter("user_summoner", summoner);
                 List<GamesEntity> games = query.getResultList();
                 if(games.size() < 5) {
