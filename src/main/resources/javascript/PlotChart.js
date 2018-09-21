@@ -32,6 +32,9 @@ class PlotChart{
     }
 
     updateChart(){
+        if(this.data.length === 5){
+            document.getElementById("delete").disabled = true;
+        }
         var padding = 80;
         var svg = d3.select("#plotChart");
         var width = +svg.attr("width") - 2 * padding;
@@ -207,6 +210,10 @@ class PlotChart{
     }
 
     newGames(data) {
+        var deleteButton = document.getElementById("delete");
+        if(deleteButton.disabled){
+            deleteButton.disabled = false;
+        }
         var lastGameNumb = this.data[this.data.length - 1];
         data.forEach((d) => {
             d["g"] = d["g"] + lastGameNumb["g"];
