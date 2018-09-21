@@ -49,7 +49,7 @@ class PlotChart{
         svg.append("text")
             .attr("transform",
                 "translate(" + (width/2 + 80) + " ," +
-                (height/2 + padding + 20) + ")")
+                (height/2 + padding + 30) + ")")
             .style("text-anchor", "middle")
             .text("Game #");
 
@@ -70,13 +70,13 @@ class PlotChart{
                 return [0, 0];
             })
             .html((d) => {
-            var tooltip_data = {
-                "game id": d["game"],
-                "score":d["score"],
-                "outcome":d["outcome"]
-            };
-        return this.tooltip_render(tooltip_data);
-    });
+                var tooltip_data = {
+                    "game id": d["game"],
+                    "score":d["score"],
+                    "outcome":d["outcome"]
+                };
+                return this.tooltip_render(tooltip_data);
+            });
 
         var xScale = d3.scaleLinear()
             .domain([0, this.data.length])

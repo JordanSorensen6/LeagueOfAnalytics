@@ -69,7 +69,7 @@ ${username} stats
     });
 
     function moreGames() {
-        var data = []
+        var data = [];
         var possScores = [];
         for(var i = -15; i <= 15; i+=.5){
             possScores.push(i);
