@@ -112,22 +112,28 @@ class PlotChart{
 
         var chart = d3.select('#plot').selectAll("circle")
             .data(this.data);
-        chart = chart
-            .enter()
-            .append("circle")
-            .merge(chart);
 
-        chart
+        var chartEnter = chart
+            .enter()
+            .append("circle");
+
+        chartEnter
             .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
             .attr("r", radius)
+            .attr("class", function(d){
+                return d["outcome"];
+            });
+
+        chart.exit().remove();
+
+        chart = chart.merge(chartEnter);
+
+        chart
             .attr("cy", function (d) {
                 return newYScale(d.s);
             })
             .attr("cx", function (d) {
                 return newxScale(d.g);
-            })
-            .attr("class", function(d){
-                return d["outcome"];
             });
 
         d3.select("#plot").selectAll("circle")
