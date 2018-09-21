@@ -23,7 +23,7 @@ ${username} stats
 
 <div class="chart">
     <button type="button" onclick="moreGames()" id = "add">Add 5 More Games</button>
-    <button type="button" onclick="lessGames()" id = "delete">Take Away 5 Games</button>
+    <button type="button" onclick="chart.lessGames()" id = "delete">Take Away 5 Games</button>
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
     <svg width="800" height="600" id="plotChart">
@@ -92,10 +92,6 @@ ${username} stats
         else {
 
         }
-    }
-
-    function lessGames() {
-        chart.lessGames();
     }
 
     function generateRandom(possVals){
