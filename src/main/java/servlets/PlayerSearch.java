@@ -30,15 +30,17 @@ public class PlayerSearch extends HttpServlet {
             String summoner = call.getSummonerName(request.getParameter("user"));
             if(summoner != null && summoner != "") {
                 // pull history from database
-                Session session = HibernateUtil.getSession();
-                String q = "FROM GamesEntity AS G WHERE G.summoner = :user_summoner";
-                Query query = session.createQuery(q);
-                query.setMaxResults(5);
-                query.setParameter("user_summoner", summoner);
-                List<GamesEntity> games = query.getResultList();
+//                Session session = HibernateUtil.getSession();
+//                String q = "FROM GamesEntity AS G WHERE G.summoner = :user_summoner";
+//                Query query = session.createQuery(q);
+//                query.setMaxResults(5);
+//                query.setParameter("user_summoner", summoner);
+//                List<GamesEntity> games = query.getResultList();
+
+                List<GamesEntity> games = GamesDB.getGamesBySummoner(summoner);
                 if(games.size() < 5) {
                     getAndSaveRecentGames(request.getParameter("user"));
-                    games = query.getResultList();
+                    games = GamesDB.getGamesBySummoner(summoner);
                 }
 
                 Gson gson = new Gson();
@@ -47,7 +49,6 @@ public class PlayerSearch extends HttpServlet {
                 PrintWriter writer = response.getWriter();
                 writer.write(gson.toJson(games));
                 writer.close();
-                session.close();
             }
             else {
                 response.setCharacterEncoding("UTF-8");
@@ -173,19 +174,7 @@ public class PlayerSearch extends HttpServlet {
                 analyzedList.add(analyzed);
             }
         }
-        // store games
-        Session session = HibernateUtil.getSession();
-        Transaction tx = session.beginTransaction();
-        for(GamesEntity analyzed : analyzedList) {
-            try {
-                session.saveOrUpdate(analyzed);
-            }
-            catch(Exception e) {
-                // do nothing
-            }
-        }
-        tx.commit();
-        session.close();
+        GamesDB.saveGames(analyzedList);
     }
 
     private Integer findMatchup(String lane, String role, int teamId, HashMap<Integer, Pair<String, String>> matchups, JsonObject match) {
