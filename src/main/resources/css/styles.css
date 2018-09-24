@@ -135,3 +135,7 @@ text {
     fill: none;
     pointer-events: all;
 }
+
+.inner_space{
+    opacity: 0;
+}
