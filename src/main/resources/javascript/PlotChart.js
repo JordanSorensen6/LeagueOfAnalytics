@@ -32,122 +32,250 @@ class PlotChart{
     }
 
     updateChart(){
-        if(this.data.length === 5){
-            document.getElementById("delete").disabled = true;
-        }
-        var padding = 80;
-        var svg = d3.select("#plotChart");
-        var width = +svg.attr("width") - 2 * padding;
-        var height = +svg.attr("height") - 2 * padding;
-        var radius = 8;
-        var clickRadius = 10;
+        if(this.data.length <= 30) {
+            if (this.data.length === 5) {
+                document.getElementById("delete").disabled = true;
+            }
+            var padding = 80;
+            var svg = d3.select("#plotChart");
+            var width = +svg.attr("width") - 2 * padding;
+            var height = +svg.attr("height") - 2 * padding;
+            var radius = 8;
+            var clickRadius = 10;
 
-        var i = 1;
-        this.data.forEach(function (d) {
-            d["g"] = i;
-            i++;
-        });
+            var i = 1;
+            this.data.forEach(function (d) {
+                d["g"] = i;
+                i++;
+            });
 
 
-        var maxGame = d3.max(this.data, function (d){
-            return d["g"];
-        });
+            var maxGame = d3.max(this.data, function (d) {
+                return d["g"];
+            });
 
-        var tip = d3.tip().attr('class', 'd3-tip')
-            .direction('se')
-            .offset(function () {
-                return [0, 0];
-            })
-            .html((d) => {
+            var tip = d3.tip().attr('class', 'd3-tip')
+                .direction('se')
+                .offset(function () {
+                    return [0, 0];
+                })
+                .html((d) = > {
                 var tooltip_data = {
                     "game id": d["game"],
-                    "score":d["score"],
-                    "outcome":d["outcome"]
+                    "score": d["score"],
+                    "outcome": d["outcome"]
                 };
-                return this.tooltip_render(tooltip_data);
-            });
+            return this.tooltip_render(tooltip_data);
+        })
+            ;
 
-        var xScale = d3.scaleLinear()
-            .domain([0, this.data.length])
-            .range([0, width]);
-        var xAxis = d3.axisBottom().ticks(this.data.length - 1);
-        xAxis.scale(xScale);
-        d3.select('#xAxis')
-            .classed("axis", true)
-            .attr("transform", "translate(" + padding + "," + (height/2 + padding) + ")")
-            .call(xAxis);
+            var xScale = d3.scaleLinear()
+                .domain([0, this.data.length])
+                .range([0, width]);
+            var xAxis = d3.axisBottom().ticks(this.data.length - 1);
+            xAxis.scale(xScale);
+            d3.select('#xAxis')
+                .classed("axis", true)
+                .attr("transform", "translate(" + padding + "," + (height / 2 + padding) + ")")
+                .call(xAxis);
 
-        var newxScale = d3.scaleLinear()
-            .domain([0, this.data.length])
-            .range([0, width]);
+            var newxScale = d3.scaleLinear()
+                .domain([0, this.data.length])
+                .range([0, width]);
 
-        var scores = [];
-        for(var j = -15; j <= 15; j = j+1){
-            scores.push(j);
+            var scores = [];
+            for (var j = -15; j <= 15; j = j + 1) {
+                scores.push(j);
+            }
+            var yScale = d3.scaleLinear()
+                .domain([15, -15])
+                .range([0, height]);
+            var yAxis = d3.axisLeft().ticks(scores.length);
+            yAxis.scale(yScale);
+            var y = d3.select('#yAxis')
+                .classed("axis", true)
+                .attr("transform", "translate(" + padding + "," + padding + ")")
+                .call(yAxis);
+
+            var newYScale = d3.scaleLinear()
+                .domain([-15, 15])
+                .range([0, height]);
+
+            var chart = d3.select('#plot').selectAll("circle")
+                .data(this.data);
+
+            var chartEnter = chart
+                .enter()
+                .append("circle");
+
+            chartEnter
+                .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
+                .attr("r", radius)
+                .attr("class", function (d) {
+                    return d["outcome"];
+                });
+
+            chart.exit().remove();
+
+            chart = chart.merge(chartEnter);
+
+            chart
+                .attr("cy", function (d) {
+                    return newYScale(d.s);
+                })
+                .attr("cx", function (d) {
+                    return newxScale(d.g);
+                });
+
+            d3.select("#plot").selectAll("circle")
+                .on("click", function (d) {
+                    d3.select("#plot").selectAll("circle")
+                        .classed("highlighted", false)
+                        .attr("r", radius);
+
+                    d3.select(this)
+                        .classed("highlighted", true)
+                        .attr("r", clickRadius);
+                    if (d.outcome === "Win") {
+                        $('#PlayerLossPic').hide();
+                        $('#PlayerWinPic').show();
+                    }
+                    else {
+                        $('#PlayerLossPic').show();
+                        $('#PlayerWinPic').hide();
+                    }
+                    //document.getElementById("PlayerStatImg").style.visibility = "visible";
+
+                })
+                .on("mouseover", tip.show)
+                .on("mouseout", tip.hide);
+            d3.select("#plotChart").call(tip);
         }
-        var yScale = d3.scaleLinear()
-            .domain([15, -15])
-            .range([0, height]);
-        var yAxis = d3.axisLeft().ticks(scores.length);
-        yAxis.scale(yScale);
-        var y = d3.select('#yAxis')
-            .classed("axis", true)
-            .attr("transform", "translate(" + padding + "," + padding + ")")
-            .call(yAxis);
+        else{
+            if (this.data.length === 5) {
+                document.getElementById("delete").disabled = true;
+            }
+            var padding = 80;
+            var svg = d3.select("#plotChart");
+            var width = +svg.attr("width") - 2 * padding;
+            var height = +svg.attr("height") - 2 * padding;
+            var radius = 8;
+            var clickRadius = 10;
 
-        var newYScale = d3.scaleLinear()
-            .domain([-15, 15])
-            .range([0, height]);
-
-        var chart = d3.select('#plot').selectAll("circle")
-            .data(this.data);
-
-        var chartEnter = chart
-            .enter()
-            .append("circle");
-
-        chartEnter
-            .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
-            .attr("r", radius)
-            .attr("class", function(d){
-                return d["outcome"];
+            var i = 1;
+            this.data.forEach(function (d) {
+                d["g"] = i;
+                i++;
             });
 
-        chart.exit().remove();
 
-        chart = chart.merge(chartEnter);
-
-        chart
-            .attr("cy", function (d) {
-                return newYScale(d.s);
-            })
-            .attr("cx", function (d) {
-                return newxScale(d.g);
+            var maxGame = d3.max(this.data, function (d) {
+                return d["g"];
             });
 
-        d3.select("#plot").selectAll("circle")
-            .on("click", function (d){
-                d3.select("#plot").selectAll("circle")
-                    .classed("highlighted", false)
-                    .attr("r", radius);
+            var tip = d3.tip().attr('class', 'd3-tip')
+                .direction('se')
+                .offset(function () {
+                    return [0, 0];
+                })
+                .html((d) = > {
+                    var tooltip_data = {
+                        "game id": d["game"],
+                        "score": d["score"],
+                        "outcome": d["outcome"]
+                    };
+                    return this.tooltip_render(tooltip_data);
+                });
 
-                d3.select(this)
-                    .classed("highlighted", true)
-                    .attr("r", clickRadius);
-                if(d.outcome === "Win") {
-                    $('#PlayerLossPic').hide();
-                    $('#PlayerWinPic').show();
-                }
-                else {
-                    $('#PlayerLossPic').show();
-                    $('#PlayerWinPic').hide();
-                }
-                //document.getElementById("PlayerStatImg").style.visibility = "visible";
+            var zoom = d3.zoom()
+                .scaleExtent([1, Infinity])
+                .translateExtent([[0, 0], [width, height]])
+                .extent([[0, 0], [width, height]])
+                .on("zoom", zoomed);
 
-            })
-            .on("mouseover", tip.show)
-            .on("mouseout", tip.hide);
-        d3.select("#plotChart").call(tip);
+            var xScale = d3.scaleLinear()
+                .domain([0, this.data.length])
+                .range([0, width]);
+            var xAxis = d3.axisBottom().ticks(this.data.length - 1);
+            xAxis.scale(xScale);
+            d3.select('#xAxis')
+                .classed("axis", true)
+                .attr("transform", "translate(" + padding + "," + (height / 2 + padding) + ")")
+                .call(xAxis);
+
+            var newxScale = d3.scaleLinear()
+                .domain([0, this.data.length])
+                .range([0, width]);
+
+            var scores = [];
+            for (var j = -15; j <= 15; j = j + 1) {
+                scores.push(j);
+            }
+            var yScale = d3.scaleLinear()
+                .domain([15, -15])
+                .range([0, height]);
+            var yAxis = d3.axisLeft().ticks(scores.length);
+            yAxis.scale(yScale);
+            var y = d3.select('#yAxis')
+                .classed("axis", true)
+                .attr("transform", "translate(" + padding + "," + padding + ")")
+                .call(yAxis);
+
+            var newYScale = d3.scaleLinear()
+                .domain([-15, 15])
+                .range([0, height]);
+
+            var chart = d3.select('#plot').selectAll("circle")
+                .data(this.data);
+
+            var chartEnter = chart
+                .enter()
+                .append("circle");
+
+            chartEnter
+                .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
+                .attr("r", radius)
+                .attr("class", function (d) {
+                    return d["outcome"];
+                });
+
+            chart.exit().remove();
+
+            chart = chart.merge(chartEnter);
+
+            chart
+                .attr("cy", function (d) {
+                    return newYScale(d.s);
+                })
+                .attr("cx", function (d) {
+                    return newxScale(d.g);
+                });
+
+            d3.select("#plot").selectAll("circle")
+                .on("click", function (d) {
+                    d3.select("#plot").selectAll("circle")
+                        .classed("highlighted", false)
+                        .attr("r", radius);
+
+                    d3.select(this)
+                        .classed("highlighted", true)
+                        .attr("r", clickRadius);
+                    if (d.outcome === "Win") {
+                        $('#PlayerLossPic').hide();
+                        $('#PlayerWinPic').show();
+                    }
+                    else {
+                        $('#PlayerLossPic').show();
+                        $('#PlayerWinPic').hide();
+                    }
+                    //document.getElementById("PlayerStatImg").style.visibility = "visible";
+
+                })
+                .on("mouseover", tip.show)
+                .on("mouseout", tip.hide);
+            d3.select("#plotChart").call(tip);
+
+        }
 
         var legend = d3.select("#legend").selectAll("circle")
             .data([{index:0, result:"win"}, {index:1, result:"fail"}, {index:2, result:"dodge"}, {index:3, result:"highlighted"}]);
