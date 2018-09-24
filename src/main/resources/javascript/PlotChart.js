@@ -207,14 +207,17 @@ class PlotChart{
 
                 var newXScale = t.rescaleX(xScale);
                 var p = d3.select('#plot');
-                p.selectAll("circles").attr("transform", t);
+                p.selectAll("circle")
+                    .attr("cx", function(d){
+                        return newXScale(d.g);
+                    });
 
                 d3.select('#xAxis').call(xAxis.scale(newXScale));
 
             }
 
             var zoom = d3.zoom()
-                .scaleExtent([1, Infinity])
+                .scaleExtent([1, this.data.length/5])
                 .translateExtent([[0, 0], [width, height]])
                 .extent([[0, 0], [width, height]])
                 .on("zoom", zoomed);
