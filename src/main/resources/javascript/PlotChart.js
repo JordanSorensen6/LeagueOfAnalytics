@@ -151,16 +151,26 @@ class PlotChart{
                 .on("mouseout", tip.hide);
             d3.select("#plotChart").call(tip);
         }
-        else{
+        else {
             if (this.data.length === 5) {
                 document.getElementById("delete").disabled = true;
             }
-            var padding = 80;
-            var svg = d3.select("#plotChart");
-            var width = +svg.attr("width") - 2 * padding;
-            var height = +svg.attr("height") - 2 * padding;
+
+            var svg = d3.select("#plotChart"),
+                padding = 80,
+                margin = {top: padding, right: padding, bottom: padding, left: padding},
+                width = +svg.attr("width") - margin.left - margin.right,
+                height = +svg.attr("height") - margin.top - margin.bottom;
+
+
             var radius = 8;
             var clickRadius = 10;
+
+            var zoom = d3.zoom()
+                .scaleExtent([1, Infinity])
+                .translateExtent([[0, 0], [width, height]])
+                .extent([[0, 0], [width, height]])
+                .on("zoom", zoomed);
 
             var i = 1;
             this.data.forEach(function (d) {
@@ -179,19 +189,13 @@ class PlotChart{
                     return [0, 0];
                 })
                 .html((d) = > {
-                    var tooltip_data = {
-                        "game id": d["game"],
-                        "score": d["score"],
-                        "outcome": d["outcome"]
-                    };
-                    return this.tooltip_render(tooltip_data);
-                });
-
-            var zoom = d3.zoom()
-                .scaleExtent([1, Infinity])
-                .translateExtent([[0, 0], [width, height]])
-                .extent([[0, 0], [width, height]])
-                .on("zoom", zoomed);
+                var tooltip_data = {
+                    "game id": d["game"],
+                    "score": d["score"],
+                    "outcome": d["outcome"]
+                };
+            return this.tooltip_render(tooltip_data);
+        });
 
             var xScale = d3.scaleLinear()
                 .domain([0, this.data.length])
@@ -274,40 +278,7 @@ class PlotChart{
                 .on("mouseover", tip.show)
                 .on("mouseout", tip.hide);
             d3.select("#plotChart").call(tip);
-
         }
-
-        var legend = d3.select("#legend").selectAll("circle")
-            .data([{index:0, result:"win"}, {index:1, result:"fail"}, {index:2, result:"dodge"}, {index:3, result:"highlighted"}]);
-        legend
-            .enter()
-            .append("circle")
-            .attr("cx", 100)
-            .attr("cy", function (d){
-                return 40 + 50 * d["index"];
-            })
-            .attr("r", function (d) {
-                if(d["result"] == "highlighted"){
-                    return clickRadius;
-                }
-                return radius;
-            })
-            .attr("class", function (d) {
-                return d["result"];
-            });
-
-        legend
-            .enter()
-            .append("text")
-            .text(function (d){
-                return d["result"];
-            })
-            .attr("x", 120)
-            .attr("y", function (d){
-                return 45 + 50 * d["index"];
-            });
-
-
 
 
     }
