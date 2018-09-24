@@ -64,5 +64,15 @@ public class RiotAPI extends HttpServlet {
             writer.write(masteryLevel);
             writer.close();
         }
+        else if(Pattern.compile("^*/riot/playerStats*$").matcher(uri).matches())
+        {
+            String summonerId = request.getParameter("summonerId");
+            String summonerInfo = call.getSummonerInfo(summonerId);
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            writer.write(summonerInfo);
+            writer.close();
+        }
     }
 }

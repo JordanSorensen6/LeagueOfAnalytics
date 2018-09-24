@@ -10,6 +10,30 @@ var home = (function($) {
 	    anyChampSelection();
     }
 
+    function getSummonerInfo(sid, position){
+        $.get('riot/playerStats?summonerId='+sid, function(data) {
+            setPlayerWinRate(data, position);
+            setHotStreak(data, position);
+        });
+    }
+
+    function setPlayerWinRate(json, position)
+    {
+        if(Object.keys(json).length !== 0)
+            document.getElementById("playerPercentage"+position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"])))*10000)/100).toString() + "%</b>";
+        else
+            document.getElementById("playerPercentage"+position).innerHTML = "<b>No Games</b>";
+    }
+
+    function setHotStreak(json, position)
+    {
+        console.log(json[0]["hotStreak"]);
+        if (json[0]["hotStreak"].toString() == "true")
+            document.getElementById("hot"+position).src = "/resources/images/hotStreakTrue.png";
+    }
+
+
+
 
     function swapMap(json) {
         var ret = {};
@@ -65,6 +89,7 @@ var home = (function($) {
                 console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
+                    getSummonerInfo(summonerId, num);
                     var image = document.getElementById('mastery' + num);
                     console.log("updating mastery with: " + data);
                     image.src = "/resources/images/L"+data+".png";
@@ -185,9 +210,13 @@ var home = (function($) {
         mastery = mastery.replace(location.port, '').replace(/\D/g,'');//get mastery number w/o port number.
         var matchup = document.getElementById('percentage'+role).innerText;
         matchup = matchup.replace("%", "");
-        console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup);
+        var playerWinRate = document.getElementById("playerPercentage"+role).innerText;
+        playerWinRate = playerWinRate.replace("%", "");
+        var hotStreak = document.getElementById("hot"+role).src;
+        hotStreak = hotStreak.substring(hotStreak.length-10, hotStreak.length).replace(".png", "").replace("ak", "").replace("k", "");
+        console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup + ' playerWinRate: ' + playerWinRate + ' hotStreak: ' + hotStreak);
         var score = document.getElementById('score'+role);
-        $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup, function(data) {
+        $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup + '&winrate=' + playerWinRate + '&hotstreak=' + hotStreak, function(data) {
             score.innerText = data;
             updateTotalScore();
             checkScoreDone();

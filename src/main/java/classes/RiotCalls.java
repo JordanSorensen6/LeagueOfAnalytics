@@ -1,5 +1,6 @@
 package classes;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -43,6 +44,37 @@ public class RiotCalls {
             return summonerDTO.get("id").toString();
         } else {
             System.out.println("Riot Status " + status + ", Summoner by name error");
+        }
+        return null;
+    }
+
+    public String getSummonerInfo(String summonerID) throws IOException
+    {
+        String apiKey = config.getRiotApiKey();
+        String url = "https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/"+summonerID;
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpGet req = new HttpGet(url);
+        req.addHeader("X-Riot-Token", apiKey);
+        HttpResponse resp = client.execute(req);
+        int status = resp.getStatusLine().getStatusCode();
+        if (status == 200) {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(resp.getEntity().getContent()));
+            StringBuffer result = new StringBuffer();
+            String line = "";
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+
+
+            return result.toString();
+//            Gson g = new Gson();
+//            String jsonRepresentation = g.toJson(result.toString());
+//            JsonParser parser = new JsonParser();
+//            JsonObject jobj = parser.parse(result.toString()).getAsJsonObject();
+//            return jobj.toString();
+        }
+        else {
+            System.out.println("Riot Status " + status + ", https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/");
         }
         return null;
     }

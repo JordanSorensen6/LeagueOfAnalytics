@@ -18,7 +18,7 @@
                     pair = allElements[i].id + "=" + getSrc(allElements[i].id);
                     document.cookie = pair;
                 }
-                else {//This screws things up.
+                else {
                     pair = allElements[i].id + "=" + getText(allElements[i].id).replace(/["']/g, "").replace(/[%]/g, "");
                     document.cookie = pair;
                 }
@@ -66,6 +66,54 @@
         document.getElementById(key).innerHTML = val;
     }
 
+    function clearAll(){
+        var allElements = document.querySelectorAll('*[id]');
+        for (var i = 4, n = allElements.length; i < n; i++) {
+
+            if (allElements[i] instanceof HTMLInputElement) {
+                document.getElementById(allElements[i].id).value = "";
+            }
+            else if (allElements[i] instanceof HTMLImageElement)
+            {
+                if(allElements[i].id.indexOf("teamImg") != -1)
+                {
+                    document.getElementById(allElements[i].id).src="/resources/images/champion/placeholderTeam.png";
+                }
+                else if(allElements[i].id.indexOf("mastery") != -1)
+                {
+                    document.getElementById(allElements[i].id).src="/resources/images/L0.png";
+                }
+                else if(allElements[i].id.indexOf("hot") != -1)
+                {
+                    document.getElementById(allElements[i].id).src="/resources/images/hotStreakFalse.png";
+                }
+                else if(allElements[i].id.indexOf("oppImg") != -1)
+                {
+                    document.getElementById(allElements[i].id).src="/resources/images/champion/placeholderOpponent.png";
+                }
+            }
+            else
+            {
+                if(allElements[i].id.indexOf("playerPercentage") != -1 || allElements[i].id.indexOf("percentage") != -1)
+                {
+                    document.getElementById(allElements[i].id).innerHTML = "<b>00.00%</b>";
+                }
+                else if(allElements[i].id.indexOf("score") != -1)
+                {
+                    document.getElementById(allElements[i].id).innerHTML = "0";
+                }
+                else if(allElements[i].id.indexOf("totalScore") != -1)
+                {
+                    document.getElementById(allElements[i].id).innerText = "Total Score: 0";
+                }
+                else if(allElements[i].id.indexOf("userMessage") != -1)
+                {
+                    document.getElementById(allElements[i].id).innerHTML = "<b>Based on (number) games, players with this score win (some percentage) of their games.</b>";
+                    document.getElementById('userMessage').style.opacity = 0;
+                }
+            }
+        }
+    }
     // function deleteCookies(){
     //     for(var i = 1; i < 6; i++) {
     //         eraseCookie("champion"+i);
@@ -94,14 +142,16 @@
             restoreValue("summoner"+i, getCookie("summoner"+i));
             restoreValue("opponent"+i, getCookie("opponent"+i));
             if(getCookie("teamImg"+i) != getCookie("mastery"+i))
-            {//Pulls the wrong src initially for some reason.
+            {
                 restoreSrc("teamImg" + i, getCookie("teamImg" + i));
                 restoreSrc("mastery" + i, getCookie("mastery" + i));
-                restoreSrc("oppImg" + i, getCookie("oppImg" + i))
+                restoreSrc("oppImg" + i, getCookie("oppImg" + i));
+                restoreSrc("hot" + i, getCookie("hot" + i));
             }
             if(getCookie("percentage" + i) != getCookie("score" + i))
             {
                 restoreText("percentage" + i, "<b>"+getCookie("percentage" + i)+"%"+"</b>");
+                restoreText("playerPercentage" + i, "<b>"+getCookie("playerPercentage" + i)+"%"+"</b>");
                 restoreText("score" + i, getCookie("score" + i));
             }
 

@@ -21,10 +21,10 @@
     <div class="teamSummoners"><u>Team Summoners</u></div>
     <div class="teamChampions"><u>Team Champions</u></div>
     <div class="championMastery"><u>Mastery Level</u></div>
+    <div class="hotStreak"><u>Hot Streak</u></div>
+    <div class="playerWinPer"><u>Player Win Percentage</u></div>
     <div class="opponentChampions"><u>Opponent Champions</u></div>
-    <div class="matchRating"><u>Win Percentage</u></div>
-
-    <hr>
+    <div class="matchRating"><u>Champion Win Percentage</u></div>
 
     <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div></div></div>
     <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div></div></div>
@@ -51,6 +51,18 @@
     <div class="masteryBot"><img id="mastery4" src="/resources/images/L0.png"></div>
     <div class="masterySupport"><img id="mastery5" src="/resources/images/L0.png"></div>
 
+
+    <div class="hotStreakTop"><img id="hot1" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakJungle"><img id="hot2" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakMid"><img id="hot3" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakBot"><img id="hot4" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakSupport"><img id="hot5" src="/resources/images/hotStreakFalse.png"></div>
+
+    <div class="playerWinPerTop" id="playerPercentage1"><b>00.00%</b></div>
+    <div class="playerWinPerJungle" id="playerPercentage2"><b>00.00%</b></div>
+    <div class="playerWinPerMid" id="playerPercentage3"><b>00.00%</b></div>
+    <div class="playerWinPerBot" id="playerPercentage4"><b>00.00%</b></div>
+    <div class="playerWinPerSupport" id="playerPercentage5"><b>00.00%</b></div>
 
     <div class="oppChampTopPic"><img id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
     <div class="oppChampJunglePic"><img id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
@@ -84,7 +96,7 @@
 summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
-summoner5 joined the lobby" id="textBox" oninput="home.populateSummonerNames()"></textarea><br>
+summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea><br>
 
 <script>
     home.init();
