@@ -90,7 +90,7 @@ ${username} stats
             chart.newGames(data);
         }
         else {
-
+            chart.addOldGames();
         }
     }
 

@@ -199,14 +199,23 @@ class PlotChart{
     }
 
     alreadyHasGames() {
-        if (this.unusedData.length == 0){
+        if (this.unusedData.length === 0){
             return false;
         }
         return true;
     }
 
     addOldGames(){
-        var hiData = this.unusedData.splice()
+        var deleteButton = document.getElementById("delete");
+        if(deleteButton.disabled){
+            deleteButton.disabled = false;
+        }
+        
+        var hiData = this.unusedData.splice(this.unusedData.length - 5);
+
+        this.data = this.data.concat(hiData);
+
+        this.updateChart();
     }
 
     newGames(data) {
@@ -226,7 +235,7 @@ class PlotChart{
 
     lessGames(){
         var byeData = this.data.splice(this.data.length - 5);
-        this.unusedData.concat(byeData);
+        this.unusedData = this.unusedData.concat(byeData);
         this.updateChart();
     }
 
