@@ -136,6 +136,6 @@ text {
     pointer-events: all;
 }
 
-.inner_space{
+rect {
     opacity: 0;
 }

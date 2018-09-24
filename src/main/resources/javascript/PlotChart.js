@@ -220,8 +220,6 @@ class PlotChart{
                 .on("zoom", zoomed);
 
             var innerSpace = d3.select("#innerSpace")
-                .attr("class", "inner_space")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                 .call(zoom);
 
             var newxScale = d3.scaleLinear()
@@ -297,6 +295,7 @@ class PlotChart{
             d3.select("#plotChart").call(tip);
 
             innerSpace.append("rect")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                 .attr("class", "zoom")
                 .attr("width", width)
                 .attr("height", height)
