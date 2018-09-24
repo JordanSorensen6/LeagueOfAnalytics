@@ -280,6 +280,36 @@ class PlotChart{
             d3.select("#plotChart").call(tip);
         }
 
+        var legend = d3.select("#legend").selectAll("circle")
+            .data([{index:0, result:"win"}, {index:1, result:"fail"}, {index:2, result:"dodge"}, {index:3, result:"highlighted"}]);
+        legend
+            .enter()
+            .append("circle")
+            .attr("cx", 100)
+            .attr("cy", function (d){
+                return 40 + 50 * d["index"];
+            })
+            .attr("r", function (d) {
+                if(d["result"] == "highlighted"){
+                    return clickRadius;
+                }
+                return radius;
+            })
+            .attr("class", function (d) {
+                return d["result"];
+            });
+
+        legend
+            .enter()
+            .append("text")
+            .text(function (d){
+                return d["result"];
+            })
+            .attr("x", 120)
+            .attr("y", function (d){
+                return 45 + 50 * d["index"];
+            });
+
 
     }
 
