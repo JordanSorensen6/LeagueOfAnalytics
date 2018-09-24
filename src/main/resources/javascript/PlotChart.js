@@ -32,7 +32,7 @@ class PlotChart{
     }
 
     updateChart(){
-        if(this.data.length <= 30) {
+        if(this.data.length < 30) {
             if (this.data.length === 5) {
                 document.getElementById("delete").disabled = true;
             }
@@ -59,7 +59,7 @@ class PlotChart{
                 .offset(function () {
                     return [0, 0];
                 })
-                .html((d) = > {
+                .html((d) => {
                 var tooltip_data = {
                     "game id": d["game"],
                     "score": d["score"],
@@ -166,12 +166,6 @@ class PlotChart{
             var radius = 8;
             var clickRadius = 10;
 
-            var zoom = d3.zoom()
-                .scaleExtent([1, Infinity])
-                .translateExtent([[0, 0], [width, height]])
-                .extent([[0, 0], [width, height]])
-                .on("zoom", zoomed);
-
             var i = 1;
             this.data.forEach(function (d) {
                 d["g"] = i;
@@ -188,7 +182,7 @@ class PlotChart{
                 .offset(function () {
                     return [0, 0];
                 })
-                .html((d) = > {
+                .html((d) => {
                 var tooltip_data = {
                     "game id": d["game"],
                     "score": d["score"],
@@ -206,6 +200,28 @@ class PlotChart{
                 .classed("axis", true)
                 .attr("transform", "translate(" + padding + "," + (height / 2 + padding) + ")")
                 .call(xAxis);
+
+            function zoomed(){
+                console.log("what");
+                var t = d3.event.transform;
+
+                var newXScale = t.rescaleX(xScale);
+                var p = d3.select('#plot');
+                p.selectAll("circles").attr("transform", t);
+
+                d3.select('#xAxis').call(xAxis.scale(newXScale));
+
+            }
+
+            var zoom = d3.zoom()
+                .scaleExtent([1, Infinity])
+                .translateExtent([[0, 0], [width, height]])
+                .extent([[0, 0], [width, height]])
+                .on("zoom", zoomed);
+
+            var innerSpace = d3.select("#innerSpace")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .call(zoom);
 
             var newxScale = d3.scaleLinear()
                 .domain([0, this.data.length])
@@ -278,6 +294,12 @@ class PlotChart{
                 .on("mouseover", tip.show)
                 .on("mouseout", tip.hide);
             d3.select("#plotChart").call(tip);
+
+            innerSpace.append("rect")
+                .attr("class", "zoom")
+                .attr("width", width)
+                .attr("height", height)
+                .call(zoom);
         }
 
         var legend = d3.select("#legend").selectAll("circle")

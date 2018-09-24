@@ -27,9 +27,11 @@ ${username} stats
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
     <svg width="800" height="600" id="plotChart">
-        <g id="xAxis"></g>
-        <g id="yAxis"></g>
-        <g id="plot"></g>
+        <g id="innerSpace">
+            <g id="xAxis"></g>
+            <g id="yAxis"></g>
+            <g id="plot"></g>
+        </g>
     </svg>
         <div>
             <h4>Legend</h4>
