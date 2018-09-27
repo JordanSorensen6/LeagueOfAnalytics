@@ -20,46 +20,78 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PlayerSearch extends HttpServlet {
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
+        RiotCalls call = RiotCalls.getInstance();
         if(uri.equals("/search")) {
             request.getRequestDispatcher("/playersearch.jsp").forward(request, response);
         }
         else if(uri.equals("/history")) {
-            RiotCalls call = new RiotCalls();
             String summoner = call.getSummonerName(request.getParameter("user"));
-            if(summoner != null && summoner != "") {
-                // pull history from database
-                List<GamesEntity> games = GamesDB.getGamesBySummoner(summoner);
-                if(games.size() < 5) {
-                    getAndSaveRecentGames(request.getParameter("user"));
-                    games = GamesDB.getGamesBySummoner(summoner);
-                }
-
-                Gson gson = new Gson();
-                response.setCharacterEncoding("UTF-8");
-                response.setContentType("application/json");
-                PrintWriter writer = response.getWriter();
-                writer.write(gson.toJson(games));
-                writer.close();
-            }
-            else {
+            String match = request.getParameter("match");
+            if(summoner == null || summoner.equals("")) { // can't search history without a summoner name
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/json");
                 PrintWriter writer = response.getWriter();
                 writer.write("");
                 writer.close();
             }
+            else if(match == null) {
+                ArrayList<String> matchIds = call.getRecentMatchIds(call.getSummonerId(summoner), 0, 50);
+
+                ArrayList<GamesEntity> analyzed = new ArrayList<>();
+                // analyze the first 5 matches
+                for(String id : matchIds) {
+                    if(analyzed.size() > 5) break;
+                    GamesEntity game = analyzeMatch(summoner, id);
+                    if(game != null)
+                        analyzed.add(game);
+                }
+                Gson gson = new Gson();
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("application/json");
+                PrintWriter writer = response.getWriter();
+                writer.write(gson.toJson(analyzed));
+                writer.close();
+            }
+            else {
+                List<GamesEntity> analyzed = analyzeNextFive(summoner, match);
+                Gson gson = new Gson();
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("application/json");
+                PrintWriter writer = response.getWriter();
+                writer.write(gson.toJson(analyzed));
+                writer.close();
+            }
         }
         else {
-            RiotCalls call = new RiotCalls();
             request.setAttribute("username", call.getSummonerName(request.getParameter("name")));
             request.getRequestDispatcher("/playerstats.jsp").forward(request, response);
         }
     }
 
-    private GamesEntity analyzeMatch(String user, String gameId, JsonObject match) throws IOException {
-        RiotCalls call = new RiotCalls();
+    private List<GamesEntity> analyzeNextFive(String summoner, String match) throws IOException {
+        RiotCalls call = RiotCalls.getInstance();
+        ArrayList<String> matchIds = call.getRecentMatchIds(call.getSummonerId(summoner), 0, 100);
+        ArrayList<GamesEntity> analyzed = new ArrayList<>();
+        int startIndex = 0;
+        for(int i = 0; i < matchIds.size(); i++) {
+            if(matchIds.get(i).equals(match))
+                startIndex = i + 1;
+        }
+        for(int i = startIndex; i < matchIds.size(); i++) {
+            if(analyzed.size() > 5) break;
+            GamesEntity game = analyzeMatch(summoner, matchIds.get(i));
+            if(game != null)
+                analyzed.add(game);
+        }
+        return analyzed;
+    }
+
+    private GamesEntity analyzeMatch(String user, String gameId) throws IOException {
+        RiotCalls call = RiotCalls.getInstance();
+        JsonObject match = call.getMatch(gameId);
         // get users team id
         JsonArray participantIdentities = match.getAsJsonArray("participantIdentities");
         int userTeamId = 0;
@@ -113,6 +145,7 @@ public class PlayerSearch extends HttpServlet {
         Integer adc = findMatchup("BOTTOM", "DUO_CARRY", userTeamId, matchups, match);
         Integer supp = findMatchup("BOTTOM", "DUO_SUPPORT", userTeamId, matchups, match);
 
+
         if(matchups.size() == 5) {
             // only analyze & store if all matchups were able to be found
             Scoring scoring = new Scoring();
@@ -150,26 +183,31 @@ public class PlayerSearch extends HttpServlet {
         }
     }
 
-    private void getAndSaveRecentGames(String name) throws IOException {
-        RiotCalls call = new RiotCalls();
-        String summonerId = call.getAccountId(name);
-
-        JsonArray matchlist = call.getRecentMatches(summonerId);
-        // analyze each match
-        ArrayList<GamesEntity> analyzedList = new ArrayList<>();
-        for(int i = 0; i < matchlist.size() && i < 11; i++) {
-            String gameId = Long.toString(matchlist.get(i).getAsJsonObject().get("gameId").getAsLong());
-            JsonObject match = call.getMatch(gameId);
-            GamesEntity analyzed = null;
-            if(match != null)
-                analyzed = analyzeMatch(name, gameId, match);
-            if(analyzed != null) {
-                analyzedList.add(analyzed);
+    private HashMap<Integer, Pair<String, String>> findMatchups(int teamId, JsonObject match) {
+        HashMap<Integer, Pair<String, String>> matchups = new HashMap<>();
+        JsonArray participants = match.getAsJsonArray("participants");
+        for(int i = 0; i < participants.size(); i++) {
+            JsonObject participant = participants.get(i).getAsJsonObject();
+            JsonObject participantTimeline = participants.get(i).getAsJsonObject().getAsJsonObject("timeline");
+            switch(participantTimeline.get("lane").getAsString()) {
+                case "MIDDLE":
+                    break;
+                case "TOP":
+                    break;
+                case "JUNGLE":
+                    break;
+                case "BOTTOM":
+                    break;
+                // if it reaches the default case, the lane is "NONE"
+                default:
+                    break;
             }
         }
-        GamesDB.saveGames(analyzedList);
+
+        return matchups;
     }
 
+    //TODO refactor to find all matchups in 1 call to solve ambiguities
     private Integer findMatchup(String lane, String role, int teamId, HashMap<Integer, Pair<String, String>> matchups, JsonObject match) {
         JsonArray participants = match.getAsJsonArray("participants");
         int participantId = 0;
