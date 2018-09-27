@@ -39,6 +39,7 @@ public class RiotCalls {
     }
 
     public String getSummonerId(String summoner) throws IOException {
+        summoner = formatSummonerName(summoner);
         String apiKey = config.getRiotApiKey();
         Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
         // if name is invalid
@@ -74,6 +75,7 @@ public class RiotCalls {
     }
 
     public String getAccountId(String summoner) throws IOException {
+        summoner = formatSummonerName(summoner);
         String apiKey = config.getRiotApiKey();
         Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
         // if name is invalid
@@ -109,6 +111,7 @@ public class RiotCalls {
     }
 
     public String getSummonerName(String summoner) throws IOException {
+        summoner = formatSummonerName(summoner);
         String apiKey = config.getRiotApiKey();
         Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
         // if name is invalid
@@ -180,7 +183,7 @@ public class RiotCalls {
     public ArrayList<String> getRecentMatchIds(String accountId, Integer beginIndex, Integer endIndex) throws IOException {
         String apiKey = config.getRiotApiKey();
         String url = "https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/"
-                + accountId + "?beginIndex=" + beginIndex + "?endIndex=" + endIndex + "&queue=420&queue=440"; //420 and 440 filters the matchlist to only ranked matches
+                + accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"; //420 and 440 filters the matchlist to only ranked matches
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet req = new HttpGet(url);
         req.addHeader("X-Riot-Token", apiKey);
@@ -245,6 +248,10 @@ public class RiotCalls {
             System.out.println("Riot Status " + status + ", matches by matchId error");
             return null;
         }
+    }
+
+    private String formatSummonerName(String name) {
+        return name.replaceAll("\\s+","");
     }
 
     private Integer rateLimitExceeded(HttpResponse resp) {

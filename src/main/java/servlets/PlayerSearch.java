@@ -38,12 +38,12 @@ public class PlayerSearch extends HttpServlet {
                 writer.close();
             }
             else if(match == null) {
-                ArrayList<String> matchIds = call.getRecentMatchIds(call.getSummonerId(summoner), 0, 50);
+                ArrayList<String> matchIds = call.getRecentMatchIds(call.getAccountId(summoner), 0, 50);
 
                 ArrayList<GamesEntity> analyzed = new ArrayList<>();
                 // analyze the first 5 matches
                 for(String id : matchIds) {
-                    if(analyzed.size() > 5) break;
+                    if(analyzed.size() >= 5) break;
                     GamesEntity game = analyzeMatch(summoner, id);
                     if(game != null)
                         analyzed.add(game);
@@ -73,7 +73,7 @@ public class PlayerSearch extends HttpServlet {
 
     private List<GamesEntity> analyzeNextFive(String summoner, String match) throws IOException {
         RiotCalls call = RiotCalls.getInstance();
-        ArrayList<String> matchIds = call.getRecentMatchIds(call.getSummonerId(summoner), 0, 100);
+        ArrayList<String> matchIds = call.getRecentMatchIds(call.getAccountId(summoner), 0, 100);
         ArrayList<GamesEntity> analyzed = new ArrayList<>();
         int startIndex = 0;
         for(int i = 0; i < matchIds.size(); i++) {
@@ -156,15 +156,15 @@ public class PlayerSearch extends HttpServlet {
                 Pair<String, String> matchup = matchups.get(key);
                 //calculate matchup
                 if(key.equals(mid))
-                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Middle", "gold");
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "middle", "gold");
                 else if(key.equals(top))
-                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Top", "gold");
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "top", "gold");
                 else if(key.equals(jung))
-                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Jungle", "gold");
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "jungle", "gold");
                 else if(key.equals(adc))
-                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "ADC", "gold");
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "bottom", "gold");
                 else if(key.equals(supp))
-                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "Support", "gold");
+                    matchupCalc = scoring.getMatchupInfo(matchup.getKey(), matchup.getValue(), "support", "gold");
                 //calculate score
                 if(matchupCalc == null)
                     matchupCalc = 50.0;
