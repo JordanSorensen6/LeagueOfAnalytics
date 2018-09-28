@@ -38,9 +38,12 @@ public class GamesDB {
         Query query = session.createQuery(q);
         query.setParameter("summoner", summoner);
         query.setParameter("match_id", matchId);
-        GamesEntity game = (GamesEntity)query.getSingleResult();
+        List<GamesEntity> games = query.getResultList();
         session.close();
-        return game;
+        if(games.size() == 0) {
+            return null;
+        }
+        return games.get(0);
     }
 
     public static void saveGame(GamesEntity game) {
