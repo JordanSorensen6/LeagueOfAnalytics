@@ -13,6 +13,7 @@ public class GamesDB {
         Session session = HibernateUtil.getSession();
         String q = "FROM GamesEntity AS G WHERE G.summoner = :user_summoner ORDER BY G.matchId DESC";
         Query query = session.createQuery(q);
+        query.setMaxResults(5);
         query.setParameter("user_summoner", summoner);
         List<GamesEntity> games = query.getResultList();
         session.close();

@@ -43,7 +43,9 @@ public class ExtractMatchup extends HttpServlet {
         {
             String mastery = request.getParameter("mastery");
             String matchup = request.getParameter("matchup");
-            String score = scoring.calculateScore(matchup, mastery)+"";
+            String winrate = request.getParameter("winrate");
+            String hotstreak = request.getParameter("hotstreak");
+            String score = scoring.calculateScore(matchup, mastery, winrate, hotstreak)+"";
 
             response.setCharacterEncoding("UTF-8");
             PrintWriter writer = response.getWriter();

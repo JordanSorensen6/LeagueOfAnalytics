@@ -11,53 +11,54 @@ import java.util.regex.Pattern;
 
 public class Scoring {
 
-    public Double calculateScore(String matchup, String mastery)
+    public Double calculateScore(String matchup, String mastery, String winRate, String hotStreak)
     {
-        Double mat;
-        if(matchup.equals("?"))
-            mat = -1.0;
-        else {
-            mat = Double.parseDouble(matchup);
-        }
-        int mas = Integer.parseInt(mastery);
-
         Double score = 0.0;
-
-        if (mas <= 2)
-            score -= 1;
-        else if (mas == 3)
-            score -= .5;
-        else if (mas == 4)
-            score += 0;
-        else if (mas == 5)
-            score += .5;
-        else if (mas >= 6)
-            score += 1;
-
-        if (mat != -1.0)
+        switch (Integer.parseInt(mastery))//Score champion mastery
         {
-            if (mat < 48)
+            case 1:
                 score -= 1;
-            else if (mat < 50)
-                score -= .5;
-            else if (mat < 52)
-                score += .5;
-            else
-                score += 1;
-
-            if (mas < 3 && mat < 48)//Lane is looking really bad.
+                break;
+            case 2:
                 score -= 1;
-            else if (mas == 3 && mat < 50)//Lane is looking bad.
+                break;
+            case 3:
                 score -= .5;
-            else if (mas == 4 && mat < 45)//Bad
+                break;
+            case 4:
                 score -= .5;
-            else if (mas == 4 && mat > 55)//Good
+                break;
+            case 5:
+                score += 0;
+                break;
+            case 6:
                 score += .5;
-            else if (mas >= 5 && mat >= 50 && mat <= 52)//Lane is looking good.
-                score += .5;
-            else if (mas > 5 && mat > 52)//Lane is looking really good.
+                break;
+            case 7:
                 score += 1;
+                break;
         }
+
+        Double mat = Double.parseDouble(matchup);
+        if (mat != 0)//Score champion matchup
+        {
+            if (mat < 50)
+                score -= .5;
+            else
+                score += .5;
+        }
+
+        if (!winRate.equals("NaN"))//Score player winrate
+        {
+            Double wr = Double.parseDouble(winRate);
+            if (wr < 50)
+                score -= .5;
+            else
+                score += .5;
+        }
+
+        if (hotStreak.equals("True"))
+            score += .5;
 
         return score;
     }

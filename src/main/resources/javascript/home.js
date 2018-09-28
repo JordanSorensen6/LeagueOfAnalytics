@@ -7,8 +7,33 @@ var home = (function($) {
         summonerIdsLookup();
         championsLookup();
         championSelected();
-	anyChampSelection();
+	    anyChampSelection();
     }
+
+    function getSummonerInfo(sid, position){
+        $.get('riot/playerStats?summonerId='+sid, function(data) {
+            setPlayerWinRate(data, position);
+            setHotStreak(data, position);
+        });
+    }
+
+    function setPlayerWinRate(json, position)
+    {
+        if(Object.keys(json).length !== 0)
+            document.getElementById("playerPercentage"+position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"])))*10000)/100).toString() + "%</b>";
+        else
+            document.getElementById("playerPercentage"+position).innerHTML = "<b>No Games</b>";
+    }
+
+    function setHotStreak(json, position)
+    {
+        console.log(json[0]["hotStreak"]);
+        if (json[0]["hotStreak"].toString() == "true")
+            document.getElementById("hot"+position).src = "/resources/images/hotStreakTrue.png";
+    }
+
+
+
 
     function swapMap(json) {
         var ret = {};
@@ -34,11 +59,7 @@ var home = (function($) {
 
     function summonerIdsLookup() {
         $('#textBox').on('input', function() {
-            // var s1 = $('#summoner1').val();
-            // var s2 = $('#summoner2').val();
-            // var s3 = $('#summoner3').val();
-            // var s4 = $('#summoner4').val();
-            // var s5 = $('#summoner5').val();
+
             var s1 = document.getElementById('summoner1').value;
             var s2 = document.getElementById('summoner2').value;
             var s3 = document.getElementById('summoner3').value;
@@ -68,6 +89,7 @@ var home = (function($) {
                 console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
+                    getSummonerInfo(summonerId, num);
                     var image = document.getElementById('mastery' + num);
                     console.log("updating mastery with: " + data);
                     image.src = "/resources/images/L"+data+".png";
@@ -188,9 +210,13 @@ var home = (function($) {
         mastery = mastery.replace(location.port, '').replace(/\D/g,'');//get mastery number w/o port number.
         var matchup = document.getElementById('percentage'+role).innerText;
         matchup = matchup.replace("%", "");
-        console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup);
+        var playerWinRate = document.getElementById("playerPercentage"+role).innerText;
+        playerWinRate = playerWinRate.replace("%", "");
+        var hotStreak = document.getElementById("hot"+role).src;
+        hotStreak = hotStreak.substring(hotStreak.length-10, hotStreak.length).replace(".png", "").replace("ak", "").replace("k", "");
+        console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup + ' playerWinRate: ' + playerWinRate + ' hotStreak: ' + hotStreak);
         var score = document.getElementById('score'+role);
-        $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup, function(data) {
+        $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup + '&winrate=' + playerWinRate + '&hotstreak=' + hotStreak, function(data) {
             score.innerText = data;
             updateTotalScore();
             checkScoreDone();
@@ -289,10 +315,17 @@ var home = (function($) {
     var prevSelected = null;
 
     function populateSummonerNames() {
+
         var lines = document.getElementById("textBox").value.split('\n');
         for(var i = 0;i < lines.length;i++){
-            lines[i] = lines[i].replace(" joined the lobby", "");
+            if(lines[i].indexOf(" joined the lobby") != -1)
+                lines[i] = lines[i].replace(" joined the lobby", "");
+            else
+                lines[i] = "";
         }
+        for(var i = 0; i < 5; i++)
+            if(typeof lines[i] == "undefined")
+                lines[i] = "";
         document.getElementById("summoner1").value = lines[0];
         document.getElementById("summoner2").value = lines[1];
         document.getElementById("summoner3").value = lines[2];
