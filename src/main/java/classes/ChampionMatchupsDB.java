@@ -33,8 +33,10 @@ public class ChampionMatchupsDB {
         query.setParameter("champ_id", id);
         query.setParameter("elo", elo);
         query.setParameter("role", role.toLowerCase());
-        ChampionMatchupsEntity matchup = (ChampionMatchupsEntity)query.getSingleResult();
+        List<ChampionMatchupsEntity> matchup = query.getResultList();
         session.close();
-        return matchup;
+        if(matchup.size() == 0)
+            return null;
+        return matchup.get(0);
     }
 }
