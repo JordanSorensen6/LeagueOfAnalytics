@@ -90,8 +90,8 @@ public class PlayerSearch extends HttpServlet {
         if(startIndex == -1) // game wasn't found in the most recent 100 matches
             return analyzed;
         for(int i = startIndex; i < matchIds.size(); i++) {
-            if(analyzed.size() > 5) break;
-            GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(match));
+            if(analyzed.size() >= 5) break;
+            GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(matchIds.get(i)));
             if(game != null) {
                 analyzed.add(game);
                 continue;
