@@ -44,9 +44,16 @@ public class PlayerSearch extends HttpServlet {
                 // analyze the first 5 matches
                 for(String id : matchIds) {
                     if(analyzed.size() >= 5) break;
-                    GamesEntity game = analyzeMatch(summoner, id);
-                    if(game != null)
+                    GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(id));
+                    if(game != null) {
                         analyzed.add(game);
+                        continue;
+                    }
+                    game = analyzeMatch(summoner, id);
+                    if(game != null) {
+                        analyzed.add(game);
+                        GamesDB.saveGame(game);
+                    }
                 }
                 Gson gson = new Gson();
                 response.setCharacterEncoding("UTF-8");
@@ -75,16 +82,25 @@ public class PlayerSearch extends HttpServlet {
         RiotCalls call = RiotCalls.getInstance();
         ArrayList<String> matchIds = call.getRecentMatchIds(call.getAccountId(summoner), 0, 100);
         ArrayList<GamesEntity> analyzed = new ArrayList<>();
-        int startIndex = 0;
+        int startIndex = -1;
         for(int i = 0; i < matchIds.size(); i++) {
             if(matchIds.get(i).equals(match))
                 startIndex = i + 1;
         }
+        if(startIndex == -1) // game wasn't found in the most recent 100 matches
+            return analyzed;
         for(int i = startIndex; i < matchIds.size(); i++) {
             if(analyzed.size() > 5) break;
-            GamesEntity game = analyzeMatch(summoner, matchIds.get(i));
-            if(game != null)
+            GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(match));
+            if(game != null) {
                 analyzed.add(game);
+                continue;
+            }
+            game = analyzeMatch(summoner, matchIds.get(i));
+            if(game != null) {
+                analyzed.add(game);
+                GamesDB.saveGame(game);
+            }
         }
         return analyzed;
     }

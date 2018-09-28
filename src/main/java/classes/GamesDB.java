@@ -1,5 +1,6 @@
 package classes;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -16,6 +17,29 @@ public class GamesDB {
         List<GamesEntity> games = query.getResultList();
         session.close();
         return games;
+    }
+
+    public static List<GamesEntity> getGamesInRange(String summoner, Long begin, Long end) {
+        Session session = HibernateUtil.getSession();
+        String q = "FROM GamesEntity AS G WHERE G.summoner = :summoner AND G.matchId <= :begin_id AND G.matchId >= :end_id";
+        Query query = session.createQuery(q);
+        query.setParameter("summoner", summoner);
+        query.setParameter("begin_id", begin);
+        query.setParameter("end_id", end);
+        List<GamesEntity> games = query.getResultList();
+        session.close();
+        return games;
+    }
+
+    public static GamesEntity getGameByMatchId(String summoner, Long matchId) {
+        Session session = HibernateUtil.getSession();
+        String q = "FROM GamesEntity AS G WHERE G.summoner = :summoner AND G.matchId = :match_id";
+        Query query = session.createQuery(q);
+        query.setParameter("summoner", summoner);
+        query.setParameter("match_id", matchId);
+        GamesEntity game = (GamesEntity)query.getSingleResult();
+        session.close();
+        return game;
     }
 
     public static void saveGame(GamesEntity game) {
