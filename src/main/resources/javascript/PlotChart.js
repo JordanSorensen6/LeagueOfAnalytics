@@ -239,4 +239,10 @@ class PlotChart{
         this.updateChart();
     }
 
+    getLowestMatchId(){
+        return d3.min(this.data, function(d){
+            return d["matchId"];
+        })
+    }
+
 }
