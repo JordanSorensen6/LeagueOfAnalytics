@@ -44,23 +44,7 @@ public class PlayerSearch extends HttpServlet {
                 // analyze the first 5 matches
                 for(String id : matchIds) {
                     if(analyzed.size() >= 5) break;
-                    GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(id));
-                    if(game != null) {
-                        if(game.getOutcome() == null)
-                            continue;
-                        analyzed.add(game);
-                        continue;
-                    }
-                    game = analyzeMatch(summoner, id);
-                    if(game == null) {
-                        game = new GamesEntity();
-                        game.setMatchId(Long.parseLong(id));
-                        game.setSummoner(summoner);
-                    }
-                    if(game != null) {
-                        analyzed.add(game);
-                        GamesDB.saveGame(game);
-                    }
+                    gameCheck(summoner, id, analyzed);
                 }
                 Gson gson = new Gson();
                 response.setCharacterEncoding("UTF-8");
@@ -97,19 +81,30 @@ public class PlayerSearch extends HttpServlet {
         if(startIndex == -1) // game wasn't found in the most recent 100 matches
             return analyzed;
         for(int i = startIndex; i < matchIds.size(); i++) {
-            if(analyzed.size() > 5) break;
-            GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(matchIds.get(i)));
-            if(game != null) {
-                analyzed.add(game);
-                continue;
-            }
-            game = analyzeMatch(summoner, matchIds.get(i));
-            if(game != null) {
-                analyzed.add(game);
-                GamesDB.saveGame(game);
-            }
+            if(analyzed.size() >= 5) break;
+            gameCheck(summoner, matchIds.get(i), analyzed);
         }
         return analyzed;
+    }
+
+    private void gameCheck(String summoner, String id, List<GamesEntity> analyzed) throws IOException {
+        GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(id));
+        if(game != null) {
+            if (game.getScore() != null) {
+                analyzed.add(game);
+                return;
+            }
+            return;
+        }
+        game = analyzeMatch(summoner, id);
+        if(game == null) {
+            game = new GamesEntity();
+            game.setMatchId(Long.parseLong(id));
+            game.setSummoner(summoner);
+        }
+        if(game.getScore() != null)
+            analyzed.add(game);
+        GamesDB.saveGame(game);
     }
 
     private GamesEntity analyzeMatch(String user, String gameId) throws IOException {

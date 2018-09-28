@@ -9,7 +9,7 @@ public class GamesEntity {
     private long matchId;
     private String summoner;
     private String outcome;
-    private double score;
+    private Double score;
 
     @Id
     @Column(name = "match_id")
@@ -43,11 +43,11 @@ public class GamesEntity {
 
     @Basic
     @Column(name = "score")
-    public double getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 
