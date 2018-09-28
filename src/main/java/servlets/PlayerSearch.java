@@ -46,10 +46,17 @@ public class PlayerSearch extends HttpServlet {
                     if(analyzed.size() >= 5) break;
                     GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(id));
                     if(game != null) {
+                        if(game.getOutcome() == null)
+                            continue;
                         analyzed.add(game);
                         continue;
                     }
                     game = analyzeMatch(summoner, id);
+                    if(game == null) {
+                        game = new GamesEntity();
+                        game.setMatchId(Long.parseLong(id));
+                        game.setSummoner(summoner);
+                    }
                     if(game != null) {
                         analyzed.add(game);
                         GamesDB.saveGame(game);
@@ -91,7 +98,7 @@ public class PlayerSearch extends HttpServlet {
             return analyzed;
         for(int i = startIndex; i < matchIds.size(); i++) {
             if(analyzed.size() > 5) break;
-            GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(match));
+            GamesEntity game = GamesDB.getGameByMatchId(summoner, Long.parseLong(matchIds.get(i)));
             if(game != null) {
                 analyzed.add(game);
                 continue;
