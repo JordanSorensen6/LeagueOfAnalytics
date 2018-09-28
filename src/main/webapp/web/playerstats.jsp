@@ -89,7 +89,9 @@ ${username} stats
             // }
             var matchId = chart.getLowestMatchId();
             $.get('/history?user=' + "${username}" + "&match=" + matchId, function(data){
-                console.log(data);
+                data.forEach(function (d) {
+                    d.s = +d.score;
+                });
                 chart.newGames(data);
             });
         }
