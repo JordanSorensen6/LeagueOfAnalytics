@@ -70,24 +70,30 @@ ${username} stats
 
     function moreGames() {
         if(!chart.alreadyHasGames()) {
-            var data = [];
-            var possScores = [];
-            for (var i = -15; i <= 15; i += .5) {
-                possScores.push(i);
-            }
-            for (var i = 0; i < 5; i++) {
-                var outcome = generateRandom(["Win", "Fail", "Dodge"]);
-                var score = generateRandom(possScores);
-                var g = i + 1;
-                var repGame = {
-                    "g": g,
-                    "outcome": outcome,
-                    "s": score,
-                    "score": score
-                };
-                data.push(repGame);
-            }
-            chart.newGames(data);
+            // var data = [];
+            // var possScores = [];
+            // for (var i = -15; i <= 15; i += .5) {
+            //     possScores.push(i);
+            // }
+            // for (var i = 0; i < 5; i++) {
+            //     var outcome = generateRandom(["Win", "Fail", "Dodge"]);
+            //     var score = generateRandom(possScores);
+            //     var g = i + 1;
+            //     var repGame = {
+            //         "g": g,
+            //         "outcome": outcome,
+            //         "s": score,
+            //         "score": score
+            //     };
+            //     data.push(repGame);
+            // }
+            var matchId = chart.getLowestMatchId();
+            $.get('/history?user=' + "${username}" + "&match=" + matchId, function(data){
+                data.forEach(function (d) {
+                    d.s = +d.score;
+                });
+                chart.newGames(data);
+            });
         }
         else {
             chart.addOldGames();
