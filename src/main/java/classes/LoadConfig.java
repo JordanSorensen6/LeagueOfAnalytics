@@ -7,8 +7,6 @@ public class LoadConfig {
     private static LoadConfig config;
 
     private String riotApiKey;
-    private String databaseUser;
-    private String databasePass;
 
     private LoadConfig() {
         String resourceName = "config.properties";
@@ -20,8 +18,6 @@ public class LoadConfig {
             e.printStackTrace();
         }
         this.riotApiKey = configProps.getProperty("RIOT_API_KEY", "");
-        this.databaseUser = configProps.getProperty("DB_USER", "");
-        this.databasePass = configProps.getProperty("DB_PASS","");
     }
 
     public static LoadConfig getInstance() {
@@ -34,13 +30,5 @@ public class LoadConfig {
 
     public String getRiotApiKey() {
         return riotApiKey;
-    }
-
-    public String getDatabaseUser() {
-        return databaseUser;
-    }
-
-    public String getDatabasePass() {
-        return databasePass;
     }
 }

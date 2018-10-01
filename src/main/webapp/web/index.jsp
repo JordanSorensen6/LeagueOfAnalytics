@@ -7,10 +7,12 @@
 
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
 
     <script type="text/javascript" src="resources/javascript/home.js"></script>
+    <script type="text/javascript" src="resources/javascript/cookie.js"></script>
 </head>
-<body>
+<body onload="checkCookies()" onbeforeunload="setCookies()">
 
 <jsp:include page="navbar.jsp"/>
 
@@ -18,22 +20,12 @@
 <div class="gridLayout">
     <div class="teamSummoners"><u>Team Summoners</u></div>
     <div class="teamChampions"><u>Team Champions</u></div>
+    <div class="rank"><u>Rank</u></div>
     <div class="championMastery"><u>Mastery Level</u></div>
+    <div class="hotStreak"><u>Hot Streak</u></div>
+    <div class="playerWinPer"><u>Player Win Percentage</u></div>
     <div class="opponentChampions"><u>Opponent Champions</u></div>
-    <div class="matchRating"><u>Win Percentage</u></div>
-    <%--<div class="score">Score</div>--%>
-
-    <%--<div class="top">Top</div>--%>
-    <%--<div class="jungle">Jungle</div>--%>
-    <%--<div class="mid">Mid</div>--%>
-    <%--<div class="bot">Bot</div>--%>
-    <%--<div class="support">Support</div>--%>
-
-    <%--<div class="summonerTop"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div>--%>
-    <%--<div class="summonerJungle"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div>--%>
-    <%--<div class="summonerMid"><input type="text" name="summoners" id="summoner3" placeholder="summoner3" onclick="home.markForSwap('summoner3')"></div>--%>
-    <%--<div class="summonerBot"><input type="text" name="summoners" id="summoner4" placeholder="summoner4" onclick="home.markForSwap('summoner4')"></div>--%>
-    <%--<div class="summonerSupport"><input type="text" name="summoners" id="summoner5" placeholder="summoner5" onclick="home.markForSwap('summoner5')"></div>--%>
+    <div class="matchRating"><u>Champion Win Percentage</u></div>
 
     <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div></div></div>
     <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div></div></div>
@@ -53,6 +45,11 @@
     <div class="teamChampBotPic"><img id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
     <div class="teamChampSupportPic"><img id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
 
+    <div class="tierTop"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierJungle"><img id="tier2" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierMid"><img id="tier3" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierBot"><img id="tier4" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierSupport"><img id="tier5" src="/resources/images/tier-icons/provisional.png"></div>
 
     <div class="masteryTop"><img id="mastery1" src="/resources/images/L0.png"></div>
     <div class="masteryJungle"><img id="mastery2" src="/resources/images/L0.png"></div>
@@ -60,6 +57,18 @@
     <div class="masteryBot"><img id="mastery4" src="/resources/images/L0.png"></div>
     <div class="masterySupport"><img id="mastery5" src="/resources/images/L0.png"></div>
 
+
+    <div class="hotStreakTop"><img id="hot1" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakJungle"><img id="hot2" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakMid"><img id="hot3" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakBot"><img id="hot4" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="hotStreakSupport"><img id="hot5" src="/resources/images/hotStreakFalse.png"></div>
+
+    <div class="playerWinPerTop" id="playerPercentage1"><b>00.00%</b></div>
+    <div class="playerWinPerJungle" id="playerPercentage2"><b>00.00%</b></div>
+    <div class="playerWinPerMid" id="playerPercentage3"><b>00.00%</b></div>
+    <div class="playerWinPerBot" id="playerPercentage4"><b>00.00%</b></div>
+    <div class="playerWinPerSupport" id="playerPercentage5"><b>00.00%</b></div>
 
     <div class="oppChampTopPic"><img id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
     <div class="oppChampJunglePic"><img id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
@@ -93,7 +102,7 @@
 summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
-summoner5 joined the lobby" id="textBox" oninput="home.populateSummonerNames()"></textarea><br>
+summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea><br>
 
 <script>
     home.init();

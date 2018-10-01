@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
+    <link rel="stylesheet" href="/resources/css/temp.css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="/resources/javascript/d3-tip.js"></script>
@@ -17,34 +18,98 @@
 
 <jsp:include page="navbar.jsp"/>
 
-${username} is very good at the game!
+${username} stats
 
 
 <div class="chart">
-    <svg width="500" height="400" id="plotChart">
+    <button type="button" onclick="moreGames()" id = "add">Add More Games</button>
+    <button type="button" onclick="chart.lessGames()" id = "delete">Take Away Games</button>
+    <h4>Assigned Scores For Past Games</h4>
+    <div class = "row">
+    <svg width="800" height="600" id="plotChart">
         <g id="xAxis"></g>
         <g id="yAxis"></g>
         <g id="plot"></g>
     </svg>
+        <div>
+            <h4>Legend</h4>
+            <svg width="200" height="400" id="legend">
+
+            </svg>
+        </div>
+    </div>
+
 </div>
 
-<div class="PlayerStatPic">
+<div id="PlayerWinPic" class="PlayerStatPic" style="display: none;">
+    <img id="PlayerLossImg" src="/resources/images/victory.png" style="left:500px">
+</div>
+<div id="PlayerLossPic" class="PlayerStatPic" style="display: none;">
     <img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">
+</div>
+
+<div class="chart">
+    <svg width="100" height="600">
+
+    </svg>
 </div>
 </body>
 </html>
 <script>
+    var chart;
     $('#nav-search').addClass('active');
-
 
     $.get('/history?user=' + "${username}", function(data){
         console.log(data);
         data.forEach(function (d) {
-            d.g = +d.game;
             d.s = +d.score;
         });
-        var chart = new PlotChart(data);
+        chart = new PlotChart(data);
         chart.updateChart();
     });
+
+    function moreGames() {
+        if(!chart.alreadyHasGames()) {
+            // var data = [];
+            // var possScores = [];
+            // for (var i = -15; i <= 15; i += .5) {
+            //     possScores.push(i);
+            // }
+            // for (var i = 0; i < 5; i++) {
+            //     var outcome = generateRandom(["Win", "Fail", "Dodge"]);
+            //     var score = generateRandom(possScores);
+            //     var g = i + 1;
+            //     var repGame = {
+            //         "g": g,
+            //         "outcome": outcome,
+            //         "s": score,
+            //         "score": score
+            //     };
+            //     data.push(repGame);
+            // }
+            var matchId = chart.getLowestMatchId();
+            $.get('/history?user=' + "${username}" + "&match=" + matchId, function(data){
+                data.forEach(function (d) {
+                    d.s = +d.score;
+                });
+                chart.newGames(data);
+            });
+        }
+        else {
+            chart.addOldGames();
+        }
+    }
+
+    function generateRandom(possVals){
+        var val;
+        var valRand = Math.floor(Math.random() * (possVals.length));
+        for (var i = 0; i < possVals.length; i++){
+            if(valRand === i){
+                val = possVals[i];
+                break;
+            }
+        }
+        return val;
+    }
 
 </script>

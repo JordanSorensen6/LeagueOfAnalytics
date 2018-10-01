@@ -2,7 +2,8 @@ package servlets;
 
 import classes.LoadConfig;
 import classes.RiotCalls;
-import classes.StaticChampions;
+import classes.StaticChampionsDB;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
@@ -18,17 +19,15 @@ public class RiotAPI extends HttpServlet {
     private static LoadConfig config = LoadConfig.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RiotCalls call = new RiotCalls();
-        String apiKey = config.getRiotApiKey();
-        String dbUser = config.getDatabaseUser();
-        String dbPass = config.getDatabasePass();
+        RiotCalls call = RiotCalls.getInstance();
 
         String uri = request.getRequestURI();
         if(uri.equals("/riot/champions")) {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json");
             PrintWriter writer = response.getWriter();
-            writer.write(StaticChampions.champions);
+            Gson gson = new Gson();
+            writer.write(gson.toJson(StaticChampionsDB.getAllChampions()));
             writer.close();
         } else if(Pattern.compile("^*/riot/summonerIds*$").matcher(uri).matches()) {
             //extract query params
@@ -63,6 +62,16 @@ public class RiotAPI extends HttpServlet {
             response.setContentType("application/json");
             PrintWriter writer = response.getWriter();
             writer.write(masteryLevel);
+            writer.close();
+        }
+        else if(Pattern.compile("^*/riot/playerStats*$").matcher(uri).matches())
+        {
+            String summonerId = request.getParameter("summonerId");
+            String summonerInfo = call.getSummonerInfo(summonerId);
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            writer.write(summonerInfo);
             writer.close();
         }
     }
