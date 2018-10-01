@@ -81,7 +81,12 @@ public class Scoring {
 
         Integer c1Id = StaticChampionsDB.getIdByName(c1);
 
-        String matchupJson = ChampionMatchupsDB.getByAll(c1Id, league, role).getMatchupJson();
+        ChampionMatchupsEntity temp = ChampionMatchupsDB.getByAll(c1Id, league, role);
+        if(temp == null)
+            return 50.0;
+        String matchupJson = temp.getMatchupJson();
+//        if(matchupJson == null) //TODO handle differently?
+//            return 50.0;
 
         HashMap<String, Double> allMatches = new HashMap<>();
         Matcher m = Pattern.compile("\"opponentChampion\":(.*?), \"winRate\": (.*?)}")

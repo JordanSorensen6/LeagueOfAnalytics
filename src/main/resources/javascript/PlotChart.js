@@ -2,7 +2,7 @@ class PlotChart{
 
     constructor(data){
         this.data = data;
-
+        this.unusedData = [];
         //document.getElementById("PlayerStatImg").style.visibility = 'hidden';
     }
 
@@ -32,6 +32,9 @@ class PlotChart{
     }
 
     updateChart(){
+        if(this.data.length === 5){
+            document.getElementById("delete").disabled = true;
+        }
         var padding = 80;
         var svg = d3.select("#plotChart");
         var width = +svg.attr("width") - 2 * padding;
@@ -49,7 +52,7 @@ class PlotChart{
         svg.append("text")
             .attr("transform",
                 "translate(" + (width/2 + 80) + " ," +
-                (height/2 + padding + 20) + ")")
+                (height/2 + padding + 30) + ")")
             .style("text-anchor", "middle")
             .text("Game #");
 
@@ -70,13 +73,13 @@ class PlotChart{
                 return [0, 0];
             })
             .html((d) => {
-            var tooltip_data = {
-                "game id": d["game"],
-                "score":d["score"],
-                "outcome":d["outcome"]
-            };
-        return this.tooltip_render(tooltip_data);
-    });
+                var tooltip_data = {
+                    "game id": d["game"],
+                    "score":d["score"],
+                    "outcome":d["outcome"]
+                };
+                return this.tooltip_render(tooltip_data);
+            });
 
         var xScale = d3.scaleLinear()
             .domain([0, this.data.length])
@@ -112,22 +115,28 @@ class PlotChart{
 
         var chart = d3.select('#plot').selectAll("circle")
             .data(this.data);
-        chart = chart
-            .enter()
-            .append("circle")
-            .merge(chart);
 
-        chart
+        var chartEnter = chart
+            .enter()
+            .append("circle");
+
+        chartEnter
             .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
             .attr("r", radius)
+            .attr("class", function(d){
+                return d["outcome"];
+            });
+
+        chart.exit().remove();
+
+        chart = chart.merge(chartEnter);
+
+        chart
             .attr("cy", function (d) {
                 return newYScale(d.s);
             })
             .attr("cx", function (d) {
                 return newxScale(d.g);
-            })
-            .attr("class", function(d){
-                return d["outcome"];
             });
 
         d3.select("#plot").selectAll("circle")
@@ -187,6 +196,53 @@ class PlotChart{
 
 
 
+    }
+
+    alreadyHasGames() {
+        if (this.unusedData.length === 0){
+            return false;
+        }
+        return true;
+    }
+
+    addOldGames(){
+        var deleteButton = document.getElementById("delete");
+        if(deleteButton.disabled){
+            deleteButton.disabled = false;
+        }
+        
+        var hiData = this.unusedData.splice(this.unusedData.length - 5);
+
+        this.data = this.data.concat(hiData);
+
+        this.updateChart();
+    }
+
+    newGames(data) {
+        var deleteButton = document.getElementById("delete");
+        if(deleteButton.disabled){
+            deleteButton.disabled = false;
+        }
+        var lastGameNumb = this.data[this.data.length - 1];
+        data.forEach((d) => {
+            d["g"] = d["g"] + lastGameNumb["g"];
+            this.data.push(d);
+        });
+
+        this.updateChart();
+
+    }
+
+    lessGames(){
+        var byeData = this.data.splice(this.data.length - 5);
+        this.unusedData = this.unusedData.concat(byeData);
+        this.updateChart();
+    }
+
+    getLowestMatchId(){
+        return d3.min(this.data, function(d){
+            return d["matchId"];
+        })
     }
 
 }

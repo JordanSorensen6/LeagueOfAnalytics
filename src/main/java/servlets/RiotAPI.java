@@ -19,7 +19,7 @@ public class RiotAPI extends HttpServlet {
     private static LoadConfig config = LoadConfig.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RiotCalls call = new RiotCalls();
+        RiotCalls call = RiotCalls.getInstance();
 
         String uri = request.getRequestURI();
         if(uri.equals("/riot/champions")) {

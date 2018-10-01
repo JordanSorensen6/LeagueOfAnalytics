@@ -22,8 +22,8 @@ ${username} stats
 
 
 <div class="chart">
-    <button type="button">More Games</button>
-    <button type="button">Less Games</button>
+    <button type="button" onclick="moreGames()" id = "add">Add More Games</button>
+    <button type="button" onclick="chart.lessGames()" id = "delete">Take Away Games</button>
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
     <svg width="800" height="600" id="plotChart">
@@ -56,15 +56,60 @@ ${username} stats
 </body>
 </html>
 <script>
+    var chart;
     $('#nav-search').addClass('active');
 
     $.get('/history?user=' + "${username}", function(data){
-
+        console.log(data);
         data.forEach(function (d) {
             d.s = +d.score;
         });
-        var chart = new PlotChart(data);
+        chart = new PlotChart(data);
         chart.updateChart();
     });
+
+    function moreGames() {
+        if(!chart.alreadyHasGames()) {
+            // var data = [];
+            // var possScores = [];
+            // for (var i = -15; i <= 15; i += .5) {
+            //     possScores.push(i);
+            // }
+            // for (var i = 0; i < 5; i++) {
+            //     var outcome = generateRandom(["Win", "Fail", "Dodge"]);
+            //     var score = generateRandom(possScores);
+            //     var g = i + 1;
+            //     var repGame = {
+            //         "g": g,
+            //         "outcome": outcome,
+            //         "s": score,
+            //         "score": score
+            //     };
+            //     data.push(repGame);
+            // }
+            var matchId = chart.getLowestMatchId();
+            $.get('/history?user=' + "${username}" + "&match=" + matchId, function(data){
+                data.forEach(function (d) {
+                    d.s = +d.score;
+                });
+                chart.newGames(data);
+            });
+        }
+        else {
+            chart.addOldGames();
+        }
+    }
+
+    function generateRandom(possVals){
+        var val;
+        var valRand = Math.floor(Math.random() * (possVals.length));
+        for (var i = 0; i < possVals.length; i++){
+            if(valRand === i){
+                val = possVals[i];
+                break;
+            }
+        }
+        return val;
+    }
 
 </script>
