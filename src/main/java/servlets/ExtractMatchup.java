@@ -2,6 +2,7 @@ package servlets;
 
 import classes.Scoring;
 
+import javax.persistence.NoResultException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,12 @@ public class ExtractMatchup extends HttpServlet {
             String role = request.getParameter("role");
             String league = request.getParameter("league");
 
-            String matchupInfo = scoring.getMatchupInfo(c1,c2,role,league)+"%";
+            String matchupInfo;
+            try {
+                matchupInfo = scoring.getMatchupInfo(c1, c2, role, league) + "%";
+            }catch (NoResultException ex) {
+                matchupInfo = "?";
+            }
 //            System.out.println(matchupInfo);
 
             response.setCharacterEncoding("UTF-8");

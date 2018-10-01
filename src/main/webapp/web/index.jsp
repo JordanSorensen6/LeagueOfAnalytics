@@ -20,6 +20,7 @@
 <div class="gridLayout">
     <div class="teamSummoners"><u>Team Summoners</u></div>
     <div class="teamChampions"><u>Team Champions</u></div>
+    <div class="rank"><u>Rank</u></div>
     <div class="championMastery"><u>Mastery Level</u></div>
     <div class="hotStreak"><u>Hot Streak</u></div>
     <div class="playerWinPer"><u>Player Win Percentage</u></div>
@@ -44,6 +45,11 @@
     <div class="teamChampBotPic"><img id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
     <div class="teamChampSupportPic"><img id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
 
+    <div class="tierTop"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierJungle"><img id="tier2" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierMid"><img id="tier3" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierBot"><img id="tier4" src="/resources/images/tier-icons/provisional.png"></div>
+    <div class="tierSupport"><img id="tier5" src="/resources/images/tier-icons/provisional.png"></div>
 
     <div class="masteryTop"><img id="mastery1" src="/resources/images/L0.png"></div>
     <div class="masteryJungle"><img id="mastery2" src="/resources/images/L0.png"></div>

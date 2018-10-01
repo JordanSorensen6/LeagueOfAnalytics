@@ -147,6 +147,7 @@
                 restoreSrc("mastery" + i, getCookie("mastery" + i));
                 restoreSrc("oppImg" + i, getCookie("oppImg" + i));
                 restoreSrc("hot" + i, getCookie("hot" + i));
+                restoreSrc("tier" + i, getCookie("tier" + i));
             }
             if(getCookie("percentage" + i) != getCookie("score" + i))
             {
