@@ -41,20 +41,20 @@ class PlotChart{
         var height = +svg.attr("height") - 2 * padding;
         var radius = 8;
         var clickRadius = 10;
-        svg.append("text")
-            .attr("transform", "rotate(-90) translate(" + padding + "," + padding + ")")
-            .attr("y", padding - 120)
-            .attr("x", -1 *(height / 2) - 150)
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("Assigned Score");
-
-        svg.append("text")
-            .attr("transform",
-                "translate(" + (width/2 + 80) + " ," +
-                (height/2 + padding + 30) + ")")
-            .style("text-anchor", "middle")
-            .text("Game #");
+        // svg.append("text")
+        //     .attr("transform", "rotate(-90) translate(" + padding + "," + padding + ")")
+        //     .attr("y", padding - 120)
+        //     .attr("x", -1 *(height / 2) - 150)
+        //     .attr("dy", "1em")
+        //     .style("text-anchor", "middle")
+        //     .text("Assigned Score");
+        //
+        // svg.append("text")
+        //     .attr("transform",
+        //         "translate(" + (width/2 + 80) + " ," +
+        //         (height/2 + padding + 30) + ")")
+        //     .style("text-anchor", "middle")
+        //     .text("Game #");
 
         var i = 1;
         this.data.forEach(function (d) {

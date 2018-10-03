@@ -68,6 +68,26 @@ ${username} stats
         chart.updateChart();
     });
 
+    var padding = 80;
+    var svg = d3.select("#plotChart");
+    var width = +svg.attr("width") - 2 * padding;
+    var height = +svg.attr("height") - 2 * padding;
+
+    svg.append("text")
+        .attr("transform", "rotate(-90) translate(" + padding + "," + padding + ")")
+        .attr("y", padding - 120)
+        .attr("x", -1 *(height / 2) - 150)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Assigned Score");
+
+    svg.append("text")
+        .attr("transform",
+            "translate(" + (width/2 + 80) + " ," +
+            (height/2 + padding + 30) + ")")
+        .style("text-anchor", "middle")
+        .text("Game #");
+
     function moreGames() {
         if(!chart.alreadyHasGames()) {
             // var data = [];
