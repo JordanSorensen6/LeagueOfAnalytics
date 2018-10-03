@@ -24,6 +24,7 @@ public class PlayerSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
         RiotCalls call = RiotCalls.getInstance();
+        System.out.println(request.getRequestURL());
         if(uri.equals("/search")) {
             request.getRequestDispatcher("/playersearch.jsp").forward(request, response);
         }
@@ -62,6 +63,9 @@ public class PlayerSearch extends HttpServlet {
                 writer.write(gson.toJson(analyzed));
                 writer.close();
             }
+        }
+        else if(uri.equals("/match")){
+            System.out.println("cool");
         }
         else {
             request.setAttribute("username", call.getSummonerName(request.getParameter("name")));

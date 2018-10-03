@@ -149,6 +149,9 @@ class PlotChart{
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
                 if(d.outcome === "Win") {
+                    $.get('/match?matchID=' + d["matchId"], function(data){
+
+                    });
                     $('#PlayerLossPic').hide();
                     $('#PlayerWinPic').show();
                 }
