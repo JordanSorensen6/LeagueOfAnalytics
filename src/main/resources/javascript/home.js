@@ -14,6 +14,7 @@ var home = (function($) {
         $.get('riot/playerStats?summonerId='+sid, function(data) {
             setPlayerWinRate(data, position);
             setHotStreak(data, position);
+            setRank(data, position);
         });
     }
 
@@ -25,11 +26,19 @@ var home = (function($) {
             document.getElementById("playerPercentage"+position).innerHTML = "<b>No Games</b>";
     }
 
+    function setRank(json, position)
+    {
+        if(Object.keys(json).length !== 0)
+            document.getElementById("tier" + position).src = "/resources/images/tier-icons/" + json[0]["tier"].toLowerCase() + "_" + json[0]["rank"].toLowerCase() + ".png";
+        else
+            document.getElementById("tier" + position).src = "/resources/images/tier-icons/provisional.png";
+    }
+
     function setHotStreak(json, position)
     {
-        console.log(json[0]["hotStreak"]);
-        if (json[0]["hotStreak"].toString() == "true")
-            document.getElementById("hot"+position).src = "/resources/images/hotStreakTrue.png";
+        if(Object.keys(json).length !== 0)
+            if (json[0]["hotStreak"].toString() == "true")
+                document.getElementById("hot"+position).src = "/resources/images/hotStreakTrue.png";
     }
 
 
@@ -68,8 +77,72 @@ var home = (function($) {
             $.get('riot/summonerIds?s1=' + s1 + '&s2=' + s2 + '&s3=' + s3
                 + '&s4=' + s4 + '&s5=' + s5, function(data) {
                 summonerIds = data;
+                getSummonerInfo(summonerIds[s1], 1);
+                getSummonerInfo(summonerIds[s2], 2);
+                getSummonerInfo(summonerIds[s3], 3);
+                getSummonerInfo(summonerIds[s4], 4);
+                getSummonerInfo(summonerIds[s5], 5);
+                findAvgRank();
+
             });
         });
+
+    }
+
+    function findAvgRank() {
+        var avg = 0;
+        var count = 0;
+        var rank;
+        for(var i = 1; i < 6; i++)
+        {
+            var score = 0;
+            rank = document.getElementById("tier"+i).src.match("tier-icons\\/.*\\.png").toString().replace("tier-icons/", "").replace(".png", "");
+            if(rank != "provisional")
+                count++;
+
+            if(rank.toString().includes("_v"))
+                score += 1;
+            else if(rank.toString().includes("_iv"))
+                score += 2;
+            else if(rank.toString().includes("_iii"))
+                score += 3;
+            else if(rank.toString().includes("_ii"))
+                score += 4;
+            else if(rank.toString().includes("_i"))
+                score += 5;
+
+            if(rank.toString().includes("silver"))
+                score += 5;
+            else if(rank.toString().includes("gold"))
+                score += 10;
+            else if(rank.toString().includes("platinum"))
+                score += 15;
+            else if(rank.toString().includes("diamond"))
+                score += 20;
+            else if(rank.toString().includes("master"))
+                score += 21;
+            else if(rank.toString().includes("challenger"))
+                score += 22;
+
+            avg += score;
+        }
+
+        avg = avg / count;
+
+        var retVal = "gold";//Just in case no available ranks.
+
+        if(avg <= 5)
+            retVal = "bronze";
+        else if(avg <= 10)
+            retVal = "silver";
+        else if(avg <= 15)
+            retVal = "gold";
+        else if(avg <= 20)
+            retVal = "platinum";
+        else
+            retVal = "platinumPlus";
+
+        return retVal;
 
     }
 
@@ -89,7 +162,7 @@ var home = (function($) {
                 console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
-                    getSummonerInfo(summonerId, num);
+                    //getSummonerInfo(summonerId, num);
                     var image = document.getElementById('mastery' + num);
                     console.log("updating mastery with: " + data);
                     image.src = "/resources/images/L"+data+".png";
@@ -100,12 +173,10 @@ var home = (function($) {
 
     function anyChampSelection(){
         $('.teamChamp').on('keyup', function(){
-            //var id = $(this).find('>:first-child').attr('id');
             var id = $(this).find("input").attr('id');
             checkForMatchup('team', id);
         });
         $('.oppChamp').on('keyup', function(){
-            //var id = $(this).find('>:first-child').attr('id');
             var id = $(this).find("input").attr('id');
             checkForMatchup('opponent', id);
         });
@@ -133,7 +204,6 @@ var home = (function($) {
         console.log("id is: " + id);
         var opponent = getOpponent(id);
         var role = getRole(id);
-        var league = "gold";//Find a way to get this later.
         setChampionImage(id);
 
         if(document.getElementById(opponent).value != '')//Nonempty opponent. We can look for matchup.
@@ -156,7 +226,7 @@ var home = (function($) {
             if(champions.hasOwnProperty(c1)){
                 if(champions.hasOwnProperty(c2)){
                     console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
-                    $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role + '&league=' + league, function(data) {
+                    $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role + '&league=' + findAvgRank(), function(data) {
                         console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
@@ -286,15 +356,15 @@ var home = (function($) {
     function getRole(teamAndRole)
     {
         var role;
-        if(teamAndRole.includes('1'))
+        if(teamAndRole.toString().includes('1'))
             role = 'Top';
-        else if(teamAndRole.includes('2'))
+        else if(teamAndRole.toString().includes('2'))
             role = 'Jungle';
-        else if(teamAndRole.includes('3'))
+        else if(teamAndRole.toString().includes('3'))
             role = 'Middle';
-        else if(teamAndRole.includes('4'))
+        else if(teamAndRole.toString().includes('4'))
             role = 'Bottom';
-        else if(teamAndRole.includes('5'))
+        else if(teamAndRole.toString().includes('5'))
             role = 'Support';
 
         return role;
@@ -370,36 +440,86 @@ var home = (function($) {
         var mastery2 = null;
         var champion1 = null;
         var champion2 = null;
+        var rank1 = null;
+        var rank2 = null;
+        var teamImg1 = null;
+        var teamImg2 = null;
+        var hot1 = null;
+        var hot2 = null;
+        var playerWinPer1 = null;
+        var playerWinPer2 = null;
+        var championID1 = null;
+        var championID2 = null;
+        var lane1 = null;
+        var lane2 = null;
+
         for(var i = 0; i < 5; i++)
         {
             if(summoners[i].style.backgroundColor == "steelblue") {
                 summoners[i].style.backgroundColor = "#004085";
                 if (summoner1 == null) {
                     summoner1 = summoners[i];
-                    mastery1 = $('#mastery' + (i + 1));
-                    champion1 = $('#champion' + (i + 1));
+                    mastery1 = document.getElementById("mastery"+(i + 1));
+                    champion1 = document.getElementById("champion" + (i+1));
+                    rank1 = document.getElementById("tier"+(i+1));
+                    teamImg1 = document.getElementById("teamImg"+(i+1));
+                    hot1 = document.getElementById("hot"+(i+1));
+                    playerWinPer1 = document.getElementById("playerPercentage" + (i+1));
+                    championID1 = "champion"+(i+1);
+                    lane1 = (i+1);
                 }
                 else {
                     summoner2 = summoners[i];
-                    mastery2 = $('#mastery' + (i + 1));
-                    champion2 = $('#champion' + (i + 1));
+                    mastery2 = document.getElementById("mastery"+(i + 1));
+                    champion2 = document.getElementById("champion" + (i+1));
+                    rank2 = document.getElementById("tier"+(i+1));
+                    teamImg2 = document.getElementById("teamImg"+(i+1));
+                    hot2 = document.getElementById("hot"+(i+1));
+                    playerWinPer2 = document.getElementById("playerPercentage" + (i+1));
+                    championID2 = "champion"+(i+1);
+                    lane2 = (i+1);
                 }
             }
         }
         if(summoner1 != null && summoner2 != null)
         {
-            var masteryTemp = mastery1.val();
-            mastery1.val(mastery2.val());
-            mastery2.val(masteryTemp);
+            var masteryTemp = mastery1.src;
+            mastery1.src = mastery2.src;
+            mastery2.src = masteryTemp;
 
-            var championTemp = champion1.val();
-            champion1.val(champion2.val());
-            champion2.val(championTemp);
+            var championTemp = champion1.value;
+            champion1.value = champion2.value;
+            champion2.value = championTemp;
+
+            var rankTemp = rank1.src;
+            rank1.src = rank2.src;
+            rank2.src = rankTemp;
+
+            var teamImgTemp = teamImg1.src;
+            teamImg1.src =  teamImg2.src;
+            teamImg2.src = teamImgTemp;
+
+            var hotTemp = hot1.src;
+            hot1.src = hot2.src;
+            hot2.src = hotTemp;
+
+            var playerWinPerTemp = playerWinPer1.innerHTML;
+            playerWinPer1.innerHTML = playerWinPer2.innerHTML;
+            playerWinPer2.innerHTML = playerWinPerTemp;
 
             var summonerTemp = summoner1.value;
             summoner1.value = summoner2.value;
             summoner2.value = summonerTemp;
+
+            checkForMatchup('team', championID1);//Recheck the matchup.
+            checkForMatchup('team', championID2);
+
+
+            getScore(getRole(lane1));//Recalculate the score.
+            getScore(getRole(lane2));
+
         }
+
     }
 
     return {
