@@ -115,7 +115,6 @@ public class PlayerSearch extends HttpServlet {
     private void getMatchInfo (String gameId) throws IOException {
         RiotCalls call = RiotCalls.getInstance();
         JsonObject match = call.getMatch(gameId);
-        System.out.println("hello from the other side");
         System.out.println(match);
     }
 
