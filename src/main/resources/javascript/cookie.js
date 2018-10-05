@@ -63,7 +63,22 @@
     }
 
     function restoreText(key, val){
-        document.getElementById(key).innerHTML = val;
+        if(key.toString().includes("percentage") || key.toString().includes("playerPercentage")){
+            displayBars(val, key);
+        }
+        else {
+            document.getElementById(key).innerHTML = val;
+        }
+    }
+
+    function displayBars(data, percentageID){
+        var element = document.getElementById(percentageID);
+        element.innerHTML = data.bold();
+        element.style.width = data;
+        var colorScale = d3.scaleLinear()
+            .domain([40, 60])
+            .range(["red", "green"]);
+        element.style.backgroundColor = colorScale(data.slice(0, -1));
     }
 
     function clearAll(){
@@ -114,26 +129,6 @@
             }
         }
     }
-    // function deleteCookies(){
-    //     for(var i = 1; i < 6; i++) {
-    //         eraseCookie("champion"+i);
-    //         eraseCookie("summoner"+i);
-    //         eraseCookie("opponent"+i);
-    //         eraseCookie("teamImg"+i);
-    //         eraseCookie("mastery"+i);
-    //         eraseCookie("oppImg"+i);
-    //         eraseCookie("percentage"+i);
-    //         eraseCookie("score"+i);
-    //     }
-    //     eraseCookie("totalScore");
-    //     eraseCookie("userMessage");
-    //
-    //     setNoCookies();
-    // }
-
-    // function eraseCookie(name) {
-    //     document.cookie = name + '=; Max-Age=0'
-    // }
 
     function checkCookies() {
         for(var i = 1; i < 6; i++)//restore champions
@@ -151,8 +146,10 @@
             }
             if(getCookie("percentage" + i) != getCookie("score" + i))
             {
-                restoreText("percentage" + i, "<b>"+getCookie("percentage" + i)+"%"+"</b>");
-                restoreText("playerPercentage" + i, "<b>"+getCookie("playerPercentage" + i)+"%"+"</b>");
+                // restoreText("percentage" + i, "<b>"+getCookie("percentage" + i)+"%"+"</b>");
+                // restoreText("playerPercentage" + i, "<b>"+getCookie("playerPercentage" + i)+"%"+"</b>");
+                restoreText("percentage" + i, getCookie("percentage" + i)+"%");
+                restoreText("playerPercentage" + i, getCookie("playerPercentage" + i)+"%");
                 restoreText("score" + i, getCookie("score" + i));
             }
 

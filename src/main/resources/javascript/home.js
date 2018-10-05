@@ -20,10 +20,15 @@ var home = (function($) {
 
     function setPlayerWinRate(json, position)
     {
-        if(Object.keys(json).length !== 0)
-            document.getElementById("playerPercentage"+position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"])))*10000)/100).toString() + "%</b>";
+        if(Object.keys(json).length !== 0) {
+            //var data = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%</b>";
+            var data = (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%";
+
+            //document.getElementById("playerPercentage" + position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%</b>";
+            displayBars(data, "playerPercentage"+position);
+        }
         else
-            document.getElementById("playerPercentage"+position).innerHTML = "<b>No Games</b>";
+            document.getElementById("playerPercentage"+position).innerHTML = "<b>00.00%</b>";
     }
 
     function setRank(json, position)
@@ -258,7 +263,7 @@ var home = (function($) {
         element.innerHTML = data.bold();
         element.style.width = data;
         var colorScale = d3.scaleLinear()
-            .domain([0, 100])
+            .domain([40, 60])
             .range(["red", "green"]);
         element.style.backgroundColor = colorScale(data.slice(0, -1));
     }
