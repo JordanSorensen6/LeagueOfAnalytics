@@ -65,7 +65,8 @@ public class PlayerSearch extends HttpServlet {
             }
         }
         else if(uri.equals("/match")){
-            System.out.println("cool");
+            String matchID = request.getParameter("matchID");
+            getMatchInfo(matchID);
         }
         else {
             request.setAttribute("username", call.getSummonerName(request.getParameter("name")));
@@ -109,6 +110,13 @@ public class PlayerSearch extends HttpServlet {
         if(game.getScore() != null)
             analyzed.add(game);
         GamesDB.saveGame(game);
+    }
+
+    private void getMatchInfo (String gameId) throws IOException {
+        RiotCalls call = RiotCalls.getInstance();
+        JsonObject match = call.getMatch(gameId);
+        System.out.println("hello from the other side");
+        System.out.println(match);
     }
 
     private GamesEntity analyzeMatch(String user, String gameId) throws IOException {
