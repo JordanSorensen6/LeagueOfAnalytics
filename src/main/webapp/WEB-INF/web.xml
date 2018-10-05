@@ -32,6 +32,10 @@
         <url-pattern>/history/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PlayerSearch</servlet-name>
+        <url-pattern>/match/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ExtractMatchup</servlet-name>
         <url-pattern>/matchup/*</url-pattern>
     </servlet-mapping>
