@@ -27,17 +27,17 @@
     <div class="opponentChampions"><u>Opponent Champions</u></div>
     <div class="matchRating"><u>Champion Win Percentage</u></div>
 
-    <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div></div></div>
-    <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div></div></div>
-    <div class="summonerMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" name="summoners" id="summoner3" placeholder="summoner3" onclick="home.markForSwap('summoner3')"></div></div></div>
-    <div class="summonerBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" name="summoners" id="summoner4" placeholder="summoner4" onclick="home.markForSwap('summoner4')"></div></div></div>
-    <div class="summonerSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" name="summoners" id="summoner5" placeholder="summoner5" onclick="home.markForSwap('summoner5')"></div></div></div>
+    <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" onclick="home.markForSwap('summoner1')"></div></div></div>
+    <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner2" placeholder="summoner2" onclick="home.markForSwap('summoner2')"></div></div></div>
+    <div class="summonerMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" draggable="true" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" name="summoners" id="summoner3" placeholder="summoner3" onclick="home.markForSwap('summoner3')"></div></div></div>
+    <div class="summonerBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" draggable="true" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" name="summoners" id="summoner4" placeholder="summoner4" onclick="home.markForSwap('summoner4')"></div></div></div>
+    <div class="summonerSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" draggable="true" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" name="summoners" id="summoner5" placeholder="summoner5" onclick="home.markForSwap('summoner5')"></div></div></div>
 
-    <div class="teamChamp teamChampTop"><input type="text" id="champion1" placeholder="Top Champion"></div>
-    <div class="teamChamp teamChampJungle"><input type="text" id="champion2" placeholder="Jungle Champion"></div>
-    <div class="teamChamp teamChampMid"><input type="text" id="champion3" placeholder="Mid Champion"></div>
-    <div class="teamChamp teamChampBot"><input type="text" id="champion4" placeholder="Bot Champion"></div>
-    <div class="teamChamp teamChampSupport"><input type="text" id="champion5" placeholder="Support Champion"></div>
+    <div class="teamChamp teamChampTop"><input type="text" ondrop="return false;" id="champion1" placeholder="Top Champion"></div>
+    <div class="teamChamp teamChampJungle"><input type="text" ondrop="return false;" id="champion2" placeholder="Jungle Champion"></div>
+    <div class="teamChamp teamChampMid"><input type="text" ondrop="return false;" id="champion3" placeholder="Mid Champion"></div>
+    <div class="teamChamp teamChampBot"><input type="text" ondrop="return false;" id="champion4" placeholder="Bot Champion"></div>
+    <div class="teamChamp teamChampSupport"><input type="text" ondrop="return false;" id="champion5" placeholder="Support Champion"></div>
 
     <div class="teamChampTopPic"><img id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
     <div class="teamChampJunglePic"><img id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>
@@ -76,11 +76,11 @@
     <div class="oppChampBotPic"><img id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
     <div class="oppChampSupportPic"><img id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
 
-    <div class="oppChamp oppChampTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" id="opponent1" placeholder="Opponent Top"></div></div></div>
-    <div class="oppChamp oppChampJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" id="opponent2" placeholder="Opponent Jungle"></div></div></div>
-    <div class="oppChamp oppChampMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" id="opponent3" placeholder="Opponent Mid"></div></div></div>
-    <div class="oppChamp oppChampBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" id="opponent4" placeholder="Opponent Bot"></div></div></div>
-    <div class="oppChamp oppChampSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" id="opponent5" placeholder="Opponent Support"></div></div></div>
+    <div class="oppChamp oppChampTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" ondrop="return false;" id="opponent1" placeholder="Opponent Top"></div></div></div>
+    <div class="oppChamp oppChampJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondrop="return false;" id="opponent2" placeholder="Opponent Jungle"></div></div></div>
+    <div class="oppChamp oppChampMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" ondrop="return false;" id="opponent3" placeholder="Opponent Mid"></div></div></div>
+    <div class="oppChamp oppChampBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" ondrop="return false;" id="opponent4" placeholder="Opponent Bot"></div></div></div>
+    <div class="oppChamp oppChampSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" ondrop="return false;" id="opponent5" placeholder="Opponent Support"></div></div></div>
 
     <div class="winPerTop" id="percentage1"><b>00.00%</b></div>
     <div class="winPerJungle" id="percentage2"><b>00.00%</b></div>

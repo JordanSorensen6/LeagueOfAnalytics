@@ -10,6 +10,8 @@ var home = (function($) {
 	    anyChampSelection();
     }
 
+
+
     function getSummonerInfo(sid, position){
         $.get('riot/playerStats?summonerId='+sid, function(data) {
             setPlayerWinRate(data, position);
@@ -437,7 +439,7 @@ var home = (function($) {
 
     }
 
-    function swapRoles() {
+    function swapRoles(id1, id2) {
         var summoners = document.getElementsByName("summoners");
         var summoner1 = null;
         var summoner2 = null;
@@ -460,7 +462,7 @@ var home = (function($) {
 
         for(var i = 0; i < 5; i++)
         {
-            if(summoners[i].style.backgroundColor == "steelblue") {
+            if(summoners[i].id == id1 || summoners[i].id == id2 || summoners[i].style.backgroundColor == "steelblue") {
                 summoners[i].style.backgroundColor = "#004085";
                 if (summoner1 == null) {
                     summoner1 = summoners[i];
@@ -508,9 +510,12 @@ var home = (function($) {
             hot1.src = hot2.src;
             hot2.src = hotTemp;
 
-            var playerWinPerTemp = playerWinPer1.innerHTML;
-            playerWinPer1.innerHTML = playerWinPer2.innerHTML;
-            playerWinPer2.innerHTML = playerWinPerTemp;
+            var playerWinPerTemp = playerWinPer1.innerText;
+            // playerWinPer1.innerHTML = playerWinPer2.innerHTML;
+            // playerWinPer2.innerHTML = playerWinPerTemp;
+
+            displayBars(playerWinPer2.innerText, playerWinPer1.id);
+            displayBars(playerWinPerTemp, playerWinPer2.id);
 
             var summonerTemp = summoner1.value;
             summoner1.value = summoner2.value;
@@ -538,3 +543,23 @@ var home = (function($) {
         //----------------------------------------------
     };
 }(window.jQuery));
+
+function onDragOver(ev) {
+    //console.log("onDragOver");
+    ev.preventDefault();
+}
+
+function onDragStart(ev) {
+    //console.log("onDragStart");
+    //ev.dataTransfer.setData("value", document.getElementById(ev.target.id).value);
+    ev.dataTransfer.setData("value", ev.target.id);
+    //ev.dataTransfer.dropEffect.
+}
+
+function onDrop(ev) {
+    //console.log("onDrop");
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("value");
+    home.swapRoles(data, ev.target.id);
+    //ev.target.appendChild(document.getElementById(data));
+}
