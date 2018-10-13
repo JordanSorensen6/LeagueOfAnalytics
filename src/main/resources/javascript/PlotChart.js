@@ -152,11 +152,30 @@ class PlotChart{
 
                     document.getElementById("gameStats").style.display = "inline";
 
-                    console.log(data);
+                    var players = data["participants"];
+                    var playerIds = data["participantIdentities"];
 
-                    var header = document.getElementById("header");
+                    players.forEach(function (d, i) {
+                        d["summoner"] = playerIds[i]["player"]["summonerName"];
+                        var id = d["participantId"];
+                        var stats = d["stats"];
+                        console.log(d);
+                        document.getElementById("summoner" + id).innerHTML = d["summoner"];
 
-                    header.innerHTML = "what";
+                        var KDAdiv = document.getElementById("KDA" + id);
+                        if(d["stats"]["deaths"] === 0){
+                            KDAdiv.innerHTML = "Perfect";
+                        }
+                        else{
+                            KDAdiv.innerHTML = ((stats["kills"] + stats["assists"])/stats["deaths"]).toFixed(2);
+                        }
+
+                        var damageDiv = document.getElementById("Damage" + id);
+                        damageDiv.innerHTML = stats["totalDamageDealt"];
+
+                        var tierDiv = document.getElementById("Tier" + id);
+                        tierDiv.innerHTML = d["highestAchievedSeasonTier"];
+                    })
                 });
                 // if(d.outcome === "Win") {
                 //     $('#PlayerLossPic').hide();

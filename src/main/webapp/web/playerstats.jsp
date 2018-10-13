@@ -43,15 +43,73 @@ ${username} stats
 
 
 <div id="gameStats" class="chart" style="display: none">
-    <div class="column" style="left:500px">
+    <div class="column" style="left:1000px">
         <div id="header">
 
         </div>
-        <div id="summonerTeam">
-
+        <div id="Team100" class="column">
+            <div id="1" class="row">
+                <text id="summoner1"></text>
+                <text id="KDA1"></text>
+                <text id="Damage1"></text>
+                <text id="Tier1"></text>
+            </div>
+            <div id="2" class="row">
+                <text id="summoner2"></text>
+                <text id="KDA2"></text>
+                <text id="Damage2"></text>
+                <text id="Tier2"></text>
+            </div>
+            <div id="3" class="row">
+                <text id="summoner3"></text>
+                <text id="KDA3"></text>
+                <text id="Damage3"></text>
+                <text id="Tier3"></text>
+            </div>
+            <div id="4" class="row">
+                <text id="summoner4"></text>
+                <text id="KDA4"></text>
+                <text id="Damage4"></text>
+                <text id="Tier4"></text>
+            </div>
+            <div id="5" class="row">
+                <text id="summoner5"></text>
+                <text id="KDA5"></text>
+                <text id="Damage5"></text>
+                <text id="Tier5"></text>
+            </div>
         </div>
-        <div id="opponentTeam">
-
+        <div id="Team200" class="column">
+            <div id="6" class="row">
+                <text id="summoner6"></text>
+                <text id="KDA6"></text>
+                <text id="Damage6"></text>
+                <text id="Tier6"></text>
+            </div>
+            <div id="7" class="row">
+                <text id="summoner7"></text>
+                <text id="KDA7"></text>
+                <text id="Damage7"></text>
+                <text id="Tier7"></text>
+            </div>
+            <div id="8" class="row">
+                <text id="summoner8"></text>
+                <text id="KDA8"></text>
+                <text id="Damage8"></text>
+                <text id="Tier8"></text>
+            </div>
+            <div id="9" class="row">
+                <text id="summoner9"></text>
+                <text id="KDA9"></text>
+                <text id="Damage9"></text>
+                <text id="Tier9"></text>
+            </div>
+            <div id="10" class="row">
+                <text id="summoner10"></text>
+                <text id="KDA10"></text>
+                <text id="Damage10"></text>
+                <text id="Tier10"></text>
+            </div>
         </div>
 
         <%--<div id="PlayerWinPic" class="PlayerStatPic" style="display: none;">--%>
