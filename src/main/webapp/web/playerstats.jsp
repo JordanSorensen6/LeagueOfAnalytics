@@ -43,9 +43,9 @@ ${username} stats
 
 
 <div id="gameStats" class="chart" style="display: none">
-    <div class="column">
+    <div class="column" style="left:500px">
         <div id="header">
-            
+
         </div>
         <div id="summonerTeam">
 
