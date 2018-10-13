@@ -148,18 +148,25 @@ class PlotChart{
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
-                if(d.outcome === "Win") {
-                    $.get('/match?matchID=' + d["matchId"], function(data){
+                $.get('/match?matchID=' + d["matchId"], function(data){
 
-                    });
-                    $('#PlayerLossPic').hide();
-                    $('#PlayerWinPic').show();
-                }
-                else {
-                    $('#PlayerLossPic').show();
-                    $('#PlayerWinPic').hide();
-                }
-                //document.getElementById("PlayerStatImg").style.visibility = "visible";
+                    document.getElementById("gameStats").style.display = "inline";
+
+                    console.log(data);
+
+                    var header = document.getElementById("header");
+
+                    header.innerHTML = "what";
+                });
+                // if(d.outcome === "Win") {
+                //     $('#PlayerLossPic').hide();
+                //     $('#PlayerWinPic').show();
+                // }
+                // else {
+                //     $('#PlayerLossPic').show();
+                //     $('#PlayerWinPic').hide();
+                // }
+                // document.getElementById("PlayerStatImg").style.visibility = "visible";
 
             })
             .on("mouseover", tip.show)

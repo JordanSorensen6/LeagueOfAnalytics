@@ -24,7 +24,6 @@ public class PlayerSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
         RiotCalls call = RiotCalls.getInstance();
-        System.out.println(request.getRequestURL());
         if(uri.equals("/search")) {
             request.getRequestDispatcher("/playersearch.jsp").forward(request, response);
         }
@@ -66,7 +65,13 @@ public class PlayerSearch extends HttpServlet {
         }
         else if(uri.equals("/match")){
             String matchID = request.getParameter("matchID");
-            getMatchInfo(matchID);
+            JsonObject matchStats = getMatchInfo(matchID);
+            Gson gson = new Gson();
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            writer.write(gson.toJson(matchStats));
+            writer.close();
         }
         else {
             request.setAttribute("username", call.getSummonerName(request.getParameter("name")));
@@ -112,10 +117,10 @@ public class PlayerSearch extends HttpServlet {
         GamesDB.saveGame(game);
     }
 
-    private void getMatchInfo (String gameId) throws IOException {
+    private JsonObject getMatchInfo (String gameId) throws IOException {
         RiotCalls call = RiotCalls.getInstance();
         JsonObject match = call.getMatch(gameId);
-        System.out.println(match);
+        return match;
     }
 
     private GamesEntity analyzeMatch(String user, String gameId) throws IOException {

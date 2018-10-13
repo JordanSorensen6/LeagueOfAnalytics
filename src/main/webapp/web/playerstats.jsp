@@ -41,11 +41,26 @@ ${username} stats
 
 </div>
 
-<div id="PlayerWinPic" class="PlayerStatPic" style="display: none;">
-    <img id="PlayerLossImg" src="/resources/images/victory.png" style="left:500px">
-</div>
-<div id="PlayerLossPic" class="PlayerStatPic" style="display: none;">
-    <img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">
+
+<div id="gameStats" class="chart" style="display: none">
+    <div class="column">
+        <div id="header">
+            
+        </div>
+        <div id="summonerTeam">
+
+        </div>
+        <div id="opponentTeam">
+
+        </div>
+
+        <%--<div id="PlayerWinPic" class="PlayerStatPic" style="display: none;">--%>
+        <%--<img id="PlayerLossImg" src="/resources/images/victory.png" style="left:500px">--%>
+        <%--</div>--%>
+        <%--<div id="PlayerLossPic" class="PlayerStatPic" style="display: none;">--%>
+        <%--<img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">--%>
+        <%--</div>--%>
+    </div>
 </div>
 
 <div class="chart">
@@ -120,16 +135,16 @@ ${username} stats
         }
     }
 
-    function generateRandom(possVals){
-        var val;
-        var valRand = Math.floor(Math.random() * (possVals.length));
-        for (var i = 0; i < possVals.length; i++){
-            if(valRand === i){
-                val = possVals[i];
-                break;
-            }
-        }
-        return val;
-    }
+    // function generateRandom(possVals){
+    //     var val;
+    //     var valRand = Math.floor(Math.random() * (possVals.length));
+    //     for (var i = 0; i < possVals.length; i++){
+    //         if(valRand === i){
+    //             val = possVals[i];
+    //             break;
+    //         }
+    //     }
+    //     return val;
+    // }
 
 </script>
