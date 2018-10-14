@@ -162,10 +162,8 @@ class PlotChart{
                         var teamId = d["teamId"];
                         var teamDiv = document.getElementById("gameStats" + teamId);
                         var divId = (id % 5 == 0) ? 5 : (id % 5);
-                        console.log(d);
 
                         var summonerDiv = teamDiv.getElementsByClassName("summoner" + divId)[0];
-                        console.log(summonerDiv);
                         summonerDiv.innerHTML = d["summoner"];
 
                         var kdaDiv = teamDiv.getElementsByClassName("kda" + divId)[0];
@@ -181,21 +179,6 @@ class PlotChart{
                         var tierDiv = teamDiv.getElementsByClassName("tier" + divId)[0];
                         var tier = d["highestAchievedSeasonTier"];
                         tierDiv.innerHTML = tier;
-                        // document.getElementById("summoner" + id).innerHTML = d["summoner"];
-                        //
-                        // var KDAdiv = document.getElementById("KDA" + id);
-                        // if(d["stats"]["deaths"] === 0){
-                        //     KDAdiv.innerHTML = "Perfect";
-                        // }
-                        // else{
-                        //     KDAdiv.innerHTML = ((stats["kills"] + stats["assists"])/stats["deaths"]).toFixed(2);
-                        // }
-                        //
-                        // var damageDiv = document.getElementById("Damage" + id);
-                        // damageDiv.innerHTML = stats["totalDamageDealt"];
-                        //
-                        // var tierDiv = document.getElementById("Tier" + id);
-                        // tierDiv.innerHTML = d["highestAchievedSeasonTier"];
                     })
                 });
                 // if(d.outcome === "Win") {
