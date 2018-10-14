@@ -10,6 +10,8 @@ var home = (function($) {
 	    anyChampSelection();
     }
 
+
+
     function getSummonerInfo(sid, position){
         $.get('riot/playerStats?summonerId='+sid, function(data) {
             setPlayerWinRate(data, position);
@@ -20,10 +22,15 @@ var home = (function($) {
 
     function setPlayerWinRate(json, position)
     {
-        if(Object.keys(json).length !== 0)
-            document.getElementById("playerPercentage"+position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"])))*10000)/100).toString() + "%</b>";
+        if(Object.keys(json).length !== 0) {
+            //var data = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%</b>";
+            var data = (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%";
+
+            //document.getElementById("playerPercentage" + position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%</b>";
+            displayBars(data, "playerPercentage"+position);
+        }
         else
-            document.getElementById("playerPercentage"+position).innerHTML = "<b>No Games</b>";
+            document.getElementById("playerPercentage"+position).innerHTML = "<b>00.00%</b>";
     }
 
     function setRank(json, position)
@@ -258,7 +265,7 @@ var home = (function($) {
         element.innerHTML = data.bold();
         element.style.width = data;
         var colorScale = d3.scaleLinear()
-            .domain([0, 100])
+            .domain([40, 60])
             .range(["red", "green"]);
         element.style.backgroundColor = colorScale(data.slice(0, -1));
     }
@@ -432,7 +439,7 @@ var home = (function($) {
 
     }
 
-    function swapRoles() {
+    function swapRoles(id1, id2) {
         var summoners = document.getElementsByName("summoners");
         var summoner1 = null;
         var summoner2 = null;
@@ -455,7 +462,7 @@ var home = (function($) {
 
         for(var i = 0; i < 5; i++)
         {
-            if(summoners[i].style.backgroundColor == "steelblue") {
+            if(summoners[i].id == id1 || summoners[i].id == id2 || summoners[i].style.backgroundColor == "steelblue") {
                 summoners[i].style.backgroundColor = "#004085";
                 if (summoner1 == null) {
                     summoner1 = summoners[i];
@@ -503,9 +510,12 @@ var home = (function($) {
             hot1.src = hot2.src;
             hot2.src = hotTemp;
 
-            var playerWinPerTemp = playerWinPer1.innerHTML;
-            playerWinPer1.innerHTML = playerWinPer2.innerHTML;
-            playerWinPer2.innerHTML = playerWinPerTemp;
+            var playerWinPerTemp = playerWinPer1.innerText;
+            // playerWinPer1.innerHTML = playerWinPer2.innerHTML;
+            // playerWinPer2.innerHTML = playerWinPerTemp;
+
+            displayBars(playerWinPer2.innerText, playerWinPer1.id);
+            displayBars(playerWinPerTemp, playerWinPer2.id);
 
             var summonerTemp = summoner1.value;
             summoner1.value = summoner2.value;
@@ -533,3 +543,23 @@ var home = (function($) {
         //----------------------------------------------
     };
 }(window.jQuery));
+
+function onDragOver(ev) {
+    //console.log("onDragOver");
+    ev.preventDefault();
+}
+
+function onDragStart(ev) {
+    //console.log("onDragStart");
+    //ev.dataTransfer.setData("value", document.getElementById(ev.target.id).value);
+    ev.dataTransfer.setData("value", ev.target.id);
+    //ev.dataTransfer.dropEffect.
+}
+
+function onDrop(ev) {
+    //console.log("onDrop");
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("value");
+    home.swapRoles(data, ev.target.id);
+    //ev.target.appendChild(document.getElementById(data));
+}
