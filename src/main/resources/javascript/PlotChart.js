@@ -159,22 +159,43 @@ class PlotChart{
                         d["summoner"] = playerIds[i]["player"]["summonerName"];
                         var id = d["participantId"];
                         var stats = d["stats"];
+                        var teamId = d["teamId"];
+                        var teamDiv = document.getElementById("gameStats" + teamId);
+                        var divId = (id % 5 == 0) ? 5 : (id % 5);
                         console.log(d);
-                        document.getElementById("summoner" + id).innerHTML = d["summoner"];
 
-                        var KDAdiv = document.getElementById("KDA" + id);
-                        if(d["stats"]["deaths"] === 0){
-                            KDAdiv.innerHTML = "Perfect";
-                        }
-                        else{
-                            KDAdiv.innerHTML = ((stats["kills"] + stats["assists"])/stats["deaths"]).toFixed(2);
-                        }
+                        var summonerDiv = teamDiv.getElementsByClassName("summoner" + divId)[0];
+                        console.log(summonerDiv);
+                        summonerDiv.innerHTML = d["summoner"];
 
-                        var damageDiv = document.getElementById("Damage" + id);
-                        damageDiv.innerHTML = stats["totalDamageDealt"];
+                        var kdaDiv = teamDiv.getElementsByClassName("kda" + divId)[0];
+                        var deaths = stats["deaths"];
+                        var kills = stats["kills"];
+                        var assists = stats["assists"];
+                        kdaDiv.innerHTML = (deaths == 0) ? "Perfect" : ((kills + assists) / deaths).toFixed(2);
 
-                        var tierDiv = document.getElementById("Tier" + id);
-                        tierDiv.innerHTML = d["highestAchievedSeasonTier"];
+                        var damageDiv = teamDiv.getElementsByClassName("damage" + divId)[0];
+                        var damage = stats["totalDamageDealt"];
+                        damageDiv.innerHTML = damage;
+
+                        var tierDiv = teamDiv.getElementsByClassName("tier" + divId)[0];
+                        var tier = d["highestAchievedSeasonTier"];
+                        tierDiv.innerHTML = tier;
+                        // document.getElementById("summoner" + id).innerHTML = d["summoner"];
+                        //
+                        // var KDAdiv = document.getElementById("KDA" + id);
+                        // if(d["stats"]["deaths"] === 0){
+                        //     KDAdiv.innerHTML = "Perfect";
+                        // }
+                        // else{
+                        //     KDAdiv.innerHTML = ((stats["kills"] + stats["assists"])/stats["deaths"]).toFixed(2);
+                        // }
+                        //
+                        // var damageDiv = document.getElementById("Damage" + id);
+                        // damageDiv.innerHTML = stats["totalDamageDealt"];
+                        //
+                        // var tierDiv = document.getElementById("Tier" + id);
+                        // tierDiv.innerHTML = d["highestAchievedSeasonTier"];
                     })
                 });
                 // if(d.outcome === "Win") {

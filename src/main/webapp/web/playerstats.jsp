@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
     <link rel="stylesheet" href="/resources/css/temp.css"/>
+    <link rel="stylesheet" href="/resources/css/statsLayout.css">
 
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="/resources/javascript/d3-tip.js"></script>
@@ -42,83 +43,143 @@ ${username} stats
 </div>
 
 
-<div id="gameStats" class="chart" style="display: none">
-    <div class="column" style="left:1000px">
-        <div id="header">
+<div id="gameStats" style="display: none">
+    Blue Team
+    <div id="gameStats100" class="gridLayout">
+        <div class="summoner"><u>Summoner</u></div>
+        <div class="summoner1"></div>
+        <div class="summoner2"></div>
+        <div class="summoner3"></div>
+        <div class="summoner4"></div>
+        <div class="summoner5"></div>
 
-        </div>
-        <div id="Team100" class="column">
-            <div id="1" class="row">
-                <text id="summoner1"></text>
-                <text id="KDA1"></text>
-                <text id="Damage1"></text>
-                <text id="Tier1"></text>
-            </div>
-            <div id="2" class="row">
-                <text id="summoner2"></text>
-                <text id="KDA2"></text>
-                <text id="Damage2"></text>
-                <text id="Tier2"></text>
-            </div>
-            <div id="3" class="row">
-                <text id="summoner3"></text>
-                <text id="KDA3"></text>
-                <text id="Damage3"></text>
-                <text id="Tier3"></text>
-            </div>
-            <div id="4" class="row">
-                <text id="summoner4"></text>
-                <text id="KDA4"></text>
-                <text id="Damage4"></text>
-                <text id="Tier4"></text>
-            </div>
-            <div id="5" class="row">
-                <text id="summoner5"></text>
-                <text id="KDA5"></text>
-                <text id="Damage5"></text>
-                <text id="Tier5"></text>
-            </div>
-        </div>
-        <div id="Team200" class="column">
-            <div id="6" class="row">
-                <text id="summoner6"></text>
-                <text id="KDA6"></text>
-                <text id="Damage6"></text>
-                <text id="Tier6"></text>
-            </div>
-            <div id="7" class="row">
-                <text id="summoner7"></text>
-                <text id="KDA7"></text>
-                <text id="Damage7"></text>
-                <text id="Tier7"></text>
-            </div>
-            <div id="8" class="row">
-                <text id="summoner8"></text>
-                <text id="KDA8"></text>
-                <text id="Damage8"></text>
-                <text id="Tier8"></text>
-            </div>
-            <div id="9" class="row">
-                <text id="summoner9"></text>
-                <text id="KDA9"></text>
-                <text id="Damage9"></text>
-                <text id="Tier9"></text>
-            </div>
-            <div id="10" class="row">
-                <text id="summoner10"></text>
-                <text id="KDA10"></text>
-                <text id="Damage10"></text>
-                <text id="Tier10"></text>
-            </div>
-        </div>
+        <div class="kda"><u>KDA</u></div>
+        <div class="kda1"></div>
+        <div class="kda2"></div>
+        <div class="kda3"></div>
+        <div class="kda4"></div>
+        <div class="kda5"></div>
 
-        <%--<div id="PlayerWinPic" class="PlayerStatPic" style="display: none;">--%>
-        <%--<img id="PlayerLossImg" src="/resources/images/victory.png" style="left:500px">--%>
-        <%--</div>--%>
-        <%--<div id="PlayerLossPic" class="PlayerStatPic" style="display: none;">--%>
-        <%--<img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">--%>
-        <%--</div>--%>
+        <div class="damage"><u>Damage</u></div>
+        <div class="damage1"></div>
+        <div class="damage2"></div>
+        <div class="damage3"></div>
+        <div class="damage4"></div>
+        <div class="damage5"></div>
+
+        <div class="tier"><u>Tier</u></div>
+        <div class="tier1"></div>
+        <div class="tier2"></div>
+        <div class="tier3"></div>
+        <div class="tier4"></div>
+        <div class="tier5"></div>
     </div>
+    Red Team
+    <div id="gameStats200" class="gridLayout">
+        <div class="summoner"><u>Summoner</u></div>
+        <div class="summoner1"></div>
+        <div class="summoner2"></div>
+        <div class="summoner3"></div>
+        <div class="summoner4"></div>
+        <div class="summoner5"></div>
+
+        <div class="kda"><u>KDA</u></div>
+        <div class="kda1"></div>
+        <div class="kda2"></div>
+        <div class="kda3"></div>
+        <div class="kda4"></div>
+        <div class="kda5"></div>
+
+        <div class="damage"><u>Damage</u></div>
+        <div class="damage1"></div>
+        <div class="damage2"></div>
+        <div class="damage3"></div>
+        <div class="damage4"></div>
+        <div class="damage5"></div>
+
+        <div class="tier"><u>Tier</u></div>
+        <div class="tier1"></div>
+        <div class="tier2"></div>
+        <div class="tier3"></div>
+        <div class="tier4"></div>
+        <div class="tier5"></div>
+    </div>
+    <%--<div class="column" style="left:1000px">--%>
+        <%--<div id="header">--%>
+
+        <%--</div>--%>
+        <%--<div id="Team100" class="column">--%>
+            <%--<div id="1" class="row">--%>
+                <%--<text id="summoner1"></text>--%>
+                <%--<text id="KDA1"></text>--%>
+                <%--<text id="Damage1"></text>--%>
+                <%--<text id="Tier1"></text>--%>
+            <%--</div>--%>
+            <%--<div id="2" class="row">--%>
+                <%--<text id="summoner2"></text>--%>
+                <%--<text id="KDA2"></text>--%>
+                <%--<text id="Damage2"></text>--%>
+                <%--<text id="Tier2"></text>--%>
+            <%--</div>--%>
+            <%--<div id="3" class="row">--%>
+                <%--<text id="summoner3"></text>--%>
+                <%--<text id="KDA3"></text>--%>
+                <%--<text id="Damage3"></text>--%>
+                <%--<text id="Tier3"></text>--%>
+            <%--</div>--%>
+            <%--<div id="4" class="row">--%>
+                <%--<text id="summoner4"></text>--%>
+                <%--<text id="KDA4"></text>--%>
+                <%--<text id="Damage4"></text>--%>
+                <%--<text id="Tier4"></text>--%>
+            <%--</div>--%>
+            <%--<div id="5" class="row">--%>
+                <%--<text id="summoner5"></text>--%>
+                <%--<text id="KDA5"></text>--%>
+                <%--<text id="Damage5"></text>--%>
+                <%--<text id="Tier5"></text>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div id="Team200" class="column">--%>
+            <%--<div id="6" class="row">--%>
+                <%--<text id="summoner6"></text>--%>
+                <%--<text id="KDA6"></text>--%>
+                <%--<text id="Damage6"></text>--%>
+                <%--<text id="Tier6"></text>--%>
+            <%--</div>--%>
+            <%--<div id="7" class="row">--%>
+                <%--<text id="summoner7"></text>--%>
+                <%--<text id="KDA7"></text>--%>
+                <%--<text id="Damage7"></text>--%>
+                <%--<text id="Tier7"></text>--%>
+            <%--</div>--%>
+            <%--<div id="8" class="row">--%>
+                <%--<text id="summoner8"></text>--%>
+                <%--<text id="KDA8"></text>--%>
+                <%--<text id="Damage8"></text>--%>
+                <%--<text id="Tier8"></text>--%>
+            <%--</div>--%>
+            <%--<div id="9" class="row">--%>
+                <%--<text id="summoner9"></text>--%>
+                <%--<text id="KDA9"></text>--%>
+                <%--<text id="Damage9"></text>--%>
+                <%--<text id="Tier9"></text>--%>
+            <%--</div>--%>
+            <%--<div id="10" class="row">--%>
+                <%--<text id="summoner10"></text>--%>
+                <%--<text id="KDA10"></text>--%>
+                <%--<text id="Damage10"></text>--%>
+                <%--<text id="Tier10"></text>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+
+        <%--&lt;%&ndash;<div id="PlayerWinPic" class="PlayerStatPic" style="display: none;">&ndash;%&gt;--%>
+        <%--&lt;%&ndash;<img id="PlayerLossImg" src="/resources/images/victory.png" style="left:500px">&ndash;%&gt;--%>
+        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;<div id="PlayerLossPic" class="PlayerStatPic" style="display: none;">&ndash;%&gt;--%>
+        <%--&lt;%&ndash;<img id="PlayerStatImg" src="/resources/images/SampleGame.png" style="left:500px">&ndash;%&gt;--%>
+        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+    <%--</div>--%>
 </div>
 
 <div class="chart">
