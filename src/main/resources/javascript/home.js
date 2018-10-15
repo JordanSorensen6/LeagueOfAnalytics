@@ -46,6 +46,9 @@ var home = (function($) {
         if(Object.keys(json).length !== 0)
             if (json[0]["hotStreak"].toString() == "true")
                 document.getElementById("hot"+position).src = "/resources/images/hotStreakTrue.png";
+            else
+                document.getElementById("hot"+position).src = "/resources/images/hotStreakFalse.png";
+
     }
 
 
@@ -71,6 +74,17 @@ var home = (function($) {
 
     function getChampions() {
         return champions;
+    }
+
+    function summonerIdLookup(id){
+        document.getElementById("button"+id).style.display = "none";
+        var s1 = document.getElementById("summoner"+id).value;
+        $.get('riot/summonerIds?s1=' + s1, function(data) {
+            summonerIds = data;
+            getSummonerInfo(summonerIds[s1], id);
+            updateChampion(id);
+            findAvgRank();
+        });
     }
 
     function summonerIdsLookup() {
@@ -155,6 +169,23 @@ var home = (function($) {
 
     function getSummonerIds() {
         return summonerIds;
+    }
+
+    function updateChampion(id){
+        var inputId = "champion"+id;
+        var summonerId = summonerIds[document.getElementById('summoner'+id).value];
+        var key = formatChampionName($('#' + inputId).val());
+        if(champions.hasOwnProperty(key)) {
+            var championId = champions[key];
+            console.log("sid: " + summonerId + " cid: " + championId);
+            $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
+                //$('#mastery' + num).val(data);
+                //getSummonerInfo(summonerId, num);
+                var image = document.getElementById('mastery' + id);
+                console.log("updating mastery with: " + data);
+                image.src = "/resources/images/L"+data+".png";
+            });
+        }
     }
 
     function championSelected() {
@@ -537,6 +568,7 @@ var home = (function($) {
         populateSummonerNames: populateSummonerNames,
         markForSwap: markForSwap,
         swapRoles: swapRoles,
+        summonerIdLookup: summonerIdLookup,
         //TODO remove later - these are just for testing
         getChampions: getChampions,
         getSummonerIds: getSummonerIds
@@ -553,7 +585,6 @@ function onDragStart(ev) {
     //console.log("onDragStart");
     //ev.dataTransfer.setData("value", document.getElementById(ev.target.id).value);
     ev.dataTransfer.setData("value", ev.target.id);
-    //ev.dataTransfer.dropEffect.
 }
 
 function onDrop(ev) {
@@ -561,5 +592,10 @@ function onDrop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("value");
     home.swapRoles(data, ev.target.id);
-    //ev.target.appendChild(document.getElementById(data));
 }
+
+function displayButton(id)
+{
+    document.getElementById("button"+id).style.display = "block";
+}
+

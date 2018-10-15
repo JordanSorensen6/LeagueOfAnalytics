@@ -11,6 +11,31 @@ body {
     grid-gap: 10px;
     padding: 10px;
 }
+
+/*input {*/
+    /*!* Tell the input to use all the available space *!*/
+    /*flex-grow:2;*/
+    /*!*padding-right: .5em;*!*/
+    /*!* And hide the input's outline, so the form looks like the outline *!*/
+    /*!*border:none;*!*/
+/*}*/
+
+button {
+    /* Just a little styling to make it pretty */
+    /*border:1px solid blue;*/
+    margin-left: 0px;
+    margin-right: 0px;
+    border: 2px solid #005cbf;
+    background: #004085;
+    color:white;
+    display: none;
+    float: right;
+}
+
+/*.displayButton{*/
+    /*display: none;*/
+/*}*/
+
 .positionAndName{
     display: grid;
     row-span: 2;
