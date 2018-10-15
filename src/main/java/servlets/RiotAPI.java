@@ -41,10 +41,11 @@ public class RiotAPI extends HttpServlet {
             JsonObject allSummonersIds = new JsonObject();
             Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
             for(String summoner : summoners) {
-                if(validName.matcher(summoner).matches()) {
-                    String id = call.getSummonerId(summoner.replaceAll("\\s+", ""));
-                    allSummonersIds.addProperty(summoner, id);
-                }
+                if(summoner != null)
+                    if(validName.matcher(summoner).matches()) {
+                        String id = call.getSummonerId(summoner.replaceAll("\\s+", ""));
+                        allSummonersIds.addProperty(summoner, id);
+                    }
             }
 
             response.setCharacterEncoding("UTF-8");

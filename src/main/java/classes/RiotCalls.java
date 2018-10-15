@@ -93,11 +93,6 @@ public class RiotCalls {
 
 
             return result.toString();
-//            Gson g = new Gson();
-//            String jsonRepresentation = g.toJson(result.toString());
-//            JsonParser parser = new JsonParser();
-//            JsonObject jobj = parser.parse(result.toString()).getAsJsonObject();
-//            return jobj.toString();
         }
         else {
             System.out.println("Riot Status " + status + ", https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/");
