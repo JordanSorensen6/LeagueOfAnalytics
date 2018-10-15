@@ -14,37 +14,45 @@ var home = (function($) {
 
     function getSummonerInfo(sid, position){
         $.get('riot/playerStats?summonerId='+sid, function(data) {
-            setPlayerWinRate(data, position);
-            setHotStreak(data, position);
-            setRank(data, position);
+            var index = getIndex(data);
+            setPlayerWinRate(data, position, index);
+            setHotStreak(data, position, index);
+            setRank(data, position, index);
         });
     }
 
-    function setPlayerWinRate(json, position)
+    function getIndex(json)
+    {
+        for(var i = 0; i < Object.keys(json).length; i++)
+        {
+            if(json[i]["queueType"] == "RANKED_SOLO_5x5")
+                return i;
+        }
+        return 0;
+    }
+
+    function setPlayerWinRate(json, position, index)
     {
         if(Object.keys(json).length !== 0) {
-            //var data = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%</b>";
-            var data = (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%";
-
-            //document.getElementById("playerPercentage" + position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"]))) * 10000) / 100).toString() + "%</b>";
+            var data = (Math.round((parseFloat(json[index]["wins"]) / (parseFloat(json[index]["wins"]) + parseFloat(json[index]["losses"]))) * 10000) / 100).toString() + "%";
             displayBars(data, "playerPercentage"+position);
         }
         else
             document.getElementById("playerPercentage"+position).innerHTML = "<b>00.00%</b>";
     }
 
-    function setRank(json, position)
+    function setRank(json, position, index)
     {
         if(Object.keys(json).length !== 0)
-            document.getElementById("tier" + position).src = "/resources/images/tier-icons/" + json[0]["tier"].toLowerCase() + "_" + json[0]["rank"].toLowerCase() + ".png";
+            document.getElementById("tier" + position).src = "/resources/images/tier-icons/" + json[index]["tier"].toLowerCase() + "_" + json[index]["rank"].toLowerCase() + ".png";
         else
             document.getElementById("tier" + position).src = "/resources/images/tier-icons/provisional.png";
     }
 
-    function setHotStreak(json, position)
+    function setHotStreak(json, position, index)
     {
         if(Object.keys(json).length !== 0)
-            if (json[0]["hotStreak"].toString() == "true")
+            if (json[index]["hotStreak"].toString() == "true")
                 document.getElementById("hot"+position).src = "/resources/images/hotStreakTrue.png";
             else
                 document.getElementById("hot"+position).src = "/resources/images/hotStreakFalse.png";
@@ -84,6 +92,7 @@ var home = (function($) {
             getSummonerInfo(summonerIds[s1], id);
             updateChampion(id);
             findAvgRank();
+            checkForMatchup('team', id);
         });
     }
 
