@@ -65,11 +65,13 @@ var championSelectModal = (function($) {
     function setupChampionImages(champions) {
         var championContainer = $('#championImages');
         for(var name in champions) {
+            var formattedName = formatChampionName(name);
             championContainer.append('' +
-                '<div id="' + name + '" class="champ-img ' + champions[name].toLowerCase() + '">' +
-                '<img src="/resources/images/champion/' + name + '.png">' +
+                '<div id="' + formattedName + '" class="champ-img ' + champions[name].toLowerCase() + '">' +
+                '<img src="/resources/images/champion/' + formattedName + '.png" data-toggle="tooltip" data-placement="bottom" title="' + name + '">' +
                 '</div>');
         }
+        $('[data-toggle="tooltip"]').tooltip();
 
         $('.champ-img').on('click', function() {
             if($(this).hasClass('selected-champion'))

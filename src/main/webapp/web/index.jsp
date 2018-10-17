@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/resources/css/layout.css"/>
     <link rel="stylesheet" href="/resources/css/champSelectModal.css"/>
 
+    <script src="/resources/javascript/popper.min.js"></script>
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
