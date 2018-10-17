@@ -64,14 +64,14 @@ var championSelectModal = (function($) {
 
     function setupChampionImages(champions) {
         var championContainer = $('#championImages');
-        var noImages = ['kaisa', 'kayn', 'ornn', 'pyke', 'rakan', 'xayah', 'zoe', 'wukong'];
         for(var name in champions) {
-            if(!(noImages.indexOf(name) > -1))
-                championContainer.append('' +
-                    '<div id="' + name + '" class="champ-img ' + champions[name].toLowerCase() + '">' +
-                    '<img src="/resources/images/champion/' + name + '.png">' +
-                    '</div>');
+            var formattedName = formatChampionName(name);
+            championContainer.append('' +
+                '<div id="' + formattedName + '" class="champ-img ' + champions[name].toLowerCase() + '">' +
+                '<img src="/resources/images/champion/' + formattedName + '.png" data-toggle="tooltip" data-placement="bottom" title="' + name + '">' +
+                '</div>');
         }
+        $('[data-toggle="tooltip"]').tooltip();
 
         $('.champ-img').on('click', function() {
             if($(this).hasClass('selected-champion'))

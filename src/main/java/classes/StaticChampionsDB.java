@@ -18,7 +18,7 @@ public class StaticChampionsDB {
 
     public static List<StaticChampionsEntity> getAllChampionsTags() {
         Session session = HibernateUtil.getSession();
-        String q = "SELECT C.name, C.tags FROM StaticChampionsEntity C";
+        String q = "SELECT C.formatted, C.tags FROM StaticChampionsEntity C";
         Query query = session.createQuery(q);
         List<StaticChampionsEntity> champions = query.getResultList();
         session.close();
