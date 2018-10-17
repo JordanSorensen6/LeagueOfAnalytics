@@ -48,7 +48,8 @@ var championSelectModal = (function($) {
         $('#championSearch').on('keyup', function() {
             var value = formatChampionName($(this).val());
             $('#championImages div').filter(function() {
-                $(this).toggle($(this).attr('id').indexOf(value) > -1)
+                if(!$(this).is(':hidden'))
+                    $(this).toggle($(this).attr('id').indexOf(value) > -1)
             });
         });
     }

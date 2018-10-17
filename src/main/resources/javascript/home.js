@@ -8,14 +8,8 @@ var home = (function($, champSelect) {
         championsLookup();
         championSelected();
 	    anyChampSelection();
-	    champSelect.init(handleChampSelected);
+	    champSelect.init(setChampionImage);
     }
-
-    function handleChampSelected(name, src) {
-        console.log('Name: %s, Src: %s', name, src);
-    }
-
-
 
     function getSummonerInfo(sid, position){
         $.get('riot/playerStats?summonerId='+sid, function(data) {
@@ -234,22 +228,12 @@ var home = (function($, champSelect) {
         });
     }
 
-    function setChampionImage(id)
+    function setChampionImage(name, src)
     {
-        var newID;
+        name = formatChampionName(name);
 
-        var champion = formatChampionName(document.getElementById(id).value);
-
-        if(id.includes('champion'))
-            newID = id.replace('champion', 'teamImg');
-        else
-            newID = id.replace('opponent', 'oppImg');
-
-        if(champions.hasOwnProperty(champion)){
-            var image = document.getElementById(newID);
-            console.log("updating champion image");
-            image.src = "/resources/images/champion/"+champion+".png";
-        }
+        if(champions.hasOwnProperty(name))
+            $('#' + src).attr('src', "/resources/images/champion/"+name+".png");
     }
 
     function checkForMatchup(team, id){
