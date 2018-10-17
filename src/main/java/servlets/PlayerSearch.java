@@ -1,7 +1,9 @@
 package servlets;
 
 import classes.*;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import javafx.util.Pair;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -200,26 +202,7 @@ public class PlayerSearch extends HttpServlet {
                 //calculate score
                 if(matchupCalc == null)
                     matchupCalc = 50.0;
-                String info = call.getSummonerInfo(call.getSummonerId(user));
-                Gson gson = new Gson();
-                JsonParser parser = new JsonParser();
-                JsonArray infoJson = parser.parse(info).getAsJsonArray();
-                Double winrate = 50.0;
-                for(JsonElement queue : infoJson) {
-                    if(queue.getAsJsonObject().get("queueType").getAsString().equals("RANKED_SOLO_5x5")) {
-                        Double wins = queue.getAsJsonObject().get("wins").getAsDouble();
-                        Double losses = queue.getAsJsonObject().get("losses").getAsDouble();
-                        if(wins == 0.0 && losses == 0.0)
-                            winrate = 50.0;
-                        else if(wins == 0.0)
-                            winrate = 0.0;
-                        else if(losses == 0.0)
-                            winrate = 100.0;
-                        else
-                            winrate = (wins / (wins + losses)) * 100;
-                    }
-                }
-                score += scoring.calculateScore(Double.toString(matchupCalc), teammateMastery, winrate.toString(), "False");//TODO: Get player winrate and hotstreak info from Riot.
+                score += scoring.calculateScore(Double.toString(matchupCalc), teammateMastery, "0.0", "False");//TODO: Get player winrate and hotstreak info from Riot.
             }
             GamesEntity game = new GamesEntity();
             game.setMatchId(Long.parseLong(gameId));
@@ -236,65 +219,24 @@ public class PlayerSearch extends HttpServlet {
 
     private HashMap<Integer, Pair<String, String>> findMatchups(int teamId, JsonObject match) {
         HashMap<Integer, Pair<String, String>> matchups = new HashMap<>();
-        ArrayList<Integer> toBeAssigned = new ArrayList<>();
         JsonArray participants = match.getAsJsonArray("participants");
-        // _Id1 corresponds to teammates champion id
-        // _Id2 corresponds to enemy champion id
-        int midId1 = -1;
-        int midId2 = -1;
-        int topId1 = -1;
-        int topId2 = -1;
-        int jgId1 = -1;
-        int jgId2 = -1;
-        int adId1 = -1;
-        int adId2 = -1;
-        int suppId1 = -1;
-        int suppId2 = -1;
         for(int i = 0; i < participants.size(); i++) {
             JsonObject participant = participants.get(i).getAsJsonObject();
-            int participantId = participant.get("participantId").getAsInt();
-            int currTeamId = participant.get("teamId").getAsInt();
             JsonObject participantTimeline = participants.get(i).getAsJsonObject().getAsJsonObject("timeline");
             switch(participantTimeline.get("lane").getAsString()) {
                 case "MIDDLE":
-                    if(teamId == currTeamId)
-                        midId1 = participant.get("championId").getAsInt();
-                    else
-                        midId2 = participant.get("championId").getAsInt();
                     break;
                 case "TOP":
-                    if(teamId == currTeamId)
-                        topId1 = participant.get("championId").getAsInt();
-                    else
-                        topId2 = participant.get("championId").getAsInt();
                     break;
                 case "JUNGLE":
-                    if(teamId == currTeamId)
-                        jgId1 = participant.get("championId").getAsInt();
-                    else
-                        jgId2 = participant.get("championId").getAsInt();
                     break;
                 case "BOTTOM":
-                    if(participantTimeline.get("role").getAsString().equals("DUO_CARRY")) {
-                        if(teamId == currTeamId)
-                            adId1 = participant.get("championId").getAsInt();
-                        else
-                            adId2 = participant.get("championId").getAsInt();
-                    }
-                    else {
-                        if(teamId == currTeamId)
-                            suppId1 = participant.get("championId").getAsInt();
-                        else
-                            suppId2 = participant.get("championId").getAsInt();
-                    }
                     break;
                 // if it reaches the default case, the lane is "NONE"
                 default:
-                    toBeAssigned.add(i);
+                    break;
             }
         }
-        //TODO check if matchups were filled out properly.
-        //TODO fill in remaining matchup if one is missing.
 
         return matchups;
     }
@@ -325,7 +267,7 @@ public class PlayerSearch extends HttpServlet {
         String champ1 = StaticChampionsDB.getNameById(champId1);
         String champ2 = StaticChampionsDB.getNameById(champId2);
         // add matchup to map
-        matchups.put(participantId, new Pair<>(champ1, champ2));
+        matchups.put(participantId, new Pair<String, String>(champ1, champ2));
         return participantId;
     }
 }
