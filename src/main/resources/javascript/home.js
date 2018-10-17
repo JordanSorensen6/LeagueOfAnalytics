@@ -1,4 +1,4 @@
-var home = (function($) {
+var home = (function($, champSelect) {
     var champions = {};
     var summonerIds = {};
 
@@ -8,6 +8,11 @@ var home = (function($) {
         championsLookup();
         championSelected();
 	    anyChampSelection();
+	    champSelect.init(handleChampSelected);
+    }
+
+    function handleChampSelected(name, src) {
+        console.log('Name: %s, Src: %s', name, src);
     }
 
 
@@ -583,7 +588,7 @@ var home = (function($) {
         getSummonerIds: getSummonerIds
         //----------------------------------------------
     };
-}(window.jQuery));
+}(window.jQuery, championSelectModal));
 
 function onDragOver(ev) {
     //console.log("onDragOver");
@@ -607,4 +612,3 @@ function displayButton(id)
 {
     document.getElementById("button"+id).style.display = "block";
 }
-
