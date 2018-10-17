@@ -16,6 +16,15 @@ public class StaticChampionsDB {
         return champions;
     }
 
+    public static List<StaticChampionsEntity> getAllChampionsTags() {
+        Session session = HibernateUtil.getSession();
+        String q = "SELECT C.name, C.tags FROM StaticChampionsEntity C";
+        Query query = session.createQuery(q);
+        List<StaticChampionsEntity> champions = query.getResultList();
+        session.close();
+        return champions;
+    }
+
     public static StaticChampionsEntity getById(Integer id) {
         Session session = HibernateUtil.getSession();
         String q = "FROM StaticChampionsEntity as C WHERE C.id = :champ_id";

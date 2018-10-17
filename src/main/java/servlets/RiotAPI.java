@@ -3,6 +3,7 @@ package servlets;
 import classes.LoadConfig;
 import classes.RiotCalls;
 import classes.StaticChampionsDB;
+import classes.StaticChampionsEntity;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class RiotAPI extends HttpServlet {
@@ -28,6 +31,13 @@ public class RiotAPI extends HttpServlet {
             PrintWriter writer = response.getWriter();
             Gson gson = new Gson();
             writer.write(gson.toJson(StaticChampionsDB.getAllChampions()));
+            writer.close();
+        } else if(uri.equals("/riot/champion-tags")){
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            Gson gson = new Gson();
+            writer.write(gson.toJson(StaticChampionsDB.getAllChampionsTags()));
             writer.close();
         } else if(Pattern.compile("^*/riot/summonerIds*$").matcher(uri).matches()) {
             //extract query params

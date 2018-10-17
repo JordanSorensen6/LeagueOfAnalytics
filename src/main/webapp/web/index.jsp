@@ -4,11 +4,13 @@
     <title>League Of Analytics</title>
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/layout.css"/>
+    <link rel="stylesheet" href="/resources/css/champSelectModal.css"/>
 
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
     <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
 
+    <script type="text/javascript" src="resources/javascript/championSelectModal.js"></script>
     <script type="text/javascript" src="resources/javascript/home.js"></script>
     <script type="text/javascript" src="resources/javascript/cookie.js"></script>
 </head>
@@ -38,11 +40,11 @@
     <div class="teamChamp teamChampBot"><input type="text" id="champion4" placeholder="Bot Champion"></div>
     <div class="teamChamp teamChampSupport"><input type="text" id="champion5" placeholder="Support Champion"></div>
 
-    <div class="teamChampTopPic"><img id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="teamChampJunglePic"><img id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="teamChampMidPic"><img id="teamImg3" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="teamChampBotPic"><img id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="teamChampSupportPic"><img id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampTopPic"><img id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampJunglePic"><img id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampMidPic"><img id="teamImg3" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampBotPic"><img id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampSupportPic"><img id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
 
 
     <div class="masteryTop"><img id="mastery1" src="/resources/images/L0.png"></div>
@@ -64,11 +66,11 @@
     <div class="playerWinPerBot" id="playerPercentage4"><b>00.00%</b></div>
     <div class="playerWinPerSupport" id="playerPercentage5"><b>00.00%</b></div>
 
-    <div class="oppChampTopPic"><img id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="oppChampJunglePic"><img id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="oppChampMidPic"><img id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="oppChampBotPic"><img id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="oppChampSupportPic"><img id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampTopPic"><img id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampJunglePic"><img id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampMidPic"><img id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampBotPic"><img id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampSupportPic"><img id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
 
     <div class="oppChamp oppChampTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" id="opponent1" placeholder="Opponent Top"></div></div></div>
     <div class="oppChamp oppChampJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" id="opponent2" placeholder="Opponent Jungle"></div></div></div>
@@ -97,6 +99,42 @@ summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea><br>
+
+<div class="modal" id="championSelectModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content champ-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Select a Champion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="filter-options clearfix">
+                                <a href="#" data-filter="*" class="current-filter">All</a>
+                                <a href="#" data-filter="fighter">Fighter</a>
+                                <a href="#" data-filter="tank">Tank</a>
+                                <a href="#" data-filter="mage">Mage</a>
+                                <a href="#" data-filter="assassin">Assassin</a>
+                                <a href="#" data-filter="marksman">Marksman</a>
+                                <a href="#" data-filter="support">Support</a>
+                                <input id="championSearch" type="text" placeholder="Search Champions...">
+                            </div>
+                        </div>
+                        <div id="championImages" class="champion-container pre-scrollable"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="selectChampBtn" type="button" class="btn btn-primary">Select</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     home.init();
