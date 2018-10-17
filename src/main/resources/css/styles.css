@@ -131,7 +131,7 @@ text {
 }
 
 .loader {
-    border: 16px solid white;
+    border: 16px solid lightgray;
     border-top: 16px solid yellow;
     border-radius: 50%;
     width: 120px;

@@ -27,12 +27,16 @@ ${username} stats
     <button type="button" onclick="chart.lessGames()" id = "delete">Take Away Games</button>
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
-        <div class="loader"></div>
-        <svg width="800" height="600" id="plotChart">
-            <g id="xAxis"></g>
-            <g id="yAxis"></g>
-            <g id="plot"></g>
-        </svg>
+        <div>
+            <div class="loader" style="z-index: 10; position: absolute; top: 0px; left: 0px; visibility: visible"></div>
+            <div style="z-index: 9; position: absolute; top: 0px; left: 0px; visibility: visible">
+                <svg width="800" height="600" id="plotChart">
+                    <g id="xAxis"></g>
+                    <g id="yAxis"></g>
+                    <g id="plot"></g>
+                </svg>
+            </div>
+        </div>
         <div>
             <h4>Legend</h4>
             <svg width="200" height="400" id="legend">
