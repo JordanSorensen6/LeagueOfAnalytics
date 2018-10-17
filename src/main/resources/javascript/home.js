@@ -1,4 +1,4 @@
-var home = (function($) {
+var home = (function($, champSelect) {
     var champions = {};
     var summonerIds = {};
 
@@ -8,9 +8,8 @@ var home = (function($) {
         championsLookup();
         championSelected();
 	    anyChampSelection();
+	    champSelect.init(setChampionImage);
     }
-
-
 
     function getSummonerInfo(sid, position){
         $.get('riot/playerStats?summonerId='+sid, function(data) {
@@ -229,22 +228,12 @@ var home = (function($) {
         });
     }
 
-    function setChampionImage(id)
+    function setChampionImage(name, src)
     {
-        var newID;
+        name = formatChampionName(name);
 
-        var champion = formatChampionName(document.getElementById(id).value);
-
-        if(id.includes('champion'))
-            newID = id.replace('champion', 'teamImg');
-        else
-            newID = id.replace('opponent', 'oppImg');
-
-        if(champions.hasOwnProperty(champion)){
-            var image = document.getElementById(newID);
-            console.log("updating champion image");
-            image.src = "/resources/images/champion/"+champion+".png";
-        }
+        if(champions.hasOwnProperty(name))
+            $('#' + src).attr('src', "/resources/images/champion/"+name+".png");
     }
 
     function checkForMatchup(team, id){
@@ -583,7 +572,7 @@ var home = (function($) {
         getSummonerIds: getSummonerIds
         //----------------------------------------------
     };
-}(window.jQuery));
+}(window.jQuery, championSelectModal));
 
 function onDragOver(ev) {
     //console.log("onDragOver");
@@ -607,4 +596,3 @@ function displayButton(id)
 {
     document.getElementById("button"+id).style.display = "block";
 }
-
