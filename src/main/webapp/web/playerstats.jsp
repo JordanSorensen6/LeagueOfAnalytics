@@ -28,8 +28,8 @@ ${username} stats
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
         <div>
-            <div class="loader" style="z-index: 10; position: absolute; top: 0px; left: 0px; visibility: visible"></div>
-            <div style="z-index: 9; position: absolute; top: 0px; left: 0px; visibility: visible">
+            <div class="loader" style="z-index: 2; position: absolute; top: 0px; left: 0px; visibility: visible"></div>
+            <div style="z-index: 1; position: absolute; top: 0px; left: 0px; visibility: visible">
                 <svg width="800" height="600" id="plotChart">
                     <g id="xAxis"></g>
                     <g id="yAxis"></g>
