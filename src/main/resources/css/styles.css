@@ -130,9 +130,13 @@ text {
     fill: yellow;
 }
 
-.loader {
+#loader {
     border: 16px solid lightgray;
     border-top: 16px solid yellow;
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    z-index: 1;
     border-radius: 50%;
     width: 120px;
     height: 120px;

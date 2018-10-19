@@ -28,14 +28,12 @@ ${username} stats
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
         <div>
-            <div class="loader" style="z-index: 2; position: absolute; top: 0px; left: 0px; visibility: visible"></div>
-            <div style="z-index: 1; position: absolute; top: 0px; left: 0px; visibility: visible">
-                <svg width="800" height="600" id="plotChart">
-                    <g id="xAxis"></g>
-                    <g id="yAxis"></g>
-                    <g id="plot"></g>
-                </svg>
-            </div>
+            <div id="loader" style="visibility: hidden"></div>
+            <svg width="800" height="600" id="plotChart">
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+                <g id="plot"></g>
+            </svg>
         </div>
         <div>
             <h4>Legend</h4>
@@ -171,7 +169,9 @@ ${username} stats
             //     data.push(repGame);
             // }
             var matchId = chart.getLowestMatchId();
+            document.getElementById("loader").style.visibility = "visible";
             $.get('/history?user=' + "${username}" + "&match=" + matchId, function(data){
+                document.getElementById("loader").style.visibility = "hidden";
                 data.forEach(function (d) {
                     d.s = +d.score;
                 });
