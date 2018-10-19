@@ -6,7 +6,7 @@
             for (var i = 4, n = allElements.length; i < n; i++) {//4-13, 29-33, 46
 
                 if (allElements[i] instanceof HTMLInputElement) {
-                    console.log(i + " " + allElements[i].id);
+                    //console.log(i + " " + allElements[i].id);
                     pair = allElements[i].id + "=" + getValue(allElements[i].id);
                     document.cookie = pair;//Set the cookies
                 }
@@ -18,7 +18,8 @@
                     pair = allElements[i].id + "=" + getSrc(allElements[i].id);
                     document.cookie = pair;
                 }
-                else {
+                else if (allElements[i].id.toString().includes("ercentage")) {
+                    console.log(allElements[i].id)
                     pair = allElements[i].id + "=" + getText(allElements[i].id).replace(/["']/g, "").replace(/[%]/g, "");
                     document.cookie = pair;
                 }
