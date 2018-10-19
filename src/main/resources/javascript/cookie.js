@@ -18,8 +18,12 @@
                     pair = allElements[i].id + "=" + getSrc(allElements[i].id);
                     document.cookie = pair;
                 }
-                else if (allElements[i].id.toString().includes("ercentage")) {
-                    console.log(allElements[i].id)
+                else if (allElements[i].id.toString().includes("ercentage") || allElements[i].id.toString().includes("score")) {
+                    pair = allElements[i].id + "=" + getText(allElements[i].id).replace(/["']/g, "").replace(/[%]/g, "");
+                    document.cookie = pair;
+                }
+                else if (allElements[i] instanceof HTMLHeadingElement || allElements[i] instanceof HTMLParagraphElement)
+                {
                     pair = allElements[i].id + "=" + getText(allElements[i].id).replace(/["']/g, "").replace(/[%]/g, "");
                     document.cookie = pair;
                 }
