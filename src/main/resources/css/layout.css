@@ -295,6 +295,8 @@ button {
 .winPerTop {
     grid-column: 9;
     grid-row: 2;
+    /*background-size: 0% 0%;*/
+    /*border: 2px white;*/
 }
 
 .winPerJungle {
