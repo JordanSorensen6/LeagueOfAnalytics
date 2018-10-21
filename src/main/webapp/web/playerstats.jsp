@@ -121,7 +121,6 @@ ${username} stats
     $('#nav-search').addClass('active');
 
     $.get('/history?user=' + "${username}", function(data){
-        console.log(data);
         data.forEach(function (d) {
             d.s = +d.score;
         });
