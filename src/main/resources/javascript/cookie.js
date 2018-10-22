@@ -111,12 +111,18 @@
                 {
                     document.getElementById(allElements[i].id).src="/resources/images/champion/placeholderOpponent.png";
                 }
+                else if(allElements[i].id.toString().includes("tier"))
+                {
+                    document.getElementById(allElements[i].id).src="/resources/images/tier-icons/provisional.png";
+                }
+
             }
             else
             {
                 if(allElements[i].id.indexOf("playerPercentage") != -1 || allElements[i].id.indexOf("percentage") != -1)
                 {
                     document.getElementById(allElements[i].id).innerHTML = "<b>00.00%</b>";
+                    displayBars(document.getElementById(allElements[i].id).innerHTML, allElements[i].id)
                 }
                 else if(allElements[i].id.indexOf("score") != -1)
                 {
