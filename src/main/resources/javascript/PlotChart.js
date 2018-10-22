@@ -134,6 +134,7 @@ class PlotChart{
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
+
                 $.get('/match?matchID=' + d["matchId"], function(data){
 
                     document.getElementById("gameStats").style.display = "inline";
