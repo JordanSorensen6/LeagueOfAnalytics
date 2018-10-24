@@ -1,5 +1,8 @@
 package classes;
 
+import classes.db.GamesDB;
+import classes.db.GamesEntity;
+import classes.db.StaticChampionsDB;
 import com.google.gson.*;
 import javafx.util.Pair;
 

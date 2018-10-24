@@ -1,11 +1,8 @@
 package servlets;
 
 import classes.*;
+import classes.db.GamesEntity;
 import com.google.gson.*;
-import javafx.util.Pair;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class PlayerSearch extends HttpServlet {

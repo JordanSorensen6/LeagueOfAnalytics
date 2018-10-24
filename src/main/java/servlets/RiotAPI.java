@@ -2,7 +2,7 @@ package servlets;
 
 import classes.LoadConfig;
 import classes.RiotCalls;
-import classes.StaticChampionsDB;
+import classes.db.StaticChampionsDB;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 

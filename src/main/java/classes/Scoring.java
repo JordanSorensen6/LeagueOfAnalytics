@@ -1,5 +1,9 @@
 package classes;
 
+import classes.db.ChampionMatchupsDB;
+import classes.db.ChampionMatchupsEntity;
+import classes.db.StaticChampionsDB;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
