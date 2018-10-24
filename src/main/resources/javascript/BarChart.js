@@ -1,8 +1,8 @@
 
     function tooltip_render(tooltip_data){
         var text = "<h4 style = color:black > Score: " + tooltip_data["score"] + "</h4> " +
-            "<h5 style = color:black > Probability of winning: " + (tooltip_data["percentage"]).toFixed(1) + "</h5>" +
-            "<h5 style = color:black > Chance of getting a score: " + (tooltip_data["chance"]).toFixed(1) + "</h5>";
+            "<h5 style = color:black > Probability of winning: " + (tooltip_data["percentage"]).toFixed(1) + "% </h5>" +
+            "<h5 style = color:black > Chance of getting a score: " + (tooltip_data["chance"]).toFixed(1) + "% </h5>";
         //text += "Electoral Votes: " + tooltip_data.electoralVotes;
 
         return text;
