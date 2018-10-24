@@ -19,7 +19,11 @@ var championSelectModal = (function($) {
     function championSelected(func) {
         $('#selectChampBtn').on('click', function() {
             var selected = getSelected();
-            func(selected, selectFor);
+            //func(selected, selectFor);//selected is champion name and SelectFor is src
+            if(selectFor.toString().includes("teamImg"))//this updates everything
+                func(selected, 'champion'+selectFor.toString().replace("teamImg", ""));
+            else
+                func(selected, 'opponent'+selectFor.toString().replace("oppImg", ""));
             $('.filter-options').children(':first').click();
             $('.selected-champion').first().removeClass('selected-champion');
             $('#championSearch').val('');
