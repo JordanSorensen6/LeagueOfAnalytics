@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>League Of Analytics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/layout.css"/>
     <link rel="stylesheet" href="/resources/css/champSelectModal.css"/>
@@ -105,7 +106,11 @@
 summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
-summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea><br>
+summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea>
+
+<div class="help-tip">
+    <p>This is the inline help tip! It can contain all kinds of HTML. Style it as you please.</p>
+</div><br>
 
 <div class="modal" id="championSelectModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
