@@ -29,6 +29,13 @@ public class RiotAPI extends HttpServlet {
             Gson gson = new Gson();
             writer.write(gson.toJson(StaticChampionsDB.getAllChampions()));
             writer.close();
+        } else if(uri.equals("/riot/champion-tags")){
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            Gson gson = new Gson();
+            writer.write(gson.toJson(StaticChampionsDB.getAllChampionsTags()));
+            writer.close();
         } else if(Pattern.compile("^*/riot/summonerIds*$").matcher(uri).matches()) {
             //extract query params
             ArrayList<String> summoners = new ArrayList<>();
@@ -41,10 +48,11 @@ public class RiotAPI extends HttpServlet {
             JsonObject allSummonersIds = new JsonObject();
             Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
             for(String summoner : summoners) {
-                if(validName.matcher(summoner).matches()) {
-                    String id = call.getSummonerId(summoner.replaceAll("\\s+", ""));
-                    allSummonersIds.addProperty(summoner, id);
-                }
+                if(summoner != null)
+                    if(validName.matcher(summoner).matches()) {
+                        String id = call.getSummonerId(summoner.replaceAll("\\s+", ""));
+                        allSummonersIds.addProperty(summoner, id);
+                    }
             }
 
             response.setCharacterEncoding("UTF-8");

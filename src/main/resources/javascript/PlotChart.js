@@ -41,20 +41,6 @@ class PlotChart{
         var height = +svg.attr("height") - 2 * padding;
         var radius = 8;
         var clickRadius = 10;
-        svg.append("text")
-            .attr("transform", "rotate(-90) translate(" + padding + "," + padding + ")")
-            .attr("y", padding - 120)
-            .attr("x", -1 *(height / 2) - 150)
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("Assigned Score");
-
-        svg.append("text")
-            .attr("transform",
-                "translate(" + (width/2 + 80) + " ," +
-                (height/2 + padding + 30) + ")")
-            .style("text-anchor", "middle")
-            .text("Game #");
 
         var i = 1;
         this.data.forEach(function (d) {
@@ -148,15 +134,49 @@ class PlotChart{
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
-                if(d.outcome === "Win") {
-                    $('#PlayerLossPic').hide();
-                    $('#PlayerWinPic').show();
-                }
-                else {
-                    $('#PlayerLossPic').show();
-                    $('#PlayerWinPic').hide();
-                }
-                //document.getElementById("PlayerStatImg").style.visibility = "visible";
+
+                $.get('/match?matchID=' + d["matchId"], function(data){
+
+                    document.getElementById("gameStats").style.display = "inline";
+
+                    var players = data["participants"];
+                    var playerIds = data["participantIdentities"];
+
+                    players.forEach(function (d, i) {
+                        d["summoner"] = playerIds[i]["player"]["summonerName"];
+                        var id = d["participantId"];
+                        var stats = d["stats"];
+                        var teamId = d["teamId"];
+                        var teamDiv = document.getElementById("gameStats" + teamId);
+                        var divId = (id % 5 == 0) ? 5 : (id % 5);
+
+                        var summonerDiv = teamDiv.getElementsByClassName("summoner" + divId)[0];
+                        summonerDiv.innerHTML = d["summoner"];
+
+                        var kdaDiv = teamDiv.getElementsByClassName("kda" + divId)[0];
+                        var deaths = stats["deaths"];
+                        var kills = stats["kills"];
+                        var assists = stats["assists"];
+                        kdaDiv.innerHTML = (deaths == 0) ? "Perfect" : ((kills + assists) / deaths).toFixed(2);
+
+                        var damageDiv = teamDiv.getElementsByClassName("damage" + divId)[0];
+                        var damage = stats["totalDamageDealt"];
+                        damageDiv.innerHTML = damage;
+
+                        var tierDiv = teamDiv.getElementsByClassName("tier" + divId)[0];
+                        var tier = d["highestAchievedSeasonTier"];
+                        tierDiv.innerHTML = tier;
+                    })
+                });
+                // if(d.outcome === "Win") {
+                //     $('#PlayerLossPic').hide();
+                //     $('#PlayerWinPic').show();
+                // }
+                // else {
+                //     $('#PlayerLossPic').show();
+                //     $('#PlayerWinPic').hide();
+                // }
+                // document.getElementById("PlayerStatImg").style.visibility = "visible";
 
             })
             .on("mouseover", tip.show)

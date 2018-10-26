@@ -1,0 +1,128 @@
+.gridLayout {
+    display: grid;
+    row-span: 6;
+    column-span: 4;
+    align-items: center;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.summoner {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.summoner1 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.summoner2 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.summoner3 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.summoner4 {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+.summoner5 {
+    grid-column: 1;
+    grid-row: 6;
+}
+
+.kda {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.kda1 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.kda2 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.kda3 {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.kda4 {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.kda5 {
+    grid-column: 2;
+    grid-row: 6;
+}
+
+.damage {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.damage1 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.damage2 {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.damage3 {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+.damage4 {
+    grid-column: 3;
+    grid-row: 5;
+}
+
+.damage5 {
+    grid-column: 3;
+    grid-row: 6;
+}
+
+.tier {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.tier1 {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.tier2 {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.tier3 {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+.tier4 {
+    grid-column: 4;
+    grid-row: 5;
+}
+
+.tier5 {
+    grid-column: 4;
+    grid-row: 6;
+}

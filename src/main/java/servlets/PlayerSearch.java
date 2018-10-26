@@ -57,9 +57,24 @@ public class PlayerSearch extends HttpServlet {
                 writer.close();
             }
         }
+        else if(uri.equals("/match")){
+            String matchID = request.getParameter("matchID");
+            JsonObject matchStats = getMatchInfo(matchID);
+            Gson gson = new Gson();
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            writer.write(gson.toJson(matchStats));
+            writer.close();
+        }
         else {
             request.setAttribute("username", call.getSummonerName(request.getParameter("name")));
             request.getRequestDispatcher("/playerstats.jsp").forward(request, response);
         }
+    }
+    private JsonObject getMatchInfo (String gameId) throws IOException {
+        RiotCalls call = RiotCalls.getInstance();
+        JsonObject match = call.getMatch(gameId);
+        return match;
     }
 }

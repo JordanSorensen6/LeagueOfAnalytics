@@ -20,6 +20,9 @@ public class Scoring {
         Double score = 0.0;
         switch (Integer.parseInt(mastery))//Score champion mastery
         {
+            case 0:
+                score -= 1;
+                break;
             case 1:
                 score -= 1;
                 break;
@@ -43,16 +46,21 @@ public class Scoring {
                 break;
         }
 
-        Double mat = Double.parseDouble(matchup);
-        if (mat != 0)//Score champion matchup
-        {
-            if (mat < 50)
-                score -= .5;
-            else
-                score += .5;
+        try {
+            Double mat = Double.parseDouble(matchup);
+            if (mat != 0)//Score champion matchup
+            {
+                if (mat < 50)
+                    score -= .5;
+                else
+                    score += .5;
+            }
+        }
+        catch (NumberFormatException ex) {
+
         }
 
-        if (!winRate.equals("NaN"))//Score player winrate
+        if (!winRate.equals("NaN") && !winRate.equals("No Games"))//Score player winrate
         {
             Double wr = Double.parseDouble(winRate);
             if (wr < 50)
