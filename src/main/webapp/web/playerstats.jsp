@@ -100,7 +100,7 @@ ${username} stats
         <div class="damage4"></div>
         <div class="damage5"></div>
 
-        <div class="tier"><u>Tier</u></div>
+        <div class="tier"><u>Previous Season's Tier</u></div>
         <div class="tier1"></div>
         <div class="tier2"></div>
         <div class="tier3"></div>
