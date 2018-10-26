@@ -178,37 +178,55 @@ public class MatchAnalyzer {
             JsonObject participant = participants.get(i).getAsJsonObject();
             int currTeamId = participant.get("teamId").getAsInt();
             JsonObject participantTimeline = participants.get(i).getAsJsonObject().getAsJsonObject("timeline");
+            Integer championId = participant.get("championId").getAsInt();
+            StringBuilder championStr = new StringBuilder();
+            String result;
             switch(participantTimeline.get("lane").getAsString()) {
                 case "MIDDLE":
-                    if(teamId == currTeamId)
-                        midTeam = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                    result = assignToRole(midTeam, midOpp, championStr, championId, teamId, currTeamId);
+                    if(result.equals("teammate"))
+                        midTeam = championStr.toString();
+                    else if(result.equals("opponent"))
+                        midOpp = championStr.toString();
                     else
-                        midOpp = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                        toBeAssigned.add(i);
                     break;
                 case "TOP":
-                    if(teamId == currTeamId)
-                        topTeam = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                    result = assignToRole(topTeam, topOpp, championStr, championId, teamId, currTeamId);
+                    if(result.equals("teammate"))
+                        topTeam = championStr.toString();
+                    else if(result.equals("opponent"))
+                        topOpp = championStr.toString();
                     else
-                        topOpp = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                        toBeAssigned.add(i);
                     break;
                 case "JUNGLE":
-                    if(teamId == currTeamId)
-                        jgTeam = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                    result = assignToRole(jgTeam, jgOpp, championStr, championId, teamId, currTeamId);
+                    if(result.equals("teammate"))
+                        jgTeam = championStr.toString();
+                    else if(result.equals("opponent"))
+                        jgOpp = championStr.toString();
                     else
-                        jgOpp = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                        toBeAssigned.add(i);
                     break;
                 case "BOTTOM":
                     if(participantTimeline.get("role").getAsString().equals("DUO_CARRY")) {
-                        if(teamId == currTeamId)
-                            adTeam = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                        result = assignToRole(adTeam, adOpp, championStr, championId, teamId, currTeamId);
+                        if(result.equals("teammate"))
+                            adTeam = championStr.toString();
+                        else if(result.equals("opponent"))
+                            adOpp = championStr.toString();
                         else
-                            adOpp = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                            toBeAssigned.add(i);
                     }
                     else {
-                        if(teamId == currTeamId)
-                            suppTeam = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                        result = assignToRole(suppTeam, suppOpp, championStr, championId, teamId, currTeamId);
+                        if(result.equals("teammate"))
+                            suppTeam = championStr.toString();
+                        else if(result.equals("opponent"))
+                            suppOpp = championStr.toString();
                         else
-                            suppOpp = StaticChampionsDB.getNameById(participant.get("championId").getAsInt());
+                            toBeAssigned.add(i);
                     }
                     break;
                 // if it reaches the default case, the lane is "NONE"
@@ -269,5 +287,21 @@ public class MatchAnalyzer {
             ret.put(key, new Pair<>(m.team, m.opponent));
         }
         return ret;
+    }
+
+    private String assignToRole(String team, String opp, StringBuilder champion, Integer champId, int teamId, int currTeamId) {
+        if(teamId == currTeamId) {
+            if(team == null) {
+                champion.append(StaticChampionsDB.getNameById(champId));
+                return "teammate";
+            }
+        }
+        else {
+            if(opp == null) {
+                champion.append(StaticChampionsDB.getNameById(champId));
+                return "opponent";
+            }
+        }
+        return "tbd";
     }
 }

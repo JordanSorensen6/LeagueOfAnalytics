@@ -79,10 +79,10 @@ public class Scoring {
 
         ChampionMatchupsEntity temp = ChampionMatchupsDB.getByAll(c1Id, league, role);
         if(temp == null)
-            return 50.0;
+            return null;
         String matchupJson = temp.getMatchupJson();
-//        if(matchupJson == null) //TODO handle differently?
-//            return 50.0;
+        if(matchupJson == null)
+            return null;
 
         HashMap<String, Double> allMatches = new HashMap<>();
         Matcher m = Pattern.compile("\"opponentChampion\":(.*?), \"winRate\": (.*?)}")
