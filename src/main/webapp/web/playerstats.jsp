@@ -120,7 +120,9 @@ ${username} stats
     var chart;
     $('#nav-search').addClass('active');
 
+    document.getElementById("loader").style.visibility = "visible";
     $.get('/history?user=' + "${username}", function(data){
+        document.getElementById("loader").style.visibility = "hidden";
         data.forEach(function (d) {
             d.s = +d.score;
         });
