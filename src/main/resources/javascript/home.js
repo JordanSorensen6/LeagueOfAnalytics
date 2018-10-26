@@ -320,7 +320,7 @@ var home = (function($, champSelect) {
         var colorScale = d3.scaleLinear()
             .domain([40, 60])
             .range(["red", "green"]);
-        element.style.backgroundColor = colorScale(data.slice(0, -1));
+        element.style.backgroundColor = "#004085";
     }
 
     function getScore(role)
