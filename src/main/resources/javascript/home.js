@@ -654,3 +654,7 @@ function displayButton(id)
 {
     document.getElementById("button"+id).style.display = "block";
 }
+
+function startTutorial() {
+    
+}

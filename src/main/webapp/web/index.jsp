@@ -110,7 +110,7 @@ summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea>
 
-<div class="help-tip">
+<div class="help-tip" onclick="startTutorial()">
     <p>Click here to start a tutorial for the web site</p>
 </div><br>
 
