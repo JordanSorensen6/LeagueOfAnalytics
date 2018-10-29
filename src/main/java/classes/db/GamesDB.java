@@ -1,6 +1,6 @@
-package classes;
+package classes.db;
 
-import org.hibernate.Hibernate;
+import classes.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
