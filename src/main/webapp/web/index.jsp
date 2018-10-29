@@ -23,12 +23,28 @@
 <div class="gridLayout">
     <div class="teamSummoners"><u>Team Summoners</u></div>
     <div class="teamChampions"><u>Team Champions</u></div>
-    <div class="rank"><u>Rank</u></div>
-    <div class="championMastery"><u>Mastery Level</u></div>
-    <div class="hotStreak"><u>Hot Streak</u></div>
+    <div class="playerInfo"><u>Player Info</u></div>
+    <%--<div class="championMastery"><u>Mastery Level</u></div>--%>
+    <%--<div class="hotStreak"><u>Hot Streak</u></div>--%>
     <div class="playerWinPer"><u>Player Win Percentage</u></div>
     <div class="opponentChampions"><u>Opponent Champions</u></div>
     <div class="matchRating"><u>Champion Win Percentage</u></div>
+
+    <%--<div class="box">--%>
+        <%--<div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>--%>
+        <%--<div class="teamChamp teamChampTop"><input type="text" ondrop="return false;" id="champion1" placeholder="Top Champion"></div>--%>
+        <%--<div class="champPic teamChampTopPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>--%>
+        <%--<div class="tierTop"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>--%>
+        <%--<div class="masteryTop"><img id="mastery1" src="/resources/images/L0.png"></div>--%>
+        <%--<div class="hotStreakTop"><img id="hot1" src="/resources/images/hotStreakFalse.png"></div>--%>
+        <%--<div class="playerWinPerTop" id="playerPercentage1"><b>00.00%</b></div>--%>
+        <%--<div class="champPic oppChampTopPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>--%>
+        <%--<div class="oppChamp oppChampTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" ondrop="return false;" id="opponent1" placeholder="Opponent Top"></div></div></div>--%>
+        <%--<div class="winPerTop" id="percentage1"><b>00.00%</b></div>--%>
+        <%--<div class="scoreTop" id="score1">0</div>--%>
+        <%--<hr>--%>
+    <%--</div>--%>
+
 
     <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>
     <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner2" placeholder="summoner2" oninput="displayButton('2')"><button id="button2" onclick="home.summonerIdLookup('2')">Search</button></div></div></div>
@@ -42,30 +58,71 @@
     <div class="teamChamp teamChampBot"><input type="text" ondrop="return false;" id="champion4" placeholder="Bot Champion"></div>
     <div class="teamChamp teamChampSupport"><input type="text" ondrop="return false;" id="champion5" placeholder="Support Champion"></div>
 
-    <div class="champPic teamChampTopPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="champPic teamChampJunglePic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="champPic teamChampMidPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg3" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="champPic teamChampBotPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
-    <div class="champPic teamChampSupportPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
-
-    <div class="tierTop"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>
-    <div class="tierJungle"><img id="tier2" src="/resources/images/tier-icons/provisional.png"></div>
-    <div class="tierMid"><img id="tier3" src="/resources/images/tier-icons/provisional.png"></div>
-    <div class="tierBot"><img id="tier4" src="/resources/images/tier-icons/provisional.png"></div>
-    <div class="tierSupport"><img id="tier5" src="/resources/images/tier-icons/provisional.png"></div>
-
-    <div class="masteryTop"><img id="mastery1" src="/resources/images/L0.png"></div>
-    <div class="masteryJungle"><img id="mastery2" src="/resources/images/L0.png"></div>
-    <div class="masteryMid"><img id="mastery3" src="/resources/images/L0.png"></div>
-    <div class="masteryBot"><img id="mastery4" src="/resources/images/L0.png"></div>
-    <div class="masterySupport"><img id="mastery5" src="/resources/images/L0.png"></div>
+    <div class="champPic teamChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampJunglePic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampMidPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg3" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampBotPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
+    <div class="champPic teamChampSupportPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
 
 
-    <div class="hotStreakTop"><img id="hot1" src="/resources/images/hotStreakFalse.png"></div>
-    <div class="hotStreakJungle"><img id="hot2" src="/resources/images/hotStreakFalse.png"></div>
-    <div class="hotStreakMid"><img id="hot3" src="/resources/images/hotStreakFalse.png"></div>
-    <div class="hotStreakBot"><img id="hot4" src="/resources/images/hotStreakFalse.png"></div>
-    <div class="hotStreakSupport"><img id="hot5" src="/resources/images/hotStreakFalse.png"></div>
+    <div class="dataTop">
+        <div class="playerData">
+            <div class="tier"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>
+            <div class="mastery"><img id="mastery1" src="/resources/images/L0.png"></div>
+            <div class="hotStreak"><img id="hot1" src="/resources/images/hotStreakFalse.png"></div>
+        </div>
+    </div>
+
+    <div class="dataJungle">
+        <div class="playerData">
+            <div class="tier"><img id="tier2" src="/resources/images/tier-icons/provisional.png"></div>
+            <div class="mastery"><img id="mastery2" src="/resources/images/L0.png"></div>
+            <div class="hotStreak"><img id="hot2" src="/resources/images/hotStreakFalse.png"></div>
+        </div>
+    </div>
+
+    <div class="dataMid">
+        <div class="playerData">
+            <div class="tier"><img id="tier3" src="/resources/images/tier-icons/provisional.png"></div>
+            <div class="mastery"><img id="mastery3" src="/resources/images/L0.png"></div>
+            <div class="hotStreak"><img id="hot3" src="/resources/images/hotStreakFalse.png"></div>
+        </div>
+    </div>
+
+    <div class="dataBot">
+        <div class="playerData">
+            <div class="tier"><img id="tier4" src="/resources/images/tier-icons/provisional.png"></div>
+            <div class="mastery"><img id="mastery4" src="/resources/images/L0.png"></div>
+            <div class="hotStreak"><img id="hot4" src="/resources/images/hotStreakFalse.png"></div>
+        </div>
+    </div>
+
+    <div class="dataSupport">
+        <div class="playerData">
+            <div class="tier"><img id="tier5" src="/resources/images/tier-icons/provisional.png"></div>
+            <div class="mastery"><img id="mastery5" src="/resources/images/L0.png"></div>
+            <div class="hotStreak"><img id="hot5" src="/resources/images/hotStreakFalse.png"></div>
+        </div>
+    </div>
+
+    <%--<div class="tierTop"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>--%>
+    <%--<div class="tierJungle"><img id="tier2" src="/resources/images/tier-icons/provisional.png"></div>--%>
+    <%--<div class="tierMid"><img id="tier3" src="/resources/images/tier-icons/provisional.png"></div>--%>
+    <%--<div class="tierBot"><img id="tier4" src="/resources/images/tier-icons/provisional.png"></div>--%>
+    <%--<div class="tierSupport"><img id="tier5" src="/resources/images/tier-icons/provisional.png"></div>--%>
+
+    <%--<div class="masteryTop"><img id="mastery1" src="/resources/images/L0.png"></div>--%>
+    <%--<div class="masteryJungle"><img id="mastery2" src="/resources/images/L0.png"></div>--%>
+    <%--<div class="masteryMid"><img id="mastery3" src="/resources/images/L0.png"></div>--%>
+    <%--<div class="masteryBot"><img id="mastery4" src="/resources/images/L0.png"></div>--%>
+    <%--<div class="masterySupport"><img id="mastery5" src="/resources/images/L0.png"></div>--%>
+
+
+    <%--<div class="hotStreakTop"><img id="hot1" src="/resources/images/hotStreakFalse.png"></div>--%>
+    <%--<div class="hotStreakJungle"><img id="hot2" src="/resources/images/hotStreakFalse.png"></div>--%>
+    <%--<div class="hotStreakMid"><img id="hot3" src="/resources/images/hotStreakFalse.png"></div>--%>
+    <%--<div class="hotStreakBot"><img id="hot4" src="/resources/images/hotStreakFalse.png"></div>--%>
+    <%--<div class="hotStreakSupport"><img id="hot5" src="/resources/images/hotStreakFalse.png"></div>--%>
 
     <div class="playerWinPerTop" id="playerPercentage1"><b>00.00%</b></div>
     <div class="playerWinPerJungle" id="playerPercentage2"><b>00.00%</b></div>
@@ -73,11 +130,11 @@
     <div class="playerWinPerBot" id="playerPercentage4"><b>00.00%</b></div>
     <div class="playerWinPerSupport" id="playerPercentage5"><b>00.00%</b></div>
 
-    <div class="champPic oppChampTopPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="champPic oppChampJunglePic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="champPic oppChampMidPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="champPic oppChampBotPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
-    <div class="champPic oppChampSupportPic"><img ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampJunglePic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampMidPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampBotPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
+    <div class="champPic oppChampSupportPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
 
     <div class="oppChamp oppChampTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" ondrop="return false;" id="opponent1" placeholder="Opponent Top"></div></div></div>
     <div class="oppChamp oppChampJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondrop="return false;" id="opponent2" placeholder="Opponent Jungle"></div></div></div>
@@ -96,7 +153,8 @@
     <div class="scoreMid" id="score3">0</div>
     <div class="scoreBot" id="score4">0</div>
     <div class="scoreSupport" id="score5">0</div>
-</div><br><br>
+</div>
+<br><br>
 
     <h1 class="totalScore" id="totalScore">Your Score: 0</h1>
 <p class="userMessage" id="userMessage"><b>Based on (number) games, players with this score win (some percentage) of their games.</b></p>

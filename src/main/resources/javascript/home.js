@@ -232,25 +232,6 @@ var home = (function($, champSelect) {
     {
         if(champions.hasOwnProperty(document.getElementById(name).value))
             document.getElementById(name.toString().replace("champion", "teamImg").replace("opponent", "oppImg")).src = "/resources/images/champion/" + document.getElementById(name).value + ".png";
-        // if(typeof src != 'undefined')
-        //     document.getElementById("champion"+src.toString().replace("teamImg", "")).value = name;
-        // else
-        // {
-        //     if(champions.hasOwnProperty(document.getElementById(name).value))
-        //     {
-        //         document.getElementById(name.toString().replace("champion", "teamImg").replace("opponent", "oppImg")).src = "/resources/images/champion/" + document.getElementById(name).value + ".png";
-        //         //$('#' + src).attr('src', "/resources/images/champion/" + document.getElementById(name).value + ".png");
-        //         //updateChampion(src.toString().replace("teamImg", ""));
-        //     }
-        // }
-        //
-        // name = formatChampionName(name);
-        //
-        // if(champions.hasOwnProperty(name)) {
-        //     $('#' + src).attr('src', "/resources/images/champion/" + name + ".png");
-        //     //updateChampion(src.toString().replace("teamImg", ""));
-        //     checkForMatchup("team", "champion"+src.toString().replace("teamImg", ""));
-        // }
 
     }
 
