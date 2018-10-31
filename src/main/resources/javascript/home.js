@@ -70,7 +70,7 @@ var home = (function($, champSelect) {
     }
 
     function formatChampionName(name) {
-        return name.toLowerCase().replace(/[^a-z]/g, "");
+        return name.toString().toLowerCase().replace(/[^a-z]/g, "");
     }
 
     function championsLookup() {
@@ -91,7 +91,7 @@ var home = (function($, champSelect) {
             getSummonerInfo(summonerIds[s1], id);
             updateChampion(id);
             findAvgRank();
-            checkForMatchup('team', id);
+            checkForMatchup('team', "champion"+id);
         });
     }
 
@@ -179,10 +179,29 @@ var home = (function($, champSelect) {
         return summonerIds;
     }
 
+    function getChampNameFromImage(src)
+    {
+        var patt = new RegExp("\\/champion\\/.*\\.png");
+        var result = patt.exec(src);
+        result = result.toString().replace("/champion/", "").replace(".png", "");
+        return result;
+    }
+
+    function getSelected() {
+        return $('.selected-champion').first().attr('id');
+    }
+
     function updateChampion(id){
-        var inputId = "champion"+id;
+        //var inputId = "teamImg"+id;
+        //var src = document.getElementById(inputId).src.toString();
+        var selected = getSelected();
+        if(selected == undefined)
+        {
+            selected = getChampNameFromImage(document.getElementById("teamImg"+id).src);
+        }
         var summonerId = summonerIds[document.getElementById('summoner'+id).value];
-        var key = formatChampionName($('#' + inputId).val());
+        //var key = formatChampionName($('#' + inputId).val());
+        var key = formatChampionName(selected);
         if(champions.hasOwnProperty(key)) {
             var championId = champions[key];
             console.log("sid: " + summonerId + " cid: " + championId);
@@ -228,10 +247,10 @@ var home = (function($, champSelect) {
         });
     }
 
-    function setChampionImage(name, src)
+    function setChampionImage(id, champ)
     {
-        if(champions.hasOwnProperty(document.getElementById(name).value))
-            document.getElementById(name.toString().replace("champion", "teamImg").replace("opponent", "oppImg")).src = "/resources/images/champion/" + document.getElementById(name).value + ".png";
+        if(champions.hasOwnProperty(champ))
+            document.getElementById(id.toString().replace("champion", "teamImg").replace("opponent", "oppImg")).src = "/resources/images/champion/" + champ + ".png";
 
     }
 
@@ -239,26 +258,30 @@ var home = (function($, champSelect) {
         console.log("id is: " + id);
         var opponent = getOpponent(id);
         var role = getRole(id);
-        if(champion != "")//Update champion text and mastery.
+        if(id.toString().includes("champion"))//Update champion text and mastery.
         {
-            document.getElementById(id).value = champion;
+            //document.getElementById(id).value = champion;
             updateChampion(id.toString().replace("champion", "").replace("opponent", ""))
         }
-        setChampionImage(id);
+        setChampionImage(id, champion);
 
-        if(document.getElementById(opponent).value != '')//Nonempty opponent. We can look for matchup.
+        if(getChampNameFromImage(document.getElementById(opponent).src) != 'placeholderOpponent' || getChampNameFromImage(document.getElementById(opponent).src) != 'placeholderTeam')//Nonempty opponent. We can look for matchup.
         {
             var c1;
             var c2;
             if(id.includes('champion'))
             {
-                c1 = document.getElementById(id).value;
-                c2 = document.getElementById(opponent).value;
+                //c1 = document.getElementById(id).value;
+                c1 = champion;
+                //c2 = document.getElementById(opponent).value;
+                c2 = getChampNameFromImage(document.getElementById(opponent).src);
             }
             else
             {
-                c1 = document.getElementById(opponent).value;
-                c2 = document.getElementById(id).value;
+                //c1 = document.getElementById(opponent).value;
+                c1 = getChampNameFromImage(document.getElementById(opponent).src);
+                //c2 = document.getElementById(id).value;
+                c2 = champion;
             }
 
             c1 = formatChampionName(c1);
@@ -414,11 +437,11 @@ var home = (function($, champSelect) {
     function getOpponent(teamAndRole)
     {
         if(teamAndRole.includes('champion')) {
-            teamAndRole = teamAndRole.replace('champion', 'opponent');
+            teamAndRole = teamAndRole.replace('champion', 'oppImg');
             return teamAndRole;
         }
         else{
-            teamAndRole = teamAndRole.replace('opponent', 'champion');
+            teamAndRole = teamAndRole.replace('opponent', 'teamImg');
             return teamAndRole;
         }
     }
@@ -480,10 +503,10 @@ var home = (function($, champSelect) {
         var summoner2 = null;
         var mastery1 = null;
         var mastery2 = null;
-        var teamChamp1 = null;
-        var teamChamp2 = null;
-        var oppChamp1 = null;
-        var oppChamp2 = null;
+        // var teamChamp1 = null;
+        // var teamChamp2 = null;
+        // var oppChamp1 = null;
+        // var oppChamp2 = null;
         var rank1 = null;
         var rank2 = null;
         var teamImg1 = null;
@@ -506,12 +529,12 @@ var home = (function($, champSelect) {
                 if (summoner1 == null) {
                     summoner1 = mainSwapElement[i];
                     mastery1 = document.getElementById("mastery"+(i+1));
-                    teamChamp1 = document.getElementById("champion" + (i+1));
+                    //teamChamp1 = document.getElementById("champion" + (i+1));
                     rank1 = document.getElementById("tier"+(i+1));
                     teamImg1 = document.getElementById("teamImg"+(i+1));
                     hot1 = document.getElementById("hot"+(i+1));
                     playerWinPer1 = document.getElementById("playerPercentage" + (i+1));
-                    oppChamp1 = document.getElementById("opponent" + (i+1));
+                    //oppChamp1 = document.getElementById("opponent" + (i+1));
                     oppImg1 = document.getElementById("oppImg"+(i+1));
                     championID1 = "champion"+(i+1);
                     lane1 = (i+1);
@@ -519,12 +542,12 @@ var home = (function($, champSelect) {
                 else {
                     summoner2 = mainSwapElement[i];
                     mastery2 = document.getElementById("mastery"+(i+1));
-                    teamChamp2 = document.getElementById("champion" + (i+1));
+                    //teamChamp2 = document.getElementById("champion" + (i+1));
                     rank2 = document.getElementById("tier"+(i+1));
                     teamImg2 = document.getElementById("teamImg"+(i+1));
                     hot2 = document.getElementById("hot"+(i+1));
                     playerWinPer2 = document.getElementById("playerPercentage" + (i+1));
-                    oppChamp2 = document.getElementById("opponent" + (i+1));
+                    //oppChamp2 = document.getElementById("opponent" + (i+1));
                     oppImg2 = document.getElementById("oppImg"+(i+1));
                     championID2 = "champion"+(i+1);
                     lane2 = (i+1);
@@ -537,9 +560,9 @@ var home = (function($, champSelect) {
                 mastery1.src = mastery2.src;
                 mastery2.src = masteryTemp;
 
-                var championTemp = teamChamp1.value;
-                teamChamp1.value = teamChamp2.value;
-                teamChamp2.value = championTemp;
+                // var championTemp = teamChamp1.value;
+                // teamChamp1.value = teamChamp2.value;
+                // teamChamp2.value = championTemp;
 
                 var rankTemp = rank1.src;
                 rank1.src = rank2.src;
@@ -561,15 +584,15 @@ var home = (function($, champSelect) {
                 summoner1.value = summoner2.value;
                 summoner2.value = summonerTemp;
 
-                checkForMatchup("", championID1);//Recheck the matchup.
-                checkForMatchup("", championID2);
+                checkForMatchup(getChampNameFromImage(teamImg1.src), championID1);//Recheck the matchup.
+                checkForMatchup(getChampNameFromImage(teamImg2.src), championID2);
 
             }
         }
         else if(type == "teamChamps") {//Swap team champions.
-            var championTemp = teamChamp1.value;
-            teamChamp1.value = teamChamp2.value;
-            teamChamp2.value = championTemp;
+            // var championTemp = teamChamp1.value;
+            // teamChamp1.value = teamChamp2.value;
+            // teamChamp2.value = championTemp;
 
             var teamImgTemp = teamImg1.src;
             teamImg1.src = teamImg2.src;
@@ -578,20 +601,20 @@ var home = (function($, champSelect) {
             updateChampion(lane1);
             updateChampion(lane2);
 
-            checkForMatchup("", championID1);//Recheck the matchup.
-            checkForMatchup("", championID2);
+            checkForMatchup(getChampNameFromImage(teamImg1.src), championID1);//Recheck the matchup.
+            checkForMatchup(getChampNameFromImage(teamImg2.src), championID2);
         }
         else if(type == "oppChamps") {//Swap opponent champions.
-            var oppChampTemp = oppChamp1.value;
-            oppChamp1.value = oppChamp2.value;
-            oppChamp2.value = oppChampTemp;
+            // var oppChampTemp = oppChamp1.value;
+            // oppChamp1.value = oppChamp2.value;
+            // oppChamp2.value = oppChampTemp;
 
             var oppImgTemp = oppImg1.src;
             oppImg1.src = oppImg2.src;
             oppImg2.src = oppImgTemp;
 
-            checkForMatchup("", championID1);//Recheck the matchup.
-            checkForMatchup("", championID2);
+            checkForMatchup(getChampNameFromImage(oppImg1.src), championID1.toString().replace("champion", "opponent"));//Recheck the matchup.
+            checkForMatchup(getChampNameFromImage(oppImg2.src), championID2.toString().replace("champion", "opponent"));
         }
 
     }

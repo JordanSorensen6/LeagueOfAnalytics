@@ -27,6 +27,30 @@ hr {
     margin: 0;
 }
 
+.bk1{
+    padding: 8px;
+    background-color: #303030;
+    border: 3px yellow;
+}
+.bk2{
+    padding: 8px;
+    background-color: #505050;
+    border: 3px yellow;
+}
+
+.vertical-align {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Optional, to align inner items
+                              horizontally inside the column */
+}
+
 /*input {*/
     /*!* Tell the input to use all the available space *!*/
     /*flex-grow:2;*/
