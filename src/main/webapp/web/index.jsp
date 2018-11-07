@@ -410,6 +410,7 @@ summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummo
                                 <a href="#" data-filter="assassin">Assassin</a>
                                 <a href="#" data-filter="marksman">Marksman</a>
                                 <a href="#" data-filter="support">Support</a>
+                                <a href="#" data-filter="support">Counters</a>
                                 <input id="championSearch" type="text" placeholder="Search Champions...">
                             </div>
                         </div>
