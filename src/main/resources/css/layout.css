@@ -107,6 +107,8 @@ button {
 .name{
     grid-column: 1;
     grid-row: 2;
+    position: relative;
+    display: inline-block;
 }
 .role {
     grid-column: 1;
@@ -232,6 +234,8 @@ button {
 .teamChampTopPic {
     grid-column: 4;
     grid-row: 2;
+    position: relative;
+    display: inline-block;
 }
 
 .teamChampJunglePic {
@@ -574,4 +578,36 @@ input{
 @keyframes fadeIn {
     0% { opacity:0; }
     100% { opacity:100%; }
+}
+
+/*.tooltip {*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*!*border-bottom: 1px dotted black; !* If you want dots under the hoverable text *!*!*/
+/*}*/
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: small;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.name:hover .tooltiptext {
+    visibility: visible;
+}
+
+.teamChampTopPic:hover .tooltiptext {
+    visibility: visible;
 }
