@@ -1,4 +1,4 @@
-package classes;
+package classes.db;
 
 import javax.persistence.*;
 

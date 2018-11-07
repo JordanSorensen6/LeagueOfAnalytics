@@ -144,9 +144,9 @@
     function checkCookies() {
         for(var i = 1; i < 6; i++)//restore champions
         {
-            restoreValue("champion" + i, getCookie("champion" + i));
+            //restoreValue("champion" + i, getCookie("champion" + i));
             restoreValue("summoner"+i, getCookie("summoner"+i));
-            restoreValue("opponent"+i, getCookie("opponent"+i));
+            //restoreValue("opponent"+i, getCookie("opponent"+i));
             if(getCookie("teamImg"+i) != getCookie("mastery"+i))
             {
                 restoreSrc("teamImg" + i, getCookie("teamImg" + i));
