@@ -54,7 +54,7 @@ public class RiotCalls {
         return riotCalls;
     }
 
-    public String getSummonerId(String summoner) throws IOException, InterruptedException {
+    public String getSummonerId(String summoner) throws IOException {
         summoner = formatSummonerName(summoner);
         Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
         // if name is invalid
