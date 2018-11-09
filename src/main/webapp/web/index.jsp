@@ -71,7 +71,7 @@
         </div>
 
         <div class="col-sm">
-            <div class="tier"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>
+            <div class="tier"><span class="tooltiptext">This represents the summoner's tier</span><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>
         </div>
 
         <div class="col-sm">
@@ -91,11 +91,11 @@
         </div>
 
         <div class="col-sm">
-            <div class="champPic oppChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
+            <div class="champPic oppChampTopPic"><span class="tooltiptext">Click the icons to select each opponent's champion</span><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
         <div class="col-sm">
-            <div class="scoreTop" id="score1">0</div>
+            <div class="scoreTop" id="score1"><span class="tooltiptext">This score represents your chances of winning</span>0</div>
         </div>
 
     </div>

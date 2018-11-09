@@ -599,7 +599,7 @@ input{
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-    bottom: 100%;
+    bottom: 110%;
     left: 50%;
     margin-left: -60px;
 }
@@ -608,6 +608,73 @@ input{
     visibility: visible;
 }
 
+.name .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
 .teamChampTopPic:hover .tooltiptext {
     visibility: visible;
+}
+
+.teamChampTopPic .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.tier:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tier .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.scoreTop:hover .tooltiptext {
+    visibility: visible;
+}
+
+.scoreTop .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.oppChampTopPic:hover .tooltiptext {
+    visibility: visible;
+}
+
+.oppChampTopPic .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
 }
