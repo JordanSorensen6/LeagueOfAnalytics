@@ -1,6 +1,6 @@
 package classes;
 
-import com.google.common.util.concurrent.RateLimiter;
+import classes.ratelimiter.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -14,6 +14,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class RiotCalls {
@@ -22,13 +24,27 @@ public class RiotCalls {
 
     private LoadConfig config;
 
-    //TODO implement advanced rate limiter using example given by Riot
-    private static final double rate = 100.0 / 140.0;
-    private RateLimiter rateLimiter;
+    private HttpClient client;
+
+    private RateLimitSet appRateLimitSet;
+    private SimpleMethod summoners;
+    private SimpleMethod league;
+    private SimpleMethod championMastery;
+    private SimpleMethod match;
+    private SimpleMethod matchlist;
 
     private RiotCalls() {
         config = LoadConfig.getInstance();
-        rateLimiter = RateLimiter.create(rate);
+
+        client = HttpClientBuilder.create().build();
+
+        appRateLimitSet = new RateLimitSet(RateLimitType.APPLICATION);
+        appRateLimitSet.putRateLimit(new AtomicLongRateLimit(0, 1, System.currentTimeMillis(), 10));
+        summoners = new SimpleMethod("https://na1.api.riotgames.com/lol/summoner/v3/", appRateLimitSet);
+        league = new SimpleMethod("https://na1.api.riotgames.com/lol/league/v3/", appRateLimitSet);
+        championMastery = new SimpleMethod("https://na1.api.riotgames.com/lol/champion-mastery/v3/", appRateLimitSet);
+        match = new SimpleMethod("https://na1.api.riotgames.com/lol/match/v3/", appRateLimitSet);
+        matchlist = new SimpleMethod("https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/", appRateLimitSet);
     }
 
     public static RiotCalls getInstance() {
@@ -38,21 +54,22 @@ public class RiotCalls {
         return riotCalls;
     }
 
-    public String getSummonerId(String summoner) throws IOException {
+    public String getSummonerId(String summoner) throws IOException, InterruptedException {
         summoner = formatSummonerName(summoner);
-        String apiKey = config.getRiotApiKey();
         Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
         // if name is invalid
         if(!validName.matcher(summoner).matches()){
             return null;
         }
-        String url = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summoner;
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet req = new HttpGet(url);
-        req.addHeader("X-Riot-Token", apiKey);
 
-        this.rateLimiter.acquire(1);
-        HttpResponse resp = client.execute(req);
+        HttpResponse resp = handleAPICall(summoners, "summoners/by-name" + summoner);
+        if(resp == null) { //error occurred so try again
+            resp = handleAPICall(summoners, "summoners/by-name" + summoner);
+            if(resp == null) {
+                System.out.println("Error occurred when handling api request for endpoint: " + summoners.getEndpoint());
+                return null;
+            }
+        }
 
         int status = resp.getStatusLine().getStatusCode();
         if (status == 200) {
@@ -76,12 +93,15 @@ public class RiotCalls {
 
     public String getSummonerInfo(String summonerID) throws IOException
     {
-        String apiKey = config.getRiotApiKey();
-        String url = "https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/"+summonerID;
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet req = new HttpGet(url);
-        req.addHeader("X-Riot-Token", apiKey);
-        HttpResponse resp = client.execute(req);
+        HttpResponse resp = handleAPICall(league, "positions/by-summoner/" + summonerID);
+        if(resp == null) { //error occurred so try again
+            resp = handleAPICall(league, "positions/by-summoner/" + summonerID);
+            if(resp == null) {
+                System.out.println("Error occurred when handling api request for endpoint: " + league.getEndpoint());
+                return null;
+            }
+        }
+
         int status = resp.getStatusLine().getStatusCode();
         if (status == 200) {
             BufferedReader rd = new BufferedReader(new InputStreamReader(resp.getEntity().getContent()));
@@ -90,7 +110,6 @@ public class RiotCalls {
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
-
 
             return result.toString();
         }
@@ -100,7 +119,7 @@ public class RiotCalls {
         return null;
     }
 
-    public String getAccountId(String summoner) throws IOException {
+    private JsonObject getAccountInfo(String summoner) throws IOException {
         summoner = formatSummonerName(summoner);
         String apiKey = config.getRiotApiKey();
         Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
@@ -108,13 +127,15 @@ public class RiotCalls {
         if(!validName.matcher(summoner).matches()){
             return null;
         }
-        String url = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summoner;
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet req = new HttpGet(url);
-        req.addHeader("X-Riot-Token", apiKey);
 
-        this.rateLimiter.acquire(1);
-        HttpResponse resp = client.execute(req);
+        HttpResponse resp = handleAPICall(summoners, "summoners/by-name/" + summoner);
+        if(resp == null) { //error occurred so try again
+            resp = handleAPICall(summoners, "summoners/by-name/" + summoner);
+            if(resp == null) {
+                System.out.println("Error occurred when handling api request for endpoint: " + summoners.getEndpoint());
+                return null;
+            }
+        }
 
         int status = resp.getStatusLine().getStatusCode();
         if (status == 200) {
@@ -126,62 +147,46 @@ public class RiotCalls {
             }
             JsonParser parser = new JsonParser();
             JsonObject summonerDTO = parser.parse(result.toString()).getAsJsonObject();
-            return summonerDTO.get("accountId").toString();
+            return summonerDTO;
         } else if (status == 429) {
             System.out.println("WARNING: API Limit Exceeded, try again in " + rateLimitExceeded(resp) + " seconds");
             return null;
         } else {
             System.out.println("Riot Status " + status + ", Summoner by name error");
         }
+        return null;
+    }
+
+    public String getAccountId(String summoner) throws IOException {
+        JsonObject accountInfo = getAccountInfo(summoner);
+        if(accountInfo != null)
+            return accountInfo.get("accountId").toString();
         return null;
     }
 
     public String getSummonerName(String summoner) throws IOException {
-        summoner = formatSummonerName(summoner);
-        String apiKey = config.getRiotApiKey();
-        Pattern validName = Pattern.compile("^[0-9\\p{L} _\\.]+$");
-        // if name is invalid
-        if(!validName.matcher(summoner).matches()){
-            return null;
-        }
-        String url = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summoner;
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet req = new HttpGet(url);
-        req.addHeader("X-Riot-Token", apiKey);
-
-        this.rateLimiter.acquire(1);
-        HttpResponse resp = client.execute(req);
-
-        int status = resp.getStatusLine().getStatusCode();
-        if (status == 200) {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(resp.getEntity().getContent()));
-            StringBuffer result = new StringBuffer();
-            String line = "";
-            while ((line = rd.readLine()) != null) {
-                result.append(line);
-            }
-            JsonParser parser = new JsonParser();
-            JsonObject summonerDTO = parser.parse(result.toString()).getAsJsonObject();
-            return summonerDTO.get("name").getAsString();
-        } else if (status == 429) {
-            System.out.println("WARNING: API Limit Exceeded, try again in " + rateLimitExceeded(resp) + " seconds");
-            return null;
-        } else {
-            System.out.println("Riot Status " + status + ", Summoner by name error");
-        }
+        JsonObject accountInfo = getAccountInfo(summoner);
+        if(accountInfo != null)
+            return accountInfo.get("name").getAsString();
         return null;
     }
 
     public String getChampionMastery(String summonerId, String championId) throws IOException {
-        String apiKey = config.getRiotApiKey();
-        String url = "https://na1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/"
-                + summonerId + "/by-champion/" + championId;
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet req = new HttpGet(url);
-        req.addHeader("X-Riot-Token", apiKey);
 
-        this.rateLimiter.acquire(1);
-        HttpResponse resp = client.execute(req);
+        HttpResponse resp = handleAPICall(
+                championMastery,
+                "champion-masteries/by-summoner/" + summonerId + "/by-champion" + championId
+        );
+        if(resp == null) { //error occurred so try again
+            resp = handleAPICall(
+                    championMastery,
+                    "champion-masteries/by-summoner/" + summonerId + "/by-champion" + championId
+            );
+            if(resp == null) {
+                System.out.println("Error occurred when handling api request for endpoint: " + championMastery.getEndpoint());
+                return null;
+            }
+        }
 
         int status = resp.getStatusLine().getStatusCode();
         if (status == 200) {
@@ -207,15 +212,21 @@ public class RiotCalls {
     }
 
     public ArrayList<String> getRecentMatchIds(String accountId, Integer beginIndex, Integer endIndex) throws IOException {
-        String apiKey = config.getRiotApiKey();
-        String url = "https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/"
-                + accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"; //420 and 440 filters the matchlist to only ranked matches
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet req = new HttpGet(url);
-        req.addHeader("X-Riot-Token", apiKey);
 
-        this.rateLimiter.acquire(1);
-        HttpResponse resp = client.execute(req);
+        HttpResponse resp = handleAPICall(
+                matchlist,
+                accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"
+        );//420 and 440 filters the matchlist to only ranked matches
+        if(resp == null) { //error occurred so try again
+            resp = handleAPICall(
+                    matchlist,
+                    accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"
+            );
+            if(resp == null) {
+                System.out.println("Error occurred when handling api request for endpoint: " + matchlist.getEndpoint());
+                return null;
+            }
+        }
 
         int status = resp.getStatusLine().getStatusCode();
         if (status == 200) {
@@ -245,14 +256,15 @@ public class RiotCalls {
     }
 
     public JsonObject getMatch(String matchId) throws IOException {
-        String apiKey = config.getRiotApiKey();
-        String url = "https://na1.api.riotgames.com/lol/match/v3/matches/" + matchId;
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet req = new HttpGet(url);
-        req.addHeader("X-Riot-Token", apiKey);
 
-        this.rateLimiter.acquire(1);
-        HttpResponse resp = client.execute(req);
+        HttpResponse resp = handleAPICall(match, "matches/" + matchId);
+        if(resp == null) { //error occurred so try again
+            resp = handleAPICall(match, "matches/" + matchId);
+            if(resp == null) {
+                System.out.println("Error occurred when handling api request for endpoint: " + match.getEndpoint());
+                return null;
+            }
+        }
 
         int status = resp.getStatusLine().getStatusCode();
         if (status == 200) {
@@ -288,5 +300,136 @@ public class RiotCalls {
             }
         }
         return 0;
+    }
+
+    private HttpResponse handleAPICall(SimpleMethod method, String args) {
+        try {
+            while (true) {
+                if (isMethodCallExecutableNow(method)) {
+                    if (method.getAppRateLimitSet() != null) {
+                        if (method.getAppRateLimitSet().incrementRateLimitCounts().isEmpty()) {
+                            // if empty, we are rate limited so wait
+                            method.getAppRateLimitSet().decrementRateLimitCounts();
+                            Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
+                            continue;
+                        }
+                    }
+                    if (method.getMethodRateLimitSet() != null) {
+                        if (method.getMethodRateLimitSet().incrementRateLimitCounts().isEmpty()) {
+                            // if empty, we are rate limited so wait
+                            method.getMethodRateLimitSet().decrementRateLimitCounts();
+                            Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
+                            continue;
+                        }
+                    }
+                    // Make the api call
+                    String url = method.getEndpoint() + args;
+                    String apiKey = config.getRiotApiKey();
+
+                    HttpGet req = new HttpGet(url);
+                    req.addHeader("X-Riot-Token", apiKey);
+
+                    HttpResponse resp = client.execute(req);
+
+                    //sync headers
+                    if (summoners.getAppRateLimitSet() != null) {
+                        syncRateLimitsFromHeaders(
+                                resp.getHeaders(ApiConstants.APP_RATE_LIMIT_HEADER),
+                                resp.getHeaders(ApiConstants.APP_RATE_LIMIT_COUNT_HEADER),
+                                summoners.getAppRateLimitSet()
+                        );
+                    }
+                    if (summoners.getMethodRateLimitSet() != null) {
+                        syncRateLimitsFromHeaders(
+                                resp.getHeaders(ApiConstants.METHOD_RATE_LIMIT_HEADER),
+                                resp.getHeaders(ApiConstants.METHOD_RATE_LIMIT_COUNT_HEADER),
+                                summoners.getMethodRateLimitSet()
+                        );
+                    }
+                    syncRetryAfterFromHeaders(
+                            resp.getHeaders(ApiConstants.RETRY_AFTER_HEADER),
+                            resp.getHeaders(ApiConstants.RATE_LIMIT_TYPE_HEADER),
+                            summoners
+                    );
+                    return resp;
+
+                } else {
+                    Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
+                }
+            }
+        } catch(Exception e) { //InterruptedException and IOException
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Checks if a SimpleMethod is able to be executed right now.
+    private static boolean isMethodCallExecutableNow(SimpleMethod method) {
+        boolean isNotMethodRateLimited = method.getAppRateLimitSet() == null;
+        boolean isUnderMethodRateLimits = isNotMethodRateLimited || method.getMethodRateLimitSet().isUnderRateLimits();
+        boolean isNowAfterMethodsRetryAfterTimestamp = isNotMethodRateLimited || (System.currentTimeMillis() > method.getMethodRateLimitSet().getRetryAfterTimestamp());
+
+        boolean isNotApplicationRateLimited = method.getAppRateLimitSet() == null;
+        boolean isUnderApplicationRateLimits = isNotApplicationRateLimited || method.getAppRateLimitSet().isUnderRateLimits();
+        boolean isNowAfterApplicationsRetryAfterTimestamp = isNotApplicationRateLimited || (System.currentTimeMillis() > method.getAppRateLimitSet().getRetryAfterTimestamp());
+
+        // If we're not method rate limited, or if we're still below rate limits and after any Retry-After timestamps.
+        return (isNotMethodRateLimited || (isUnderMethodRateLimits && isNowAfterMethodsRetryAfterTimestamp)) &&
+                // If we're not application rate limited, or if we're still below rate limits and after any Retry-After timestamps.
+                (isNotApplicationRateLimited || (isUnderApplicationRateLimits && isNowAfterApplicationsRetryAfterTimestamp));
+    }
+
+    private static void syncRateLimitsFromHeaders(Header[] rateLimitHeaderArr,
+                                                  Header[] rateLimitCountHeaderArr,
+                                                  RateLimitSet rateLimitSet) {
+
+        if(rateLimitHeaderArr.length < 1 || rateLimitCountHeaderArr.length < 1) {
+            if(rateLimitSet != null) {
+                // If we don't get the rate limit headers back for a request with a valid response, it means we are not
+                // rate limited on this endpoint and can put back the rate limit we consumed.
+                rateLimitSet.decrementRateLimitCounts();
+            }
+            return;
+        }
+        Map<Long, Long> rateLimitDurationToCountMap = RateLimitHeaderUtils.parseRateLimitPairsFromHeaders(rateLimitCountHeaderArr);
+        Map<Long, Long> rateLimitDurationToMaxMap = RateLimitHeaderUtils.parseRateLimitPairsFromHeaders(rateLimitHeaderArr);
+        List<RateLimit> survivingRateLimits = new ArrayList<>();
+        for (Map.Entry<Long, Long> entry : rateLimitDurationToCountMap.entrySet()) {
+            long rateLimitDuration = entry.getKey();
+            long rateLimitCount = entry.getValue();
+            long rateLimitMax = rateLimitDurationToMaxMap.get(rateLimitDuration);
+            AtomicLongRateLimit rateLimit = (AtomicLongRateLimit) rateLimitSet.getRateLimit(Long.valueOf(rateLimitDuration));
+            if (rateLimit == null) {
+                rateLimit = new AtomicLongRateLimit(Long.valueOf(rateLimitCount), rateLimitMax, System.currentTimeMillis(), rateLimitDuration);
+            } else if (rateLimit.getRateLimitMax() != rateLimitMax) {
+                rateLimit.setRateLimitMax(rateLimitMax);
+            } else if (rateLimitCount == 1) {
+                rateLimit.setRateLimitStartTimestamp(System.currentTimeMillis());
+            }
+            survivingRateLimits.add(rateLimit);
+        }
+        rateLimitSet.rebuildRateLimitSet(survivingRateLimits);
+    }
+
+    private static void syncRetryAfterFromHeaders(Header[] retryAfterHeaderArr,
+                                                  Header[] rateLimitTypeHeaderArr,
+                                                  SimpleMethod method) {
+
+        if (retryAfterHeaderArr.length > 0 && rateLimitTypeHeaderArr.length > 0) {
+            String rateLimitType = rateLimitTypeHeaderArr[0].getValue();
+            for (Header header : retryAfterHeaderArr) {
+                int retryAfter = Integer.valueOf(header.getValue());
+                RateLimitSet rateLimitSet;
+                if ("application".equalsIgnoreCase(rateLimitType)) {
+                    rateLimitSet = method.getAppRateLimitSet();
+                } else if ("method".equalsIgnoreCase(rateLimitType)) {
+                    rateLimitSet = method.getMethodRateLimitSet();
+                } else {
+                    // If service rate limited, back off from this method.
+                    rateLimitSet = method.getMethodRateLimitSet();
+                }
+                rateLimitSet.retryAfter(retryAfter);
+            }
+        }
     }
 }
