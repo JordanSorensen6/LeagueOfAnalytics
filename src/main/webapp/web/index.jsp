@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/layout.css"/>
     <link rel="stylesheet" href="/resources/css/champSelectModal.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <script src="/resources/javascript/popper.min.js"></script>
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
@@ -389,6 +390,15 @@ summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea>
+
+<div class="arrows">
+    <span class="arrowLeft" style="font-size: 3em">
+        <i class="fas fa-arrow-alt-circle-left"></i>
+    </span>
+    <span class="arrowRight" style="font-size: 3em">
+        <i class="fas fa-arrow-alt-circle-right"></i>
+    </span>
+</div>
 
 <div class="help-tip" onclick="startTutorial()">
     <p>Click here to start a tutorial for the web site</p>
