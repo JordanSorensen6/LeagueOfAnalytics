@@ -636,9 +636,9 @@ input{
     margin-left: -60px;
 }
 
-.name:hover .tooltiptext {
-    visibility: visible;
-}
+/*.name:hover .tooltiptext {*/
+    /*visibility: visible;*/
+/*}*/
 
 .name .tooltiptext::after {
     content: "";
@@ -651,9 +651,9 @@ input{
     border-color: white transparent transparent transparent;
 }
 
-.teamChampTopPic:hover .tooltiptext {
-    visibility: visible;
-}
+/*.teamChampTopPic:hover .tooltiptext {*/
+    /*visibility: visible;*/
+/*}*/
 
 .teamChampTopPic .tooltiptext::after {
     content: "";
@@ -666,9 +666,9 @@ input{
     border-color: white transparent transparent transparent;
 }
 
-.tier:hover .tooltiptext {
-    visibility: visible;
-}
+/*.tier:hover .tooltiptext {*/
+    /*visibility: visible;*/
+/*}*/
 
 .tier .tooltiptext::after {
     content: "";
@@ -681,9 +681,9 @@ input{
     border-color: white transparent transparent transparent;
 }
 
-.scoreTop:hover .tooltiptext {
-    visibility: visible;
-}
+/*.scoreTop:hover .tooltiptext {*/
+    /*visibility: visible;*/
+/*}*/
 
 .scoreTop .tooltiptext::after {
     content: "";
@@ -696,9 +696,9 @@ input{
     border-color: white transparent transparent transparent;
 }
 
-.oppChampTopPic:hover .tooltiptext {
-    visibility: visible;
-}
+/*.oppChampTopPic:hover .tooltiptext {*/
+    /*visibility: visible;*/
+/*}*/
 
 .oppChampTopPic .tooltiptext::after {
     content: "";

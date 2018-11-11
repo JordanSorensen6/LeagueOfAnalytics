@@ -659,6 +659,47 @@ function displayButton(id)
     document.getElementById("button"+id).style.display = "block";
 }
 
+var currentTip = 0;
+
+function showChampionTip() {
+
+}
+
 function startTutorial() {
-    
+    document.getElementById("arrows").style.display = "block";
+    document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
+    var tips = document.getElementsByClassName("tooltiptext");
+    tips[0].style.visibility = "visible";
+    document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+}
+
+function continueTutorial() {
+    var tips = document.getElementsByClassName("tooltiptext");
+    document.getElementsByClassName("arrowLeft")[0].style.visibility = "visible";
+    if(currentTip < tips.length - 1) {
+        currentTip++;
+        for (var i = 0; i < tips.length; i++) {
+            tips[i].style.visibility = "hidden";
+        }
+        tips[currentTip].style.visibility = "visible";
+    }
+    if(currentTip == tips.length - 1) {
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "hidden";
+    }
+}
+
+
+function goBackTutorial() {
+    var tips = document.getElementsByClassName("tooltiptext");
+    document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+    if(currentTip > 0){
+        currentTip--;
+        for (var i = 0; i < tips.length; i++) {
+            tips[i].style.visibility = "hidden";
+        }
+        tips[currentTip].style.visibility = "visible";
+    }
+    if(currentTip == 0){
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+    }
 }

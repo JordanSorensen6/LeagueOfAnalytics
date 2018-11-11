@@ -391,11 +391,11 @@ summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea>
 
-<div class="arrows">
-    <span class="arrowLeft" style="font-size: 3em">
+<div id="arrows" style="display: none">
+    <span class="arrowLeft" style="font-size: 3em" onclick="goBackTutorial()">
         <i class="fas fa-arrow-alt-circle-left"></i>
     </span>
-    <span class="arrowRight" style="font-size: 3em">
+    <span class="arrowRight" style="font-size: 3em" onclick="continueTutorial()">
         <i class="fas fa-arrow-alt-circle-right"></i>
     </span>
 </div>
