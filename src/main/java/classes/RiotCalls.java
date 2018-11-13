@@ -24,8 +24,6 @@ public class RiotCalls {
 
     private LoadConfig config;
 
-    private HttpClient client;
-
     private RateLimitSet appRateLimitSet;
     private SimpleMethod summoners;
     private SimpleMethod league;
@@ -35,8 +33,6 @@ public class RiotCalls {
 
     private RiotCalls() {
         config = LoadConfig.getInstance();
-
-        client = HttpClientBuilder.create().build();
 
         appRateLimitSet = new RateLimitSet(RateLimitType.APPLICATION);
         appRateLimitSet.putRateLimit(new AtomicLongRateLimit(0, 1, System.currentTimeMillis(), 10));
@@ -62,9 +58,9 @@ public class RiotCalls {
             return null;
         }
 
-        HttpResponse resp = handleAPICall(summoners, "summoners/by-name" + summoner);
+        HttpResponse resp = handleAPICall(summoners, "summoners/by-name/" + summoner);
         if(resp == null) { //error occurred so try again
-            resp = handleAPICall(summoners, "summoners/by-name" + summoner);
+            resp = handleAPICall(summoners, "summoners/by-name/" + summoner);
             if(resp == null) {
                 System.out.println("Error occurred when handling api request for endpoint: " + summoners.getEndpoint());
                 return null;
@@ -175,12 +171,12 @@ public class RiotCalls {
 
         HttpResponse resp = handleAPICall(
                 championMastery,
-                "champion-masteries/by-summoner/" + summonerId + "/by-champion" + championId
+                "champion-masteries/by-summoner/" + summonerId + "/by-champion/" + championId
         );
         if(resp == null) { //error occurred so try again
             resp = handleAPICall(
                     championMastery,
-                    "champion-masteries/by-summoner/" + summonerId + "/by-champion" + championId
+                    "champion-masteries/by-summoner/" + summonerId + "/by-champion/" + championId
             );
             if(resp == null) {
                 System.out.println("Error occurred when handling api request for endpoint: " + championMastery.getEndpoint());
@@ -326,6 +322,7 @@ public class RiotCalls {
                     String url = method.getEndpoint() + args;
                     String apiKey = config.getRiotApiKey();
 
+                    HttpClient client = HttpClientBuilder.create().build();
                     HttpGet req = new HttpGet(url);
                     req.addHeader("X-Riot-Token", apiKey);
 
