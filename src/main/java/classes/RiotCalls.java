@@ -211,12 +211,12 @@ public class RiotCalls {
 
         HttpResponse resp = handleAPICall(
                 matchlist,
-                accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"
+                "matchlists/by-account/" + accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"
         );//420 and 440 filters the matchlist to only ranked matches
         if(resp == null) { //error occurred so try again
             resp = handleAPICall(
                     matchlist,
-                    accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"
+                    "matchlists/by-account/" + accountId + "?beginIndex=" + beginIndex + "&endIndex=" + endIndex + "&queue=420&queue=440"
             );
             if(resp == null) {
                 System.out.println("Error occurred when handling api request for endpoint: " + matchlist.getEndpoint());
@@ -329,24 +329,24 @@ public class RiotCalls {
                     HttpResponse resp = client.execute(req);
 
                     //sync headers
-                    if (summoners.getAppRateLimitSet() != null) {
+                    if (method.getAppRateLimitSet() != null) {
                         syncRateLimitsFromHeaders(
                                 resp.getHeaders(ApiConstants.APP_RATE_LIMIT_HEADER),
                                 resp.getHeaders(ApiConstants.APP_RATE_LIMIT_COUNT_HEADER),
-                                summoners.getAppRateLimitSet()
+                                method.getAppRateLimitSet()
                         );
                     }
-                    if (summoners.getMethodRateLimitSet() != null) {
+                    if (method.getMethodRateLimitSet() != null) {
                         syncRateLimitsFromHeaders(
                                 resp.getHeaders(ApiConstants.METHOD_RATE_LIMIT_HEADER),
                                 resp.getHeaders(ApiConstants.METHOD_RATE_LIMIT_COUNT_HEADER),
-                                summoners.getMethodRateLimitSet()
+                                method.getMethodRateLimitSet()
                         );
                     }
                     syncRetryAfterFromHeaders(
                             resp.getHeaders(ApiConstants.RETRY_AFTER_HEADER),
                             resp.getHeaders(ApiConstants.RATE_LIMIT_TYPE_HEADER),
-                            summoners
+                            method
                     );
                     return resp;
 

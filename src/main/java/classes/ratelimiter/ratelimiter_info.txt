@@ -1,0 +1,2 @@
+ratelimiter code is the same as the sample code given https://discussion.developer.riotgames.com/articles/3243/rate-limiter-sample-code.html
+by a Riot developer
