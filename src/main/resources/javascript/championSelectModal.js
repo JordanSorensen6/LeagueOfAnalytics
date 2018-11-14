@@ -103,7 +103,10 @@ var championSelectModal = (function($) {
         {
             if(championContainer[0].childNodes[i].attributes[1].nodeValue.includes(role.toLowerCase())) {
                 championContainer[0].childNodes[i].attributes[1].nodeValue = championContainer[0].childNodes[i].attributes[1].nodeValue.replace(" " + role.toLowerCase(), "");
-                $('div#' + championContainer[0].childNodes[i].id).tooltip("disable");
+                var el = $('div#'+championContainer[0].childNodes[i].id).children()[0];
+                $(el).tooltip("disable");
+                $(el).attr("data-original-title",  $(el).attr("data-original-title").split(" ")[0]);
+                $(el).tooltip("enable");
             }
         }
     }
@@ -117,19 +120,10 @@ var championSelectModal = (function($) {
             var index = championsContainsIndex(champions, championContainer[0].childNodes[i].id)
             if(index != -1) {
                 championContainer[0].childNodes[i].attributes[1].nodeValue = championContainer[0].childNodes[i].attributes[1].nodeValue + " " + role.toLowerCase();
-                var el = ('div#'+championContainer[0].childNodes[i].id);
-                $(el).tooltip('dispose').tooltip({title: champions[index][1], position:"auto"});//.tooltip('show');
-                // $('div#'+championContainer[0].childNodes[i].id).tooltip({ items: ':not(.title)' });
-
-                // $('div#'+championContainer[0].childNodes[i].id).tooltip('hide')
-                //     .attr('data-original-title', 'new text')
-                //     .tooltip('show');
-
-                // $('div#'+championContainer[0].childNodes[i].id).tooltip({show: false});
-                // $('div#'+championContainer[0].childNodes[i].id).ready( function(){
-                //     $('#OK_Button').tooltip({disabled: true});
-                // });
-                //
+                var el = $('div#'+championContainer[0].childNodes[i].id).children()[0];
+                $(el).tooltip("disable");
+                $(el).attr("data-original-title",  $(el).attr("data-original-title") + " (" + role + ": " + champions[index][1] + "%)");
+                $(el).tooltip("enable");
             }
         }
 
