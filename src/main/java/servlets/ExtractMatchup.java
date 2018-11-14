@@ -58,6 +58,18 @@ public class ExtractMatchup extends HttpServlet {
             writer.write(score);
             writer.close();
         }
+        else if(uri.equals("/matchup/opponent"))
+        {
+            String opponent = request.getParameter("opponent");
+            String league = request.getParameter("league");
+            String role = request.getParameter("role");
+            String json = scoring.getOpponentMatchup(opponent, league, role)+"";
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            PrintWriter writer = response.getWriter();
+            writer.write(json);
+            writer.close();
+        }
 
     }
 }

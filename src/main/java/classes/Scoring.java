@@ -75,6 +75,13 @@ public class Scoring {
         return score;
     }
 
+    public String getOpponentMatchup(String opp, String league, String role)
+    {
+        Integer oppId = StaticChampionsDB.getIdByName(opp);
+        ChampionMatchupsEntity cme = ChampionMatchupsDB.getByAll(oppId, league, role);
+        return cme.getMatchupJson();
+    }
+
     public Double getMatchupInfo(String c1, String c2, String role, String league)//c1 is team champ c2 is opponent champ.
     {
         //format champion names

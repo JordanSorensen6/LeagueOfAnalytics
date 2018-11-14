@@ -13,7 +13,24 @@ var championSelectModal = (function($) {
 
         setupFilters();
         setupSearch();
-        championSelected(selectedFunction)
+        championSelected(selectedFunction);
+    }
+
+    function setOpponentMatchups(opponent, league, role){
+        var matchups = [];
+        $.get('matchup/opponent?opponent=' + opponent + '&league=' + league + '&role=' + role, function(data) {
+            for(var i = 0; i < data.length; i++)
+            {
+                var tup = [data[i]["opponentChampion"].replace("MonkeyKing", "Wukong"), formatWR(data[i]["winRate"])];
+                if(parseFloat(tup[1]) >= 50)
+                    matchups.push(tup);
+            }
+            setupChampionCounters(matchups, role);
+        });
+    }
+
+    function formatWR(winRate){
+        return Math.round((1-parseFloat(winRate.toString())) * 10000)/100;
     }
 
     function championSelected(func) {
@@ -22,8 +39,10 @@ var championSelectModal = (function($) {
             //func(selected, selectFor);//selected is champion name and SelectFor is src
             if(selectFor.toString().includes("teamImg"))//this updates everything
                 func(selected, 'champion'+selectFor.toString().replace("teamImg", ""));
-            else
-                func(selected, 'opponent'+selectFor.toString().replace("oppImg", ""));
+            else {
+                func(selected, 'opponent' + selectFor.toString().replace("oppImg", ""));
+                setOpponentMatchups(selected, home.findAvgRank(), home.getRole(selectFor.toString()))
+            }
             $('.filter-options').children(':first').click();
             $('.selected-champion').first().removeClass('selected-champion');
             $('#championSearch').val('');
@@ -42,6 +61,10 @@ var championSelectModal = (function($) {
             else {
                 var $el = $('.' + selector).show();
                 $('#championImages > div').not($el).hide();
+                if(selector == "counters")
+                {
+                    $('.'+ home.getRole(selectFor).toLowerCase()).show();
+                }
             }
             $('#championSearch').trigger('keyup');
         });
@@ -64,6 +87,52 @@ var championSelectModal = (function($) {
                 });
             }
         });
+    }
+
+    function championsContainsIndex(champions, contains)
+    {
+        for(var index in champions)
+            if(champions[index][0].toLowerCase() == contains)
+                return index;
+        return -1;
+    }
+
+    function clearOldRoleAndToolTip(role){
+        var championContainer = $('#championImages');
+        for(var i = 0; i < championContainer[0].children.length; i++)
+        {
+            if(championContainer[0].childNodes[i].attributes[1].nodeValue.includes(role.toLowerCase())) {
+                championContainer[0].childNodes[i].attributes[1].nodeValue = championContainer[0].childNodes[i].attributes[1].nodeValue.replace(" " + role.toLowerCase(), "");
+                $('div#' + championContainer[0].childNodes[i].id).tooltip("disable");
+            }
+        }
+    }
+
+    function setupChampionCounters(champions, role){
+        clearOldRoleAndToolTip(role);
+        //clearOldTooltip();
+        var championContainer = $('#championImages');
+        for(var i = 0; i < championContainer[0].children.length; i++)
+        {
+            var index = championsContainsIndex(champions, championContainer[0].childNodes[i].id)
+            if(index != -1) {
+                championContainer[0].childNodes[i].attributes[1].nodeValue = championContainer[0].childNodes[i].attributes[1].nodeValue + " " + role.toLowerCase();
+                var el = ('div#'+championContainer[0].childNodes[i].id);
+                $(el).tooltip('dispose').tooltip({title: champions[index][1], position:"auto"});//.tooltip('show');
+                // $('div#'+championContainer[0].childNodes[i].id).tooltip({ items: ':not(.title)' });
+
+                // $('div#'+championContainer[0].childNodes[i].id).tooltip('hide')
+                //     .attr('data-original-title', 'new text')
+                //     .tooltip('show');
+
+                // $('div#'+championContainer[0].childNodes[i].id).tooltip({show: false});
+                // $('div#'+championContainer[0].childNodes[i].id).ready( function(){
+                //     $('#OK_Button').tooltip({disabled: true});
+                // });
+                //
+            }
+        }
+
     }
 
     function setupChampionImages(champions) {
