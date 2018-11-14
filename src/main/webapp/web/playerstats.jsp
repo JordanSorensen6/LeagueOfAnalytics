@@ -109,6 +109,10 @@ ${username} stats
     </div>
 </div>
 
+<div class="help-tip" onclick="startTutorial()">
+    <p>Click here to start a tutorial for the web site</p>
+</div><br>
+
 <div class="chart">
     <svg width="100" height="600">
 

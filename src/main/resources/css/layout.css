@@ -499,14 +499,18 @@ input{
 
 .arrowLeft {
     position: absolute;
+    z-index: 9999;
     right: 20%;
     top: 95%;
+    pointer-events: auto;
 }
 
 .arrowRight {
     position: absolute;
+    z-index: 9999;
     right: 10%;
     top: 95%;
+    pointer-events: auto;
 }
 
 .arrowLeft:hover {
@@ -710,3 +714,22 @@ input{
     border-style: solid;
     border-color: white transparent transparent transparent;
 }
+
+body.highlight-is-active {
+    pointer-events:  none;
+}
+
+.highlight {
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, .8);
+    position: relative;
+    z-index: 9999;
+    pointer-events:  auto;
+    transition: all 0.5s ease;
+}
+
+.alsoHighlighted {
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
+

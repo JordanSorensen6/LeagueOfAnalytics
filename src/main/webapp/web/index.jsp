@@ -64,7 +64,7 @@
     <div class="row bk1">
 
         <div class="col-sm">
-            <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><span class="tooltiptext">This column is where you input summoner names</span><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>
+            <div class="summoner summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><span class="tooltiptext">This column is where you input summoner names</span><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>
         </div>
 
         <div class="col-sm">
@@ -104,7 +104,7 @@
     <div class="row bk2">
 
         <div class="col-sm">
-            <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner2" placeholder="summoner2" oninput="displayButton('2')"><button id="button2" onclick="home.summonerIdLookup('2')">Search</button></div></div></div>
+            <div class="summoner summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner2" placeholder="summoner2" oninput="displayButton('2')"><button id="button2" onclick="home.summonerIdLookup('2')">Search</button></div></div></div>
         </div>
 
         <div class="col-sm">
@@ -144,7 +144,7 @@
     <div class="row bk1">
 
         <div class="col-sm">
-            <div class="summonerMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner3" placeholder="summoner3" oninput="displayButton('3')"><button id="button3" onclick="home.summonerIdLookup('3')">Search</button></div></div></div>
+            <div class="summoner summonerMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner3" placeholder="summoner3" oninput="displayButton('3')"><button id="button3" onclick="home.summonerIdLookup('3')">Search</button></div></div></div>
         </div>
 
         <div class="col-sm">
@@ -184,7 +184,7 @@
     <div class="row bk2">
 
         <div class="col-sm">
-            <div class="summonerBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner4" placeholder="summoner4" oninput="displayButton('4')"><button id="button4" onclick="home.summonerIdLookup('4')">Search</button></div></div></div>
+            <div class="summoner summonerBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner4" placeholder="summoner4" oninput="displayButton('4')"><button id="button4" onclick="home.summonerIdLookup('4')">Search</button></div></div></div>
         </div>
 
         <div class="col-sm">
@@ -224,7 +224,7 @@
     <div class="row bk1">
 
         <div class="col-sm">
-            <div class="summonerSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner5" placeholder="summoner5" oninput="displayButton('5')"><button id="button5" onclick="home.summonerIdLookup('5')">Search</button></div></div></div>
+            <div class="summoner summonerSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner5" placeholder="summoner5" oninput="displayButton('5')"><button id="button5" onclick="home.summonerIdLookup('5')">Search</button></div></div></div>
         </div>
 
         <div class="col-sm">
