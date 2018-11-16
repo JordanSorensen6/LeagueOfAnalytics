@@ -40,7 +40,7 @@ public class RiotCalls {
         league = new SimpleMethod("https://na1.api.riotgames.com/lol/league/v3/", appRateLimitSet);
         championMastery = new SimpleMethod("https://na1.api.riotgames.com/lol/champion-mastery/v3/", appRateLimitSet);
         match = new SimpleMethod("https://na1.api.riotgames.com/lol/match/v3/", appRateLimitSet);
-        matchlist = new SimpleMethod("https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/", appRateLimitSet);
+        matchlist = new SimpleMethod("https://na1.api.riotgames.com/lol/match/v3/", appRateLimitSet);
     }
 
     public static RiotCalls getInstance() {
@@ -303,20 +303,34 @@ public class RiotCalls {
             while (true) {
                 if (isMethodCallExecutableNow(method)) {
                     if (method.getAppRateLimitSet() != null) {
-                        if (method.getAppRateLimitSet().incrementRateLimitCounts().isEmpty()) {
+                        RateLimitSet appRLS = method.getAppRateLimitSet();
+                        if (appRLS.incrementRateLimitCounts().isEmpty()) {
+                            long currTime = System.currentTimeMillis();
                             // if empty, we are rate limited so wait
-                            Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
+                            if (appRLS.getRetryAfterTimestamp() > currTime) {
+                                Thread.sleep(appRLS.getRetryAfterTimestamp() - currTime);
+                            }
+                            else {
+                                Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
+                            }
                             continue;
                         }
                     }
                     if (method.getMethodRateLimitSet() != null) {
-                        if (method.getMethodRateLimitSet().incrementRateLimitCounts().isEmpty()) {
-                            // if empty, we are rate limited so wait
+                        RateLimitSet methodRLS = method.getMethodRateLimitSet();
+                        if (methodRLS.incrementRateLimitCounts().isEmpty()) {
                             if(method.getAppRateLimitSet() != null) {
                                 // decrement app rate limit since we aren't making an api call
                                 method.getAppRateLimitSet().decrementRateLimitCounts();
                             }
-                            Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
+                            long currTime = System.currentTimeMillis();
+                            // if empty, we are rate limited so wait
+                            if(methodRLS.getRetryAfterTimestamp() > currTime) {
+                                Thread.sleep(methodRLS.getRetryAfterTimestamp() - currTime);
+                            }
+                            else {
+                                Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
+                            }
                             continue;
                         }
                     }
@@ -350,9 +364,23 @@ public class RiotCalls {
                             resp.getHeaders(ApiConstants.RATE_LIMIT_TYPE_HEADER),
                             method
                     );
+                    int status = resp.getStatusLine().getStatusCode();
                     return resp;
 
                 } else {
+                    long currTime = System.currentTimeMillis();
+                    if(method.getAppRateLimitSet() != null) {
+                        if(method.getAppRateLimitSet().getRetryAfterTimestamp() > currTime) {
+                            Thread.sleep(method.getAppRateLimitSet().getRetryAfterTimestamp() - currTime);
+                            continue;
+                        }
+                    }
+                    if(method.getMethodRateLimitSet() != null) {
+                        if(method.getMethodRateLimitSet().getRetryAfterTimestamp() > currTime) {
+                            Thread.sleep(method.getMethodRateLimitSet().getRetryAfterTimestamp() - currTime);
+                            continue;
+                        }
+                    }
                     Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
                 }
             }
@@ -363,6 +391,7 @@ public class RiotCalls {
     }
 
     // Checks if a SimpleMethod is able to be executed right now.
+    // From ratelimiter sample code, see ratelimiter/ratelimiter_info.txt
     private static boolean isMethodCallExecutableNow(SimpleMethod method) {
         boolean isNotMethodRateLimited = method.getAppRateLimitSet() == null;
         boolean isUnderMethodRateLimits = isNotMethodRateLimited || method.getMethodRateLimitSet().isUnderRateLimits();
@@ -378,6 +407,7 @@ public class RiotCalls {
                 (isNotApplicationRateLimited || (isUnderApplicationRateLimits && isNowAfterApplicationsRetryAfterTimestamp));
     }
 
+    // From ratelimiter sample code, see ratelimiter/ratelimiter_info.txt
     private static void syncRateLimitsFromHeaders(Header[] rateLimitHeaderArr,
                                                   Header[] rateLimitCountHeaderArr,
                                                   RateLimitSet rateLimitSet) {
@@ -410,6 +440,7 @@ public class RiotCalls {
         rateLimitSet.rebuildRateLimitSet(survivingRateLimits);
     }
 
+    // From ratelimiter sample code, see ratelimiter/ratelimiter_info.txt
     private static void syncRetryAfterFromHeaders(Header[] retryAfterHeaderArr,
                                                   Header[] rateLimitTypeHeaderArr,
                                                   SimpleMethod method) {
