@@ -733,3 +733,15 @@ body.highlight-is-active {
     pointer-events: auto;
 }
 
+.tutorialExit {
+    position: absolute;
+    z-index: 10000;
+    top: 2.5%;
+    right: 5%;
+    pointer-events: auto;
+}
+
+.tutorialExit:hover {
+    cursor: pointer;
+    color: #004085;
+}

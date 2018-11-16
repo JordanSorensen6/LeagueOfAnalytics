@@ -20,6 +20,13 @@
 <body onload="checkCookies()" onbeforeunload="setCookies()">
 
 <jsp:include page="navbar.jsp"/>
+<div>
+    <span id="exit" class="tutorialExit" style="font-size: 2em; display: none" onclick="exitTutorial()">
+        <i class="fas fa-times">
+
+        </i>
+    </span>
+</div>
 
 <div class="container">
 

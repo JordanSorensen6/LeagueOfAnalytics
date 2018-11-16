@@ -682,7 +682,10 @@ function startTutorial() {
         highlightedElements[i].classList.add("alsoHighlighted")
     }
     document.getElementById("arrows").style.display = "block";
+    var exit = document.getElementById("exit");
+    exit.style.display = "block";
     document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+    document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
 }
 
 function continueTutorial() {
@@ -734,4 +737,22 @@ function goBackTutorial() {
     if(currentTip == 0){
         document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
     }
+}
+
+function exitTutorial() {
+    var exit = document.getElementById("exit");
+    exit.style.display = "none"; // get rid of exit
+    document.getElementById("arrows").style.display = "none";
+    document.getElementsByClassName("help-tip")[0].style.visibility = "visible";
+    var highlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+    highlightedElements[0].classList.remove("highlight");
+    for(var i = 1; i < highlightedElements.length; i++){
+        highlightedElements[i].classList.remove("alsoHighlighted")
+    }
+    document.getElementsByTagName("body")[0].classList.remove("highlight-is-active");
+    var tips = document.getElementsByClassName("tooltiptext");
+    for(var i = 0; i < tips.length; i++){
+        tips[i].style.visibility = "hidden";
+    }
+    currentTip = 0;
 }
