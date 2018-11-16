@@ -9,7 +9,9 @@ var home = (function($, champSelect) {
         championSelected();
 	    anyChampSelection();
 	    champSelect.init(checkForMatchup);
+
     }
+
 
     function getSummonerInfo(sid, position){
         $.get('riot/playerStats?summonerId='+sid, function(data) {
@@ -204,12 +206,12 @@ var home = (function($, champSelect) {
         var key = formatChampionName(selected);
         if(champions.hasOwnProperty(key)) {
             var championId = champions[key];
-            console.log("sid: " + summonerId + " cid: " + championId);
+            // console.log("sid: " + summonerId + " cid: " + championId);
             $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                 //$('#mastery' + num).val(data);
                 //getSummonerInfo(summonerId, num);
                 var image = document.getElementById('mastery' + id);
-                console.log("updating mastery with: " + data);
+                // console.log("updating mastery with: " + data);
                 image.src = "/resources/images/L"+data+".png";
             });
         }
@@ -224,12 +226,12 @@ var home = (function($, champSelect) {
             var key = formatChampionName($('#' + inputId).val());
             if(champions.hasOwnProperty(key)) {
                 var championId = champions[key];
-                console.log("sid: " + summonerId + " cid: " + championId);
+                // console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
                     //getSummonerInfo(summonerId, num);
                     var image = document.getElementById('mastery' + num);
-                    console.log("updating mastery with: " + data);
+                    // console.log("updating mastery with: " + data);
                     image.src = "/resources/images/L"+data+".png";
                 });
             }
@@ -255,7 +257,7 @@ var home = (function($, champSelect) {
     }
 
     function checkForMatchup(champion, id){
-        console.log("id is: " + id);
+        // console.log("id is: " + id);
         var opponent = getOpponent(id);
         var role = getRole(id);
         if(id.toString().includes("champion"))//Update champion text and mastery.
@@ -288,9 +290,9 @@ var home = (function($, champSelect) {
             c2 = formatChampionName(c2);
             if(champions.hasOwnProperty(c1)){
                 if(champions.hasOwnProperty(c2)){
-                    console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
+                    // console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
                     $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role + '&league=' + findAvgRank(), function(data) {
-                        console.log("data returned: " + data);
+                        // console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
                         
@@ -313,7 +315,7 @@ var home = (function($, champSelect) {
 
         }
         else {//Don't check for matchup info. The opponent is empty.
-            console.log('No opponent.');
+            // console.log('No opponent.');
         }
     }
 
@@ -348,7 +350,7 @@ var home = (function($, champSelect) {
         playerWinRate = playerWinRate.replace("%", "");
         var hotStreak = document.getElementById("hot"+role).src;
         hotStreak = hotStreak.substring(hotStreak.length-10, hotStreak.length).replace(".png", "").replace("ak", "").replace("k", "");
-        console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup + ' playerWinRate: ' + playerWinRate + ' hotStreak: ' + hotStreak);
+        // console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup + ' playerWinRate: ' + playerWinRate + ' hotStreak: ' + hotStreak);
         var score = document.getElementById('score'+role);
         $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup + '&winrate=' + playerWinRate + '&hotstreak=' + hotStreak, function(data) {
             score.innerText = data;
@@ -366,7 +368,7 @@ var home = (function($, champSelect) {
         var p4 = document.getElementById('percentage4').innerText;
         var p5 = document.getElementById('percentage5').innerText;
 
-        console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
+        // console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
 
 
         if(p1 != '00.00%' && p2 != '00.00%' && p3 != '00.00%' && p4 != '00.00%' && p5 != '00.00%') {
@@ -378,15 +380,15 @@ var home = (function($, champSelect) {
             var message = "";
 
             $.getJSON("/resources/data/gold_data.json", function(json) {
-                console.log("getting scores");
+                // console.log("getting scores");
                 for(var i = 0; i < json.length; i++) {
                     var obj = json[i];
 
                     if(obj.score == score){
                         total = obj.wins + obj.losses;
                         percentage = (obj.wins / (obj.wins + obj.losses)) * 100;
-                        console.log('TOTAL: ' + total);
-                        console.log('PERCENTAGE: ' + percentage.toFixed(2));
+                        // console.log('TOTAL: ' + total);
+                        // console.log('PERCENTAGE: ' + percentage.toFixed(2));
                         message = "Based on "+total+" games, players with this score win "+percentage.toFixed(2)+"% of their games.";
                         document.getElementById('userMessage').innerHTML = message.bold();
 
@@ -625,6 +627,8 @@ var home = (function($, champSelect) {
         markForSwap: markForSwap,
         swapRoles: swapRoles,
         summonerIdLookup: summonerIdLookup,
+        findAvgRank: findAvgRank,
+        getRole: getRole,
         //TODO remove later - these are just for testing
         getChampions: getChampions,
         getSummonerIds: getSummonerIds
