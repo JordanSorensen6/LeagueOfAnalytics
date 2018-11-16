@@ -305,7 +305,6 @@ public class RiotCalls {
                     if (method.getAppRateLimitSet() != null) {
                         if (method.getAppRateLimitSet().incrementRateLimitCounts().isEmpty()) {
                             // if empty, we are rate limited so wait
-                            method.getAppRateLimitSet().decrementRateLimitCounts();
                             Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
                             continue;
                         }
@@ -313,7 +312,10 @@ public class RiotCalls {
                     if (method.getMethodRateLimitSet() != null) {
                         if (method.getMethodRateLimitSet().incrementRateLimitCounts().isEmpty()) {
                             // if empty, we are rate limited so wait
-                            method.getMethodRateLimitSet().decrementRateLimitCounts();
+                            if(method.getAppRateLimitSet() != null) {
+                                // decrement app rate limit since we aren't making an api call
+                                method.getAppRateLimitSet().decrementRateLimitCounts();
+                            }
                             Thread.sleep(ApiConstants.API_CALL_SLEEP_TIME_MS);
                             continue;
                         }
