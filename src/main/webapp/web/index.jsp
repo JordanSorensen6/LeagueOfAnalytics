@@ -327,7 +327,7 @@ summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummo
             </div>
             <div class="modal-footer">
                 <button id="selectChampBtn" type="button" class="btn btn-primary">Select</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="closeModalBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
