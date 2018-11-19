@@ -471,14 +471,15 @@ img {
     width: 50px;
 }
 
+.smallImg{
+    width: 25px;
+    height: 25px;
+}
+
 .champImg{
     border: 3px solid #004085;
-
-    /*border-radius: 4px;*/
-    /*padding: 5px;*/
     background-size: cover;
     border-radius:50% 50% 50% 50%;
-    /*border-radius: 50%;*/
     height: 55px;
     width: 55px;
 }

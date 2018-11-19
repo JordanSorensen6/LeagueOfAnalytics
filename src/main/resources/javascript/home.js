@@ -613,10 +613,15 @@ var home = (function($, champSelect) {
 
             var oppImgTemp = oppImg1.src;
             oppImg1.src = oppImg2.src;
+            var champ1 = oppImgTemp.toString().match("champion\/.*\.png").toString().replace("champion/", "").replace(".png", "");
+            var champ2 = oppImg1.src.toString().match("champion\\/.*\\.png").toString().replace("champion/", "").replace(".png", "");
             oppImg2.src = oppImgTemp;
 
             checkForMatchup(getChampNameFromImage(oppImg1.src), championID1.toString().replace("champion", "opponent"));//Recheck the matchup.
             checkForMatchup(getChampNameFromImage(oppImg2.src), championID2.toString().replace("champion", "opponent"));
+
+            championSelectModal.setOpponentMatchups(champ1, findAvgRank(), getRole(lane2));
+            championSelectModal.setOpponentMatchups(champ2, findAvgRank(), getRole(lane1));
         }
 
     }

@@ -59,41 +59,43 @@
         </div>
     </div>
 
+
+
     <div class="row bk1">
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic teamChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="tier"><img id="tier1" src="/resources/images/tier-icons/provisional.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="mastery"><img id="mastery1" src="/resources/images/L0.png"></div>
         </div>
 
-        <div class="col-sm">
-            <div class="hotStreak"><img id="hot1" src="/resources/images/hotStreakFalse.png"></div>
+        <div class="col-sm my-auto">
+            <div class="hotStreak"><img class="smallImg" id="hot1" src="/resources/images/hotStreakFalse.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="playerWinPerTop" id="playerPercentage1"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="winPerTop" id="percentage1"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic oppChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="scoreTop" id="score1">0</div>
         </div>
 
@@ -101,7 +103,7 @@
 
     <div class="row bk2">
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner2" placeholder="summoner2" oninput="displayButton('2')"><button id="button2" onclick="home.summonerIdLookup('2')">Search</button></div></div></div>
         </div>
 
@@ -109,31 +111,31 @@
             <div class="champPic teamChampJunglePic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="tier"><img id="tier2" src="/resources/images/tier-icons/provisional.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="mastery"><img id="mastery2" src="/resources/images/L0.png"></div>
         </div>
 
-        <div class="col-sm">
-            <div class="hotStreak"><img id="hot2" src="/resources/images/hotStreakFalse.png"></div>
+        <div class="col-sm my-auto">
+            <div class="hotStreak"><img class="smallImg" id="hot2" src="/resources/images/hotStreakFalse.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="playerWinPerJungle" id="playerPercentage2"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="winPerJungle" id="percentage2"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic oppChampJunglePic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="scoreJungle" id="score2">0</div>
         </div>
 
@@ -141,39 +143,39 @@
 
     <div class="row bk1">
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="summonerMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner3" placeholder="summoner3" oninput="displayButton('3')"><button id="button3" onclick="home.summonerIdLookup('3')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic teamChampMidPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg3" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="tier"><img id="tier3" src="/resources/images/tier-icons/provisional.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="mastery"><img id="mastery3" src="/resources/images/L0.png"></div>
         </div>
 
-        <div class="col-sm">
-            <div class="hotStreak"><img id="hot3" src="/resources/images/hotStreakFalse.png"></div>
+        <div class="col-sm my-auto">
+            <div class="hotStreak"><img class="smallImg" id="hot3" src="/resources/images/hotStreakFalse.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="playerWinPerMid" id="playerPercentage3"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="winPerJungle" id="percentage3"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic oppChampMidPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="scoreMid" id="score3">0</div>
         </div>
 
@@ -181,39 +183,39 @@
 
     <div class="row bk2">
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="summonerBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner4" placeholder="summoner4" oninput="displayButton('4')"><button id="button4" onclick="home.summonerIdLookup('4')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic teamChampBotPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="tier"><img id="tier4" src="/resources/images/tier-icons/provisional.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="mastery"><img id="mastery4" src="/resources/images/L0.png"></div>
         </div>
 
-        <div class="col-sm">
-            <div class="hotStreak"><img id="hot4" src="/resources/images/hotStreakFalse.png"></div>
+        <div class="col-sm my-auto">
+            <div class="hotStreak"><img class="smallImg" id="hot4" src="/resources/images/hotStreakFalse.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="playerWinPerBot" id="playerPercentage4"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="winPerBot" id="percentage4"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic oppChampBotPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="scoreBot" id="score4">0</div>
         </div>
 
@@ -221,39 +223,39 @@
 
     <div class="row bk1">
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="summonerSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner5" placeholder="summoner5" oninput="displayButton('5')"><button id="button5" onclick="home.summonerIdLookup('5')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic teamChampSupportPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="tier"><img id="tier5" src="/resources/images/tier-icons/provisional.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="mastery"><img id="mastery5" src="/resources/images/L0.png"></div>
         </div>
 
-        <div class="col-sm">
-            <div class="hotStreak"><img id="hot5" src="/resources/images/hotStreakFalse.png"></div>
+        <div class="col-sm my-auto">
+            <div class="hotStreak"><img class="smallImg" id="hot5" src="/resources/images/hotStreakFalse.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="playerWinPerSupport" id="playerPercentage5"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="winPerSupport" id="percentage5"><b>00.00%</b></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="champPic oppChampSupportPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <div class="scoreSupport" id="score5">0</div>
         </div>
 
