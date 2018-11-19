@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
     <link rel="stylesheet" href="/resources/css/temp.css"/>
-    <link rel="stylesheet" href="/resources/css/statsLayout.css">
 
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="/resources/javascript/d3-tip.js"></script>

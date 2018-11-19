@@ -1,3 +1,13 @@
+.bk1{
+    padding: 8px;
+    background-color: #303030;
+    border: 3px yellow;
+}
+.bk2{
+    padding: 8px;
+    background-color: #505050;
+    border: 3px yellow;
+}
 
 .scoreChart{
     stroke: #FFF;
