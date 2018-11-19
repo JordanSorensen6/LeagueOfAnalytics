@@ -48,64 +48,154 @@ ${username} stats
 
 <div id="gameStats" style="display: none">
     Blue Team
-    <div id="gameStats100" class="gridLayout">
-        <div class="summoner"><u>Summoner</u></div>
-        <div class="summoner1"></div>
-        <div class="summoner2"></div>
-        <div class="summoner3"></div>
-        <div class="summoner4"></div>
-        <div class="summoner5"></div>
+    <div id="gameStats100">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm"><u>Summoner</u></div>
+                <div class="col-sm"><u>KDA</u></div>
+                <div class="col-sm"><u>Damage</u></div>
+                <div class="col-sm"><u>Previous Season's Tier</u></div>
+            </div>
 
-        <div class="kda"><u>KDA</u></div>
-        <div class="kda1"></div>
-        <div class="kda2"></div>
-        <div class="kda3"></div>
-        <div class="kda4"></div>
-        <div class="kda5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner1"></div></div>
+                <div class="col-sm"><div class="kda1"></div></div>
+                <div class="col-sm"><div class="damage1"></div></div>
+                <div class="col-sm"><div class="tier1"></div></div>
+            </div>
 
-        <div class="damage"><u>Damage</u></div>
-        <div class="damage1"></div>
-        <div class="damage2"></div>
-        <div class="damage3"></div>
-        <div class="damage4"></div>
-        <div class="damage5"></div>
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner2"></div></div>
+                <div class="col-sm"><div class="kda2"></div></div>
+                <div class="col-sm"><div class="damage2"></div></div>
+                <div class="col-sm"><div class="tier2"></div></div>
+            </div>
 
-        <div class="tier"><u>Tier</u></div>
-        <div class="tier1"></div>
-        <div class="tier2"></div>
-        <div class="tier3"></div>
-        <div class="tier4"></div>
-        <div class="tier5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner3"></div></div>
+                <div class="col-sm"><div class="kda3"></div></div>
+                <div class="col-sm"><div class="damage3"></div></div>
+                <div class="col-sm"><div class="tier3"></div></div>
+            </div>
+
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner4"></div></div>
+                <div class="col-sm"><div class="kda4"></div></div>
+                <div class="col-sm"><div class="damage4"></div></div>
+                <div class="col-sm"><div class="tier4"></div></div>
+            </div>
+
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner5"></div></div>
+                <div class="col-sm"><div class="kda5"></div></div>
+                <div class="col-sm"><div class="damage5"></div></div>
+                <div class="col-sm"><div class="tier5"></div></div>
+            </div>
+
+        </div>
     </div>
+    <%--<div id="gameStats100">--%>
+        <%--<div class="summoner"><u>Summoner</u></div>--%>
+        <%--<div class="summoner1"></div>--%>
+        <%--<div class="summoner2"></div>--%>
+        <%--<div class="summoner3"></div>--%>
+        <%--<div class="summoner4"></div>--%>
+        <%--<div class="summoner5"></div>--%>
+
+        <%--<div class="kda"><u>KDA</u></div>--%>
+        <%--<div class="kda1"></div>--%>
+        <%--<div class="kda2"></div>--%>
+        <%--<div class="kda3"></div>--%>
+        <%--<div class="kda4"></div>--%>
+        <%--<div class="kda5"></div>--%>
+
+        <%--<div class="damage"><u>Damage</u></div>--%>
+        <%--<div class="damage1"></div>--%>
+        <%--<div class="damage2"></div>--%>
+        <%--<div class="damage3"></div>--%>
+        <%--<div class="damage4"></div>--%>
+        <%--<div class="damage5"></div>--%>
+
+        <%--<div class="tier"><u>Tier</u></div>--%>
+        <%--<div class="tier1"></div>--%>
+        <%--<div class="tier2"></div>--%>
+        <%--<div class="tier3"></div>--%>
+        <%--<div class="tier4"></div>--%>
+        <%--<div class="tier5"></div>--%>
+    <%--</div>--%>
     Red Team
     <div id="gameStats200" class="gridLayout">
-        <div class="summoner"><u>Summoner</u></div>
-        <div class="summoner1"></div>
-        <div class="summoner2"></div>
-        <div class="summoner3"></div>
-        <div class="summoner4"></div>
-        <div class="summoner5"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm"><u>Summoner</u></div>
+                <div class="col-sm"><u>KDA</u></div>
+                <div class="col-sm"><u>Damage</u></div>
+                <div class="col-sm"><u>Previous Season's Tier</u></div>
+            </div>
 
-        <div class="kda"><u>KDA</u></div>
-        <div class="kda1"></div>
-        <div class="kda2"></div>
-        <div class="kda3"></div>
-        <div class="kda4"></div>
-        <div class="kda5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner1"></div></div>
+                <div class="col-sm"><div class="kda1"></div></div>
+                <div class="col-sm"><div class="damage1"></div></div>
+                <div class="col-sm"><div class="tier1"></div></div>
+            </div>
 
-        <div class="damage"><u>Damage</u></div>
-        <div class="damage1"></div>
-        <div class="damage2"></div>
-        <div class="damage3"></div>
-        <div class="damage4"></div>
-        <div class="damage5"></div>
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner2"></div></div>
+                <div class="col-sm"><div class="kda2"></div></div>
+                <div class="col-sm"><div class="damage2"></div></div>
+                <div class="col-sm"><div class="tier2"></div></div>
+            </div>
 
-        <div class="tier"><u>Previous Season's Tier</u></div>
-        <div class="tier1"></div>
-        <div class="tier2"></div>
-        <div class="tier3"></div>
-        <div class="tier4"></div>
-        <div class="tier5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner3"></div></div>
+                <div class="col-sm"><div class="kda3"></div></div>
+                <div class="col-sm"><div class="damage3"></div></div>
+                <div class="col-sm"><div class="tier3"></div></div>
+            </div>
+
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner4"></div></div>
+                <div class="col-sm"><div class="kda4"></div></div>
+                <div class="col-sm"><div class="damage4"></div></div>
+                <div class="col-sm"><div class="tier4"></div></div>
+            </div>
+
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner5"></div></div>
+                <div class="col-sm"><div class="kda5"></div></div>
+                <div class="col-sm"><div class="damage5"></div></div>
+                <div class="col-sm"><div class="tier5"></div></div>
+            </div>
+        </div>
+
+        <%--<div class="summoner"><u>Summoner</u></div>--%>
+        <%--<div class="summoner1"></div>--%>
+        <%--<div class="summoner2"></div>--%>
+        <%--<div class="summoner3"></div>--%>
+        <%--<div class="summoner4"></div>--%>
+        <%--<div class="summoner5"></div>--%>
+
+        <%--<div class="kda"><u>KDA</u></div>--%>
+        <%--<div class="kda1"></div>--%>
+        <%--<div class="kda2"></div>--%>
+        <%--<div class="kda3"></div>--%>
+        <%--<div class="kda4"></div>--%>
+        <%--<div class="kda5"></div>--%>
+
+        <%--<div class="damage"><u>Damage</u></div>--%>
+        <%--<div class="damage1"></div>--%>
+        <%--<div class="damage2"></div>--%>
+        <%--<div class="damage3"></div>--%>
+        <%--<div class="damage4"></div>--%>
+        <%--<div class="damage5"></div>--%>
+
+        <%--<div class="tier"><u>Previous Season's Tier</u></div>--%>
+        <%--<div class="tier1"></div>--%>
+        <%--<div class="tier2"></div>--%>
+        <%--<div class="tier3"></div>--%>
+        <%--<div class="tier4"></div>--%>
+        <%--<div class="tier5"></div>--%>
     </div>
 </div>
 
