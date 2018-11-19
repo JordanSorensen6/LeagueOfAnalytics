@@ -23,8 +23,8 @@ ${username} stats
 
 
 <div class="chart">
-    <button type="button" onclick="moreGames()" id = "add">Add More Games</button>
-    <button type="button" onclick="chart.lessGames()" id = "delete">Take Away Games</button>
+    <button class="moreButton" type="button" onclick="moreGames()" id = "add"><span class="tooltiptext">This button is for adding games to the graph</span>Add More Games</button>
+    <button class="deleteButton" type="button" onclick="chart.lessGames()" id = "delete">Take Away Games</button>
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
         <div>
@@ -109,7 +109,7 @@ ${username} stats
     </div>
 </div>
 
-<div class="help-tip" onclick="startTutorial()">
+<div class="help-tip" onclick="chart.startTutorial()">
     <p>Click here to start a tutorial for the web site</p>
 </div><br>
 

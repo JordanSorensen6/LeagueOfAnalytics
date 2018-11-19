@@ -265,4 +265,11 @@ class PlotChart{
         })
     }
 
+    startTutorial(){
+        var tips = document.getElementsByClassName("tooltiptext");
+        for(var i = 0; i < tips.length; i++){
+            tips[i].style.visibility = "visible";
+        }
+    }
+
 }

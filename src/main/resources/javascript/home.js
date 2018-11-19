@@ -665,11 +665,6 @@ function displayButton(id)
 
 var currentTip = 0;
 var highlightElements = ["summoner", "champPic", "tier", "champPic"];
-var HIGHLIGHT_CLASS = "highlight";
-var HIGHLIGHT_ACTIVE_CLASS = "highlight-is-active";
-var $body = $(document.body);
-var highlightIsActive = false;
-var $highlightedElement = $();
 
 function startTutorial() {
     document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
