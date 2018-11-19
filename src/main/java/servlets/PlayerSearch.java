@@ -36,9 +36,11 @@ public class PlayerSearch extends HttpServlet {
 
                 ArrayList<GamesEntity> analyzed = new ArrayList<>();
                 // analyze the first 5 matches
-                for(String id : matchIds) {
-                    if(analyzed.size() >= 5) break;
-                    new MatchAnalyzer().gameCheck(summoner, id, analyzed);
+                if(matchIds != null) {
+                    for (String id : matchIds) {
+                        if (analyzed.size() >= 5) break;
+                        new MatchAnalyzer().gameCheck(summoner, id, analyzed);
+                    }
                 }
                 Gson gson = new Gson();
                 response.setCharacterEncoding("UTF-8");

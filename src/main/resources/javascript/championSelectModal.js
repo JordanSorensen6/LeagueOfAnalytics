@@ -48,6 +48,12 @@ var championSelectModal = (function($) {
             $('#championSearch').val('');
             $('#championSelectModal').modal('hide');
         });
+        $("#championSelectModal").on('hide.bs.modal', function() {
+            // set modal to default state
+            $('.filter-options').children(':first').click();
+            $('.selected-champion').first().removeClass('selected-champion');
+            $('#championSearch').val('');
+        });
     }
 
     function setupFilters() {
