@@ -87,6 +87,12 @@ var championSelectModal = (function($) {
                 $('#championImages div.' + currentDataFilter).filter(function () {
                     $(this).toggle($(this).attr('id').indexOf(value) > -1)
                 });
+                if(currentDataFilter == "counters")
+                {
+                    $('#championImages div.' + home.getRole(selectFor).toLowerCase()).filter(function () {
+                        $(this).toggle($(this).attr('id').indexOf(value) > -1)
+                    });
+                }
             } else {
                 $('#championImages div').filter(function () {
                     $(this).toggle($(this).attr('id').indexOf(value) > -1)
@@ -127,7 +133,6 @@ var championSelectModal = (function($) {
 
     function setupChampionCounters(champions, role){
         clearOldRoleAndToolTip(role);
-        //clearOldTooltip();
         var championContainer = $('#championImages');
         for(var i = 0; i < championContainer[0].children.length; i++)
         {
@@ -136,7 +141,7 @@ var championSelectModal = (function($) {
                 championContainer[0].childNodes[i].attributes[1].nodeValue = championContainer[0].childNodes[i].attributes[1].nodeValue + " " + role.toLowerCase();
                 var el = $('div#'+championContainer[0].childNodes[i].id).children()[0];
                 $(el).tooltip("disable");
-                $(el).attr("data-original-title",  $(el).attr("data-original-title") + " (" + role + ": " + champions[index][1] + "%)");
+                $(el).attr("data-original-title",  $(el).attr("data-original-title") + " (" + role + ": " + champions[index][1] + "%)\n");
                 $(el).tooltip("enable");
             }
         }
@@ -149,7 +154,7 @@ var championSelectModal = (function($) {
             var formattedName = formatChampionName(name);
             championContainer.append('' +
                 '<div id="' + formattedName + '" class="champ-img ' + champions[name].toLowerCase() + '">' +
-                '<img src="/resources/images/champion/' + formattedName + '.png" data-toggle="tooltip" data-placement="bottom" title="' + name + '">' +
+                '<img src="/resources/images/champion/' + formattedName + '.png" data-toggle="tooltip" data-html="true" data-placement="bottom" title="' + name + '">' +
                 '</div>');
         }
         $('[data-toggle="tooltip"]').tooltip();
@@ -184,6 +189,7 @@ var championSelectModal = (function($) {
     }
 
     return {
-        init: init
+        init: init,
+        setOpponentMatchups: setOpponentMatchups
     };
 }(window.jQuery));

@@ -24,7 +24,7 @@ public class ExtractMatchup extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Scoring scoring = new Scoring();
         String uri = request.getRequestURI();
-        System.out.println("ARRIVING AT SERVLET WITH URI: " + uri);
+//        System.out.println("ARRIVING AT SERVLET WITH URI: " + uri);
         if(uri.equals("/matchup/champions"))
         {
             String c1 = request.getParameter("c1");

@@ -79,6 +79,8 @@ public class Scoring {
     {
         Integer oppId = StaticChampionsDB.getIdByName(opp);
         ChampionMatchupsEntity cme = ChampionMatchupsDB.getByAll(oppId, league, role);
+        if(cme == null)
+            return "{}";
         return cme.getMatchupJson();
     }
 
