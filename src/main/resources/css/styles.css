@@ -3,6 +3,7 @@
     background-color: #303030;
     border: 3px yellow;
 }
+
 .bk2{
     padding: 8px;
     background-color: #505050;
@@ -241,7 +242,110 @@ text {
     100% { opacity:100%; }
 }
 
-.tooltiptext {
+.menu {
+    position: relative;
+}
+
+.menu .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: small;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.menu .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.chart1 {
+    position: relative;
+}
+
+.chart1 .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: small;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.chart1 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.chart2 {
+    position: relative;
+}
+
+.chart2 .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: small;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.chart2 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.moreButton {
+    position: relative;
+}
+
+.moreButton .tooltiptext {
     visibility: hidden;
     width: 120px;
     background-color: white;
@@ -268,4 +372,154 @@ text {
     border-width: 5px;
     border-style: solid;
     border-color: white transparent transparent transparent;
+}
+
+.deleteButton {
+    position: relative;
+}
+
+.deleteButton .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: small;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.deleteButton .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.graph {
+    position: relative;
+}
+
+.graph .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: small;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.graph .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.legend {
+    position: relative;
+}
+
+.legend .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: small;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.legend .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.arrowLeft {
+    position: absolute;
+    z-index: 9999;
+    right: 20%;
+    top: 95%;
+    pointer-events: auto;
+}
+
+.arrowRight {
+    position: absolute;
+    z-index: 9999;
+    right: 10%;
+    top: 95%;
+    pointer-events: auto;
+}
+
+.arrowLeft:hover {
+    color: #004085;
+    cursor: pointer;
+}
+
+.arrowRight:hover {
+    color: #004085;
+    cursor: pointer;
+}
+
+body.highlight-is-active {
+    pointer-events:  none;
+}
+
+.highlight {
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, .8);
+    position: relative;
+    z-index: 9999;
+    pointer-events:  auto;
+    transition: all 0.5s ease;
+}
+
+.tutorialExit {
+    position: absolute;
+    z-index: 10000;
+    top: 2.5%;
+    right: 5%;
+    pointer-events: auto;
+}
+
+.tutorialExit:hover {
+    cursor: pointer;
+    color: #004085;
 }
