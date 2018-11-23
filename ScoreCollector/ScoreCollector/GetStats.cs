@@ -51,8 +51,9 @@ namespace ScoreCollector
         {
             WebClient w = new WebClient();
             w.Encoding = Encoding.UTF8;
-            teamChampion = teamChampion.Replace(".", "");//Mundo...
-            opponentChampion = opponentChampion.Replace(".", "");
+            teamChampion = teamChampion.Replace(".", "").Replace("Nunu &amp; Willump", "Nunu");//Mundo and Nunu
+            opponentChampion = opponentChampion.Replace(".", "").Replace("Nunu &amp; Willump", "Nunu"); ;
+
             String scrape = w.DownloadString("http://champion.gg/champion/" + teamChampion + "/" + role + "?league=" + rank);
             List<String> l = new List<String>();
 

@@ -15,8 +15,8 @@ namespace ScoreCollector
             ///////////////////////////////////////////////////////////////////////////////////////////////
             String currentRank = "Silver";//Enter the rank you would like to gather data on. (Diamond, Platinum, Gold, Silver, Bronze) This should corrilate with the rank file. 
             StreamReader sr = File.OpenText(@"C:\Users\Mitchell\Desktop\score_collector\LeagueOfAnalytics\LOA Data\Silver.txt");//Enter the file location of the list of summoners in a particular rank. (Diamond.txt, Platinum.txt, Gold.txt, Silver.txt, Bronze.txt)
-            StreamWriter scoreLog = File.CreateText(@"C:\Users\Mitchell\Desktop\LOGSILVER01.txt");//Enter the file location for log file. You can call the file whatever you want. Make sure you change the name after each run to avoid overwriting data.
-            String startingSummoner = "Daskana";//Enter a summoner from the list of summoners to start collecting data or continue from last point.
+            StreamWriter scoreLog = File.CreateText(@"C:\Users\Mitchell\Desktop\LOGSILVER02.txt");//Enter the file location for log file. You can call the file whatever you want. Make sure you change the name after each run to avoid overwriting data.
+            String startingSummoner = "hackedagen";//Enter a summoner from the list of summoners to start collecting data or continue from last point.
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
 

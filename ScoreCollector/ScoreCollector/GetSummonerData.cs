@@ -47,19 +47,26 @@ namespace ScoreCollector
 
             Data swap;
             Data temp;
-            for(int k = 0; k < 5; k++)
+            try
             {
-                for (int l = 0; l < 5; l++)
+                for (int k = 0; k < 5; k++)
                 {
-                    if(teamSummonerData[l].summonerName.Equals(summoners[k]))
+                    for (int l = 0; l < 5; l++)
                     {
-                        swap = teamSummonerData[l];
-                        temp = teamSummonerData[k];
-                        teamSummonerData[k] = swap;
-                        teamSummonerData[l] = temp;
-                        break;
+                        if (teamSummonerData[l].summonerName.Equals(summoners[k]))
+                        {
+                            swap = teamSummonerData[l];
+                            temp = teamSummonerData[k];
+                            teamSummonerData[k] = swap;
+                            teamSummonerData[l] = temp;
+                            break;
+                        }
                     }
                 }
+            }
+            catch(NullReferenceException)
+            {
+                return null;
             }
 
             return teamSummonerData;
