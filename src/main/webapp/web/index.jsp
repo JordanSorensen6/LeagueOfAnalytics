@@ -274,17 +274,21 @@
 
 <br><br>
 
+<div class="scoreDiv">
+    <span class="tooltiptext">Your score will show up here.  The higher your score the better chance you have of winning</span>
     <h1 class="totalScore" id="totalScore">Your Score: 0</h1>
-<p class="userMessage" id="userMessage"><b>Based on (number) games, players with this score win (some percentage) of their games.</b></p>
+    <p class="userMessage" id="userMessage"><b>Based on (number) games, players with this score win (some percentage) of their games.</b></p>
+</div>
 
 
-
-
-<textarea id="textBox" cols="50" rows="5" placeholder="summoner1 joined the lobby
+<div class="textBox" style="display: inline-block">
+    <span class="tooltiptext">You can copy and paste the summoners from the champion select page and paste here.  The summoner names will auto-fill.</span>
+    <textarea id="textBox" cols="50" rows="5" placeholder="summoner1 joined the lobby
 summoner2 joined the lobby
 summoner3 joined the lobby
 summoner4 joined the lobby
 summoner5 joined the lobby" id="textBox" oninput="clearAll(); home.populateSummonerNames()"></textarea>
+</div>
 
 <div id="arrows" style="display: none">
     <span class="arrowLeft" style="font-size: 3em" onclick="goBackTutorial()">

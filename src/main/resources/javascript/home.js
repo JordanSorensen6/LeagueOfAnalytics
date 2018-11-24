@@ -669,7 +669,7 @@ function displayButton(id)
 }
 
 var currentTip = 0;
-var highlightElements = ["summoner", "champPic", "tier", "champPic"];
+var highlightElements = ["summoner", "champPic", "tier", "champPic", "scoreDiv", "textBox"];
 
 function startTutorial() {
     document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
