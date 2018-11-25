@@ -244,6 +244,7 @@ text {
 
 .menu {
     position: relative;
+    display: inline-block;
 }
 
 .menu .tooltiptext {
@@ -259,7 +260,7 @@ text {
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-    bottom: 110%;
+    top: 150%;
     left: 50%;
     margin-left: -60px;
 }
@@ -267,16 +268,17 @@ text {
 .menu .tooltiptext::after {
     content: "";
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: white transparent transparent transparent;
+    border-color: transparent transparent white transparent;
 }
 
 .chart1 {
     position: relative;
+    /*display: inline-block;*/
 }
 
 .chart1 .tooltiptext {
