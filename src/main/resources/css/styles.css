@@ -294,8 +294,8 @@ text {
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-    bottom: 110%;
-    left: 50%;
+    bottom: 100%;
+    left: 25%;
     margin-left: -60px;
 }
 
@@ -327,8 +327,8 @@ text {
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-    bottom: 110%;
-    left: 50%;
+    bottom: 100%;
+    left: 25%;
     margin-left: -60px;
 }
 
