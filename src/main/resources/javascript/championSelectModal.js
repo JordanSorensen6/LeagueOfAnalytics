@@ -69,7 +69,7 @@ var championSelectModal = (function($) {
                 $('#championImages > div').not($el).hide();
                 if(selector == "counters")
                 {
-                    $('.'+ home.getRole(selectFor).toLowerCase()).show();
+                    $('.'+ (home.getRole(selectFor).toLowerCase())).show();
                 }
             }
             $('#championSearch').trigger('keyup');

@@ -21,6 +21,7 @@
 
 <div class="container">
 
+    <div id="loader" style="visibility: hidden"></div>
     <div class="row">
         <div class="col-sm-2">
             <u>Team Summoners</u>

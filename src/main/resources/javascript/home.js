@@ -88,12 +88,15 @@ var home = (function($, champSelect) {
     function summonerIdLookup(id){
         document.getElementById("button"+id).style.display = "none";
         var s1 = document.getElementById("summoner"+id).value;
+        document.getElementById("loader").style.visibility = "visible";
         $.get('riot/summonerIds?s1=' + s1, function(data) {
-            summonerIds = data;
+            document.getElementById("loader").style.visibility = "hidden";
+            summonerIds[Object.keys(data)[0]] = data[Object.keys(data)[0]];
             getSummonerInfo(summonerIds[s1], id);
             updateChampion(id);
             findAvgRank();
-            checkForMatchup('team', "champion"+id);
+            //checkForMatchup('team', "champion"+id);
+            checkForMatchup(getChampNameFromImage(document.getElementById("teamImg"+id).src), "champion"+id);
         });
     }
 
@@ -105,8 +108,10 @@ var home = (function($, champSelect) {
             var s3 = document.getElementById('summoner3').value;
             var s4 = document.getElementById('summoner4').value;
             var s5 = document.getElementById('summoner5').value;
+            document.getElementById("loader").style.visibility = "visible";
             $.get('riot/summonerIds?s1=' + s1 + '&s2=' + s2 + '&s3=' + s3
                 + '&s4=' + s4 + '&s5=' + s5, function(data) {
+                document.getElementById("loader").style.visibility = "hidden";
                 summonerIds = data;
                 getSummonerInfo(summonerIds[s1], 1);
                 getSummonerInfo(summonerIds[s2], 2);
@@ -207,7 +212,9 @@ var home = (function($, champSelect) {
         if(champions.hasOwnProperty(key)) {
             var championId = champions[key];
             // console.log("sid: " + summonerId + " cid: " + championId);
+            document.getElementById("loader").style.visibility = "visible";
             $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
+                document.getElementById("loader").style.visibility = "hidden";
                 //$('#mastery' + num).val(data);
                 //getSummonerInfo(summonerId, num);
                 var image = document.getElementById('mastery' + id);
@@ -273,16 +280,12 @@ var home = (function($, champSelect) {
             var c2;
             if(id.includes('champion'))
             {
-                //c1 = document.getElementById(id).value;
                 c1 = champion;
-                //c2 = document.getElementById(opponent).value;
                 c2 = getChampNameFromImage(document.getElementById(opponent).src);
             }
             else
             {
-                //c1 = document.getElementById(opponent).value;
                 c1 = getChampNameFromImage(document.getElementById(opponent).src);
-                //c2 = document.getElementById(id).value;
                 c2 = champion;
             }
 
@@ -307,7 +310,8 @@ var home = (function($, champSelect) {
                         else if(role == 'Support')
                             displayBars(data, "percentage5");
 
-                        setTimeout(function(){ getScore(role); }, 1000);//Wait for updated mastery. Temporary solution.
+                        if(document.getElementById("summoner"+opponent.toString().replace("oppImg", "").replace("teamImg", "")).value != "")
+                            setTimeout(function(){ getScore(role); }, 1000);//Wait for updated mastery. Temporary solution.
 
                     });
                 }
