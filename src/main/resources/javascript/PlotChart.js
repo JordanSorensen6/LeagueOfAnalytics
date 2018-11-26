@@ -108,10 +108,19 @@ class PlotChart{
 
         chartEnter
             .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
-            .attr("r", radius)
+            .attr("r", function(d){
+                if(d.highlighted){
+                    return clickRadius
+                }
+                return radius
+            })
             .attr("class", function(d){
                 return d["outcome"];
+            })
+            .classed("highlighted", function(d){
+                return d.highlighted;
             });
+
 
         chart.exit().remove();
 
@@ -127,6 +136,7 @@ class PlotChart{
 
         d3.select("#plot").selectAll("circle")
             .on("click", function (d){
+                d.highlighted = true;
                 d3.select("#plot").selectAll("circle")
                     .classed("highlighted", false)
                     .attr("r", radius);

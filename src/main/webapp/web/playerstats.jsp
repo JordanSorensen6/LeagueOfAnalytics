@@ -125,6 +125,7 @@ ${username} stats
         document.getElementById("loader").style.visibility = "hidden";
         data.forEach(function (d) {
             d.s = +d.score;
+            d.highlighted = false;
         });
         chart = new PlotChart(data);
         chart.updateChart();
@@ -175,6 +176,7 @@ ${username} stats
                 document.getElementById("loader").style.visibility = "hidden";
                 data.forEach(function (d) {
                     d.s = +d.score;
+                    d.highlighted = false;
                 });
                 chart.newGames(data);
             });
