@@ -139,14 +139,17 @@ class PlotChart{
 
         d3.select("#plot").selectAll("circle")
             .on("click", function (d){
-                d.highlighted = true;
                 d3.select("#plot").selectAll("circle")
-                    .classed("highlighted", false)
+                    .classed("highlighted", function (d){
+                        d.highlighted = false;
+                        return false;
+                    })
                     .attr("r", radius);
 
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
+                d.highlighted = true;
 
                 $.get('/match?matchID=' + d["matchId"], function(data){
 
