@@ -3,6 +3,9 @@ class PlotChart{
     constructor(data){
         this.data = data;
         this.unusedData = [];
+        this.currentTip = 0;
+        this.highlightElements = ["moreButton", "deleteButton", "graph", "legend"];
+
         //document.getElementById("PlayerStatImg").style.visibility = 'hidden';
     }
 
@@ -108,10 +111,19 @@ class PlotChart{
 
         chartEnter
             .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
-            .attr("r", radius)
+            .attr("r", function(d){
+                if(d.highlighted){
+                    return clickRadius
+                }
+                return radius
+            })
             .attr("class", function(d){
                 return d["outcome"];
+            })
+            .classed("highlighted", function(d){
+                return d.highlighted;
             });
+
 
         chart.exit().remove();
 
@@ -128,12 +140,16 @@ class PlotChart{
         d3.select("#plot").selectAll("circle")
             .on("click", function (d){
                 d3.select("#plot").selectAll("circle")
-                    .classed("highlighted", false)
+                    .classed("highlighted", function (d){
+                        d.highlighted = false;
+                        return false;
+                    })
                     .attr("r", radius);
 
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
+                d.highlighted = true;
 
                 $.get('/match?matchID=' + d["matchId"], function(data){
 
@@ -265,4 +281,70 @@ class PlotChart{
         })
     }
 
+    startTutorial(){
+        document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
+        var tips = document.getElementsByClassName("tooltiptext");
+        tips[0].style.visibility = "visible";
+        document.getElementsByTagName("body")[0].classList.add("highlight-is-active");
+        var highlightedElements = document.getElementsByClassName(this.highlightElements[0]);
+        highlightedElements[0].classList.add("highlight");
+        document.getElementById("arrows").style.display = "block";
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+        var exit = document.getElementById("exit");
+        exit.style.display = "block";
+    }
+
+    continueTutorial(){
+        var notHighlightedElements = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+        notHighlightedElements[0].classList.remove("highlight");
+        var tips = document.getElementsByClassName("tooltiptext");
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "visible";
+        if(this.currentTip < tips.length - 1) {
+            this.currentTip++;
+            for (var i = 0; i < tips.length; i++) {
+                tips[i].style.visibility = "hidden";
+            }
+            tips[this.currentTip].style.visibility = "visible";
+            var elementsToHighlight = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+            elementsToHighlight[0].classList.add("highlight");
+        }
+        if(this.currentTip == tips.length - 1) {
+            document.getElementsByClassName("arrowRight")[0].style.visibility = "hidden";
+        }
+    }
+
+    goBackTutorial(){
+        var notHighlightedElements = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+        notHighlightedElements[0].classList.remove("highlight");
+        var tips = document.getElementsByClassName("tooltiptext");
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+        if(this.currentTip > 0){
+            this.currentTip--;
+            for (var i = 0; i < tips.length; i++) {
+                tips[i].style.visibility = "hidden";
+            }
+            tips[this.currentTip].style.visibility = "visible";
+            var elementsToHighlight = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+            elementsToHighlight[0].classList.add("highlight");
+        }
+        if(this.currentTip == 0){
+            document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+        }
+    }
+
+    exitTutorial(){
+        var exit = document.getElementById("exit");
+        exit.style.display = "none"; // get rid of exit
+        document.getElementById("arrows").style.display = "none";
+        document.getElementsByClassName("help-tip")[0].style.visibility = "visible";
+        var highlightedElements = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+        highlightedElements[0].classList.remove("highlight");
+        document.getElementsByTagName("body")[0].classList.remove("highlight-is-active");
+        var tips = document.getElementsByClassName("tooltiptext");
+        for(var i = 0; i < tips.length; i++){
+            tips[i].style.visibility = "hidden";
+        }
+        this.currentTip = 0;
+    }
 }

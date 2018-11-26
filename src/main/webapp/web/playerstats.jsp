@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
     <link rel="stylesheet" href="/resources/css/temp.css"/>
-    <link rel="stylesheet" href="/resources/css/statsLayout.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="/resources/javascript/d3-tip.js"></script>
@@ -19,15 +19,24 @@
 
 <jsp:include page="navbar.jsp"/>
 
+<div>
+    <span id="exit" class="tutorialExit" style="font-size: 2em; display: none" onclick="chart.exitTutorial()">
+        <i class="fas fa-times">
+
+        </i>
+    </span>
+</div>
+
 ${username} stats
 
 
 <div class="chart">
-    <button type="button" onclick="moreGames()" id = "add">Add More Games</button>
-    <button type="button" onclick="chart.lessGames()" id = "delete">Take Away Games</button>
+    <button class="moreButton" type="button" onclick="moreGames()" id = "add"><span class="tooltiptext">This button is for adding games to the graph</span>Add More Games</button>
+    <button class="deleteButton" type="button" onclick="chart.lessGames()" id = "delete"><span class="tooltiptext">This button is for deleting games from the graph</span>Take Away Games</button>
     <h4>Assigned Scores For Past Games</h4>
     <div class = "row">
-        <div>
+        <div class="graph">
+            <span class="tooltiptext">The Graph</span>
             <div id="loader" style="visibility: hidden"></div>
             <svg width="800" height="600" id="plotChart">
                 <g id="xAxis"></g>
@@ -35,7 +44,8 @@ ${username} stats
                 <g id="plot"></g>
             </svg>
         </div>
-        <div>
+        <div class="legend">
+            <span class="tooltiptext">A legend for the graph</span>
             <h4>Legend</h4>
             <svg width="200" height="400" id="legend">
 
@@ -45,75 +55,115 @@ ${username} stats
 
 </div>
 
+<div id="arrows" style="display: none">
+    <span class="arrowLeft" style="font-size: 3em" onclick="chart.goBackTutorial()">
+        <i class="fas fa-arrow-alt-circle-left"></i>
+    </span>
+    <span class="arrowRight" style="font-size: 3em" onclick="chart.continueTutorial()">
+        <i class="fas fa-arrow-alt-circle-right"></i>
+    </span>
+</div>
 
 <div id="gameStats" style="display: none">
     Blue Team
-    <div id="gameStats100" class="gridLayout">
-        <div class="summoner"><u>Summoner</u></div>
-        <div class="summoner1"></div>
-        <div class="summoner2"></div>
-        <div class="summoner3"></div>
-        <div class="summoner4"></div>
-        <div class="summoner5"></div>
+    <div id="gameStats100">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm"><u>Summoner</u></div>
+                <div class="col-sm"><u>KDA</u></div>
+                <div class="col-sm"><u>Damage</u></div>
+                <div class="col-sm"><u>Previous Season's Tier</u></div>
+            </div>
 
-        <div class="kda"><u>KDA</u></div>
-        <div class="kda1"></div>
-        <div class="kda2"></div>
-        <div class="kda3"></div>
-        <div class="kda4"></div>
-        <div class="kda5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner1"></div></div>
+                <div class="col-sm"><div class="kda1"></div></div>
+                <div class="col-sm"><div class="damage1"></div></div>
+                <div class="col-sm"><div class="tier1"></div></div>
+            </div>
 
-        <div class="damage"><u>Damage</u></div>
-        <div class="damage1"></div>
-        <div class="damage2"></div>
-        <div class="damage3"></div>
-        <div class="damage4"></div>
-        <div class="damage5"></div>
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner2"></div></div>
+                <div class="col-sm"><div class="kda2"></div></div>
+                <div class="col-sm"><div class="damage2"></div></div>
+                <div class="col-sm"><div class="tier2"></div></div>
+            </div>
 
-        <div class="tier"><u>Tier</u></div>
-        <div class="tier1"></div>
-        <div class="tier2"></div>
-        <div class="tier3"></div>
-        <div class="tier4"></div>
-        <div class="tier5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner3"></div></div>
+                <div class="col-sm"><div class="kda3"></div></div>
+                <div class="col-sm"><div class="damage3"></div></div>
+                <div class="col-sm"><div class="tier3"></div></div>
+            </div>
+
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner4"></div></div>
+                <div class="col-sm"><div class="kda4"></div></div>
+                <div class="col-sm"><div class="damage4"></div></div>
+                <div class="col-sm"><div class="tier4"></div></div>
+            </div>
+
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner5"></div></div>
+                <div class="col-sm"><div class="kda5"></div></div>
+                <div class="col-sm"><div class="damage5"></div></div>
+                <div class="col-sm"><div class="tier5"></div></div>
+            </div>
+
+        </div>
     </div>
+
     Red Team
     <div id="gameStats200" class="gridLayout">
-        <div class="summoner"><u>Summoner</u></div>
-        <div class="summoner1"></div>
-        <div class="summoner2"></div>
-        <div class="summoner3"></div>
-        <div class="summoner4"></div>
-        <div class="summoner5"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm"><u>Summoner</u></div>
+                <div class="col-sm"><u>KDA</u></div>
+                <div class="col-sm"><u>Damage</u></div>
+                <div class="col-sm"><u>Previous Season's Tier</u></div>
+            </div>
 
-        <div class="kda"><u>KDA</u></div>
-        <div class="kda1"></div>
-        <div class="kda2"></div>
-        <div class="kda3"></div>
-        <div class="kda4"></div>
-        <div class="kda5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner1"></div></div>
+                <div class="col-sm"><div class="kda1"></div></div>
+                <div class="col-sm"><div class="damage1"></div></div>
+                <div class="col-sm"><div class="tier1"></div></div>
+            </div>
 
-        <div class="damage"><u>Damage</u></div>
-        <div class="damage1"></div>
-        <div class="damage2"></div>
-        <div class="damage3"></div>
-        <div class="damage4"></div>
-        <div class="damage5"></div>
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner2"></div></div>
+                <div class="col-sm"><div class="kda2"></div></div>
+                <div class="col-sm"><div class="damage2"></div></div>
+                <div class="col-sm"><div class="tier2"></div></div>
+            </div>
 
-        <div class="tier"><u>Previous Season's Tier</u></div>
-        <div class="tier1"></div>
-        <div class="tier2"></div>
-        <div class="tier3"></div>
-        <div class="tier4"></div>
-        <div class="tier5"></div>
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner3"></div></div>
+                <div class="col-sm"><div class="kda3"></div></div>
+                <div class="col-sm"><div class="damage3"></div></div>
+                <div class="col-sm"><div class="tier3"></div></div>
+            </div>
+
+            <div class="row bk2">
+                <div class="col-sm"><div class="summoner4"></div></div>
+                <div class="col-sm"><div class="kda4"></div></div>
+                <div class="col-sm"><div class="damage4"></div></div>
+                <div class="col-sm"><div class="tier4"></div></div>
+            </div>
+
+            <div class="row bk1">
+                <div class="col-sm"><div class="summoner5"></div></div>
+                <div class="col-sm"><div class="kda5"></div></div>
+                <div class="col-sm"><div class="damage5"></div></div>
+                <div class="col-sm"><div class="tier5"></div></div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="chart">
-    <svg width="100" height="600">
-
-    </svg>
-</div>
+<div class="help-tip" onclick="chart.startTutorial()">
+    <p>Click here to start a tutorial for the web site</p>
+</div><br>
 </body>
 </html>
 <script>
@@ -125,6 +175,7 @@ ${username} stats
         document.getElementById("loader").style.visibility = "hidden";
         data.forEach(function (d) {
             d.s = +d.score;
+            d.highlighted = false;
         });
         chart = new PlotChart(data);
         chart.updateChart();
@@ -175,6 +226,7 @@ ${username} stats
                 document.getElementById("loader").style.visibility = "hidden";
                 data.forEach(function (d) {
                     d.s = +d.score;
+                    d.highlighted = false;
                 });
                 chart.newGames(data);
             });
