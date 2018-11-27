@@ -75,11 +75,11 @@
 
 
         <div class="col-sm my-auto">
-            <div class="summoner summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><span class="tooltiptext">This column is where you input summoner names</span><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>
+            <div class="summoner summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><span class="tooltiptext">This column is where you input summoner names.  There is drag and drop functionality if the summoner is in the wrong position.</span><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic teamChampTopPic"><span class="tooltiptext">Click the icons to select each position's champion</span><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
+            <div class="champPic teamChampTopPic"><span class="tooltiptext">Click the icons to select each position's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
         <div class="col-sm my-auto">
@@ -103,7 +103,7 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic oppChampTopPic"><span class="tooltiptext">Click the icons to select each opponent's champion</span><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
+            <div class="champPic oppChampTopPic"><span class="tooltiptext">Click the icons to select each opponent's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
         <div class="col-sm my-auto">

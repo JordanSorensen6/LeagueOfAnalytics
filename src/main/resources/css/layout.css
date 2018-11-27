@@ -660,7 +660,7 @@ textarea{
 
 .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 160px;
     background-color: white;
     color: black;
     text-align: center;
@@ -673,7 +673,7 @@ textarea{
     z-index: 1;
     bottom: 110%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -80px;
 }
 
 /*.name:hover .tooltiptext {*/
