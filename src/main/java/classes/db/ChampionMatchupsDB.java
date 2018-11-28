@@ -27,6 +27,17 @@ public class ChampionMatchupsDB {
         return matchups;
     }
 
+    public static List<ChampionMatchupsEntity> getByIdAndElo(Integer id, String elo) {
+        Session session = HibernateUtil.getSession();
+        String q = "FROM ChampionMatchupsEntity as M WHERE M.championId = :champ_id AND M.elo = :elo";
+        Query query = session.createQuery(q);
+        query.setParameter("champ_id", id);
+        query.setParameter("elo", elo);
+        List<ChampionMatchupsEntity> matchups = query.getResultList();
+        session.close();
+        return matchups;
+    }
+
     public static ChampionMatchupsEntity getByAll(Integer id, String elo, String role) {
         Session session = HibernateUtil.getSession();
         String q = "FROM ChampionMatchupsEntity as M WHERE M.championId = :champ_id AND M.elo = :elo AND M.role = :role";
