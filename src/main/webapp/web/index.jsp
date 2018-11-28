@@ -79,7 +79,7 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic teamChampTopPic"><span class="tooltiptext">Click the icons to select each position's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"></div>
+            <div class="champPic teamChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"><span class="tooltiptext">Click the icons to select each position's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span></div>
         </div>
 
         <div class="col-sm my-auto">
@@ -103,7 +103,7 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic oppChampTopPic"><span class="tooltiptext">Click the icons to select each opponent's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"></div>
+            <div class="champPic oppChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"><span class="tooltiptext">Click the icons to select each opponent's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span></div>
         </div>
 
         <div class="col-sm my-auto">
