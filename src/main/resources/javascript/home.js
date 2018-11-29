@@ -562,6 +562,12 @@ var home = (function($, champSelect) {
         }
         if(type == "summoners") {//Swap summoner roles.
             if (summoner1 != null && summoner2 != null) {
+
+                setTimeout(function(){ populateDataIfCookie(lane1);
+                    populateDataIfCookie(lane2);}, 1500);//Wait for data to load.
+
+
+
                 var masteryTemp = mastery1.src;
                 mastery1.src = mastery2.src;
                 mastery2.src = masteryTemp;
@@ -600,6 +606,9 @@ var home = (function($, champSelect) {
             // teamChamp1.value = teamChamp2.value;
             // teamChamp2.value = championTemp;
 
+            populateDataIfCookie(lane1);
+            populateDataIfCookie(lane2);
+
             var teamImgTemp = teamImg1.src;
             teamImg1.src = teamImg2.src;
             teamImg2.src = teamImgTemp;
@@ -630,6 +639,15 @@ var home = (function($, champSelect) {
 
     }
 
+    function populateDataIfCookie(position) {
+        position = position.toString().replace("teamImg", "").replace("oppImg", "");
+        var summonerName = document.getElementById("summoner"+position).value;
+        if (summonerIds[summonerName] == undefined)
+        {
+            summonerIdLookup(position);
+        }
+    }
+
     return {
         init: init,
         populateSummonerNames: populateSummonerNames,
@@ -638,6 +656,7 @@ var home = (function($, champSelect) {
         summonerIdLookup: summonerIdLookup,
         findAvgRank: findAvgRank,
         getRole: getRole,
+        populateDataIfCookie: populateDataIfCookie,
         //TODO remove later - these are just for testing
         getChampions: getChampions,
         getSummonerIds: getSummonerIds
@@ -691,6 +710,8 @@ function startTutorial() {
     document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
     document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
 }
+
+
 
 function continueTutorial() {
     var notHighlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
