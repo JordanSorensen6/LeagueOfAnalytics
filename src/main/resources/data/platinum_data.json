@@ -1,237 +1,167 @@
 [
-  {
-    "score":15,
-    "wins":1,
-    "losses":0
-  },
-  {
-    "score":14,
-    "wins":2,
-    "losses":0
-  },
-  {
-    "score":13.5,
-    "wins":0,
-    "losses":1
-  },
-  {
-    "score":13,
-    "wins":3,
-    "losses":1
-  },
-  {
-    "score":12.5,
-    "wins":6,
-    "losses":3
-  },
-  {
-    "score":12,
-    "wins":9,
-    "losses":3
-  },
-  {
-    "score":11.5,
-    "wins":13,
-    "losses":11
-  },
-  {
-    "score":11,
-    "wins":20,
-    "losses":14
-  },
-  {
-    "score":10.5,
-    "wins":34,
-    "losses":17
-  },
-  {
-    "score":10,
-    "wins":40,
-    "losses":38
-  },
-  {
-    "score":9.5,
-    "wins":70,
-    "losses":56
-  },
-  {
-    "score":9,
-    "wins":96,
-    "losses":50
-  },
-  {
-    "score":8.5,
-    "wins":129,
-    "losses":98
-  },
-  {
-    "score":8,
-    "wins":162,
-    "losses":116
-  },
-  {
-    "score":7.5,
-    "wins":197,
-    "losses":177
-  },
-  {
-    "score":7,
-    "wins":248,
-    "losses":214
-  },
-  {
-    "score":6.5,
-    "wins":303,
-    "losses":281
-  },
-  {
-    "score":6,
-    "wins":383,
-    "losses":313
-  },
-  {
-    "score":5.5,
-    "wins":410,
-    "losses":368
-  },
-  {
-    "score":5,
-    "wins":458,
-    "losses":411
-  },
-  {
-    "score":4.5,
-    "wins":477,
-    "losses":428
-  },
-  {
-    "score":4,
-    "wins":496,
-    "losses":543
-  },
-  {
-    "score":3.5,
-    "wins":524,
-    "losses":504
-  },
-  {
-    "score":3,
-    "wins":536,
-    "losses":525
-  },
-  {
-    "score":2.5,
-    "wins":490,
-    "losses":575
-  },
-  {
-    "score":2,
-    "wins":491,
-    "losses":531
-  },
-  {
-    "score":1.5,
-    "wins":424,
-    "losses":506
-  },
-  {
-    "score":1,
-    "wins":354,
-    "losses":469
-  },
-  {
-    "score":0.5,
-    "wins":299,
-    "losses":455
-  },
-  {
-    "score":0,
-    "wins":278,
-    "losses":373
-  },
-  {
-    "score":-0.5,
-    "wins":228,
-    "losses":318
-  },
-  {
-    "score":-1,
-    "wins":183,
-    "losses":287
-  },
-  {
-    "score":-1.5,
-    "wins":142,
-    "losses":236
-  },
-  {
-    "score":-2,
-    "wins":84,
-    "losses":154
-  },
-  {
-    "score":-2.5,
-    "wins":78,
-    "losses":130
-  },
-  {
-    "score":-3,
-    "wins":52,
-    "losses":90
-  },
-  {
-    "score":-3.5,
-    "wins":35,
-    "losses":67
-  },
-  {
-    "score":-4,
-    "wins":33,
-    "losses":62
-  },
-  {
-    "score":-4.5,
-    "wins":17,
-    "losses":35
-  },
-  {
-    "score":-5,
-    "wins":8,
-    "losses":26
-  },
-  {
-    "score":-5.5,
-    "wins":6,
-    "losses":9
-  },
-  {
-    "score":-6,
-    "wins":7,
-    "losses":14
-  },
-  {
-    "score":-6.5,
-    "wins":3,
-    "losses":9
-  },
-  {
-    "score":-7,
-    "wins":0,
-    "losses":7
-  },
-  {
-    "score":-7.5,
-    "wins":1,
-    "losses":3
-  },
-  {
-    "score":-8.5,
-    "wins":0,
-    "losses":2
-  },
-  {
-    "score":-10.5,
-    "wins":0,
-    "losses":1
-  }
+    {
+        "score": 9.5,
+        "wins": 6,
+        "losses": 0
+    },
+    {
+        "score": 9,
+        "wins": 6,
+        "losses": 0
+    },
+    {
+        "score": 8.5,
+        "wins": 15,
+        "losses": 4
+    },
+    {
+        "score": 8,
+        "wins": 32,
+        "losses": 10
+    },
+    {
+        "score": 7.5,
+        "wins": 47,
+        "losses": 14
+    },
+    {
+        "score": 7,
+        "wins": 69,
+        "losses": 38
+    },
+    {
+        "score": 6.5,
+        "wins": 124,
+        "losses": 62
+    },
+    {
+        "score": 6,
+        "wins": 202,
+        "losses": 108
+    },
+    {
+        "score": 5.5,
+        "wins": 281,
+        "losses": 165
+    },
+    {
+        "score": 5,
+        "wins": 352,
+        "losses": 276
+    },
+    {
+        "score": 4.5,
+        "wins": 474,
+        "losses": 327
+    },
+    {
+        "score": 4,
+        "wins": 565,
+        "losses": 433
+    },
+    {
+        "score": 3.5,
+        "wins": 654,
+        "losses": 516
+    },
+    {
+        "score": 3,
+        "wins": 665,
+        "losses": 596
+    },
+    {
+        "score": 2.5,
+        "wins": 701,
+        "losses": 633
+    },
+    {
+        "score": 2,
+        "wins": 632,
+        "losses": 691
+    },
+    {
+        "score": 1.5,
+        "wins": 605,
+        "losses": 717
+    },
+    {
+        "score": 1,
+        "wins": 601,
+        "losses": 631
+    },
+    {
+        "score": 0.5,
+        "wins": 427,
+        "losses": 577
+    },
+    {
+        "score": 0,
+        "wins": 365,
+        "losses": 540
+    },
+    {
+        "score": -0.5,
+        "wins": 296,
+        "losses": 438
+    },
+    {
+        "score": 1,
+        "wins": 210,
+        "losses": 300
+    },
+    {
+        "score": -1.5,
+        "wins": 148,
+        "losses": 247
+    },
+    {
+        "score": 2,
+        "wins": 99,
+        "losses": 185
+    },
+    {
+        "score": -2.5,
+        "wins": 68,
+        "losses": 143
+    },
+    {
+        "score": 3,
+        "wins": 38,
+        "losses": 74
+    },
+    {
+        "score": -3.5,
+        "wins": 17,
+        "losses": 57
+    },
+    {
+        "score": 4,
+        "wins": 18,
+        "losses": 18
+    },
+    {
+        "score": -4.5,
+        "wins": 6,
+        "losses": 16
+    },
+    {
+        "score": 5,
+        "wins": 4,
+        "losses": 8
+    },
+    {
+        "score": -5.5,
+        "wins": 1,
+        "losses": 3
+    },
+    {
+        "score": 6,
+        "wins": 1,
+        "losses": 1
+    },
+    {
+        "score": -6.5,
+        "wins": 0,
+        "losses": 2
+    }
 ]
