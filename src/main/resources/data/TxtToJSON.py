@@ -17,8 +17,11 @@ if __name__ == "__main__":
     for file in txt_files:
         with open(file) as data:
             for line in data:
-                numbs = re.findall(r"[-]?\d*\.\d+|\d+", line)
-                score = {"score": string_to_num(numbs[0]), "wins": string_to_num(numbs[1]), "losses": string_to_num(numbs[2])}
+                numbs = re.findall(r"[-]?\d*\.\d+|[-]?\d+", line)
+                print(numbs)
+                score = {"score": string_to_num(numbs[0]),
+                         "wins": string_to_num(numbs[1]),
+                         "losses": string_to_num(numbs[2])}
                 scores.append(score)
         txt_file_name_length = len(file)
         json_file_name = file[:txt_file_name_length - 3] + 'json'

@@ -100,7 +100,7 @@
         "losses": 514
     },
     {
-        "score": 1,
+        "score": -1,
         "wins": 361,
         "losses": 483
     },
@@ -110,7 +110,7 @@
         "losses": 441
     },
     {
-        "score": 2,
+        "score": -2,
         "wins": 221,
         "losses": 381
     },
@@ -120,7 +120,7 @@
         "losses": 326
     },
     {
-        "score": 3,
+        "score": -3,
         "wins": 109,
         "losses": 218
     },
@@ -130,7 +130,7 @@
         "losses": 165
     },
     {
-        "score": 4,
+        "score": -4,
         "wins": 66,
         "losses": 105
     },
@@ -140,7 +140,7 @@
         "losses": 68
     },
     {
-        "score": 5,
+        "score": -5,
         "wins": 15,
         "losses": 45
     },
@@ -150,7 +150,7 @@
         "losses": 35
     },
     {
-        "score": 6,
+        "score": -6,
         "wins": 3,
         "losses": 15
     },
@@ -160,7 +160,7 @@
         "losses": 11
     },
     {
-        "score": 7,
+        "score": -7,
         "wins": 1,
         "losses": 0
     },
@@ -170,7 +170,7 @@
         "losses": 1
     },
     {
-        "score": 8,
+        "score": -8,
         "wins": 0,
         "losses": 1
     }
