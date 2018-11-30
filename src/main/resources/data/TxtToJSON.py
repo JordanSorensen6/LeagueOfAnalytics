@@ -18,7 +18,6 @@ if __name__ == "__main__":
         with open(file) as data:
             for line in data:
                 numbs = re.findall(r"[-]?\d*\.\d+|[-]?\d+", line)
-                print(numbs)
                 score = {"score": string_to_num(numbs[0]),
                          "wins": string_to_num(numbs[1]),
                          "losses": string_to_num(numbs[2])}
