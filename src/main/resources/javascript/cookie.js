@@ -121,7 +121,7 @@
             {
                 if(allElements[i].id.indexOf("playerPercentage") != -1 || allElements[i].id.indexOf("percentage") != -1)
                 {
-                    document.getElementById(allElements[i].id).innerHTML = "<b>00.00%</b>";
+                    document.getElementById(allElements[i].id).innerHTML = "00.00%";
                     displayBars(document.getElementById(allElements[i].id).innerHTML, allElements[i].id)
                 }
                 else if(allElements[i].id.indexOf("score") != -1)
