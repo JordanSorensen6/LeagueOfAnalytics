@@ -100,9 +100,22 @@ var home = (function($, champSelect) {
         });
     }
 
+    function checkValidSearch() {
+        var lines = document.getElementById("textBox").value.split('\n');
+        var re = new RegExp(".+\\sjoined the lobby");
+        for(var i = 0; i < lines.length; i++)
+        {
+            if(!re.test(lines[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     function summonerIdsLookup() {
         $('#textBox').on('input', function() {
-
+        if(checkValidSearch()) {
             var s1 = document.getElementById('summoner1').value;
             var s2 = document.getElementById('summoner2').value;
             var s3 = document.getElementById('summoner3').value;
@@ -110,7 +123,7 @@ var home = (function($, champSelect) {
             var s5 = document.getElementById('summoner5').value;
             document.getElementById("loader").style.visibility = "visible";
             $.get('riot/summonerIds?s1=' + s1 + '&s2=' + s2 + '&s3=' + s3
-                + '&s4=' + s4 + '&s5=' + s5, function(data) {
+                + '&s4=' + s4 + '&s5=' + s5, function (data) {
                 document.getElementById("loader").style.visibility = "hidden";
                 summonerIds = data;
                 getSummonerInfo(summonerIds[s1], 1);
@@ -121,6 +134,7 @@ var home = (function($, champSelect) {
                 findAvgRank();
 
             });
+        }
         });
 
     }
@@ -471,6 +485,7 @@ var home = (function($, champSelect) {
         document.getElementById("summoner3").value = lines[2];
         document.getElementById("summoner4").value = lines[3];
         document.getElementById("summoner5").value = lines[4];
+
     }
 
     function markForSwap(id) {
