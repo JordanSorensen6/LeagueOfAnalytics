@@ -105,7 +105,7 @@
         "losses": 438
     },
     {
-        "score": 1,
+        "score": -1,
         "wins": 210,
         "losses": 300
     },
@@ -115,7 +115,7 @@
         "losses": 247
     },
     {
-        "score": 2,
+        "score": -2,
         "wins": 99,
         "losses": 185
     },
@@ -125,7 +125,7 @@
         "losses": 143
     },
     {
-        "score": 3,
+        "score": -3,
         "wins": 38,
         "losses": 74
     },
@@ -135,7 +135,7 @@
         "losses": 57
     },
     {
-        "score": 4,
+        "score": -4,
         "wins": 18,
         "losses": 18
     },
@@ -145,7 +145,7 @@
         "losses": 16
     },
     {
-        "score": 5,
+        "score": -5,
         "wins": 4,
         "losses": 8
     },
@@ -155,7 +155,7 @@
         "losses": 3
     },
     {
-        "score": 6,
+        "score": -6,
         "wins": 1,
         "losses": 1
     },
