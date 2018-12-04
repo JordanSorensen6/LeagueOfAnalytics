@@ -361,7 +361,8 @@ var home = (function($, champSelect) {
             role = '5';
 
         var mastery = document.getElementById('mastery'+role).src;
-        mastery = mastery.replace(location.port, '').replace(/\D/g,'');//get mastery number w/o port number.
+        var re = new RegExp('\\/images\\/L[0-7]\\.png');
+        mastery = mastery.match(re)[0].replace("/images/L", "").replace(".png", "");
         var matchup = document.getElementById('percentage'+role).innerText;
         matchup = matchup.replace("%", "");
         var playerWinRate = document.getElementById("playerPercentage"+role).innerText;

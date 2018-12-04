@@ -32,39 +32,39 @@
 
     <div id="loader" style="visibility: hidden"></div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3 my-auto">
             <u>Team Summoners</u>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-1 my-auto">
             <u>Team Champions</u>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <u>Rank</u>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <u>Champion Mastery</u>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <u>Hot Streak</u>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <u>Player Win Percentage</u>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <u>Champion Win Percentage</u>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <u>Opponent Champions</u>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm my-auto">
             <u>Lane Score</u>
         </div>
     </div>
@@ -74,11 +74,11 @@
     <div class="row bk1">
 
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-3 my-auto">
             <div class="summoner summonerTop"><div class="positionAndName"><div class="position">Top</div><div class="name"><span class="tooltiptext">This column is where you input summoner names.  There is drag and drop functionality if the summoner is in the wrong position.</span><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner1" placeholder="summoner1" oninput="displayButton('1')"><button id="button1" onclick="home.summonerIdLookup('1')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-1 my-auto">
             <div class="champPic teamChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg1" src="/resources/images/champion/placeholderTeam.png"><span class="tooltiptext">Click the icons to select each position's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span></div>
         </div>
 
@@ -114,11 +114,11 @@
 
     <div class="row bk2">
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-3 my-auto">
             <div class="summoner summonerJungle"><div class="positionAndName"><div class="position">Jungle</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner2" placeholder="summoner2" oninput="displayButton('2')"><button id="button2" onclick="home.summonerIdLookup('2')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm-1">
             <div class="champPic teamChampJunglePic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg2" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
@@ -154,11 +154,11 @@
 
     <div class="row bk1">
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-3 my-auto">
             <div class="summoner summonerMid"><div class="positionAndName"><div class="position">Mid</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner3" placeholder="summoner3" oninput="displayButton('3')"><button id="button3" onclick="home.summonerIdLookup('3')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-1 my-auto">
             <div class="champPic teamChampMidPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg3" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
@@ -194,11 +194,11 @@
 
     <div class="row bk2">
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-3 my-auto">
             <div class="summoner summonerBot"><div class="positionAndName"><div class="position">Bot</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner4" placeholder="summoner4" oninput="displayButton('4')"><button id="button4" onclick="home.summonerIdLookup('4')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-1 my-auto">
             <div class="champPic teamChampBotPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg4" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
@@ -234,11 +234,11 @@
 
     <div class="row bk1">
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-3 my-auto">
             <div class="summoner summonerSupport"><div class="positionAndName"><div class="position">Support</div><div class="name"><input type="text" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="summoners" id="summoner5" placeholder="summoner5" oninput="displayButton('5')"><button id="button5" onclick="home.summonerIdLookup('5')">Search</button></div></div></div>
         </div>
 
-        <div class="col-sm my-auto">
+        <div class="col-sm-1 my-auto">
             <div class="champPic teamChampSupportPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="teamChamps" id="teamImg5" src="/resources/images/champion/placeholderTeam.png"></div>
         </div>
 
