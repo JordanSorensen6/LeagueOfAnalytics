@@ -68,7 +68,10 @@
     }
 
     function restoreText(key, val){
-        if(key.toString().includes("percentage") || key.toString().includes("playerPercentage")){
+        if(val == "?%"){
+            document.getElementById(key).innerHTML = "<b>?</b>";
+        }
+        else if(key.toString().includes("percentage") || key.toString().includes("playerPercentage")){
             displayBars(val, key);
         }
         else {
