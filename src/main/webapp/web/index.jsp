@@ -3,14 +3,16 @@
 <head>
     <title>League Of Analytics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/resources/css/layout.css"/>
-    <link rel="stylesheet" href="/resources/css/champSelectModal.css"/>
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="resources/css/layout.css"/>
+    <link rel="stylesheet" href="resources/css/champSelectModal.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <script src="/resources/javascript/popper.min.js"></script>
-    <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="resources/javascript/popper.min.js"></script>
+    <script src="resources/javascript/jquery-3.3.1.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
 
     <script type="text/javascript" src="resources/javascript/championSelectModal.js"></script>
@@ -275,7 +277,7 @@
     <div class="row">
         <div class="offset-9">
             <button type="button" class="btn" id="roleBestFitBtn">
-                Best Fit
+                <span class="glyphicon glyphicon-sort-by-attributes"></span>
             </button>
         </div>
     </div>

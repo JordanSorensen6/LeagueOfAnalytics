@@ -3,13 +3,14 @@
 <head>
     <title>Player Search</title>
 
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/resources/css/styles.css"/>
-    <link rel="stylesheet" href="/resources/css/layout.css"/>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="resources/css/styles.css"/>
+    <link rel="stylesheet" href="resources/css/layout.css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="resources/javascript/jquery-3.3.1.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
