@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/resources/css/layout.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
     <link rel="stylesheet" href="/resources/css/temp.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -32,29 +33,34 @@
 ${username} stats
 
 
-<div class="chart">
-    <button class="moreButton" type="button" onclick="moreGames()" id = "add"><span class="tooltiptext">This button is for adding games to the graph</span>Add More Games</button>
-    <button class="deleteButton" type="button" onclick="chart.lessGames()" id = "delete"><span class="tooltiptext">This button is for deleting games from the graph</span>Take Away Games</button>
-    <h4>Assigned Scores For Past Games</h4>
-    <div class = "row">
-        <div class="graph">
-            <span class="tooltiptext">The Graph</span>
-            <div id="loader" style="visibility: hidden"></div>
-            <svg width="800" height="600" id="plotChart">
-                <g id="xAxis"></g>
-                <g id="yAxis"></g>
-                <g id="plot"></g>
-            </svg>
-        </div>
-        <div class="legend">
-            <span class="tooltiptext">A legend for the graph</span>
-            <h4>Legend</h4>
-            <svg width="200" height="400" id="legend">
+<div class="row">
+    <div class="chart col-sm-8">
+        <button class="moreButton" type="button" onclick="moreGames()" id = "add"><span class="tooltiptext">This button is for adding games to the graph</span>Add More Games</button>
+        <button class="deleteButton" type="button" onclick="chart.lessGames()" id = "delete"><span class="tooltiptext">This button is for deleting games from the graph</span>Take Away Games</button>
+        <h4>Assigned Scores For Past Games</h4>
+        <div class = "row">
+            <div class="graph">
+                <span class="tooltiptext">The Graph</span>
+                <div id="loader" style="visibility: hidden"></div>
+                <svg width="800" height="600" id="plotChart">
+                    <g id="xAxis"></g>
+                    <g id="yAxis"></g>
+                    <g id="plot"></g>
+                </svg>
+            </div>
+            <div class="legend">
+                <span class="tooltiptext">A legend for the graph</span>
+                <h4>Legend</h4>
+                <svg width="200" height="400" id="legend">
 
-            </svg>
+                </svg>
+            </div>
         </div>
+
     </div>
-
+    <div class="col-sm-4">
+        <img class="champ-background-sm" src="/resources/images/backgrounds/zoe-transparent.png">
+    </div>
 </div>
 
 <div id="arrows" style="display: none">

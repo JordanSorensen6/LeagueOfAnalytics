@@ -77,6 +77,10 @@ var roleBestFit = (function($) {
         return result;
     }
 
+    function formatWR(winRate){
+        return Math.round((1-parseFloat(winRate.toString())) * 10000)/100;
+    }
+
     function setOpponentMatchups(opponent, league, role){
         var matchups = [];
         $.get('matchup/opponent?opponent=' + opponent + '&league=' + league + '&role=' + role, function(data) {
