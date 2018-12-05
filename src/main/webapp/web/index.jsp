@@ -275,10 +275,10 @@
 
     </div>
     <div class="row">
-        <div class="offset-9">
-            <button type="button" class="btn" id="roleBestFitBtn">
-                <span class="glyphicon glyphicon-sort-by-attributes"></span>
-            </button>
+        <div class="offset-9 roleBestFit">
+            <a class="btn btn-primary" id="roleBestFitBtn">
+                <i class="fas fa-sort-amount-up">Best</i>
+            </a>
         </div>
     </div>
 </div>

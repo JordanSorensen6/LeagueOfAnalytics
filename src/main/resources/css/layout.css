@@ -804,3 +804,18 @@ body.highlight-is-active {
     color: #004085;
 
 }
+
+.roleBestFit {
+    padding-left: 75px;
+    padding-top: 5px;
+}
+
+.search-group {
+    padding-top: 50px;
+}
+
+.champ-background {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+}

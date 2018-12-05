@@ -44,30 +44,32 @@
         </span>
     </div>
 
-    <div class="chart chart1">
-        <span class="tooltiptext">A graph to see your probability of winning for all possible scores</span>
-        <header>
-            <h2>Probability of winning based on assigned score</h2>
-        </header>
+    <div class="row">
+        <div class="col-sm-6 chart chart1">
+            <span class="tooltiptext">A graph to see your probability of winning for all possible scores</span>
+            <header>
+                <h2>Probability of winning based on assigned score</h2>
+            </header>
 
-        <svg width="700" height="400" id="barChart">
-            <g id="xAxis"></g>
-            <g id="yAxis"></g>
-            <g id="bars"></g>
-        </svg>
-    </div>
+            <svg width="700" height="400" id="barChart">
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+                <g id="bars"></g>
+            </svg>
+        </div>
 
-    <div class="chart chart2">
-        <span class="tooltiptext">A graph to see your probability of getting assigned a score</span>
-        <header>
-            <h2>Probability of getting assigned certain scores</h2>
-        </header>
+        <div class="col-sm-6 chart chart2">
+            <span class="tooltiptext">A graph to see your probability of getting assigned a score</span>
+            <header>
+                <h2>Probability of getting assigned certain scores</h2>
+            </header>
 
-        <svg width="700" height="400" id="barChart">
-            <g id="xAxis"></g>
-            <g id="yAxis1"></g>
-            <g id="bars1"></g>
-        </svg>
+            <svg width="700" height="400" id="barChart">
+                <g id="xAxis"></g>
+                <g id="yAxis1"></g>
+                <g id="bars1"></g>
+            </svg>
+        </div>
     </div>
 
 </div>

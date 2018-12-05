@@ -16,8 +16,11 @@
 
 <jsp:include page="navbar.jsp"/>
 
-<div class="row">
-    <div class="col-lg-4 offset-4">
+<div class="row search-group">
+    <div class="col-sm-4">
+        <img class="champ-background" src="resources/images/backgrounds/poppy-transparent.png">
+    </div>
+    <div class="col-sm-4">
         <div class="input-group">
             <input id="username" type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
@@ -25,6 +28,11 @@
             </span>
         </div>
     </div>
+    <div class="col-sm-4">
+        <img class="champ-background" src="resources/images/backgrounds/ezreal-transparent.png">
+    </div>
+</div>
+<div class="row">
 </div>
 </body>
 
