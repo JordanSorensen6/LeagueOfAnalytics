@@ -3,17 +3,18 @@
 <head>
     <title>League Of Analytics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/layout.css"/>
     <link rel="stylesheet" href="/resources/css/champSelectModal.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <script src="/resources/javascript/popper.min.js"></script>
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
-    <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
 
     <script type="text/javascript" src="resources/javascript/championSelectModal.js"></script>
+    <script type="text/javascript" src="resources/javascript/roleBestFit.js"></script>
     <script type="text/javascript" src="resources/javascript/home.js"></script>
     <script type="text/javascript" src="resources/javascript/cookie.js"></script>
 </head>
@@ -103,7 +104,7 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic oppChampTopPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"><span class="tooltiptext">Click the icons to select each opponent's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span></div>
+            <div class="champPic oppChampTopPic"><img class="champImg oppChampImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg1" src="/resources/images/champion/placeholderOpponent.png"><span class="tooltiptext">Click the icons to select each opponent's champion.  If the champion is in the wrong position utilize the drag and drop functionality.</span></div>
         </div>
 
         <div class="col-sm my-auto">
@@ -143,7 +144,7 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic oppChampJunglePic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
+            <div class="champPic oppChampJunglePic"><img class="champImg oppChampImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg2" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
         <div class="col-sm my-auto">
@@ -183,7 +184,7 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic oppChampMidPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"></div>
+            <div class="champPic oppChampMidPic"><img class="champImg oppChampImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg3" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
         <div class="col-sm my-auto">
@@ -223,7 +224,7 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic oppChampBotPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
+            <div class="champPic oppChampBotPic"><img class="champImg oppChampImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg4" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
         <div class="col-sm my-auto">
@@ -263,13 +264,20 @@
         </div>
 
         <div class="col-sm my-auto">
-            <div class="champPic oppChampSupportPic"><img class="champImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
+            <div class="champPic oppChampSupportPic"><img class="champImg oppChampImg" ondragstart="onDragStart(event)" ondrop="onDrop(event)" ondragover="onDragOver(event)" draggable="true" name="oppChamps" id="oppImg5" src="/resources/images/champion/placeholderOpponent.png"></div>
         </div>
 
         <div class="col-sm my-auto">
             <div class="scoreSupport" id="score5">0</div>
         </div>
 
+    </div>
+    <div class="row">
+        <div class="offset-9">
+            <button type="button" class="btn" id="roleBestFitBtn">
+                Best Fit
+            </button>
+        </div>
     </div>
 </div>
 

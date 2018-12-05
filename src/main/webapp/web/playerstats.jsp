@@ -3,7 +3,7 @@
 <head>
     <title>Stats - ${username}</title>
 
-    <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/styles.css"/>
     <link rel="stylesheet" href="/resources/css/temp.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -11,7 +11,7 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="/resources/javascript/d3-tip.js"></script>
     <script src="/resources/javascript/jquery-3.3.1.min.js"></script>
-    <script src="/resources/javascript/bootstrap/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="/resources/javascript/PlotChart.js"></script>
 </head>

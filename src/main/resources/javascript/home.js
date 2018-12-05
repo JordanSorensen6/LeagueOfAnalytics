@@ -1,4 +1,4 @@
-var home = (function($, champSelect) {
+var home = (function($, champSelect, roleBestFit) {
     var champions = {};
     var summonerIds = {};
 
@@ -9,7 +9,7 @@ var home = (function($, champSelect) {
         championSelected();
 	    anyChampSelection();
 	    champSelect.init(checkForMatchup);
-
+	    roleBestFit.init(checkForMatchup);
     }
 
 
@@ -678,7 +678,7 @@ var home = (function($, champSelect) {
         getSummonerIds: getSummonerIds
         //----------------------------------------------
     };
-}(window.jQuery, championSelectModal));
+}(window.jQuery, championSelectModal, roleBestFit));
 
 function onDragOver(ev) {
     //console.log("onDragOver");

@@ -6,14 +6,13 @@ import classes.db.ChampionMatchupsEntity;
 import classes.db.StaticChampionsDB;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import javafx.util.Pair;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
@@ -22,10 +21,8 @@ public class RoleBestFitServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String uri = request.getRequestURI();
         if(uri.equals("/best-fit")) {
-            String[] champs = request.getParameterValues("champions");
-            String elo = request.getParameter("elo");
-            String[] temp = {"ahri", "leesin", "ezreal", "annie"};
-            HashMap<String, String> roles = assignRoles(temp, "gold");
+            String[] champs = request.getParameterValues("champs");
+            HashMap<String, String> roles = assignRoles(champs, "gold");
 
 
             Gson gson = new Gson();
