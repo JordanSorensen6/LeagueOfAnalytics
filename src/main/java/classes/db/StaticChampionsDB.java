@@ -1,5 +1,6 @@
-package classes;
+package classes.db;
 
+import classes.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -10,6 +11,15 @@ public class StaticChampionsDB {
     public static List<StaticChampionsEntity> getAllChampions() {
         Session session = HibernateUtil.getSession();
         String q = "SELECT C.id, C.formatted FROM StaticChampionsEntity C";
+        Query query = session.createQuery(q);
+        List<StaticChampionsEntity> champions = query.getResultList();
+        session.close();
+        return champions;
+    }
+
+    public static List<StaticChampionsEntity> getAllChampionsTags() {
+        Session session = HibernateUtil.getSession();
+        String q = "SELECT C.formatted, C.tags FROM StaticChampionsEntity C";
         Query query = session.createQuery(q);
         List<StaticChampionsEntity> champions = query.getResultList();
         session.close();

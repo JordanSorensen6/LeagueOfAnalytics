@@ -1,8 +1,8 @@
 
     function tooltip_render(tooltip_data){
         var text = "<h4 style = color:black > Score: " + tooltip_data["score"] + "</h4> " +
-            "<h5 style = color:black > Probability of winning: " + (tooltip_data["percentage"]).toFixed(1) + "</h5>" +
-            "<h5 style = color:black > Chance of getting a score: " + (tooltip_data["chance"] * 100).toFixed(1) + "</h5>";
+            "<h5 style = color:black > Probability of winning: " + (tooltip_data["percentage"]).toFixed(1) + "% </h5>" +
+            "<h5 style = color:black > Chance of getting a score: " + (tooltip_data["chance"]).toFixed(1) + "% </h5>";
         //text += "Electoral Votes: " + tooltip_data.electoralVotes;
 
         return text;
@@ -217,4 +217,80 @@
             updateChart(data);
 
         });
+    }
+
+    var currentTip = 0;
+    var highlightElements = ["menu", "chart1", "chart2"];
+
+    function startTutorial() {
+        document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
+        var tips = document.getElementsByClassName("tooltiptext");
+        tips[0].style.visibility = "visible";
+        document.getElementsByTagName("body")[0].classList.add("highlight-is-active");
+        var highlightedElements = document.getElementsByClassName(highlightElements[0]);
+        highlightedElements[0].classList.add("highlight");
+        document.getElementById("arrows").style.display = "block";
+        var exit = document.getElementById("exit");
+        exit.style.display = "block";
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+    }
+    
+    function continueTutorial() {
+        var notHighlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+        for(var i = 1; i < notHighlightedElements.length; i++){
+            notHighlightedElements[i].classList.remove("alsoHighlighted");
+        }
+        notHighlightedElements[0].classList.remove("highlight");
+        var tips = document.getElementsByClassName("tooltiptext");
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "visible";
+        if(currentTip < tips.length - 1) {
+            currentTip++;
+            for (var i = 0; i < tips.length; i++) {
+                tips[i].style.visibility = "hidden";
+            }
+            tips[currentTip].style.visibility = "visible";
+            var elementsToHighlight = document.getElementsByClassName(highlightElements[currentTip]);
+            elementsToHighlight[0].classList.add("highlight");
+        }
+        if(currentTip == tips.length - 1) {
+            document.getElementsByClassName("arrowRight")[0].style.visibility = "hidden";
+        }
+    }
+    
+    function goBackTutorial() {
+        var notHighlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+        for(var i = 1; i < notHighlightedElements.length; i++){
+            notHighlightedElements[i].classList.remove("alsoHighlighted");
+        }
+        notHighlightedElements[0].classList.remove("highlight");
+        var tips = document.getElementsByClassName("tooltiptext");
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+        if(currentTip > 0){
+            currentTip--;
+            for (var i = 0; i < tips.length; i++) {
+                tips[i].style.visibility = "hidden";
+            }
+            tips[currentTip].style.visibility = "visible";
+            var elementsToHighlight = document.getElementsByClassName(highlightElements[currentTip]);
+            elementsToHighlight[0].classList.add("highlight");
+        }
+        if(currentTip == 0){
+            document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+        }
+    }
+
+    function exitTutorial() {
+        var exit = document.getElementById("exit");
+        exit.style.display = "none"; // get rid of exit
+        document.getElementById("arrows").style.display = "none";
+        document.getElementsByClassName("help-tip")[0].style.visibility = "visible";
+        var highlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+        highlightedElements[0].classList.remove("highlight");
+        document.getElementsByTagName("body")[0].classList.remove("highlight-is-active");
+        var tips = document.getElementsByClassName("tooltiptext");
+        for(var i = 0; i < tips.length; i++){
+            tips[i].style.visibility = "hidden";
+        }
+        currentTip = 0;
     }

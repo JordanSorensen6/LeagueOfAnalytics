@@ -19,6 +19,10 @@
         <servlet-name>ApplicationStats</servlet-name>
         <servlet-class>servlets.ApplicationStats</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RoleBestFitServlet</servlet-name>
+        <servlet-class>servlets.RoleBestFitServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RiotAPI</servlet-name>
         <url-pattern>/riot/*</url-pattern>
@@ -32,11 +36,19 @@
         <url-pattern>/history/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PlayerSearch</servlet-name>
+        <url-pattern>/match/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ExtractMatchup</servlet-name>
         <url-pattern>/matchup/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ApplicationStats</servlet-name>
         <url-pattern>/app_stats/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoleBestFitServlet</servlet-name>
+        <url-pattern>/best-fit/*</url-pattern>
     </servlet-mapping>
 </web-app>

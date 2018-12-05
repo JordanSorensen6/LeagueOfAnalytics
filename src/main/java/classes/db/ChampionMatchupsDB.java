@@ -1,5 +1,6 @@
-package classes;
+package classes.db;
 
+import classes.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -21,6 +22,17 @@ public class ChampionMatchupsDB {
         String q = "FROM ChampionMatchupsEntity as M WHERE M.championId = :champ_id";
         Query query = session.createQuery(q);
         query.setParameter("champ_id", id);
+        List<ChampionMatchupsEntity> matchups = query.getResultList();
+        session.close();
+        return matchups;
+    }
+
+    public static List<ChampionMatchupsEntity> getByIdAndElo(Integer id, String elo) {
+        Session session = HibernateUtil.getSession();
+        String q = "FROM ChampionMatchupsEntity as M WHERE M.championId = :champ_id AND M.elo = :elo";
+        Query query = session.createQuery(q);
+        query.setParameter("champ_id", id);
+        query.setParameter("elo", elo);
         List<ChampionMatchupsEntity> matchups = query.getResultList();
         session.close();
         return matchups;

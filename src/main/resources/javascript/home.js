@@ -1,4 +1,4 @@
-var home = (function($) {
+var home = (function($, champSelect, roleBestFit) {
     var champions = {};
     var summonerIds = {};
 
@@ -8,37 +8,56 @@ var home = (function($) {
         championsLookup();
         championSelected();
 	    anyChampSelection();
+	    champSelect.init(checkForMatchup);
+	    roleBestFit.init(checkForMatchup);
     }
+
 
     function getSummonerInfo(sid, position){
         $.get('riot/playerStats?summonerId='+sid, function(data) {
-            setPlayerWinRate(data, position);
-            setHotStreak(data, position);
-            setRank(data, position);
+            var index = getIndex(data);
+            setPlayerWinRate(data, position, index);
+            setHotStreak(data, position, index);
+            setRank(data, position, index);
         });
     }
 
-    function setPlayerWinRate(json, position)
+    function getIndex(json)
     {
-        if(Object.keys(json).length !== 0)
-            document.getElementById("playerPercentage"+position).innerHTML = "<b>" + (Math.round((parseFloat(json[0]["wins"]) / (parseFloat(json[0]["wins"]) + parseFloat(json[0]["losses"])))*10000)/100).toString() + "%</b>";
-        else
-            document.getElementById("playerPercentage"+position).innerHTML = "<b>No Games</b>";
+        for(var i = 0; i < Object.keys(json).length; i++)
+        {
+            if(json[i]["queueType"] == "RANKED_SOLO_5x5")
+                return i;
+        }
+        return 0;
     }
 
-    function setRank(json, position)
+    function setPlayerWinRate(json, position, index)
+    {
+        if(Object.keys(json).length !== 0) {
+            var data = (Math.round((parseFloat(json[index]["wins"]) / (parseFloat(json[index]["wins"]) + parseFloat(json[index]["losses"]))) * 10000) / 100).toString() + "%";
+            displayBars(data, "playerPercentage"+position);
+        }
+        else
+            document.getElementById("playerPercentage"+position).innerHTML = "<b>00.00%</b>";
+    }
+
+    function setRank(json, position, index)
     {
         if(Object.keys(json).length !== 0)
-            document.getElementById("tier" + position).src = "/resources/images/tier-icons/" + json[0]["tier"].toLowerCase() + "_" + json[0]["rank"].toLowerCase() + ".png";
+            document.getElementById("tier" + position).src = "/resources/images/tier-icons/" + json[index]["tier"].toLowerCase() + "_" + json[index]["rank"].toLowerCase() + ".png";
         else
             document.getElementById("tier" + position).src = "/resources/images/tier-icons/provisional.png";
     }
 
-    function setHotStreak(json, position)
+    function setHotStreak(json, position, index)
     {
         if(Object.keys(json).length !== 0)
-            if (json[0]["hotStreak"].toString() == "true")
+            if (json[index]["hotStreak"].toString() == "true")
                 document.getElementById("hot"+position).src = "/resources/images/hotStreakTrue.png";
+            else
+                document.getElementById("hot"+position).src = "/resources/images/hotStreakFalse.png";
+
     }
 
 
@@ -53,7 +72,7 @@ var home = (function($) {
     }
 
     function formatChampionName(name) {
-        return name.toLowerCase().replace(/[^a-z]/g, "");
+        return name.toString().toLowerCase().replace(/[^a-z]/g, "");
     }
 
     function championsLookup() {
@@ -66,16 +85,46 @@ var home = (function($) {
         return champions;
     }
 
+    function summonerIdLookup(id){
+        document.getElementById("button"+id).style.display = "none";
+        var s1 = document.getElementById("summoner"+id).value;
+        document.getElementById("loader").style.visibility = "visible";
+        $.get('riot/summonerIds?s1=' + s1, function(data) {
+            document.getElementById("loader").style.visibility = "hidden";
+            summonerIds[Object.keys(data)[0]] = data[Object.keys(data)[0]];
+            getSummonerInfo(summonerIds[s1], id);
+            updateChampion(id);
+            findAvgRank();
+            //checkForMatchup('team', "champion"+id);
+            checkForMatchup(getChampNameFromImage(document.getElementById("teamImg"+id).src), "champion"+id);
+        });
+    }
+
+    function checkValidSearch() {
+        var lines = document.getElementById("textBox").value.split('\n');
+        var re = new RegExp(".+\\sjoined the lobby");
+        for(var i = 0; i < lines.length; i++)
+        {
+            if(!re.test(lines[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     function summonerIdsLookup() {
         $('#textBox').on('input', function() {
-
+        if(checkValidSearch()) {
             var s1 = document.getElementById('summoner1').value;
             var s2 = document.getElementById('summoner2').value;
             var s3 = document.getElementById('summoner3').value;
             var s4 = document.getElementById('summoner4').value;
             var s5 = document.getElementById('summoner5').value;
+            document.getElementById("loader").style.visibility = "visible";
             $.get('riot/summonerIds?s1=' + s1 + '&s2=' + s2 + '&s3=' + s3
-                + '&s4=' + s4 + '&s5=' + s5, function(data) {
+                + '&s4=' + s4 + '&s5=' + s5, function (data) {
+                document.getElementById("loader").style.visibility = "hidden";
                 summonerIds = data;
                 getSummonerInfo(summonerIds[s1], 1);
                 getSummonerInfo(summonerIds[s2], 2);
@@ -85,6 +134,7 @@ var home = (function($) {
                 findAvgRank();
 
             });
+        }
         });
 
     }
@@ -150,6 +200,44 @@ var home = (function($) {
         return summonerIds;
     }
 
+    function getChampNameFromImage(src)
+    {
+        var patt = new RegExp("\\/champion\\/.*\\.png");
+        var result = patt.exec(src);
+        result = result.toString().replace("/champion/", "").replace(".png", "");
+        return result;
+    }
+
+    function getSelected() {
+        return $('.selected-champion').first().attr('id');
+    }
+
+    function updateChampion(id){
+        //var inputId = "teamImg"+id;
+        //var src = document.getElementById(inputId).src.toString();
+        var selected = getSelected();
+        if(selected == undefined)
+        {
+            selected = getChampNameFromImage(document.getElementById("teamImg"+id).src);
+        }
+        var summonerId = summonerIds[document.getElementById('summoner'+id).value];
+        //var key = formatChampionName($('#' + inputId).val());
+        var key = formatChampionName(selected);
+        if(champions.hasOwnProperty(key)) {
+            var championId = champions[key];
+            // console.log("sid: " + summonerId + " cid: " + championId);
+            document.getElementById("loader").style.visibility = "visible";
+            $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
+                document.getElementById("loader").style.visibility = "hidden";
+                //$('#mastery' + num).val(data);
+                //getSummonerInfo(summonerId, num);
+                var image = document.getElementById('mastery' + id);
+                // console.log("updating mastery with: " + data);
+                image.src = "/resources/images/L"+data+".png";
+            });
+        }
+    }
+
     function championSelected() {
         $('.teamChamp').on('keyup', function() {
             var inputId = $(this).find('>:first-child').attr('id');
@@ -159,12 +247,12 @@ var home = (function($) {
             var key = formatChampionName($('#' + inputId).val());
             if(champions.hasOwnProperty(key)) {
                 var championId = champions[key];
-                console.log("sid: " + summonerId + " cid: " + championId);
+                // console.log("sid: " + summonerId + " cid: " + championId);
                 $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
                     //$('#mastery' + num).val(data);
                     //getSummonerInfo(summonerId, num);
                     var image = document.getElementById('mastery' + num);
-                    console.log("updating mastery with: " + data);
+                    // console.log("updating mastery with: " + data);
                     image.src = "/resources/images/L"+data+".png";
                 });
             }
@@ -174,60 +262,54 @@ var home = (function($) {
     function anyChampSelection(){
         $('.teamChamp').on('keyup', function(){
             var id = $(this).find("input").attr('id');
-            checkForMatchup('team', id);
+            checkForMatchup("", id);
         });
         $('.oppChamp').on('keyup', function(){
             var id = $(this).find("input").attr('id');
-            checkForMatchup('opponent', id);
+            checkForMatchup("", id);
         });
     }
 
-    function setChampionImage(id)
+    function setChampionImage(id, champ)
     {
-        var newID;
+        if(champions.hasOwnProperty(champ))
+            document.getElementById(id.toString().replace("champion", "teamImg").replace("opponent", "oppImg")).src = "/resources/images/champion/" + champ + ".png";
 
-        var champion = formatChampionName(document.getElementById(id).value);
-
-        if(id.includes('champion'))
-            newID = id.replace('champion', 'teamImg');
-        else
-            newID = id.replace('opponent', 'oppImg');
-
-        if(champions.hasOwnProperty(champion)){
-            var image = document.getElementById(newID);
-            console.log("updating champion image");
-            image.src = "/resources/images/champion/"+champion+".png";
-        }
     }
 
-    function checkForMatchup(team, id){
-        console.log("id is: " + id);
+    function checkForMatchup(champion, id){
+        // console.log("id is: " + id);
         var opponent = getOpponent(id);
         var role = getRole(id);
-        setChampionImage(id);
+        if(id.toString().includes("champion"))//Update champion text and mastery.
+        {
+            //document.getElementById(id).value = champion;
+            updateChampion(id.toString().replace("champion", "").replace("opponent", ""))
+        }
+        setChampionImage(id, champion);
 
-        if(document.getElementById(opponent).value != '')//Nonempty opponent. We can look for matchup.
+        if(getChampNameFromImage(document.getElementById(opponent).src) != 'placeholderOpponent' || getChampNameFromImage(document.getElementById(opponent).src) != 'placeholderTeam')//Nonempty opponent. We can look for matchup.
         {
             var c1;
             var c2;
             if(id.includes('champion'))
             {
-                c1 = document.getElementById(id).value;
-                c2 = document.getElementById(opponent).value;
+                c1 = champion;
+                c2 = getChampNameFromImage(document.getElementById(opponent).src);
             }
             else
             {
-                c1 = document.getElementById(opponent).value;
-                c2 = document.getElementById(id).value;
+                c1 = getChampNameFromImage(document.getElementById(opponent).src);
+                c2 = champion;
             }
 
             c1 = formatChampionName(c1);
             c2 = formatChampionName(c2);
             if(champions.hasOwnProperty(c1)){
                 if(champions.hasOwnProperty(c2)){
-                    console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
+                    // console.log('opponent nonempty value is: '+ document.getElementById(opponent).value);
                     $.get('matchup/champions?c1=' + c1 + '&c2=' + c2 + '&role=' + role + '&league=' + findAvgRank(), function(data) {
-                        console.log("data returned: " + data);
+                        // console.log("data returned: " + data);
                         if(data == 'null%')//No data on the matchup.
                             data = "?";
                         
@@ -242,14 +324,16 @@ var home = (function($) {
                         else if(role == 'Support')
                             displayBars(data, "percentage5");
 
-                        getScore(role);
+                        if(document.getElementById("summoner"+opponent.toString().replace("oppImg", "").replace("teamImg", "")).value != "")
+                            setTimeout(function(){ getScore(role); }, 1000);//Wait for updated mastery. Temporary solution.
+
                     });
                 }
             }
 
         }
         else {//Don't check for matchup info. The opponent is empty.
-            console.log('No opponent.');
+            // console.log('No opponent.');
         }
     }
 
@@ -258,7 +342,7 @@ var home = (function($) {
         element.innerHTML = data.bold();
         element.style.width = data;
         var colorScale = d3.scaleLinear()
-            .domain([0, 100])
+            .domain([40, 60])
             .range(["red", "green"]);
         element.style.backgroundColor = colorScale(data.slice(0, -1));
     }
@@ -277,14 +361,15 @@ var home = (function($) {
             role = '5';
 
         var mastery = document.getElementById('mastery'+role).src;
-        mastery = mastery.replace(location.port, '').replace(/\D/g,'');//get mastery number w/o port number.
+        var re = new RegExp('\\/images\\/L[0-7]\\.png');
+        mastery = mastery.match(re)[0].replace("/images/L", "").replace(".png", "");
         var matchup = document.getElementById('percentage'+role).innerText;
         matchup = matchup.replace("%", "");
         var playerWinRate = document.getElementById("playerPercentage"+role).innerText;
         playerWinRate = playerWinRate.replace("%", "");
         var hotStreak = document.getElementById("hot"+role).src;
         hotStreak = hotStreak.substring(hotStreak.length-10, hotStreak.length).replace(".png", "").replace("ak", "").replace("k", "");
-        console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup + ' playerWinRate: ' + playerWinRate + ' hotStreak: ' + hotStreak);
+        // console.log('getting lane score with mastery: ' + mastery + ' matchup: ' + matchup + ' playerWinRate: ' + playerWinRate + ' hotStreak: ' + hotStreak);
         var score = document.getElementById('score'+role);
         $.get('matchup/score?mastery=' + mastery + '&matchup=' + matchup + '&winrate=' + playerWinRate + '&hotstreak=' + hotStreak, function(data) {
             score.innerText = data;
@@ -302,7 +387,7 @@ var home = (function($) {
         var p4 = document.getElementById('percentage4').innerText;
         var p5 = document.getElementById('percentage5').innerText;
 
-        console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
+        // console.log(p1 + " " + p2 + " " + p3 +" " + p4 + " " + p5);
 
 
         if(p1 != '00.00%' && p2 != '00.00%' && p3 != '00.00%' && p4 != '00.00%' && p5 != '00.00%') {
@@ -314,15 +399,15 @@ var home = (function($) {
             var message = "";
 
             $.getJSON("/resources/data/gold_data.json", function(json) {
-                console.log("getting scores");
+                // console.log("getting scores");
                 for(var i = 0; i < json.length; i++) {
                     var obj = json[i];
 
                     if(obj.score == score){
                         total = obj.wins + obj.losses;
                         percentage = (obj.wins / (obj.wins + obj.losses)) * 100;
-                        console.log('TOTAL: ' + total);
-                        console.log('PERCENTAGE: ' + percentage.toFixed(2));
+                        // console.log('TOTAL: ' + total);
+                        // console.log('PERCENTAGE: ' + percentage.toFixed(2));
                         message = "Based on "+total+" games, players with this score win "+percentage.toFixed(2)+"% of their games.";
                         document.getElementById('userMessage').innerHTML = message.bold();
 
@@ -373,11 +458,11 @@ var home = (function($) {
     function getOpponent(teamAndRole)
     {
         if(teamAndRole.includes('champion')) {
-            teamAndRole = teamAndRole.replace('champion', 'opponent');
+            teamAndRole = teamAndRole.replace('champion', 'oppImg');
             return teamAndRole;
         }
         else{
-            teamAndRole = teamAndRole.replace('opponent', 'champion');
+            teamAndRole = teamAndRole.replace('opponent', 'teamImg');
             return teamAndRole;
         }
     }
@@ -401,6 +486,7 @@ var home = (function($) {
         document.getElementById("summoner3").value = lines[2];
         document.getElementById("summoner4").value = lines[3];
         document.getElementById("summoner5").value = lines[4];
+
     }
 
     function markForSwap(id) {
@@ -432,18 +518,23 @@ var home = (function($) {
 
     }
 
-    function swapRoles() {
-        var summoners = document.getElementsByName("summoners");
+    function swapRoles(id1, id2, type) {
+        var mainSwapElement = document.getElementsByName(type);
+
         var summoner1 = null;
         var summoner2 = null;
         var mastery1 = null;
         var mastery2 = null;
-        var champion1 = null;
-        var champion2 = null;
+        // var teamChamp1 = null;
+        // var teamChamp2 = null;
+        // var oppChamp1 = null;
+        // var oppChamp2 = null;
         var rank1 = null;
         var rank2 = null;
         var teamImg1 = null;
         var teamImg2 = null;
+        var oppImg1 = null;
+        var oppImg2 = null;
         var hot1 = null;
         var hot2 = null;
         var playerWinPer1 = null;
@@ -455,71 +546,122 @@ var home = (function($) {
 
         for(var i = 0; i < 5; i++)
         {
-            if(summoners[i].style.backgroundColor == "steelblue") {
-                summoners[i].style.backgroundColor = "#004085";
+            if(mainSwapElement[i].id == id1 || mainSwapElement[i].id == id2 || mainSwapElement[i].style.backgroundColor == "steelblue") {
+                mainSwapElement[i].style.backgroundColor = "#004085";
                 if (summoner1 == null) {
-                    summoner1 = summoners[i];
-                    mastery1 = document.getElementById("mastery"+(i + 1));
-                    champion1 = document.getElementById("champion" + (i+1));
+                    summoner1 = mainSwapElement[i];
+                    mastery1 = document.getElementById("mastery"+(i+1));
+                    //teamChamp1 = document.getElementById("champion" + (i+1));
                     rank1 = document.getElementById("tier"+(i+1));
                     teamImg1 = document.getElementById("teamImg"+(i+1));
                     hot1 = document.getElementById("hot"+(i+1));
                     playerWinPer1 = document.getElementById("playerPercentage" + (i+1));
+                    //oppChamp1 = document.getElementById("opponent" + (i+1));
+                    oppImg1 = document.getElementById("oppImg"+(i+1));
                     championID1 = "champion"+(i+1);
                     lane1 = (i+1);
                 }
                 else {
-                    summoner2 = summoners[i];
-                    mastery2 = document.getElementById("mastery"+(i + 1));
-                    champion2 = document.getElementById("champion" + (i+1));
+                    summoner2 = mainSwapElement[i];
+                    mastery2 = document.getElementById("mastery"+(i+1));
+                    //teamChamp2 = document.getElementById("champion" + (i+1));
                     rank2 = document.getElementById("tier"+(i+1));
                     teamImg2 = document.getElementById("teamImg"+(i+1));
                     hot2 = document.getElementById("hot"+(i+1));
                     playerWinPer2 = document.getElementById("playerPercentage" + (i+1));
+                    //oppChamp2 = document.getElementById("opponent" + (i+1));
+                    oppImg2 = document.getElementById("oppImg"+(i+1));
                     championID2 = "champion"+(i+1);
                     lane2 = (i+1);
                 }
             }
         }
-        if(summoner1 != null && summoner2 != null)
-        {
-            var masteryTemp = mastery1.src;
-            mastery1.src = mastery2.src;
-            mastery2.src = masteryTemp;
+        if(type == "summoners") {//Swap summoner roles.
+            if (summoner1 != null && summoner2 != null) {
 
-            var championTemp = champion1.value;
-            champion1.value = champion2.value;
-            champion2.value = championTemp;
+                setTimeout(function(){ populateDataIfCookie(lane1);
+                    populateDataIfCookie(lane2);}, 1500);//Wait for data to load.
 
-            var rankTemp = rank1.src;
-            rank1.src = rank2.src;
-            rank2.src = rankTemp;
+
+
+                var masteryTemp = mastery1.src;
+                mastery1.src = mastery2.src;
+                mastery2.src = masteryTemp;
+
+                // var championTemp = teamChamp1.value;
+                // teamChamp1.value = teamChamp2.value;
+                // teamChamp2.value = championTemp;
+
+                var rankTemp = rank1.src;
+                rank1.src = rank2.src;
+                rank2.src = rankTemp;
+
+                var teamImgTemp = teamImg1.src;
+                teamImg1.src = teamImg2.src;
+                teamImg2.src = teamImgTemp;
+
+                var hotTemp = hot1.src;
+                hot1.src = hot2.src;
+                hot2.src = hotTemp;
+
+                var playerWinPerTemp = playerWinPer1.innerText;
+                displayBars(playerWinPer2.innerText, playerWinPer1.id);
+                displayBars(playerWinPerTemp, playerWinPer2.id);
+
+                var summonerTemp = summoner1.value;
+                summoner1.value = summoner2.value;
+                summoner2.value = summonerTemp;
+
+                checkForMatchup(getChampNameFromImage(teamImg1.src), championID1);//Recheck the matchup.
+                checkForMatchup(getChampNameFromImage(teamImg2.src), championID2);
+
+            }
+        }
+        else if(type == "teamChamps") {//Swap team champions.
+            // var championTemp = teamChamp1.value;
+            // teamChamp1.value = teamChamp2.value;
+            // teamChamp2.value = championTemp;
+
+            populateDataIfCookie(lane1);
+            populateDataIfCookie(lane2);
 
             var teamImgTemp = teamImg1.src;
-            teamImg1.src =  teamImg2.src;
+            teamImg1.src = teamImg2.src;
             teamImg2.src = teamImgTemp;
 
-            var hotTemp = hot1.src;
-            hot1.src = hot2.src;
-            hot2.src = hotTemp;
+            updateChampion(lane1);
+            updateChampion(lane2);
 
-            var playerWinPerTemp = playerWinPer1.innerHTML;
-            playerWinPer1.innerHTML = playerWinPer2.innerHTML;
-            playerWinPer2.innerHTML = playerWinPerTemp;
+            checkForMatchup(getChampNameFromImage(teamImg1.src), championID1);//Recheck the matchup.
+            checkForMatchup(getChampNameFromImage(teamImg2.src), championID2);
+        }
+        else if(type == "oppChamps") {//Swap opponent champions.
+            // var oppChampTemp = oppChamp1.value;
+            // oppChamp1.value = oppChamp2.value;
+            // oppChamp2.value = oppChampTemp;
 
-            var summonerTemp = summoner1.value;
-            summoner1.value = summoner2.value;
-            summoner2.value = summonerTemp;
+            var oppImgTemp = oppImg1.src;
+            oppImg1.src = oppImg2.src;
+            var champ1 = oppImgTemp.toString().match("champion\/.*\.png").toString().replace("champion/", "").replace(".png", "");
+            var champ2 = oppImg1.src.toString().match("champion\\/.*\\.png").toString().replace("champion/", "").replace(".png", "");
+            oppImg2.src = oppImgTemp;
 
-            checkForMatchup('team', championID1);//Recheck the matchup.
-            checkForMatchup('team', championID2);
+            checkForMatchup(getChampNameFromImage(oppImg1.src), championID1.toString().replace("champion", "opponent"));//Recheck the matchup.
+            checkForMatchup(getChampNameFromImage(oppImg2.src), championID2.toString().replace("champion", "opponent"));
 
-
-            getScore(getRole(lane1));//Recalculate the score.
-            getScore(getRole(lane2));
-
+            championSelectModal.setOpponentMatchups(champ1, findAvgRank(), getRole(lane2));
+            championSelectModal.setOpponentMatchups(champ2, findAvgRank(), getRole(lane1));
         }
 
+    }
+
+    function populateDataIfCookie(position) {
+        position = position.toString().replace("teamImg", "").replace("oppImg", "");
+        var summonerName = document.getElementById("summoner"+position).value;
+        if (summonerIds[summonerName] == undefined)
+        {
+            summonerIdLookup(position);
+        }
     }
 
     return {
@@ -527,9 +669,131 @@ var home = (function($) {
         populateSummonerNames: populateSummonerNames,
         markForSwap: markForSwap,
         swapRoles: swapRoles,
+        summonerIdLookup: summonerIdLookup,
+        findAvgRank: findAvgRank,
+        getRole: getRole,
+        populateDataIfCookie: populateDataIfCookie,
         //TODO remove later - these are just for testing
         getChampions: getChampions,
         getSummonerIds: getSummonerIds
         //----------------------------------------------
     };
-}(window.jQuery));
+}(window.jQuery, championSelectModal, roleBestFit));
+
+function onDragOver(ev) {
+    //console.log("onDragOver");
+    ev.preventDefault();
+}
+
+function onDragStart(ev) {
+    //console.log("onDragStart");
+    ev.dataTransfer.setData("value", ev.target.id);
+}
+
+function onDrop(ev) {
+    //console.log("onDrop");
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("value");
+    if(data.toString().includes("summoner"))
+        home.swapRoles(data, ev.target.id, "summoners");
+    else if(data.toString().includes("teamImg"))
+        home.swapRoles(data, ev.target.id, "teamChamps");
+    else if(data.toString().includes("oppImg"))
+        home.swapRoles(data, ev.target.id, "oppChamps");
+}
+
+function displayButton(id)
+{
+    document.getElementById("button"+id).style.display = "block";
+}
+
+var currentTip = 0;
+var highlightElements = ["summoner", "champPic", "tier", "champPic", "scoreDiv", "textBox"];
+
+function startTutorial() {
+    document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
+    var tips = document.getElementsByClassName("tooltiptext");
+    tips[0].style.visibility = "visible";
+    document.getElementsByTagName("body")[0].classList.add("highlight-is-active");
+    var highlightedElements = document.getElementsByClassName(highlightElements[0]);
+    highlightedElements[0].classList.add("highlight");
+    for(var i = 1; i < highlightedElements.length; i++){
+        highlightedElements[i].classList.add("alsoHighlighted")
+    }
+    document.getElementById("arrows").style.display = "block";
+    var exit = document.getElementById("exit");
+    exit.style.display = "block";
+    document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+    document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+}
+
+
+
+function continueTutorial() {
+    var notHighlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+    for(var i = 1; i < notHighlightedElements.length; i++){
+        notHighlightedElements[i].classList.remove("alsoHighlighted");
+    }
+    notHighlightedElements[0].classList.remove("highlight");
+    var tips = document.getElementsByClassName("tooltiptext");
+    document.getElementsByClassName("arrowLeft")[0].style.visibility = "visible";
+    if(currentTip < tips.length - 1) {
+        currentTip++;
+        for (var i = 0; i < tips.length; i++) {
+            tips[i].style.visibility = "hidden";
+        }
+        tips[currentTip].style.visibility = "visible";
+        var elementsToHighlight = document.getElementsByClassName(highlightElements[currentTip]);
+        elementsToHighlight[0].classList.add("highlight");
+        for(var i = 1; i < elementsToHighlight.length; i++) {
+            elementsToHighlight[i].classList.add("alsoHighlighted");
+        }
+    }
+    if(currentTip == tips.length - 1) {
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "hidden";
+    }
+}
+
+
+function goBackTutorial() {
+    var notHighlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+    for(var i = 1; i < notHighlightedElements.length; i++){
+        notHighlightedElements[i].classList.remove("alsoHighlighted");
+    }
+    notHighlightedElements[0].classList.remove("highlight");
+    var tips = document.getElementsByClassName("tooltiptext");
+    document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+    if(currentTip > 0){
+        currentTip--;
+        for (var i = 0; i < tips.length; i++) {
+            tips[i].style.visibility = "hidden";
+        }
+        tips[currentTip].style.visibility = "visible";
+        var elementsToHighlight = document.getElementsByClassName(highlightElements[currentTip]);
+        elementsToHighlight[0].classList.add("highlight");
+        for(var i = 1; i < elementsToHighlight.length; i++) {
+            elementsToHighlight[i].classList.add("alsoHighlighted");
+        }
+    }
+    if(currentTip == 0){
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+    }
+}
+
+function exitTutorial() {
+    var exit = document.getElementById("exit");
+    exit.style.display = "none"; // get rid of exit
+    document.getElementById("arrows").style.display = "none";
+    document.getElementsByClassName("help-tip")[0].style.visibility = "visible";
+    var highlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+    highlightedElements[0].classList.remove("highlight");
+    for(var i = 1; i < highlightedElements.length; i++){
+        highlightedElements[i].classList.remove("alsoHighlighted")
+    }
+    document.getElementsByTagName("body")[0].classList.remove("highlight-is-active");
+    var tips = document.getElementsByClassName("tooltiptext");
+    for(var i = 0; i < tips.length; i++){
+        tips[i].style.visibility = "hidden";
+    }
+    currentTip = 0;
+}

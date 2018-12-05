@@ -1,5 +1,9 @@
 package classes;
 
+import classes.db.ChampionMatchupsDB;
+import classes.db.ChampionMatchupsEntity;
+import classes.db.StaticChampionsDB;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -71,6 +75,15 @@ public class Scoring {
         return score;
     }
 
+    public String getOpponentMatchup(String opp, String league, String role)
+    {
+        Integer oppId = StaticChampionsDB.getIdByName(opp);
+        ChampionMatchupsEntity cme = ChampionMatchupsDB.getByAll(oppId, league, role);
+        if(cme == null)
+            return "{}";
+        return cme.getMatchupJson();
+    }
+
     public Double getMatchupInfo(String c1, String c2, String role, String league)//c1 is team champ c2 is opponent champ.
     {
         //format champion names
@@ -83,10 +96,10 @@ public class Scoring {
 
         ChampionMatchupsEntity temp = ChampionMatchupsDB.getByAll(c1Id, league, role);
         if(temp == null)
-            return 50.0;
+            return null;
         String matchupJson = temp.getMatchupJson();
-//        if(matchupJson == null) //TODO handle differently?
-//            return 50.0;
+        if(matchupJson == null)
+            return null;
 
         HashMap<String, Double> allMatches = new HashMap<>();
         Matcher m = Pattern.compile("\"opponentChampion\":(.*?), \"winRate\": (.*?)}")

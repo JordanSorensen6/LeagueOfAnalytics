@@ -1,7 +1,6 @@
-package classes;
+package classes.db;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "static_champions", schema = "public", catalog = "LeagueOfAnalytics")
@@ -9,6 +8,7 @@ public class StaticChampionsEntity {
     private int id;
     private String name;
     private String formatted;
+    private String tags;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -38,6 +38,16 @@ public class StaticChampionsEntity {
 
     public void setFormatted(String formatted) {
         this.formatted = formatted;
+    }
+
+    @Basic
+    @Column(name = "tags", nullable = false, length = -1)
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     @Override

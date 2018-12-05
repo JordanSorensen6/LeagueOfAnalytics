@@ -3,6 +3,9 @@ class PlotChart{
     constructor(data){
         this.data = data;
         this.unusedData = [];
+        this.currentTip = 0;
+        this.highlightElements = ["moreButton", "deleteButton", "graph", "legend"];
+
         //document.getElementById("PlayerStatImg").style.visibility = 'hidden';
     }
 
@@ -41,20 +44,6 @@ class PlotChart{
         var height = +svg.attr("height") - 2 * padding;
         var radius = 8;
         var clickRadius = 10;
-        svg.append("text")
-            .attr("transform", "rotate(-90) translate(" + padding + "," + padding + ")")
-            .attr("y", padding - 120)
-            .attr("x", -1 *(height / 2) - 150)
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("Assigned Score");
-
-        svg.append("text")
-            .attr("transform",
-                "translate(" + (width/2 + 80) + " ," +
-                (height/2 + padding + 30) + ")")
-            .style("text-anchor", "middle")
-            .text("Game #");
 
         var i = 1;
         this.data.forEach(function (d) {
@@ -122,10 +111,19 @@ class PlotChart{
 
         chartEnter
             .attr("transform", "translate(" + padding + "," + (height + padding) + ") scale(1, -1)")
-            .attr("r", radius)
+            .attr("r", function(d){
+                if(d.highlighted){
+                    return clickRadius
+                }
+                return radius
+            })
             .attr("class", function(d){
                 return d["outcome"];
+            })
+            .classed("highlighted", function(d){
+                return d.highlighted;
             });
+
 
         chart.exit().remove();
 
@@ -142,21 +140,59 @@ class PlotChart{
         d3.select("#plot").selectAll("circle")
             .on("click", function (d){
                 d3.select("#plot").selectAll("circle")
-                    .classed("highlighted", false)
+                    .classed("highlighted", function (d){
+                        d.highlighted = false;
+                        return false;
+                    })
                     .attr("r", radius);
 
                 d3.select(this)
                     .classed("highlighted", true)
                     .attr("r", clickRadius);
-                if(d.outcome === "Win") {
-                    $('#PlayerLossPic').hide();
-                    $('#PlayerWinPic').show();
-                }
-                else {
-                    $('#PlayerLossPic').show();
-                    $('#PlayerWinPic').hide();
-                }
-                //document.getElementById("PlayerStatImg").style.visibility = "visible";
+                d.highlighted = true;
+
+                $.get('/match?matchID=' + d["matchId"], function(data){
+
+                    document.getElementById("gameStats").style.display = "inline";
+
+                    var players = data["participants"];
+                    var playerIds = data["participantIdentities"];
+
+                    players.forEach(function (d, i) {
+                        d["summoner"] = playerIds[i]["player"]["summonerName"];
+                        var id = d["participantId"];
+                        var stats = d["stats"];
+                        var teamId = d["teamId"];
+                        var teamDiv = document.getElementById("gameStats" + teamId);
+                        var divId = (id % 5 == 0) ? 5 : (id % 5);
+
+                        var summonerDiv = teamDiv.getElementsByClassName("summoner" + divId)[0];
+                        summonerDiv.innerHTML = d["summoner"];
+
+                        var kdaDiv = teamDiv.getElementsByClassName("kda" + divId)[0];
+                        var deaths = stats["deaths"];
+                        var kills = stats["kills"];
+                        var assists = stats["assists"];
+                        kdaDiv.innerHTML = (deaths == 0) ? "Perfect" : ((kills + assists) / deaths).toFixed(2);
+
+                        var damageDiv = teamDiv.getElementsByClassName("damage" + divId)[0];
+                        var damage = stats["totalDamageDealt"];
+                        damageDiv.innerHTML = damage;
+
+                        var tierDiv = teamDiv.getElementsByClassName("tier" + divId)[0];
+                        var tier = d["highestAchievedSeasonTier"];
+                        tierDiv.innerHTML = tier;
+                    })
+                });
+                // if(d.outcome === "Win") {
+                //     $('#PlayerLossPic').hide();
+                //     $('#PlayerWinPic').show();
+                // }
+                // else {
+                //     $('#PlayerLossPic').show();
+                //     $('#PlayerWinPic').hide();
+                // }
+                // document.getElementById("PlayerStatImg").style.visibility = "visible";
 
             })
             .on("mouseover", tip.show)
@@ -245,4 +281,70 @@ class PlotChart{
         })
     }
 
+    startTutorial(){
+        document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
+        var tips = document.getElementsByClassName("tooltiptext");
+        tips[0].style.visibility = "visible";
+        document.getElementsByTagName("body")[0].classList.add("highlight-is-active");
+        var highlightedElements = document.getElementsByClassName(this.highlightElements[0]);
+        highlightedElements[0].classList.add("highlight");
+        document.getElementById("arrows").style.display = "block";
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+        var exit = document.getElementById("exit");
+        exit.style.display = "block";
+    }
+
+    continueTutorial(){
+        var notHighlightedElements = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+        notHighlightedElements[0].classList.remove("highlight");
+        var tips = document.getElementsByClassName("tooltiptext");
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "visible";
+        if(this.currentTip < tips.length - 1) {
+            this.currentTip++;
+            for (var i = 0; i < tips.length; i++) {
+                tips[i].style.visibility = "hidden";
+            }
+            tips[this.currentTip].style.visibility = "visible";
+            var elementsToHighlight = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+            elementsToHighlight[0].classList.add("highlight");
+        }
+        if(this.currentTip == tips.length - 1) {
+            document.getElementsByClassName("arrowRight")[0].style.visibility = "hidden";
+        }
+    }
+
+    goBackTutorial(){
+        var notHighlightedElements = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+        notHighlightedElements[0].classList.remove("highlight");
+        var tips = document.getElementsByClassName("tooltiptext");
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+        if(this.currentTip > 0){
+            this.currentTip--;
+            for (var i = 0; i < tips.length; i++) {
+                tips[i].style.visibility = "hidden";
+            }
+            tips[this.currentTip].style.visibility = "visible";
+            var elementsToHighlight = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+            elementsToHighlight[0].classList.add("highlight");
+        }
+        if(this.currentTip == 0){
+            document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+        }
+    }
+
+    exitTutorial(){
+        var exit = document.getElementById("exit");
+        exit.style.display = "none"; // get rid of exit
+        document.getElementById("arrows").style.display = "none";
+        document.getElementsByClassName("help-tip")[0].style.visibility = "visible";
+        var highlightedElements = document.getElementsByClassName(this.highlightElements[this.currentTip]);
+        highlightedElements[0].classList.remove("highlight");
+        document.getElementsByTagName("body")[0].classList.remove("highlight-is-active");
+        var tips = document.getElementsByClassName("tooltiptext");
+        for(var i = 0; i < tips.length; i++){
+            tips[i].style.visibility = "hidden";
+        }
+        this.currentTip = 0;
+    }
 }

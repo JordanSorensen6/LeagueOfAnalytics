@@ -16,5 +16,6 @@
                 <a class="nav-link" href="/app_stats">Application Stats</a>
             </li>
         </ul>
+        <div class="text-right"><strong>Patch 8.23</strong></div>
     </div>
 </nav>
