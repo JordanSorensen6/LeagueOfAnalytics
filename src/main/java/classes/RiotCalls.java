@@ -88,7 +88,7 @@ public class RiotCalls {
     }
 
     public String getSummonerInfo(String summonerID) throws IOException
-    {
+    {// TODO make sure all inputs to riot calls are properly formatted
         HttpResponse resp = handleAPICall(league, "positions/by-summoner/" + summonerID);
         if(resp == null) { //error occurred so try again
             resp = handleAPICall(league, "positions/by-summoner/" + summonerID);

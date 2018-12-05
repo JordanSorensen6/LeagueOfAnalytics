@@ -95,7 +95,6 @@ var roleBestFit = (function($) {
     }
 
     return {
-        init: init,
-        bestFit: bestFit
+        init: init
     };
 }(window.jQuery));
