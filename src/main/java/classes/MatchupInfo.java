@@ -5,6 +5,7 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class MatchupInfo {
     private String champion;
@@ -159,4 +160,34 @@ public class MatchupInfo {
     public void setMatchups(ArrayList<Pair<String, Integer>> matchups) {
         this.matchups = matchups;
     }
+
+    public static Comparator<MatchupInfo> topComparator = new Comparator<MatchupInfo>() {
+        public int compare(MatchupInfo a, MatchupInfo b) {
+            return b.getTopCount() - a.getTopCount();
+        }
+    };
+
+    public static Comparator<MatchupInfo> jungleComparator = new Comparator<MatchupInfo>() {
+        public int compare(MatchupInfo a, MatchupInfo b) {
+            return b.getJungleCount() - a.getJungleCount();
+        }
+    };
+
+    public static Comparator<MatchupInfo> middleComparator = new Comparator<MatchupInfo>() {
+        public int compare(MatchupInfo a, MatchupInfo b) {
+            return b.getMiddleCount() - a.getMiddleCount();
+        }
+    };
+
+    public static Comparator<MatchupInfo> bottomComparator = new Comparator<MatchupInfo>() {
+        public int compare(MatchupInfo a, MatchupInfo b) {
+            return b.getBottomCount() - a.getBottomCount();
+        }
+    };
+
+    public static Comparator<MatchupInfo> supportComparator = new Comparator<MatchupInfo>() {
+        public int compare(MatchupInfo a, MatchupInfo b) {
+            return b.getSupportCount() - a.getSupportCount();
+        }
+    };
 }
