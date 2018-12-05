@@ -35,8 +35,8 @@ ${username} stats
 
 <div class="row">
     <div class="chart col-sm-8">
-        <a class="btn btn-primary moreButton" type="button" onclick="moreGames()" id = "add"><span class="tooltiptext">This button is for adding games to the graph</span>Add More Games</a>
-        <a class="btn btn-primary deleteButton" type="button" onclick="chart.lessGames()" id = "delete"><span class="tooltiptext">This button is for deleting games from the graph</span>Take Away Games</a>
+        <a class="btn btn-primary moreButton" type="button" onclick="moreGames()" id = "add"><span class="tooltiptext">This button is for<br> adding games<br> to the graph</span>Add More Games</a>
+        <a class="btn btn-primary deleteButton" type="button" onclick="chart.lessGames()" id = "delete"><span class="tooltiptext">This button is for<br> deleting games<br> from the graph</span>Take Away Games</a>
         <h4>Assigned Scores For Past Games</h4>
         <div class = "row">
             <div class="graph">
