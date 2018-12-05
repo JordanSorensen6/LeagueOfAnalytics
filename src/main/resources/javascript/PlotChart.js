@@ -80,6 +80,8 @@ class PlotChart{
             .attr("transform", "translate(" + padding + "," + (height/2 + padding) + ")")
             .call(xAxis);
 
+        document.getElementById("xAxis").getElementsByClassName("tick")[0].getElementsByTagName("text")[0].style.visibility = "hidden";
+
         var newxScale = d3.scaleLinear()
             .domain([0, this.data.length])
             .range([0, width]);
