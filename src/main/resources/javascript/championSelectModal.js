@@ -7,7 +7,10 @@ var championSelectModal = (function($) {
         getChampionsWithTags();
 
         $('.champPic').on('click', function(){
+            //var id = $(this).attr.id;
             selectFor = $(this).children(':first').attr('id');
+            home.populateDataIfCookie(selectFor);
+            //selectFor = $(this).children[1].attr('id');
             $('#championSelectModal').modal('show');
         });
 
@@ -69,7 +72,7 @@ var championSelectModal = (function($) {
                 $('#championImages > div').not($el).hide();
                 if(selector == "counters")
                 {
-                    $('.'+ home.getRole(selectFor).toLowerCase()).show();
+                    $('.'+ (home.getRole(selectFor).toLowerCase())).show();
                 }
             }
             $('#championSearch').trigger('keyup');

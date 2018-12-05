@@ -88,25 +88,43 @@ var home = (function($, champSelect) {
     function summonerIdLookup(id){
         document.getElementById("button"+id).style.display = "none";
         var s1 = document.getElementById("summoner"+id).value;
+        document.getElementById("loader").style.visibility = "visible";
         $.get('riot/summonerIds?s1=' + s1, function(data) {
-            summonerIds = data;
+            document.getElementById("loader").style.visibility = "hidden";
+            summonerIds[Object.keys(data)[0]] = data[Object.keys(data)[0]];
             getSummonerInfo(summonerIds[s1], id);
             updateChampion(id);
             findAvgRank();
-            checkForMatchup('team', "champion"+id);
+            //checkForMatchup('team', "champion"+id);
+            checkForMatchup(getChampNameFromImage(document.getElementById("teamImg"+id).src), "champion"+id);
         });
+    }
+
+    function checkValidSearch() {
+        var lines = document.getElementById("textBox").value.split('\n');
+        var re = new RegExp(".+\\sjoined the lobby");
+        for(var i = 0; i < lines.length; i++)
+        {
+            if(!re.test(lines[i]))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     function summonerIdsLookup() {
         $('#textBox').on('input', function() {
-
+        if(checkValidSearch()) {
             var s1 = document.getElementById('summoner1').value;
             var s2 = document.getElementById('summoner2').value;
             var s3 = document.getElementById('summoner3').value;
             var s4 = document.getElementById('summoner4').value;
             var s5 = document.getElementById('summoner5').value;
+            document.getElementById("loader").style.visibility = "visible";
             $.get('riot/summonerIds?s1=' + s1 + '&s2=' + s2 + '&s3=' + s3
-                + '&s4=' + s4 + '&s5=' + s5, function(data) {
+                + '&s4=' + s4 + '&s5=' + s5, function (data) {
+                document.getElementById("loader").style.visibility = "hidden";
                 summonerIds = data;
                 getSummonerInfo(summonerIds[s1], 1);
                 getSummonerInfo(summonerIds[s2], 2);
@@ -116,6 +134,7 @@ var home = (function($, champSelect) {
                 findAvgRank();
 
             });
+        }
         });
 
     }
@@ -207,7 +226,9 @@ var home = (function($, champSelect) {
         if(champions.hasOwnProperty(key)) {
             var championId = champions[key];
             // console.log("sid: " + summonerId + " cid: " + championId);
+            document.getElementById("loader").style.visibility = "visible";
             $.get('riot/championMastery?summonerId=' + summonerId + '&championId=' + championId, function(data) {
+                document.getElementById("loader").style.visibility = "hidden";
                 //$('#mastery' + num).val(data);
                 //getSummonerInfo(summonerId, num);
                 var image = document.getElementById('mastery' + id);
@@ -273,16 +294,12 @@ var home = (function($, champSelect) {
             var c2;
             if(id.includes('champion'))
             {
-                //c1 = document.getElementById(id).value;
                 c1 = champion;
-                //c2 = document.getElementById(opponent).value;
                 c2 = getChampNameFromImage(document.getElementById(opponent).src);
             }
             else
             {
-                //c1 = document.getElementById(opponent).value;
                 c1 = getChampNameFromImage(document.getElementById(opponent).src);
-                //c2 = document.getElementById(id).value;
                 c2 = champion;
             }
 
@@ -307,7 +324,8 @@ var home = (function($, champSelect) {
                         else if(role == 'Support')
                             displayBars(data, "percentage5");
 
-                        setTimeout(function(){ getScore(role); }, 1000);//Wait for updated mastery. Temporary solution.
+                        if(document.getElementById("summoner"+opponent.toString().replace("oppImg", "").replace("teamImg", "")).value != "")
+                            setTimeout(function(){ getScore(role); }, 1000);//Wait for updated mastery. Temporary solution.
 
                     });
                 }
@@ -343,7 +361,8 @@ var home = (function($, champSelect) {
             role = '5';
 
         var mastery = document.getElementById('mastery'+role).src;
-        mastery = mastery.replace(location.port, '').replace(/\D/g,'');//get mastery number w/o port number.
+        var re = new RegExp('\\/images\\/L[0-7]\\.png');
+        mastery = mastery.match(re)[0].replace("/images/L", "").replace(".png", "");
         var matchup = document.getElementById('percentage'+role).innerText;
         matchup = matchup.replace("%", "");
         var playerWinRate = document.getElementById("playerPercentage"+role).innerText;
@@ -467,6 +486,7 @@ var home = (function($, champSelect) {
         document.getElementById("summoner3").value = lines[2];
         document.getElementById("summoner4").value = lines[3];
         document.getElementById("summoner5").value = lines[4];
+
     }
 
     function markForSwap(id) {
@@ -558,6 +578,12 @@ var home = (function($, champSelect) {
         }
         if(type == "summoners") {//Swap summoner roles.
             if (summoner1 != null && summoner2 != null) {
+
+                setTimeout(function(){ populateDataIfCookie(lane1);
+                    populateDataIfCookie(lane2);}, 1500);//Wait for data to load.
+
+
+
                 var masteryTemp = mastery1.src;
                 mastery1.src = mastery2.src;
                 mastery2.src = masteryTemp;
@@ -596,6 +622,9 @@ var home = (function($, champSelect) {
             // teamChamp1.value = teamChamp2.value;
             // teamChamp2.value = championTemp;
 
+            populateDataIfCookie(lane1);
+            populateDataIfCookie(lane2);
+
             var teamImgTemp = teamImg1.src;
             teamImg1.src = teamImg2.src;
             teamImg2.src = teamImgTemp;
@@ -626,6 +655,15 @@ var home = (function($, champSelect) {
 
     }
 
+    function populateDataIfCookie(position) {
+        position = position.toString().replace("teamImg", "").replace("oppImg", "");
+        var summonerName = document.getElementById("summoner"+position).value;
+        if (summonerIds[summonerName] == undefined)
+        {
+            summonerIdLookup(position);
+        }
+    }
+
     return {
         init: init,
         populateSummonerNames: populateSummonerNames,
@@ -634,6 +672,7 @@ var home = (function($, champSelect) {
         summonerIdLookup: summonerIdLookup,
         findAvgRank: findAvgRank,
         getRole: getRole,
+        populateDataIfCookie: populateDataIfCookie,
         //TODO remove later - these are just for testing
         getChampions: getChampions,
         getSummonerIds: getSummonerIds
@@ -666,4 +705,95 @@ function onDrop(ev) {
 function displayButton(id)
 {
     document.getElementById("button"+id).style.display = "block";
+}
+
+var currentTip = 0;
+var highlightElements = ["summoner", "champPic", "tier", "champPic", "scoreDiv", "textBox"];
+
+function startTutorial() {
+    document.getElementsByClassName("help-tip")[0].style.visibility = "hidden";
+    var tips = document.getElementsByClassName("tooltiptext");
+    tips[0].style.visibility = "visible";
+    document.getElementsByTagName("body")[0].classList.add("highlight-is-active");
+    var highlightedElements = document.getElementsByClassName(highlightElements[0]);
+    highlightedElements[0].classList.add("highlight");
+    for(var i = 1; i < highlightedElements.length; i++){
+        highlightedElements[i].classList.add("alsoHighlighted")
+    }
+    document.getElementById("arrows").style.display = "block";
+    var exit = document.getElementById("exit");
+    exit.style.display = "block";
+    document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+    document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+}
+
+
+
+function continueTutorial() {
+    var notHighlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+    for(var i = 1; i < notHighlightedElements.length; i++){
+        notHighlightedElements[i].classList.remove("alsoHighlighted");
+    }
+    notHighlightedElements[0].classList.remove("highlight");
+    var tips = document.getElementsByClassName("tooltiptext");
+    document.getElementsByClassName("arrowLeft")[0].style.visibility = "visible";
+    if(currentTip < tips.length - 1) {
+        currentTip++;
+        for (var i = 0; i < tips.length; i++) {
+            tips[i].style.visibility = "hidden";
+        }
+        tips[currentTip].style.visibility = "visible";
+        var elementsToHighlight = document.getElementsByClassName(highlightElements[currentTip]);
+        elementsToHighlight[0].classList.add("highlight");
+        for(var i = 1; i < elementsToHighlight.length; i++) {
+            elementsToHighlight[i].classList.add("alsoHighlighted");
+        }
+    }
+    if(currentTip == tips.length - 1) {
+        document.getElementsByClassName("arrowRight")[0].style.visibility = "hidden";
+    }
+}
+
+
+function goBackTutorial() {
+    var notHighlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+    for(var i = 1; i < notHighlightedElements.length; i++){
+        notHighlightedElements[i].classList.remove("alsoHighlighted");
+    }
+    notHighlightedElements[0].classList.remove("highlight");
+    var tips = document.getElementsByClassName("tooltiptext");
+    document.getElementsByClassName("arrowRight")[0].style.visibility = "visible";
+    if(currentTip > 0){
+        currentTip--;
+        for (var i = 0; i < tips.length; i++) {
+            tips[i].style.visibility = "hidden";
+        }
+        tips[currentTip].style.visibility = "visible";
+        var elementsToHighlight = document.getElementsByClassName(highlightElements[currentTip]);
+        elementsToHighlight[0].classList.add("highlight");
+        for(var i = 1; i < elementsToHighlight.length; i++) {
+            elementsToHighlight[i].classList.add("alsoHighlighted");
+        }
+    }
+    if(currentTip == 0){
+        document.getElementsByClassName("arrowLeft")[0].style.visibility = "hidden";
+    }
+}
+
+function exitTutorial() {
+    var exit = document.getElementById("exit");
+    exit.style.display = "none"; // get rid of exit
+    document.getElementById("arrows").style.display = "none";
+    document.getElementsByClassName("help-tip")[0].style.visibility = "visible";
+    var highlightedElements = document.getElementsByClassName(highlightElements[currentTip]);
+    highlightedElements[0].classList.remove("highlight");
+    for(var i = 1; i < highlightedElements.length; i++){
+        highlightedElements[i].classList.remove("alsoHighlighted")
+    }
+    document.getElementsByTagName("body")[0].classList.remove("highlight-is-active");
+    var tips = document.getElementsByClassName("tooltiptext");
+    for(var i = 0; i < tips.length; i++){
+        tips[i].style.visibility = "hidden";
+    }
+    currentTip = 0;
 }
