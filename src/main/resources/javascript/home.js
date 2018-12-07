@@ -17,7 +17,7 @@ var home = (function($, champSelect, roleBestFit) {
         $.get('riot/playerStats?summonerId='+sid, function(data) {
             var index = getIndex(data);
             setPlayerWinRate(data, position, index);
-            setHotStreak(data, position, index);
+            //setHotStreak(data, position, index);
             setRank(data, position, index);
         });
     }
