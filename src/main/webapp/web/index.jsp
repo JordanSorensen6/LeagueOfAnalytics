@@ -285,7 +285,7 @@
 
 <br><br>
 
-<div class="scoreDiv">
+<div class="scoreDiv" style="display: inline-block"> <%--Here--%>
     <span class="tooltiptext">Your score will show up here.  The higher your score the better chance you have of winning</span>
     <h1 class="totalScore" id="totalScore">Your Score: 0</h1>
     <p class="userMessage" id="userMessage"><b>Based on (number) games, players with this score win (some percentage) of their games.</b></p>
